@@ -38,6 +38,24 @@ No file has to be saved, and closing the editor never asks "Do you want to save?
 
 When installed as a Flatpak, prefix commands with `flatpak run io.github.waxermaster.Klipo`.
 
+## Keyboard shortcuts (GNOME)
+
+```bash
+./install-shortcuts.sh
+```
+
+| Keys | Action |
+|---|---|
+| Print | Capture an area |
+| Shift+Print | Capture all screens |
+| Alt+Print | Capture the active window |
+| Ctrl+Shift+Alt+R | Start or stop a video recording |
+
+The script frees these keys from GNOME's own screenshot tool, keeps your
+other custom shortcuts, allows the Flatpak to take screenshots without asking,
+and saves what it changes. Use `--dry-run` to preview the changes and
+`--uninstall` to put everything back as it was.
+
 ## Building
 
 Requirements: `flatpak`, `flatpak-builder` and the GNOME 51 SDK.
@@ -60,8 +78,8 @@ python3 -m unittest discover -s tests
 ## Roadmap
 
 1. Rename, single instance, command line options, Flatpak build ✅
-2. ksnip-style editor, reliable clipboard copy, close without confirmation
-3. `install-shortcuts.sh` for GNOME keyboard shortcuts
+2. ksnip-style editor, reliable clipboard copy, close without confirmation ✅
+3. `install-shortcuts.sh` for GNOME keyboard shortcuts ✅
 4. Basic video recording (screen, MP4)
 5. Area and window recording, audio, GIF/WebM, countdown, preview
 6. Preferences, translations, documentation
