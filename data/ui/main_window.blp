@@ -12,11 +12,48 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
 
       [top]
       Adw.HeaderBar header_bar {
-        title-widget: Adw.Bin {};
+        title-widget: Adw.WindowTitle {
+          title: "Klipo";
+        };
+      }
 
-        [start]
+      [top]
+      Gtk.Box action_bar {
+        spacing: 12;
+        margin-start: 12;
+        margin-end: 12;
+        margin-top: 6;
+        margin-bottom: 6;
+
+        Gtk.Box {
+          styles [
+            "linked",
+          ]
+
+          Gtk.Button {
+            icon-name: "alarm-symbolic";
+            tooltip-text: _("Delay before capturing");
+            sensitive: false;
+          }
+
+          Gtk.DropDown delay_dropdown {
+            tooltip-text: _("Delay before capturing");
+
+            model: Gtk.StringList {
+              strings [
+                _("0 s"),
+                _("3 s"),
+                _("5 s"),
+                _("10 s"),
+              ]
+            };
+          }
+        }
+
         Gtk.Box capture_box {
-          spacing: 2;
+          styles [
+            "linked",
+          ]
 
           Gtk.Button {
             action-name: "win.capture-area";
@@ -26,10 +63,6 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
               icon-name: "screenshooter-symbolic";
               label: _("Area");
             };
-
-            styles [
-              "flat",
-            ]
           }
 
           Gtk.Button {
@@ -40,10 +73,6 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
               icon-name: "focus-windows-symbolic";
               label: _("Window");
             };
-
-            styles [
-              "flat",
-            ]
           }
 
           Gtk.Button {
@@ -54,10 +83,6 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
               icon-name: "video-display-symbolic";
               label: _("Screen");
             };
-
-            styles [
-              "flat",
-            ]
           }
 
           Gtk.Button {
@@ -68,19 +93,6 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
               icon-name: "view-dual-symbolic";
               label: _("All Screens");
             };
-
-            styles [
-              "flat",
-            ]
-          }
-
-          Gtk.Separator {
-            margin-start: 4;
-            margin-end: 4;
-
-            styles [
-              "spacer",
-            ]
           }
 
           Gtk.Button {
@@ -88,67 +100,16 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
             tooltip-text: _("Record the screen");
 
             child: Adw.ButtonContent {
-              icon-name: "media-record-symbolic";
+              icon-name: "camera-video-symbolic";
               label: _("Video");
             };
-
-            styles [
-              "flat",
-            ]
-          }
-
-          Gtk.DropDown delay_dropdown {
-            tooltip-text: _("Delay before capturing");
-            valign: center;
-            margin-start: 6;
-
-            model: Gtk.StringList {
-              strings [
-                _("No Delay"),
-                _("3 s"),
-                _("5 s"),
-                _("10 s"),
-              ]
-            };
           }
         }
 
-        [end]
-        Gtk.MenuButton main_menu_button {
-          icon-name: "open-menu-symbolic";
-          tooltip-text: _("Main Menu");
-          menu-model: app_menu;
-          primary: true;
+        Gtk.Box {
+          hexpand: true;
         }
 
-        [end]
-        Gtk.Button share_button {
-          icon-name: "share-symbolic";
-          tooltip-text: _("Share Image (Ctrl+M)");
-          action-name: "win.command";
-          visible: false;
-        }
-
-        [end]
-        Gtk.Button {
-          icon-name: "document-save-as-symbolic";
-          tooltip-text: _("Save As… (Ctrl+Shift+S)");
-          action-name: "win.save-as";
-        }
-
-        [end]
-        Gtk.Button {
-          tooltip-text: _("Save to the default folder (Ctrl+S)");
-          action-name: "win.save";
-
-          child: Adw.ButtonContent {
-            icon-name: "document-save-symbolic";
-            label: _("_Save");
-            use-underline: true;
-          };
-        }
-
-        [end]
         Gtk.Button {
           tooltip-text: _("Copy to Clipboard (Ctrl+C)");
           action-name: "win.copy";
@@ -161,6 +122,129 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
 
           styles [
             "suggested-action",
+          ]
+        }
+
+        Gtk.Button {
+          tooltip-text: _("Save to the default folder (Ctrl+S)");
+          action-name: "win.save";
+
+          child: Adw.ButtonContent {
+            icon-name: "document-save-symbolic";
+            label: _("_Save");
+            use-underline: true;
+          };
+        }
+
+        Gtk.Button {
+          tooltip-text: _("Choose where to save (Ctrl+Shift+S)");
+          action-name: "win.save-as";
+
+          child: Adw.ButtonContent {
+            icon-name: "document-save-as-symbolic";
+            label: _("Save _As");
+            use-underline: true;
+          };
+        }
+
+        Gtk.Button share_button {
+          icon-name: "share-symbolic";
+          tooltip-text: _("Share Image (Ctrl+M)");
+          action-name: "win.command";
+          visible: false;
+        }
+
+        Gtk.MenuButton main_menu_button {
+          icon-name: "view-more-symbolic";
+          tooltip-text: _("Main Menu");
+          menu-model: app_menu;
+          primary: true;
+
+          styles [
+            "flat",
+          ]
+        }
+      }
+
+      [top]
+      Gtk.Box {
+        orientation: vertical;
+
+        Adw.TabBar tab_bar {
+          view: tab_view;
+          autohide: false;
+        }
+
+        // Only used as the tab model: the editor below is shared by all tabs
+        Adw.TabView tab_view {
+          visible: false;
+        }
+      }
+
+      [bottom]
+      Gtk.Box status_bar {
+        spacing: 6;
+        margin-start: 12;
+        margin-end: 12;
+        margin-top: 4;
+        margin-bottom: 4;
+
+        Gtk.Label image_size_label {
+          xalign: 0;
+
+          styles [
+            "dim-label",
+            "numeric",
+          ]
+        }
+
+        Gtk.Box {
+          hexpand: true;
+        }
+
+        Gtk.Button {
+          icon-name: "zoom-out-symbolic";
+          tooltip-text: _("Zoom Out (Ctrl+−)");
+          action-name: "win.zoom-out";
+
+          styles [
+            "flat",
+          ]
+        }
+
+        Gtk.Button zoom_percent_button {
+          tooltip-text: _("Actual Size (Ctrl+1)");
+          action-name: "win.zoom-actual-size";
+          label: "100 %";
+          width-request: 70;
+
+          styles [
+            "flat",
+            "numeric",
+          ]
+        }
+
+        Gtk.Button {
+          icon-name: "zoom-in-symbolic";
+          tooltip-text: _("Zoom In (Ctrl++)");
+          action-name: "win.zoom-in";
+
+          styles [
+            "flat",
+          ]
+        }
+
+        Gtk.Button {
+          tooltip-text: _("Fit to Window (Ctrl+0)");
+          action-name: "win.reset-zoom";
+
+          child: Adw.ButtonContent {
+            icon-name: "zoom-fit-best-symbolic";
+            label: _("Fit");
+          };
+
+          styles [
+            "flat",
           ]
         }
       }

@@ -28,6 +28,8 @@ class DrawingToolsGroup(Gtk.Box):
     __gtype_name__ = "GradiaDrawingToolsGroup"
 
     size_scale = Gtk.Template.Child()
+    tool_title_icon = Gtk.Template.Child()
+    tool_title_label = Gtk.Template.Child()
     opacity_scale = Gtk.Template.Child()
     opacity_label = Gtk.Template.Child()
     color_picker = Gtk.Template.Child()
@@ -94,6 +96,9 @@ class DrawingToolsGroup(Gtk.Box):
 
     def _update_ui_for_tool(self, tool_config: ToolConfig, tool_option: ToolOption):
         self._updating_ui = True
+
+        self.tool_title_icon.set_from_icon_name(tool_config.icon)
+        self.tool_title_label.set_label(tool_config.mode.label())
 
         self.size_scale.set_sensitive(tool_config.has_scale)
         self.color_picker.set_sensitive(tool_config.has_primary_color)

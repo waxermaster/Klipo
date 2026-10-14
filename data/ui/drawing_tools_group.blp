@@ -3,15 +3,23 @@ using Gtk 4.0;
 template $GradiaDrawingToolsGroup: Box {
   orientation: vertical;
 
-  Text {
-    text: _("Tool Properties");
-    margin-bottom: 12;
-    sensitive: false;
+  Box {
+    spacing: 10;
+    margin-bottom: 18;
 
-    styles [
-      "heading",
-      "h4",
-    ]
+    Image tool_title_icon {
+      icon-name: "pointer-primary-click-symbolic";
+      pixel-size: 20;
+    }
+
+    Label tool_title_label {
+      label: _("Select");
+      xalign: 0;
+
+      styles [
+        "tool-properties-title",
+      ]
+    }
   }
 
   $GradiaDrawingToolsGrid drawing_tools_grid {

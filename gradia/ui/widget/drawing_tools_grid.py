@@ -22,6 +22,16 @@ from gradia.backend.settings import Settings
 from gradia.backend.tool_config import ToolConfig
 settings = Settings()
 
+def rail_button_content(icon_name: str, shortcut: str) -> Gtk.Box:
+    """Icon followed by a small badge showing the tool's one-letter shortcut."""
+    box = Gtk.Box(spacing=12)
+    image = Gtk.Image(icon_name=icon_name, pixel_size=18)
+    badge = Gtk.Label(label=shortcut, css_classes=["tool-badge"], valign=Gtk.Align.CENTER)
+    box.append(image)
+    box.append(badge)
+    return box
+
+
 class DrawingToolsGrid(Gtk.Grid):
     __gtype_name__ = "GradiaDrawingToolsGrid"
 
@@ -76,14 +86,18 @@ class DrawingToolsGrid(Gtk.Grid):
 
     def set_single_column(self, order: list[DrawingMode]) -> None:
         """Lay the tools out as a vertical rail, in the given order."""
-        self.set_row_spacing(4)
+        self.set_row_spacing(2)
         self.set_column_homogeneous(False)
+        self.set_hexpand(False)
         for button in self._buttons.values():
             self.remove(button)
         for row, mode in enumerate(order):
             button = self._buttons[mode]
             shortcut = mode.shortcuts[0].upper()
             button.set_tooltip_text(f"{mode.label()} ({shortcut})")
+            button.set_child(rail_button_content(self._tool_configs[mode].icon, shortcut))
+            button.set_css_classes(["flat", "tool-button"])
+            button.set_size_request(-1, -1)
             self.attach(button, 0, row, 1, 1)
 
     def _on_button_toggled(self, button: Gtk.ToggleButton, mode: DrawingMode):

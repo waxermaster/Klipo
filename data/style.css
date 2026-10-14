@@ -306,3 +306,32 @@ image.symbolic-circular {
 .semi-transparent:active {
   opacity: 1;
 }
+
+/* Klipo editor: tool rail with one-letter shortcut badges */
+.tool-rail button.tool-button {
+  padding: 5px 10px;
+}
+
+.tool-rail button.tool-button:checked,
+.tool-rail button.tool-button.crop-active {
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+}
+
+.tool-badge {
+  font-size: 0.75em;
+  font-weight: bold;
+  min-width: 18px;
+  padding: 1px 4px;
+  border-radius: 5px;
+  background-color: alpha(currentColor, 0.12);
+}
+
+.tool-rail button.rail-action {
+  padding: 4px 8px;
+}
+
+.tool-properties-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}

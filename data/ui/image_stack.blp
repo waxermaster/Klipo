@@ -215,7 +215,10 @@ template $GradiaImageStack: Adw.Bin {
                 spacing: 12;
                 halign: end;
 
+                // Zoom lives in the window's status bar
                 Gtk.Box zoom_controls {
+                  visible: false;
+
                   orientation: horizontal;
 
                   styles [

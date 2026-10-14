@@ -35,6 +35,7 @@ from gradia.ui.image_loaders import ImportManager
 from gradia.graphics.loaded_image import LoadedImage, ImageOrigin
 from gradia.ui.image_sidebar import ImageSidebar, ImageOptions
 from gradia.ui.image_stack import ImageStack
+from gradia.ui.widget.drawing_tools_grid import rail_button_content
 from gradia.ui.ui_parts import *
 from gradia.ui.welcome_page import WelcomePage
 from gradia.utils.aspect_ratio import *
@@ -71,6 +72,9 @@ class GradiaMainWindow(Adw.ApplicationWindow):
     delay_dropdown: Gtk.DropDown = Gtk.Template.Child()
     share_button: Gtk.Button = Gtk.Template.Child()
     tool_rail: Gtk.Box = Gtk.Template.Child()
+    image_size_label: Gtk.Label = Gtk.Template.Child()
+    zoom_percent_button: Gtk.Button = Gtk.Template.Child()
+    tab_view: Adw.TabView = Gtk.Template.Child()
 
     welcome_page: Gtk.StackPage = Gtk.Template.Child()
 
@@ -209,6 +213,10 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.drawing_overlay = self.image_bin.drawing_overlay
         self.drawing_overlay._update_undo_redo_action_states()
         self.breakpoint.add_setter(self.image_bin, "compact", True)
+        self.image_bin.connect("zoom-changed", self._update_zoom_label)
+        self.picture.connect("notify::paintable", lambda *_: GLib.idle_add(self._update_zoom_label))
+        self.connect("notify::default-width", lambda *_: GLib.idle_add(self._update_zoom_label))
+        self.connect("notify::maximized", lambda *_: GLib.timeout_add(100, self._update_zoom_label))
 
     def _setup_sidebar(self) -> None:
         self.sidebar = ImageSidebar(
@@ -224,22 +232,30 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         grid = self.sidebar.drawing_tools_group.drawing_tools_grid
         grid.get_parent().remove(grid)
         grid.set_single_column(self.TOOL_ORDER)
-        grid.set_halign(Gtk.Align.CENTER)
+        grid.set_halign(Gtk.Align.FILL)
         self.tool_rail.append(grid)
 
-        self.tool_rail.append(Gtk.Separator(margin_top=4, margin_bottom=4))
-        for icon, action, tooltip in (
-            ("crop-symbolic", "win.crop", _("Crop (C)")),
-            ("edit-undo-symbolic", "win.undo", _("Undo (Ctrl+Z)")),
-            ("edit-redo-symbolic", "win.redo", _("Redo (Ctrl+Shift+Z)")),
-            ("eraser4-symbolic", "win.del-selected", _("Delete Selected Annotation (Delete)")),
-            ("user-trash-symbolic", "win.clear", _("Clear All Annotations")),
-        ):
-            button = Gtk.Button(icon_name=icon, action_name=action, tooltip_text=tooltip,
-                                halign=Gtk.Align.CENTER, width_request=40, height_request=40,
-                                css_classes=["flat", "circular"])
-            self.tool_rail.append(button)
+        crop_button = Gtk.Button(action_name="win.crop", tooltip_text=_("Crop (C)"),
+                                 css_classes=["flat", "tool-button"],
+                                 child=rail_button_content("crop-symbolic", "C"))
 
+        def on_crop_toggled(_bin, enabled):
+            if enabled:
+                crop_button.add_css_class("crop-active")
+            else:
+                crop_button.remove_css_class("crop-active")
+        self.image_bin.connect("crop-toggled", on_crop_toggled)
+        self.tool_rail.append(crop_button)
+
+        self.tool_rail.append(Gtk.Separator(margin_top=6, margin_bottom=6))
+        for icon, label, action, tooltip in (
+            ("edit-undo-symbolic", _("Undo"), "win.undo", _("Undo (Ctrl+Z)")),
+            ("edit-redo-symbolic", _("Redo"), "win.redo", _("Redo (Ctrl+Shift+Z)")),
+            ("user-trash-symbolic", _("Delete"), "win.del-selected", _("Delete Selected Annotation (Delete)")),
+        ):
+            button = Gtk.Button(action_name=action, tooltip_text=tooltip, css_classes=["flat", "rail-action"],
+                                child=Adw.ButtonContent(icon_name=icon, label=label, halign=Gtk.Align.START))
+            self.tool_rail.append(button)
     def _setup_capture_controls(self) -> None:
         delay = self.settings.screenshot_delay
         index = self.DELAY_CHOICES.index(delay) if delay in self.DELAY_CHOICES else 0
@@ -481,8 +497,19 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         return False
 
     def _update_processed_image_size(self, width, height) -> None:
-        size_str: str = f"{width}×{height}"
-        self.sidebar.processed_size_row.set_subtitle(size_str)
+        # Called from the processing thread
+        def update():
+            size_str: str = f"{width} × {height}"
+            self.sidebar.processed_size_row.set_subtitle(size_str)
+            self.image_size_label.set_label(size_str)
+            self._update_zoom_label()
+            return False
+        GLib.idle_add(update)
+
+    def _update_zoom_label(self, *_args) -> bool:
+        percent = self.image_bin.get_actual_zoom_percent()
+        self.zoom_percent_button.set_label(f"{percent} %" if percent else "–")
+        return False
 
     def _show_notification(self, message: str,action_label: str | None = None,action_callback: Callable[[], None] | None = None) -> None:
         if self.toast_overlay:

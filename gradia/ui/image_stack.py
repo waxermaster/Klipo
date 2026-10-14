@@ -182,6 +182,7 @@ class ImageStack(Adw.Bin):
         if not self._compact:
             self._show_sidebar(not self.crop_enabled)
         self.crop_options_revealer.set_reveal_child(self.crop_enabled)
+        self.emit("crop-toggled", self.crop_enabled)
 
         if self.crop_enabled:
             self._saved_crop_rect = self.crop_overlay.get_crop_rectangle()
@@ -229,10 +230,23 @@ class ImageStack(Adw.Bin):
     def reset_zoom(self) -> None:
         self.zoomable_widget.reset_zoom()
 
+    def get_actual_zoom_percent(self) -> int:
+        """Displayed size relative to the image's real pixel size, in percent."""
+        paintable = self.picture.get_paintable()
+        # The zoom controller lays out its child itself: measure the controller
+        width, height = self.zoomable_widget.get_width(), self.zoomable_widget.get_height()
+        if not paintable or width <= 0 or height <= 0:
+            return 0
+        image_w, image_h = paintable.get_intrinsic_width(), paintable.get_intrinsic_height()
+        if image_w <= 0 or image_h <= 0:
+            return 0
+        fit_scale = min(width / image_w, height / image_h)
+        return round(fit_scale * self.get_zoom_level() * self.get_scale_factor() * 100)
+
     def zoom_actual_size(self) -> None:
         """Zoom so that one image pixel covers one screen pixel."""
         paintable = self.picture.get_paintable()
-        width, height = self.picture.get_width(), self.picture.get_height()
+        width, height = self.zoomable_widget.get_width(), self.zoomable_widget.get_height()
         if not paintable or width <= 0 or height <= 0:
             return
         image_w, image_h = paintable.get_intrinsic_width(), paintable.get_intrinsic_height()
