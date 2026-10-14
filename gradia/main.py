@@ -163,10 +163,14 @@ class GradiaApp(Adw.Application):
         if opts.edit_video:
             from gradia.video_editor.editor_window import VideoEditorWindow
             path = Gio.File.new_for_commandline_arg_and_cwd(opts.edit_video, command_line.get_cwd() or os.getcwd()).get_path()
+            if not path or not os.path.isfile(path):
+                command_line.printerr_literal(f"klipo: file not found: {opts.edit_video}\n")
+                return 1
             try:
                 VideoEditorWindow(path, application=self).present()
             except Exception as e:
-                command_line.printerr_literal(f"klipo: cannot open {opts.edit_video}: {e}\n")
+                command_line.printerr_literal(f"klipo: {opts.edit_video} is not a video Klipo can open\n")
+                logging.warning(f"Cannot open video {path}: {e}")
                 return 1
             return 0
 
