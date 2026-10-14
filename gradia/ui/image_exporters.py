@@ -22,7 +22,7 @@ import time
 
 
 from gi.repository import Gtk, Gio, GdkPixbuf, GLib, Gdk
-from gradia.clipboard import copy_text_to_clipboard, save_pixbuff_to_path, copy_pixbuf_to_clipboard
+from gradia.clipboard import copy_text_to_clipboard, save_pixbuff_to_path, copy_pixbuf_to_clipboard, copy_png_to_clipboard
 from gradia.backend.logger import Logger
 from gradia.app_constants import SUPPORTED_EXPORT_FORMATS, DEFAULT_EXPORT_FORMAT
 from gradia.backend.settings import Settings
@@ -276,23 +276,30 @@ class ClipboardExporter(BaseImageExporter):
         try:
             self._ensure_processed_image_available()
 
+            # Rendering and PNG encoding are slow for large screenshots: do both off the main thread
             def _task_thread_func(task, source_object, task_data, cancellable):
                 try:
                     pixbuf = self.get_processed_pixbuf()
-                    task.return_value(pixbuf)
+                    ok, png_bytes = pixbuf.save_to_bufferv("png", [], [])
+                    if not ok:
+                        raise Exception("PNG encoding failed")
+                    task.return_value(png_bytes)
                 except Exception as e:
                     task.return_error(GLib.Error.new_literal(Gio.io_error_quark(), str(e), 0))
 
             def _on_task_complete(source_object, result, user_data):
                 try:
-                    pixbuf = result.propagate_value().value
-                    if not isinstance(pixbuf, GdkPixbuf.Pixbuf):
-                        raise Exception("Invalid result: expected GdkPixbuf.Pixbuf")
+                    png_bytes = result.propagate_value().value
+                    if not isinstance(png_bytes, bytes):
+                        raise Exception("Invalid result: expected PNG bytes")
 
-                    copy_pixbuf_to_clipboard(pixbuf)
+                    if not copy_png_to_clipboard(png_bytes):
+                        raise Exception("No display available")
                     if not silent:
                         self.window.show_close_confirmation = False
                         self.window._show_notification(_("Image Copied"))
+                        if self.window.settings.close_after_copy:
+                            self.window.close_after_copy()
 
                 except Exception as e:
                     self.window._show_notification(_("Failed to copy image to clipboard"))

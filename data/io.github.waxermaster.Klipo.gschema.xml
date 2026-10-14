@@ -69,8 +69,12 @@
       <summary>Whether to trash all taken screenshots from the current session on close.</summary>
     </key>
     <key name="exit-method" type="s">
-      <default>'confirm'</default>
-      <summary>Method of how the app exists.</summary>
+      <default>'none'</default>
+      <summary>What happens when an editor window is closed: 'none', 'confirm' or 'copy'.</summary>
+    </key>
+    <key name="close-after-copy" type="b">
+      <default>false</default>
+      <summary>Close the editor after copying the image to the clipboard</summary>
     </key>
     <key name="overwrite-screenshot" type="b">
       <default>false</default>

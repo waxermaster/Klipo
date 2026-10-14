@@ -25,6 +25,7 @@ from gi.repository import Gtk, Gio, Gdk, GLib, Xdp
 from gradia.clipboard import save_texture_to_file
 from gradia.ui.image_creation.source_image_generator import SourceImageGeneratorWindow
 from gradia.utils.timestamp_filename import TimestampedFilenameGenerator
+from gradia.constants import app_id  # pyright: ignore
 from gradia.backend.logger import Logger
 from gradia.graphics.loaded_image import LoadedImage, ImageOrigin
 from typing import Optional, Callable
@@ -198,12 +199,30 @@ class ClipboardImageLoader(BaseImageLoader):
         display = Gdk.Display.get_default()
         clipboard = display.get_clipboard()
 
+        # Image data (e.g. copied from a browser or another screenshot tool)
+        if clipboard.get_formats().contain_gtype(Gdk.Texture.__gtype__):
+            clipboard.read_texture_async(None, self._on_texture_get)
+            return
+
         clipboard.read_value_async(
             Gdk.FileList,
             0,
             None,
             self._on_uris_get
         )
+
+    def _on_texture_get(self, clipboard, result, user_data=None) -> None:
+        try:
+            texture = clipboard.read_texture_finish(result)
+            if texture is None:
+                return
+            filename = TimestampedFilenameGenerator().generate(_("Pasted Image From %Y-%m-%d %H-%M-%S")) + ".png"
+            temp_path = os.path.join(self.temp_dir, filename)
+            texture.save_to_png(temp_path)
+            self._set_image_and_update_ui(temp_path, ImageOrigin.Clipboard)
+        except GLib.GError as e:
+            logger.error(f"Error reading image from clipboard: {e}")
+            self.window._show_notification(_("No image on the clipboard"))
 
     def _on_uris_get(self, clipboard, result, user_data=None) -> None:
         try:
@@ -226,6 +245,7 @@ class ScreenshotImageLoader(BaseImageLoader):
         self._success_callback: Optional[Callable[[], None]] = None
         self._screenshot_uris: list[str] = []
         self._close_on_cancel = False
+        self._flags = Xdp.ScreenshotFlags.INTERACTIVE
         self.window = window
 
     def _update_delete_action_state(self) -> None:
@@ -255,6 +275,7 @@ class ScreenshotImageLoader(BaseImageLoader):
                 on_error_or_cancel(str(e))
 
     def _do_take_screenshot(self, flags: Xdp.ScreenshotFlags) -> bool:
+        self._flags = flags
         try:
             self.portal.take_screenshot(
                 None,
@@ -282,7 +303,15 @@ class ScreenshotImageLoader(BaseImageLoader):
         except GLib.Error as e:
             failed = True
             logger.error(f"Screenshot error: {e}")
-            self.window._show_notification(_("Screenshot cancelled"))
+            if self._flags & Xdp.ScreenshotFlags.INTERACTIVE:
+                self.window._show_notification(_("Screenshot cancelled"))
+            else:
+                # GNOME only asks for screenshot permission while the app is
+                # focused, which it is not while its window is hidden.
+                notification = Gio.Notification.new(_("Screenshot Failed"))
+                notification.set_body(_("Klipo may not be allowed to take screenshots. Run install-shortcuts.sh or allow it with: flatpak permission-set screenshot screenshot {app_id} yes").format(app_id=app_id))
+                notification.set_icon(Gio.ThemedIcon(name="dialog-warning-symbolic"))
+                Gio.Application.get_default().send_notification("screenshot-failed", notification)
             if self._error_callback:
                 self._error_callback(str(e))
         finally:

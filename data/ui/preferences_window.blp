@@ -65,6 +65,13 @@ template $GradiaPreferencesWindow: Adw.PreferencesDialog {
         use-underline: true;
       }
 
+      Adw.SwitchRow close_after_copy_switch {
+        title: _("C_lose After Copying");
+        use-underline: true;
+        subtitle: _("Close the editor once the image is on the clipboard");
+        activatable: true;
+      }
+
       Adw.SwitchRow overwrite_screenshot_switch {
         title: _("_Overwrite Last Screenshot on Close");
         use-underline: true;

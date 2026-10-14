@@ -43,6 +43,7 @@ class PreferencesWindow(Adw.PreferencesDialog):
     save_format_combo: Adw.ComboRow = Gtk.Template.Child()
     provider_name: Gtk.Label = Gtk.Template.Child()
     exiting_combo: Adw.ComboRow = Gtk.Template.Child()
+    close_after_copy_switch: Adw.SwitchRow = Gtk.Template.Child()
     folder_label: Gtk.Label = Gtk.Template.Child()
 
     ocr_enabled = GObject.Property(type=bool, default=ocr_enabled.lower() == 'true')
@@ -111,9 +112,9 @@ class PreferencesWindow(Adw.PreferencesDialog):
         string_list = Gtk.StringList()
 
         exit_options = [
+            ("none", _("Close Instantly")),
             ("confirm", _("Ask for Confirmation")),
-            ("copy", _("Copy and Close ")),
-            ("none", _("Close Instantly"))
+            ("copy", _("Copy and Close")),
         ]
         self.exit_option_keys = [key for key, _ in exit_options]
 
@@ -161,6 +162,7 @@ class PreferencesWindow(Adw.PreferencesDialog):
         self.settings.bind_switch(self.delete_screenshot_switch,"trash-screenshots-on-close")
         self.settings.bind_switch(self.confirm_upload_switch,"show-export-confirm-dialog")
         self.settings.bind_switch(self.overwrite_screenshot_switch,"overwrite-screenshot")
+        self.settings.bind_switch(self.close_after_copy_switch,"close-after-copy")
 
     @Gtk.Template.Callback()
     def on_choose_provider_clicked(self, button: Gtk.Button) -> None:

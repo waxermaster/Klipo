@@ -246,6 +246,11 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.hide()
         GLib.timeout_add(1000, delayed_destroy) # Large images need the extra milliseconds to be fully copied.
 
+    def close_after_copy(self) -> None:
+        """Close right away: the image is already on the clipboard."""
+        self.show_close_confirmation = False
+        self._finalize_close(copy=False)
+
     def _on_confirm_close_ok(self) -> None:
         self._finalize_close(copy=False)
 

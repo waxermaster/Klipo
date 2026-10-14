@@ -92,13 +92,17 @@ class Settings:
         value = self._settings.get_string("exit-method")
         if value in ("confirm", "copy", "none"):
             return value
-        return "confirm"
+        return "none"
 
     @exit_method.setter
     def exit_method(self, value: str) -> None:
         if value not in ("confirm", "copy", "none"):
-            value = "confirm"
+            value = "none"
         self._settings.set_string("exit-method", value)
+
+    @property
+    def close_after_copy(self) -> bool:
+        return self._settings.get_boolean("close-after-copy")
 
     @property
     def overwrite_screenshot(self) -> bool:
