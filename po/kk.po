@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gradia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 23:30-0400\n"
+"POT-Creation-Date: 2026-10-14 09:18-0400\n"
 "PO-Revision-Date: 2025-06-16 12:00+0600\n"
 "Last-Translator: AnmiTaliDev <anmitali198@gmail.com>\n"
 "Language-Team: kk\n"
@@ -336,7 +336,7 @@ msgid "Crop Image"
 msgstr "Суретті ашу"
 
 #: data/ui/image_stack.blp:127 data/ui/ocr_dialog.blp:5
-#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:131
+#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:305
 msgid "Text Extraction"
 msgstr ""
 
@@ -392,15 +392,17 @@ msgstr ""
 msgid "0 s"
 msgstr ""
 
-#: data/ui/main_window.blp:45 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:45 data/ui/preferences_window.blp:25
+#: data/ui/preferences_window.blp:166 gradia/recording/options_popover.py:73
 msgid "3 s"
 msgstr ""
 
-#: data/ui/main_window.blp:46 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:46 data/ui/preferences_window.blp:26
+#: data/ui/preferences_window.blp:167 gradia/recording/options_popover.py:73
 msgid "5 s"
 msgstr ""
 
-#: data/ui/main_window.blp:47
+#: data/ui/main_window.blp:47 data/ui/preferences_window.blp:27
 msgid "10 s"
 msgstr ""
 
@@ -448,7 +450,7 @@ msgstr ""
 msgid "Recording Options"
 msgstr "Сурет опциялары"
 
-#: data/ui/main_window.blp:106
+#: data/ui/main_window.blp:106 data/ui/preferences_window.blp:136
 msgid "Video"
 msgstr ""
 
@@ -735,119 +737,213 @@ msgstr "Скриншотты жою керек пе?"
 msgid "Delay the capture by a given duration (in milliseconds)."
 msgstr ""
 
-#: data/ui/preferences_window.blp:7 gradia/ui/ui_parts.py:158
+#: data/ui/preferences_window.blp:8 gradia/ui/ui_parts.py:158
 msgid "Preferences"
 msgstr ""
 
-#: data/ui/preferences_window.blp:11 gradia/ui/ui_parts.py:155
+#: data/ui/preferences_window.blp:12 gradia/ui/ui_parts.py:155
 msgid "General"
 msgstr "Жалпы"
 
-#: data/ui/preferences_window.blp:14
+#: data/ui/preferences_window.blp:16
 #, fuzzy
-msgid "Screenshots"
-msgstr "Скриншот"
-
-#: data/ui/preferences_window.blp:17
-msgid "_Recent Directory"
-msgstr ""
+msgid "Capture"
+msgstr "Негізгі мүмкіндіктер:"
 
 #: data/ui/preferences_window.blp:19
-msgid "Used for home screen"
+msgid "Default _Delay"
 msgstr ""
 
-#: data/ui/preferences_window.blp:45
+#: data/ui/preferences_window.blp:24
+msgid "No Delay"
+msgstr ""
+
+#: data/ui/preferences_window.blp:33
 #, fuzzy
-msgid "_Screenshot Shortcut"
-msgstr "Скриншот"
+msgid "_Keyboard Shortcuts…"
+msgstr "Пернетақта тіркесімдері"
+
+#: data/ui/preferences_window.blp:34
+msgid "Print, Shift+Print, Alt+Print, Ctrl+Shift+Alt+R"
+msgstr ""
 
 #: data/ui/preferences_window.blp:51
-#, fuzzy
-msgid "Save Options"
-msgstr "Сурет опциялары"
+msgid "Saving"
+msgstr ""
 
 #: data/ui/preferences_window.blp:54
+#, fuzzy
+msgid "_Save Folder"
+msgstr "Файлды ашу"
+
+#: data/ui/preferences_window.blp:66 data/ui/preferences_window.blp:126
+#: data/ui/preferences_window.blp:218
+#, fuzzy
+msgid "Choose Folder"
+msgstr "Сызық түсі"
+
+#: data/ui/preferences_window.blp:73
 msgid "_Image Format"
 msgstr ""
 
-#: data/ui/preferences_window.blp:56
+#: data/ui/preferences_window.blp:78
 #, fuzzy
-msgid "Default format for saved screenshots"
-msgstr "Жасалған скриншот(тар)ды жою"
+msgid "C_ompress Images"
+msgstr "Суретті ашу"
 
-#: data/ui/preferences_window.blp:61
+#: data/ui/preferences_window.blp:84
 msgid "Closing"
 msgstr ""
 
-#: data/ui/preferences_window.blp:64
-msgid "_When Exiting"
-msgstr ""
-
-#: data/ui/preferences_window.blp:69
+#: data/ui/preferences_window.blp:87
 msgid "C_lose After Copying"
 msgstr ""
 
-#: data/ui/preferences_window.blp:71
+#: data/ui/preferences_window.blp:89
 msgid "Close the editor once the image is on the clipboard"
 msgstr ""
 
-#: data/ui/preferences_window.blp:76
-msgid "_Overwrite Last Screenshot on Close"
+#: data/ui/preferences_window.blp:93
+msgid "_Ask Before Closing"
 msgstr ""
 
-#: data/ui/preferences_window.blp:78
-msgid "Replace it with the annotated version"
+#: data/ui/preferences_window.blp:95
+msgid "Warn when an annotated image was not copied or saved"
 msgstr ""
 
-#: data/ui/preferences_window.blp:79
-msgid "Replace last screenshot file with annotated version on close"
-msgstr ""
-
-#: data/ui/preferences_window.blp:84
+#: data/ui/preferences_window.blp:99
 #, fuzzy
 msgid "_Trash Screenshots on Close"
 msgstr "Жойылатын скриншот жоқ."
 
-#: data/ui/preferences_window.blp:86
-msgid "Automatically move screenshots taken from within the app to trash"
+#: data/ui/preferences_window.blp:104
+msgid "_Overwrite Last Screenshot on Close"
 msgstr ""
 
-#: data/ui/preferences_window.blp:87
-#, fuzzy
-msgid "Trash screenshots on app close"
-msgstr "Жойылатын скриншот жоқ."
+#: data/ui/preferences_window.blp:106
+msgid "Replace it with the annotated version"
+msgstr ""
 
-#: data/ui/preferences_window.blp:93
+#: data/ui/preferences_window.blp:111
+#, fuzzy
+msgid "Recent Screenshots"
+msgstr "Скриншоттарды жою керек пе?"
+
+#: data/ui/preferences_window.blp:114
+#, fuzzy
+msgid "Screens_hots Folder"
+msgstr "Скриншот болдырылды"
+
+#: data/ui/preferences_window.blp:140
+#, fuzzy
+msgid "Recording"
+msgstr "Сурет опциялары"
+
+#: data/ui/preferences_window.blp:143
+msgid "_Format"
+msgstr ""
+
+#: data/ui/preferences_window.blp:148
+msgid "Frame _Rate"
+msgstr ""
+
+#: data/ui/preferences_window.blp:153
+msgid "30 fps"
+msgstr ""
+
+#: data/ui/preferences_window.blp:154 gradia/recording/options_popover.py:69
+msgid "60 fps"
+msgstr ""
+
+#: data/ui/preferences_window.blp:160
+msgid "_Countdown"
+msgstr ""
+
+#: data/ui/preferences_window.blp:165 gradia/recording/options_popover.py:73
+msgid "Off"
+msgstr ""
+
+#: data/ui/preferences_window.blp:173
+msgid "Show _Pointer"
+msgstr ""
+
+#: data/ui/preferences_window.blp:179
+msgid "Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:182
+msgid "System _Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:192
+msgid "_Microphone"
+msgstr ""
+
+#: data/ui/preferences_window.blp:203
+#, fuzzy
+msgid "Files"
+msgstr "Сурет файлдары"
+
+#: data/ui/preferences_window.blp:206
+#, fuzzy
+msgid "_Video Folder"
+msgstr "Файлды ашу"
+
+#: data/ui/preferences_window.blp:226
+msgid "Encoder"
+msgstr ""
+
+#: data/ui/preferences_window.blp:229
+msgid "Hardware Encoding"
+msgstr ""
+
+#: data/ui/preferences_window.blp:230
+msgid "Checking…"
+msgstr ""
+
+#: data/ui/preferences_window.blp:244
+msgid "Choose Screen _Again"
+msgstr ""
+
+#: data/ui/preferences_window.blp:245
+msgid "Forget the remembered screen"
+msgstr ""
+
+#: data/ui/preferences_window.blp:265
+msgid "Sharing"
+msgstr ""
+
+#: data/ui/preferences_window.blp:269
 msgid "Image Upload Providers"
 msgstr ""
 
-#: data/ui/preferences_window.blp:94
+#: data/ui/preferences_window.blp:270
 msgid "Connect to your favorite upload providers, or create a link yourself"
 msgstr ""
 
-#: data/ui/preferences_window.blp:97
+#: data/ui/preferences_window.blp:273
 msgid "_Provider"
 msgstr ""
 
-#: data/ui/preferences_window.blp:108
-#: gradia/ui/preferences/preferences_window.py:81
+#: data/ui/preferences_window.blp:284
+#: gradia/ui/preferences/preferences_window.py:151
 #, fuzzy
 msgid "None Selected"
 msgstr "Таңдалғанды жою"
 
-#: data/ui/preferences_window.blp:122
+#: data/ui/preferences_window.blp:298
 msgid "_Confirm on Upload"
 msgstr ""
 
-#: data/ui/preferences_window.blp:124 data/ui/preferences_window.blp:125
+#: data/ui/preferences_window.blp:300
 msgid "Ask for confirmation before running the upload command"
 msgstr ""
 
-#: data/ui/preferences_window.blp:135
+#: data/ui/preferences_window.blp:309
 msgid "_Language Models"
 msgstr ""
 
-#: data/ui/preferences_window.blp:137
+#: data/ui/preferences_window.blp:311
 msgid "Download Models to improve per-language accuracy"
 msgstr ""
 
@@ -1172,14 +1268,6 @@ msgstr ""
 msgid "Record"
 msgstr ""
 
-#: gradia/recording/options_popover.py:69
-msgid "60 fps"
-msgstr ""
-
-#: gradia/recording/options_popover.py:73
-msgid "Off"
-msgstr ""
-
 #: gradia/recording/options_popover.py:80
 msgid "Show Pointer"
 msgstr ""
@@ -1321,8 +1409,8 @@ msgid "Screenshots moved to trash"
 msgstr "Скриншоттар жойылды."
 
 #: gradia/ui/dialog/ocr_dialog.py:110 gradia/ui/dialog/ocr_dialog.py:124
-#: gradia/ui/preferences/preferences_window.py:153
-#: gradia/ui/preferences/preferences_window.py:247
+#: gradia/ui/preferences/preferences_window.py:188
+#: gradia/ui/preferences/preferences_window.py:310
 msgid "Copied!"
 msgstr ""
 
@@ -1521,16 +1609,31 @@ msgstr ""
 msgid "Failed to Download '{}'"
 msgstr ""
 
-#: gradia/ui/preferences/preferences_window.py:115
-msgid "Close Instantly"
+#: gradia/ui/preferences/preferences_window.py:98
+msgid "Not Set"
 msgstr ""
 
-#: gradia/ui/preferences/preferences_window.py:116
-msgid "Ask for Confirmation"
+#: gradia/ui/preferences/preferences_window.py:102
+#, fuzzy
+msgid "Screenshots"
+msgstr "Скриншот"
+
+#: gradia/ui/preferences/preferences_window.py:134
+msgid "No video encoder found"
 msgstr ""
 
-#: gradia/ui/preferences/preferences_window.py:117
-msgid "Copy and Close"
+#: gradia/ui/preferences/preferences_window.py:138
+#, python-brace-format
+msgid "{encoder} detected"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:142
+#, python-brace-format
+msgid "Not available, using {encoder}"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:237
+msgid "The screen will be asked again at the next recording"
 msgstr ""
 
 #: gradia/ui/preferences/provider_selection_window.py:133
@@ -1772,6 +1875,22 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
+#, fuzzy
+#~ msgid "_Screenshot Shortcut"
+#~ msgstr "Скриншот"
+
+#, fuzzy
+#~ msgid "Save Options"
+#~ msgstr "Сурет опциялары"
+
+#, fuzzy
+#~ msgid "Default format for saved screenshots"
+#~ msgstr "Жасалған скриншот(тар)ды жою"
+
+#, fuzzy
+#~ msgid "Trash screenshots on app close"
+#~ msgstr "Жойылатын скриншот жоқ."
+
 #~ msgid "Make your images ready for the world"
 #~ msgstr "Суретіңізді әлемге дайындаңыз"
 
@@ -1855,9 +1974,6 @@ msgstr ""
 #~ "Келесі файлды жойғыңыз келетініне сенімдісіз бе?\n"
 #~ "\n"
 #~ "%s"
-
-#~ msgid "Delete Screenshots?"
-#~ msgstr "Скриншоттарды жою керек пе?"
 
 #~ msgid "Clipboard Image"
 #~ msgstr "Буфер суреті"

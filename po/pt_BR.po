@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gradia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 23:30-0400\n"
+"POT-Creation-Date: 2026-10-14 09:18-0400\n"
 "PO-Revision-Date: 2025-12-13 16:45-0300\n"
 "Last-Translator: Daniel Rocha <rochadaniel@acad.ifma.edu.br>\n"
 "Language-Team: \n"
@@ -337,7 +337,7 @@ msgid "Crop Image"
 msgstr "Arraste uma Imagem Aqui"
 
 #: data/ui/image_stack.blp:127 data/ui/ocr_dialog.blp:5
-#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:131
+#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:305
 msgid "Text Extraction"
 msgstr "Extração de Texto"
 
@@ -392,15 +392,17 @@ msgstr ""
 msgid "0 s"
 msgstr ""
 
-#: data/ui/main_window.blp:45 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:45 data/ui/preferences_window.blp:25
+#: data/ui/preferences_window.blp:166 gradia/recording/options_popover.py:73
 msgid "3 s"
 msgstr ""
 
-#: data/ui/main_window.blp:46 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:46 data/ui/preferences_window.blp:26
+#: data/ui/preferences_window.blp:167 gradia/recording/options_popover.py:73
 msgid "5 s"
 msgstr ""
 
-#: data/ui/main_window.blp:47
+#: data/ui/main_window.blp:47 data/ui/preferences_window.blp:27
 msgid "10 s"
 msgstr ""
 
@@ -448,7 +450,7 @@ msgstr ""
 msgid "Recording Options"
 msgstr "Opções de Salvamento"
 
-#: data/ui/main_window.blp:106
+#: data/ui/main_window.blp:106 data/ui/preferences_window.blp:136
 msgid "Video"
 msgstr ""
 
@@ -754,125 +756,221 @@ msgstr "Captura com Atraso"
 msgid "Delay the capture by a given duration (in milliseconds)."
 msgstr "Atrasar a captura por uma determinada duração (em milissegundos)."
 
-#: data/ui/preferences_window.blp:7 gradia/ui/ui_parts.py:158
+#: data/ui/preferences_window.blp:8 gradia/ui/ui_parts.py:158
 msgid "Preferences"
 msgstr "Preferências"
 
-#: data/ui/preferences_window.blp:11 gradia/ui/ui_parts.py:155
+#: data/ui/preferences_window.blp:12 gradia/ui/ui_parts.py:155
 msgid "General"
 msgstr "Em geral"
 
-#: data/ui/preferences_window.blp:14
-msgid "Screenshots"
-msgstr "Capturas de Tela"
-
-#: data/ui/preferences_window.blp:17
+#: data/ui/preferences_window.blp:16
 #, fuzzy
-msgid "_Recent Directory"
-msgstr "Diretório Recente"
+msgid "Capture"
+msgstr "Características"
 
 #: data/ui/preferences_window.blp:19
-msgid "Used for home screen"
-msgstr "Usado pela Tela Inicial"
-
-#: data/ui/preferences_window.blp:45
 #, fuzzy
-msgid "_Screenshot Shortcut"
-msgstr "Atalho para Captura de Tela"
+msgid "Default _Delay"
+msgstr "Padrão"
+
+#: data/ui/preferences_window.blp:24
+msgid "No Delay"
+msgstr ""
+
+#: data/ui/preferences_window.blp:33
+#, fuzzy
+msgid "_Keyboard Shortcuts…"
+msgstr "Atalhos de Teclado"
+
+#: data/ui/preferences_window.blp:34
+msgid "Print, Shift+Print, Alt+Print, Ctrl+Shift+Alt+R"
+msgstr ""
 
 #: data/ui/preferences_window.blp:51
-msgid "Save Options"
-msgstr "Opções de Salvamento"
+msgid "Saving"
+msgstr ""
 
 #: data/ui/preferences_window.blp:54
+#, fuzzy
+msgid "_Save Folder"
+msgstr "Abrir Pasta"
+
+#: data/ui/preferences_window.blp:66 data/ui/preferences_window.blp:126
+#: data/ui/preferences_window.blp:218
+#, fuzzy
+msgid "Choose Folder"
+msgstr "Escolhar Cor"
+
+#: data/ui/preferences_window.blp:73
 #, fuzzy
 msgid "_Image Format"
 msgstr "Formato da Imagem"
 
-#: data/ui/preferences_window.blp:56
-msgid "Default format for saved screenshots"
-msgstr "Formato padrão para capturas de tela salvas"
+#: data/ui/preferences_window.blp:78
+#, fuzzy
+msgid "C_ompress Images"
+msgstr "Arraste uma Imagem Aqui"
 
-#: data/ui/preferences_window.blp:61
+#: data/ui/preferences_window.blp:84
 msgid "Closing"
 msgstr "Encerramento"
 
-#: data/ui/preferences_window.blp:64
-#, fuzzy
-msgid "_When Exiting"
-msgstr "Ao sair"
-
-#: data/ui/preferences_window.blp:69
+#: data/ui/preferences_window.blp:87
 msgid "C_lose After Copying"
 msgstr ""
 
-#: data/ui/preferences_window.blp:71
+#: data/ui/preferences_window.blp:89
 msgid "Close the editor once the image is on the clipboard"
 msgstr ""
 
-#: data/ui/preferences_window.blp:76
+#: data/ui/preferences_window.blp:93
 #, fuzzy
-msgid "_Overwrite Last Screenshot on Close"
-msgstr "Sobrescrever a última captura de tela ao fechar"
+msgid "_Ask Before Closing"
+msgstr "Solicite a Confirmação"
 
-#: data/ui/preferences_window.blp:78
-msgid "Replace it with the annotated version"
-msgstr "Substitua pela versão anotada"
-
-#: data/ui/preferences_window.blp:79
-msgid "Replace last screenshot file with annotated version on close"
+#: data/ui/preferences_window.blp:95
+msgid "Warn when an annotated image was not copied or saved"
 msgstr ""
-"Substitua o último arquivo de captura de tela pela versão anotada ao fechar"
 
-#: data/ui/preferences_window.blp:84
+#: data/ui/preferences_window.blp:99
 #, fuzzy
 msgid "_Trash Screenshots on Close"
 msgstr "Mover Capturas de Tela ao Fechar"
 
-#: data/ui/preferences_window.blp:86
-msgid "Automatically move screenshots taken from within the app to trash"
+#: data/ui/preferences_window.blp:104
+#, fuzzy
+msgid "_Overwrite Last Screenshot on Close"
+msgstr "Sobrescrever a última captura de tela ao fechar"
+
+#: data/ui/preferences_window.blp:106
+msgid "Replace it with the annotated version"
+msgstr "Substitua pela versão anotada"
+
+#: data/ui/preferences_window.blp:111
+#, fuzzy
+msgid "Recent Screenshots"
+msgstr "Capturas de Tela"
+
+#: data/ui/preferences_window.blp:114
+#, fuzzy
+msgid "Screens_hots Folder"
+msgstr "Captura de tela cancelada"
+
+#: data/ui/preferences_window.blp:140
+#, fuzzy
+msgid "Recording"
+msgstr "Exportação Falhou"
+
+#: data/ui/preferences_window.blp:143
+#, fuzzy
+msgid "_Format"
+msgstr "Formato da Imagem"
+
+#: data/ui/preferences_window.blp:148
+msgid "Frame _Rate"
 msgstr ""
-"Mova automaticamente as capturas de tela feitas dentro do aplicativo para a "
-"lixeira"
 
-#: data/ui/preferences_window.blp:87
-msgid "Trash screenshots on app close"
-msgstr "Capturas de tela da lixeira ao fechar o aplicativo"
+#: data/ui/preferences_window.blp:153
+msgid "30 fps"
+msgstr ""
 
-#: data/ui/preferences_window.blp:93
+#: data/ui/preferences_window.blp:154 gradia/recording/options_popover.py:69
+msgid "60 fps"
+msgstr ""
+
+#: data/ui/preferences_window.blp:160
+msgid "_Countdown"
+msgstr ""
+
+#: data/ui/preferences_window.blp:165 gradia/recording/options_popover.py:73
+msgid "Off"
+msgstr ""
+
+#: data/ui/preferences_window.blp:173
+msgid "Show _Pointer"
+msgstr ""
+
+#: data/ui/preferences_window.blp:179
+msgid "Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:182
+msgid "System _Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:192
+msgid "_Microphone"
+msgstr ""
+
+#: data/ui/preferences_window.blp:203
+#, fuzzy
+msgid "Files"
+msgstr "Arquivos de Imagem"
+
+#: data/ui/preferences_window.blp:206
+#, fuzzy
+msgid "_Video Folder"
+msgstr "Abrir Pasta"
+
+#: data/ui/preferences_window.blp:226
+msgid "Encoder"
+msgstr ""
+
+#: data/ui/preferences_window.blp:229
+msgid "Hardware Encoding"
+msgstr ""
+
+#: data/ui/preferences_window.blp:230
+msgid "Checking…"
+msgstr ""
+
+#: data/ui/preferences_window.blp:244
+msgid "Choose Screen _Again"
+msgstr ""
+
+#: data/ui/preferences_window.blp:245
+msgid "Forget the remembered screen"
+msgstr ""
+
+#: data/ui/preferences_window.blp:265
+msgid "Sharing"
+msgstr ""
+
+#: data/ui/preferences_window.blp:269
 msgid "Image Upload Providers"
 msgstr "Provedores de upload de imagens"
 
-#: data/ui/preferences_window.blp:94
+#: data/ui/preferences_window.blp:270
 msgid "Connect to your favorite upload providers, or create a link yourself"
 msgstr ""
 "Conecte-se aos seus provedores de upload favoritos ou crie um link você mesmo"
 
-#: data/ui/preferences_window.blp:97
+#: data/ui/preferences_window.blp:273
 #, fuzzy
 msgid "_Provider"
 msgstr "Provedor"
 
-#: data/ui/preferences_window.blp:108
-#: gradia/ui/preferences/preferences_window.py:81
+#: data/ui/preferences_window.blp:284
+#: gradia/ui/preferences/preferences_window.py:151
 msgid "None Selected"
 msgstr "Nenhuma Selecionada"
 
-#: data/ui/preferences_window.blp:122
+#: data/ui/preferences_window.blp:298
 #, fuzzy
 msgid "_Confirm on Upload"
 msgstr "Confirmar o Envio"
 
-#: data/ui/preferences_window.blp:124 data/ui/preferences_window.blp:125
+#: data/ui/preferences_window.blp:300
 msgid "Ask for confirmation before running the upload command"
 msgstr "Solicite confirmação antes de executar o comando de upload"
 
-#: data/ui/preferences_window.blp:135
+#: data/ui/preferences_window.blp:309
 #, fuzzy
 msgid "_Language Models"
 msgstr "Modelos de Linguagem"
 
-#: data/ui/preferences_window.blp:137
+#: data/ui/preferences_window.blp:311
 msgid "Download Models to improve per-language accuracy"
 msgstr "Baixe os modelos para melhorar a precisão por idioma"
 
@@ -1193,14 +1291,6 @@ msgstr ""
 msgid "Record"
 msgstr ""
 
-#: gradia/recording/options_popover.py:69
-msgid "60 fps"
-msgstr ""
-
-#: gradia/recording/options_popover.py:73
-msgid "Off"
-msgstr ""
-
 #: gradia/recording/options_popover.py:80
 msgid "Show Pointer"
 msgstr ""
@@ -1337,8 +1427,8 @@ msgid "Screenshots moved to trash"
 msgstr "Capturas de tela movidas para a lixeira"
 
 #: gradia/ui/dialog/ocr_dialog.py:110 gradia/ui/dialog/ocr_dialog.py:124
-#: gradia/ui/preferences/preferences_window.py:153
-#: gradia/ui/preferences/preferences_window.py:247
+#: gradia/ui/preferences/preferences_window.py:188
+#: gradia/ui/preferences/preferences_window.py:310
 msgid "Copied!"
 msgstr "Copiado!"
 
@@ -1530,19 +1620,31 @@ msgstr ""
 msgid "Failed to Download '{}'"
 msgstr "Falha ao carregar a captura de tela"
 
-#: gradia/ui/preferences/preferences_window.py:115
-msgid "Close Instantly"
-msgstr "Fechar Instantaneamente"
+#: gradia/ui/preferences/preferences_window.py:98
+msgid "Not Set"
+msgstr ""
 
-#: gradia/ui/preferences/preferences_window.py:116
-#, fuzzy
-msgid "Ask for Confirmation"
-msgstr "Solicite a Confirmação"
+#: gradia/ui/preferences/preferences_window.py:102
+msgid "Screenshots"
+msgstr "Capturas de Tela"
 
-#: gradia/ui/preferences/preferences_window.py:117
-#, fuzzy
-msgid "Copy and Close"
-msgstr "Copiar e Fechar "
+#: gradia/ui/preferences/preferences_window.py:134
+msgid "No video encoder found"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:138
+#, python-brace-format
+msgid "{encoder} detected"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:142
+#, python-brace-format
+msgid "Not available, using {encoder}"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:237
+msgid "The screen will be asked again at the next recording"
+msgstr ""
 
 #: gradia/ui/preferences/provider_selection_window.py:133
 #, fuzzy
@@ -1784,6 +1886,47 @@ msgstr "Confirmar Envio"
 #: gradia/ui/window.py:701
 msgid "Upload"
 msgstr "Carregar"
+
+#, fuzzy
+#~ msgid "_Recent Directory"
+#~ msgstr "Diretório Recente"
+
+#~ msgid "Used for home screen"
+#~ msgstr "Usado pela Tela Inicial"
+
+#, fuzzy
+#~ msgid "_Screenshot Shortcut"
+#~ msgstr "Atalho para Captura de Tela"
+
+#~ msgid "Save Options"
+#~ msgstr "Opções de Salvamento"
+
+#~ msgid "Default format for saved screenshots"
+#~ msgstr "Formato padrão para capturas de tela salvas"
+
+#, fuzzy
+#~ msgid "_When Exiting"
+#~ msgstr "Ao sair"
+
+#~ msgid "Replace last screenshot file with annotated version on close"
+#~ msgstr ""
+#~ "Substitua o último arquivo de captura de tela pela versão anotada ao "
+#~ "fechar"
+
+#~ msgid "Automatically move screenshots taken from within the app to trash"
+#~ msgstr ""
+#~ "Mova automaticamente as capturas de tela feitas dentro do aplicativo para "
+#~ "a lixeira"
+
+#~ msgid "Trash screenshots on app close"
+#~ msgstr "Capturas de tela da lixeira ao fechar o aplicativo"
+
+#~ msgid "Close Instantly"
+#~ msgstr "Fechar Instantaneamente"
+
+#, fuzzy
+#~ msgid "Copy and Close"
+#~ msgstr "Copiar e Fechar "
 
 #~ msgid "Gradia"
 #~ msgstr "Gradia"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gradia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 23:30-0400\n"
+"POT-Creation-Date: 2026-10-14 09:18-0400\n"
 "PO-Revision-Date: 2026-04-27 01:48+0200\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak\n"
@@ -334,7 +334,7 @@ msgid "Crop Image"
 msgstr "Orezať obrázok"
 
 #: data/ui/image_stack.blp:127 data/ui/ocr_dialog.blp:5
-#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:131
+#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:305
 msgid "Text Extraction"
 msgstr "Extrakcia textu"
 
@@ -388,15 +388,17 @@ msgstr ""
 msgid "0 s"
 msgstr ""
 
-#: data/ui/main_window.blp:45 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:45 data/ui/preferences_window.blp:25
+#: data/ui/preferences_window.blp:166 gradia/recording/options_popover.py:73
 msgid "3 s"
 msgstr ""
 
-#: data/ui/main_window.blp:46 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:46 data/ui/preferences_window.blp:26
+#: data/ui/preferences_window.blp:167 gradia/recording/options_popover.py:73
 msgid "5 s"
 msgstr ""
 
-#: data/ui/main_window.blp:47
+#: data/ui/main_window.blp:47 data/ui/preferences_window.blp:27
 msgid "10 s"
 msgstr ""
 
@@ -445,7 +447,7 @@ msgstr ""
 msgid "Recording Options"
 msgstr "Možnosti ukladania"
 
-#: data/ui/main_window.blp:106
+#: data/ui/main_window.blp:106 data/ui/preferences_window.blp:136
 msgid "Video"
 msgstr ""
 
@@ -744,115 +746,216 @@ msgstr "Oneskorená snímka obrazovky"
 msgid "Delay the capture by a given duration (in milliseconds)."
 msgstr "Oneskorenie zachytenia o zadaný čas (v milisekundách)."
 
-#: data/ui/preferences_window.blp:7 gradia/ui/ui_parts.py:158
+#: data/ui/preferences_window.blp:8 gradia/ui/ui_parts.py:158
 msgid "Preferences"
 msgstr "Predvoľby"
 
-#: data/ui/preferences_window.blp:11 gradia/ui/ui_parts.py:155
+#: data/ui/preferences_window.blp:12 gradia/ui/ui_parts.py:155
 msgid "General"
 msgstr "Všeobecné"
 
-#: data/ui/preferences_window.blp:14
-msgid "Screenshots"
-msgstr "Snímky obrazovky"
-
-#: data/ui/preferences_window.blp:17
-msgid "_Recent Directory"
-msgstr "_Posledný priečinok"
+#: data/ui/preferences_window.blp:16
+#, fuzzy
+msgid "Capture"
+msgstr "Funkcie"
 
 #: data/ui/preferences_window.blp:19
-msgid "Used for home screen"
-msgstr "Používa sa pre domovskú obrazovku"
+#, fuzzy
+msgid "Default _Delay"
+msgstr "Predvolené"
 
-#: data/ui/preferences_window.blp:45
-msgid "_Screenshot Shortcut"
-msgstr "_Skratka na snímku obrazovky"
+#: data/ui/preferences_window.blp:24
+msgid "No Delay"
+msgstr ""
+
+#: data/ui/preferences_window.blp:33
+#, fuzzy
+msgid "_Keyboard Shortcuts…"
+msgstr "_Klávesové skratky"
+
+#: data/ui/preferences_window.blp:34
+msgid "Print, Shift+Print, Alt+Print, Ctrl+Shift+Alt+R"
+msgstr ""
 
 #: data/ui/preferences_window.blp:51
-msgid "Save Options"
-msgstr "Možnosti ukladania"
+msgid "Saving"
+msgstr ""
 
 #: data/ui/preferences_window.blp:54
+#, fuzzy
+msgid "_Save Folder"
+msgstr "Uložiť súbor"
+
+#: data/ui/preferences_window.blp:66 data/ui/preferences_window.blp:126
+#: data/ui/preferences_window.blp:218
+#, fuzzy
+msgid "Choose Folder"
+msgstr "Vybrať farbu"
+
+#: data/ui/preferences_window.blp:73
 msgid "_Image Format"
 msgstr "_Formát obrázka"
 
-#: data/ui/preferences_window.blp:56
-msgid "Default format for saved screenshots"
-msgstr "Predvolený formát ukladaných snímok obrazovky"
+#: data/ui/preferences_window.blp:78
+#, fuzzy
+msgid "C_ompress Images"
+msgstr "Orezať obrázok"
 
-#: data/ui/preferences_window.blp:61
+#: data/ui/preferences_window.blp:84
 msgid "Closing"
 msgstr "Ukončenie"
 
-#: data/ui/preferences_window.blp:64
-msgid "_When Exiting"
-msgstr "_Pri ukončení"
-
-#: data/ui/preferences_window.blp:69
+#: data/ui/preferences_window.blp:87
 msgid "C_lose After Copying"
 msgstr ""
 
-#: data/ui/preferences_window.blp:71
+#: data/ui/preferences_window.blp:89
 msgid "Close the editor once the image is on the clipboard"
 msgstr ""
 
-#: data/ui/preferences_window.blp:76
-msgid "_Overwrite Last Screenshot on Close"
-msgstr "_Prepísať poslednú snímku obrazovky pri zatvorení"
+#: data/ui/preferences_window.blp:93
+#, fuzzy
+msgid "_Ask Before Closing"
+msgstr "Požiadať o potvrdenie"
 
-#: data/ui/preferences_window.blp:78
-msgid "Replace it with the annotated version"
-msgstr "Nahradiť anotovanou verziou"
-
-#: data/ui/preferences_window.blp:79
-msgid "Replace last screenshot file with annotated version on close"
+#: data/ui/preferences_window.blp:95
+msgid "Warn when an annotated image was not copied or saved"
 msgstr ""
-"Pri zatvorení nahradiť posledný súbor snímky obrazovky anotovanou verziou"
 
-#: data/ui/preferences_window.blp:84
+#: data/ui/preferences_window.blp:99
 msgid "_Trash Screenshots on Close"
 msgstr "Pri zatvorení _presunúť snímky do koša"
 
-#: data/ui/preferences_window.blp:86
-msgid "Automatically move screenshots taken from within the app to trash"
-msgstr "Automaticky presunúť snímky obrazovky zhotovené v aplikácii do koša"
+#: data/ui/preferences_window.blp:104
+msgid "_Overwrite Last Screenshot on Close"
+msgstr "_Prepísať poslednú snímku obrazovky pri zatvorení"
 
-#: data/ui/preferences_window.blp:87
-msgid "Trash screenshots on app close"
-msgstr "Pri zatvorení aplikácie presunúť snímky do koša"
+#: data/ui/preferences_window.blp:106
+msgid "Replace it with the annotated version"
+msgstr "Nahradiť anotovanou verziou"
 
-#: data/ui/preferences_window.blp:93
+#: data/ui/preferences_window.blp:111
+#, fuzzy
+msgid "Recent Screenshots"
+msgstr "Snímky obrazovky"
+
+#: data/ui/preferences_window.blp:114
+#, fuzzy
+msgid "Screens_hots Folder"
+msgstr "Snímka obrazovky bola zrušená"
+
+#: data/ui/preferences_window.blp:140
+#, fuzzy
+msgid "Recording"
+msgstr "Exportovanie zlyhalo"
+
+#: data/ui/preferences_window.blp:143
+#, fuzzy
+msgid "_Format"
+msgstr "_Formát obrázka"
+
+#: data/ui/preferences_window.blp:148
+msgid "Frame _Rate"
+msgstr ""
+
+#: data/ui/preferences_window.blp:153
+msgid "30 fps"
+msgstr ""
+
+#: data/ui/preferences_window.blp:154 gradia/recording/options_popover.py:69
+msgid "60 fps"
+msgstr ""
+
+#: data/ui/preferences_window.blp:160
+msgid "_Countdown"
+msgstr ""
+
+#: data/ui/preferences_window.blp:165 gradia/recording/options_popover.py:73
+msgid "Off"
+msgstr ""
+
+#: data/ui/preferences_window.blp:173
+msgid "Show _Pointer"
+msgstr ""
+
+#: data/ui/preferences_window.blp:179
+msgid "Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:182
+msgid "System _Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:192
+msgid "_Microphone"
+msgstr ""
+
+#: data/ui/preferences_window.blp:203
+#, fuzzy
+msgid "Files"
+msgstr "Súbory obrázkov"
+
+#: data/ui/preferences_window.blp:206
+#, fuzzy
+msgid "_Video Folder"
+msgstr "Otvoriť priečinok"
+
+#: data/ui/preferences_window.blp:226
+msgid "Encoder"
+msgstr ""
+
+#: data/ui/preferences_window.blp:229
+msgid "Hardware Encoding"
+msgstr ""
+
+#: data/ui/preferences_window.blp:230
+msgid "Checking…"
+msgstr ""
+
+#: data/ui/preferences_window.blp:244
+msgid "Choose Screen _Again"
+msgstr ""
+
+#: data/ui/preferences_window.blp:245
+msgid "Forget the remembered screen"
+msgstr ""
+
+#: data/ui/preferences_window.blp:265
+msgid "Sharing"
+msgstr ""
+
+#: data/ui/preferences_window.blp:269
 msgid "Image Upload Providers"
 msgstr "Poskytovatelia nahrávania obrázkov"
 
-#: data/ui/preferences_window.blp:94
+#: data/ui/preferences_window.blp:270
 msgid "Connect to your favorite upload providers, or create a link yourself"
 msgstr ""
 "Pripojte sa k obľúbeným poskytovateľom nahrávania alebo si vytvorte vlastný "
 "odkaz"
 
-#: data/ui/preferences_window.blp:97
+#: data/ui/preferences_window.blp:273
 msgid "_Provider"
 msgstr "_Poskytovateľ"
 
-#: data/ui/preferences_window.blp:108
-#: gradia/ui/preferences/preferences_window.py:81
+#: data/ui/preferences_window.blp:284
+#: gradia/ui/preferences/preferences_window.py:151
 msgid "None Selected"
 msgstr "Žiaden výber"
 
-#: data/ui/preferences_window.blp:122
+#: data/ui/preferences_window.blp:298
 msgid "_Confirm on Upload"
 msgstr "_Potvrdiť pri nahrávaní"
 
-#: data/ui/preferences_window.blp:124 data/ui/preferences_window.blp:125
+#: data/ui/preferences_window.blp:300
 msgid "Ask for confirmation before running the upload command"
 msgstr "Požiadať o potvrdenie pred spustením príkazu nahrávania"
 
-#: data/ui/preferences_window.blp:135
+#: data/ui/preferences_window.blp:309
 msgid "_Language Models"
 msgstr "_Jazykové modely"
 
-#: data/ui/preferences_window.blp:137
+#: data/ui/preferences_window.blp:311
 msgid "Download Models to improve per-language accuracy"
 msgstr "Stiahnuť pre jednotlivé jazyky modely na zlepšenie presnosti"
 
@@ -1168,14 +1271,6 @@ msgstr ""
 msgid "Record"
 msgstr ""
 
-#: gradia/recording/options_popover.py:69
-msgid "60 fps"
-msgstr ""
-
-#: gradia/recording/options_popover.py:73
-msgid "Off"
-msgstr ""
-
 #: gradia/recording/options_popover.py:80
 msgid "Show Pointer"
 msgstr ""
@@ -1312,8 +1407,8 @@ msgid "Screenshots moved to trash"
 msgstr "Snímky obrazovky boli presunuté do koša"
 
 #: gradia/ui/dialog/ocr_dialog.py:110 gradia/ui/dialog/ocr_dialog.py:124
-#: gradia/ui/preferences/preferences_window.py:153
-#: gradia/ui/preferences/preferences_window.py:247
+#: gradia/ui/preferences/preferences_window.py:188
+#: gradia/ui/preferences/preferences_window.py:310
 msgid "Copied!"
 msgstr "Skopírované!"
 
@@ -1505,18 +1600,31 @@ msgstr "Stiahnutie „{}“ prebehlo úspešne"
 msgid "Failed to Download '{}'"
 msgstr "Stiahnutie „{}“ zlyhalo"
 
-#: gradia/ui/preferences/preferences_window.py:115
-msgid "Close Instantly"
-msgstr "Zatvoriť okamžite"
+#: gradia/ui/preferences/preferences_window.py:98
+msgid "Not Set"
+msgstr ""
 
-#: gradia/ui/preferences/preferences_window.py:116
-msgid "Ask for Confirmation"
-msgstr "Požiadať o potvrdenie"
+#: gradia/ui/preferences/preferences_window.py:102
+msgid "Screenshots"
+msgstr "Snímky obrazovky"
 
-#: gradia/ui/preferences/preferences_window.py:117
-#, fuzzy
-msgid "Copy and Close"
-msgstr "Kopírovať a zatvoriť "
+#: gradia/ui/preferences/preferences_window.py:134
+msgid "No video encoder found"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:138
+#, python-brace-format
+msgid "{encoder} detected"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:142
+#, python-brace-format
+msgid "Not available, using {encoder}"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:237
+msgid "The screen will be asked again at the next recording"
+msgstr ""
 
 #: gradia/ui/preferences/provider_selection_window.py:133
 msgid "_Custom Provider"
@@ -1750,6 +1858,41 @@ msgstr "Potvrdiť nahrávanie"
 #: gradia/ui/window.py:701
 msgid "Upload"
 msgstr "Nahrať"
+
+#~ msgid "_Recent Directory"
+#~ msgstr "_Posledný priečinok"
+
+#~ msgid "Used for home screen"
+#~ msgstr "Používa sa pre domovskú obrazovku"
+
+#~ msgid "_Screenshot Shortcut"
+#~ msgstr "_Skratka na snímku obrazovky"
+
+#~ msgid "Save Options"
+#~ msgstr "Možnosti ukladania"
+
+#~ msgid "Default format for saved screenshots"
+#~ msgstr "Predvolený formát ukladaných snímok obrazovky"
+
+#~ msgid "_When Exiting"
+#~ msgstr "_Pri ukončení"
+
+#~ msgid "Replace last screenshot file with annotated version on close"
+#~ msgstr ""
+#~ "Pri zatvorení nahradiť posledný súbor snímky obrazovky anotovanou verziou"
+
+#~ msgid "Automatically move screenshots taken from within the app to trash"
+#~ msgstr "Automaticky presunúť snímky obrazovky zhotovené v aplikácii do koša"
+
+#~ msgid "Trash screenshots on app close"
+#~ msgstr "Pri zatvorení aplikácie presunúť snímky do koša"
+
+#~ msgid "Close Instantly"
+#~ msgstr "Zatvoriť okamžite"
+
+#, fuzzy
+#~ msgid "Copy and Close"
+#~ msgstr "Kopírovať a zatvoriť "
 
 #~ msgid "Gradia"
 #~ msgstr "Gradia"
@@ -2203,9 +2346,6 @@ msgstr "Nahrať"
 
 #~ msgid "Outline Color Picker"
 #~ msgstr "Výber farby obrysu"
-
-#~ msgid "Save File"
-#~ msgstr "Uložiť súbor"
 
 #~ msgid "Oval"
 #~ msgstr "Elipsa"

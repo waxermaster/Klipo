@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klipo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 23:30-0400\n"
+"POT-Creation-Date: 2026-10-14 09:18-0400\n"
 "PO-Revision-Date: 2026-05-01 21:57+0900\n"
 "Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
 "Language-Team: \n"
@@ -33,7 +33,8 @@ msgstr "Capturez, annotez et copiez vos captures d’écran"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/io.github.waxermaster.Klipo.desktop.in.in:12
 msgid "Screenshot;Capture;Annotate;Snip;Clipboard;Edit;"
-msgstr "Capture d’écran;Capture;Annoter;Découper;Presse-papiers;Modifier;Screenshot;"
+msgstr ""
+"Capture d’écran;Capture;Annoter;Découper;Presse-papiers;Modifier;Screenshot;"
 
 #: data/io.github.waxermaster.Klipo.desktop.in.in:18
 msgid "New Window"
@@ -55,7 +56,10 @@ msgstr "Capturer une fenêtre"
 msgid ""
 "Klipo is a fast screenshot tool: press a shortcut, select an area, annotate "
 "it and copy it to the clipboard, without ever having to save a file."
-msgstr "Klipo est un outil de capture d’écran rapide : un raccourci, une zone sélectionnée, quelques annotations, et l’image est dans le presse-papiers, sans jamais devoir enregistrer de fichier."
+msgstr ""
+"Klipo est un outil de capture d’écran rapide : un raccourci, une zone "
+"sélectionnée, quelques annotations, et l’image est dans le presse-papiers, "
+"sans jamais devoir enregistrer de fichier."
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:16
 msgid "Key features:"
@@ -63,13 +67,17 @@ msgstr "Fonctionnalités clés :"
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:18
 msgid "Area, window and full screen capture through the desktop portal"
-msgstr "Capture d’une zone, d’une fenêtre ou de l’écran entier via le portail du bureau"
+msgstr ""
+"Capture d’une zone, d’une fenêtre ou de l’écran entier via le portail du "
+"bureau"
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:19
 msgid ""
 "Annotations that stay editable: arrows, shapes, text, highlighter, numbered "
 "steps and censoring"
-msgstr "Des annotations qui restent modifiables : flèches, formes, texte, surligneur, étapes numérotées et floutage"
+msgstr ""
+"Des annotations qui restent modifiables : flèches, formes, texte, "
+"surligneur, étapes numérotées et floutage"
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:20
 msgid "One-key tool shortcuts and a compact editor"
@@ -161,7 +169,9 @@ msgstr "Intensité"
 msgid ""
 "Hides sensitive information. The original pixels are never kept in copied or "
 "saved images."
-msgstr "Masque les informations sensibles. Les pixels d’origine ne sont jamais conservés dans les images copiées ou enregistrées."
+msgstr ""
+"Masque les informations sensibles. Les pixels d’origine ne sont jamais "
+"conservés dans les images copiées ou enregistrées."
 
 #: data/ui/drawing_tools_group.blp:205 gradia/ui/drawing_tools_group.py:123
 msgid "Color"
@@ -326,7 +336,7 @@ msgid "Crop Image"
 msgstr "Recadrer l’image"
 
 #: data/ui/image_stack.blp:127 data/ui/ocr_dialog.blp:5
-#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:131
+#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:305
 msgid "Text Extraction"
 msgstr "Extraction de texte"
 
@@ -380,15 +390,17 @@ msgstr "Délai avant la capture"
 msgid "0 s"
 msgstr "0 s"
 
-#: data/ui/main_window.blp:45 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:45 data/ui/preferences_window.blp:25
+#: data/ui/preferences_window.blp:166 gradia/recording/options_popover.py:73
 msgid "3 s"
 msgstr "3 s"
 
-#: data/ui/main_window.blp:46 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:46 data/ui/preferences_window.blp:26
+#: data/ui/preferences_window.blp:167 gradia/recording/options_popover.py:73
 msgid "5 s"
 msgstr "5 s"
 
-#: data/ui/main_window.blp:47
+#: data/ui/main_window.blp:47 data/ui/preferences_window.blp:27
 msgid "10 s"
 msgstr "10 s"
 
@@ -432,7 +444,7 @@ msgstr "Enregistrer l’écran (Ctrl+Maj+Alt+R)"
 msgid "Recording Options"
 msgstr "Options d’enregistrement"
 
-#: data/ui/main_window.blp:106
+#: data/ui/main_window.blp:106 data/ui/preferences_window.blp:136
 msgid "Video"
 msgstr "Vidéo"
 
@@ -591,7 +603,9 @@ msgstr "Rechercher une langue…"
 msgid ""
 "A Language Model is required to use the OCR feature.\n"
 "Using the correct language model improves OCR accuracy."
-msgstr "Un modèle linguistique est nécessaire pour la reconnaissance de texte.\nUtiliser le modèle de la bonne langue améliore la précision."
+msgstr ""
+"Un modèle linguistique est nécessaire pour la reconnaissance de texte.\n"
+"Utiliser le modèle de la bonne langue améliore la précision."
 
 #: data/ui/preferences/ocr_model_page.blp:68
 msgid "No Results Found"
@@ -668,7 +682,16 @@ msgid ""
 "2. Click the <b>+</b> button to create a new shortcut.\n"
 "3. Set the <b>Name</b> to something like <i>Klipo Screenshot</i>.\n"
 "4. For the <b>Command</b>, copy one of the commands below:"
-msgstr "Si vous souhaitez que l’application <b>s’ouvre automatiquement</b> après une capture d’écran, vous pouvez créer un raccourci clavier personnalisé :\n\n<b>Étapes :</b>\n1. Ouvrez <b>Paramètres</b> → <b>Clavier</b> → <b>Afficher et personnaliser les raccourcis</b> → <b>Raccourcis personnalisés</b>.\n2. Cliquez sur le bouton <b>+</b> pour créer un raccourci.\n3. Nommez-le par exemple <i>Capture Klipo</i>.\n4. Comme <b>Commande</b>, copiez l’une des commandes ci-dessous :"
+msgstr ""
+"Si vous souhaitez que l’application <b>s’ouvre automatiquement</b> après une "
+"capture d’écran, vous pouvez créer un raccourci clavier personnalisé :\n"
+"\n"
+"<b>Étapes :</b>\n"
+"1. Ouvrez <b>Paramètres</b> → <b>Clavier</b> → <b>Afficher et personnaliser "
+"les raccourcis</b> → <b>Raccourcis personnalisés</b>.\n"
+"2. Cliquez sur le bouton <b>+</b> pour créer un raccourci.\n"
+"3. Nommez-le par exemple <i>Capture Klipo</i>.\n"
+"4. Comme <b>Commande</b>, copiez l’une des commandes ci-dessous :"
 
 #: data/ui/preferences/screenshot_guide_page.blp:61
 msgid "Interactive Screenshot"
@@ -708,119 +731,204 @@ msgstr "Capture d’écran différée"
 msgid "Delay the capture by a given duration (in milliseconds)."
 msgstr "Retarder la capture d’une durée donnée (en millisecondes)."
 
-#: data/ui/preferences_window.blp:7 gradia/ui/ui_parts.py:158
+#: data/ui/preferences_window.blp:8 gradia/ui/ui_parts.py:158
 msgid "Preferences"
 msgstr "Préférences"
 
-#: data/ui/preferences_window.blp:11 gradia/ui/ui_parts.py:155
+#: data/ui/preferences_window.blp:12 gradia/ui/ui_parts.py:155
 msgid "General"
 msgstr "Général"
 
-#: data/ui/preferences_window.blp:14
-msgid "Screenshots"
-msgstr "Captures d’écran"
-
-#: data/ui/preferences_window.blp:17
-msgid "_Recent Directory"
-msgstr "Dossier _récent"
+#: data/ui/preferences_window.blp:16
+msgid "Capture"
+msgstr "Capture"
 
 #: data/ui/preferences_window.blp:19
-msgid "Used for home screen"
-msgstr "Utilisé pour l’écran d’accueil"
+msgid "Default _Delay"
+msgstr "_Délai par défaut"
 
-#: data/ui/preferences_window.blp:45
-msgid "_Screenshot Shortcut"
-msgstr "Raccourci de _capture d’écran"
+#: data/ui/preferences_window.blp:24
+msgid "No Delay"
+msgstr "Sans délai"
+
+#: data/ui/preferences_window.blp:33
+msgid "_Keyboard Shortcuts…"
+msgstr "_Raccourcis clavier…"
+
+#: data/ui/preferences_window.blp:34
+msgid "Print, Shift+Print, Alt+Print, Ctrl+Shift+Alt+R"
+msgstr "Impr, Maj+Impr, Alt+Impr, Ctrl+Maj+Alt+R"
 
 #: data/ui/preferences_window.blp:51
-msgid "Save Options"
-msgstr "Options d’enregistrement"
+msgid "Saving"
+msgstr "Enregistrement"
 
 #: data/ui/preferences_window.blp:54
+msgid "_Save Folder"
+msgstr "_Dossier d’enregistrement"
+
+#: data/ui/preferences_window.blp:66 data/ui/preferences_window.blp:126
+#: data/ui/preferences_window.blp:218
+msgid "Choose Folder"
+msgstr "Choisir un dossier"
+
+#: data/ui/preferences_window.blp:73
 msgid "_Image Format"
 msgstr "_Format d’image"
 
-#: data/ui/preferences_window.blp:56
-msgid "Default format for saved screenshots"
-msgstr "Format par défaut pour les captures d’écran enregistrées"
+#: data/ui/preferences_window.blp:78
+msgid "C_ompress Images"
+msgstr "C_ompresser les images"
 
-#: data/ui/preferences_window.blp:61
+#: data/ui/preferences_window.blp:84
 msgid "Closing"
 msgstr "Fermeture"
 
-#: data/ui/preferences_window.blp:64
-msgid "_When Exiting"
-msgstr "_À la fermeture"
-
-#: data/ui/preferences_window.blp:69
+#: data/ui/preferences_window.blp:87
 msgid "C_lose After Copying"
 msgstr "_Fermer après la copie"
 
-#: data/ui/preferences_window.blp:71
+#: data/ui/preferences_window.blp:89
 msgid "Close the editor once the image is on the clipboard"
 msgstr "Fermer l’éditeur dès que l’image est dans le presse-papiers"
 
-#: data/ui/preferences_window.blp:76
-msgid "_Overwrite Last Screenshot on Close"
-msgstr "_Écraser la dernière capture à la fermeture"
+#: data/ui/preferences_window.blp:93
+msgid "_Ask Before Closing"
+msgstr "_Demander avant de fermer"
 
-#: data/ui/preferences_window.blp:78
-msgid "Replace it with the annotated version"
-msgstr "La remplacer par la version annotée"
+#: data/ui/preferences_window.blp:95
+msgid "Warn when an annotated image was not copied or saved"
+msgstr "Avertir si une image annotée n’a été ni copiée ni enregistrée"
 
-#: data/ui/preferences_window.blp:79
-msgid "Replace last screenshot file with annotated version on close"
-msgstr ""
-"Remplacer le dernier fichier de capture d’écran par la version annotée à la "
-"fermeture"
-
-#: data/ui/preferences_window.blp:84
+#: data/ui/preferences_window.blp:99
 msgid "_Trash Screenshots on Close"
 msgstr "Mettre les captures à la _corbeille à la fermeture"
 
-#: data/ui/preferences_window.blp:86
-msgid "Automatically move screenshots taken from within the app to trash"
-msgstr ""
-"Déplacer automatiquement les captures d’écran prises depuis l’application "
-"vers la corbeille"
+#: data/ui/preferences_window.blp:104
+msgid "_Overwrite Last Screenshot on Close"
+msgstr "_Écraser la dernière capture à la fermeture"
 
-#: data/ui/preferences_window.blp:87
-msgid "Trash screenshots on app close"
-msgstr "Supprimer les captures d’écran à la fermeture de l’application"
+#: data/ui/preferences_window.blp:106
+msgid "Replace it with the annotated version"
+msgstr "La remplacer par la version annotée"
 
-#: data/ui/preferences_window.blp:93
+#: data/ui/preferences_window.blp:111
+msgid "Recent Screenshots"
+msgstr "Captures récentes"
+
+#: data/ui/preferences_window.blp:114
+msgid "Screens_hots Folder"
+msgstr "Dossier des _captures"
+
+#: data/ui/preferences_window.blp:140
+msgid "Recording"
+msgstr "Enregistrement vidéo"
+
+#: data/ui/preferences_window.blp:143
+msgid "_Format"
+msgstr "_Format"
+
+#: data/ui/preferences_window.blp:148
+msgid "Frame _Rate"
+msgstr "_Images par seconde"
+
+#: data/ui/preferences_window.blp:153
+msgid "30 fps"
+msgstr "30 i/s"
+
+#: data/ui/preferences_window.blp:154 gradia/recording/options_popover.py:69
+msgid "60 fps"
+msgstr "60 i/s"
+
+#: data/ui/preferences_window.blp:160
+msgid "_Countdown"
+msgstr "_Compte à rebours"
+
+#: data/ui/preferences_window.blp:165 gradia/recording/options_popover.py:73
+msgid "Off"
+msgstr "Non"
+
+#: data/ui/preferences_window.blp:173
+msgid "Show _Pointer"
+msgstr "Afficher le _pointeur"
+
+#: data/ui/preferences_window.blp:179
+msgid "Sound"
+msgstr "Son"
+
+#: data/ui/preferences_window.blp:182
+msgid "System _Sound"
+msgstr "_Son du système"
+
+#: data/ui/preferences_window.blp:192
+msgid "_Microphone"
+msgstr "_Microphone"
+
+#: data/ui/preferences_window.blp:203
+msgid "Files"
+msgstr "Fichiers"
+
+#: data/ui/preferences_window.blp:206
+msgid "_Video Folder"
+msgstr "Dossier _vidéo"
+
+#: data/ui/preferences_window.blp:226
+msgid "Encoder"
+msgstr "Encodeur"
+
+#: data/ui/preferences_window.blp:229
+msgid "Hardware Encoding"
+msgstr "Encodage matériel"
+
+#: data/ui/preferences_window.blp:230
+msgid "Checking…"
+msgstr "Vérification…"
+
+#: data/ui/preferences_window.blp:244
+msgid "Choose Screen _Again"
+msgstr "Choisir l’écran à _nouveau"
+
+#: data/ui/preferences_window.blp:245
+msgid "Forget the remembered screen"
+msgstr "Oublier l’écran mémorisé"
+
+#: data/ui/preferences_window.blp:265
+msgid "Sharing"
+msgstr "Partage"
+
+#: data/ui/preferences_window.blp:269
 msgid "Image Upload Providers"
 msgstr "Fournisseurs de téléversement d’images"
 
-#: data/ui/preferences_window.blp:94
+#: data/ui/preferences_window.blp:270
 msgid "Connect to your favorite upload providers, or create a link yourself"
 msgstr ""
 "Connectez-vous à vos fournisseurs de téléversement préférés ou créez vous-"
 "même un lien"
 
-#: data/ui/preferences_window.blp:97
+#: data/ui/preferences_window.blp:273
 msgid "_Provider"
 msgstr "_Service"
 
-#: data/ui/preferences_window.blp:108
-#: gradia/ui/preferences/preferences_window.py:81
+#: data/ui/preferences_window.blp:284
+#: gradia/ui/preferences/preferences_window.py:151
 msgid "None Selected"
 msgstr "Aucun sélectionné"
 
-#: data/ui/preferences_window.blp:122
+#: data/ui/preferences_window.blp:298
 msgid "_Confirm on Upload"
 msgstr "_Confirmer avant l’envoi"
 
-#: data/ui/preferences_window.blp:124 data/ui/preferences_window.blp:125
+#: data/ui/preferences_window.blp:300
 msgid "Ask for confirmation before running the upload command"
 msgstr ""
 "Demander une confirmation avant d’exécuter la commande de téléversement"
 
-#: data/ui/preferences_window.blp:135
+#: data/ui/preferences_window.blp:309
 msgid "_Language Models"
 msgstr "_Modèles linguistiques"
 
-#: data/ui/preferences_window.blp:137
+#: data/ui/preferences_window.blp:311
 msgid "Download Models to improve per-language accuracy"
 msgstr "Télécharger des modèles pour améliorer la précision par langue"
 
@@ -1059,7 +1167,9 @@ msgstr "Sélectionner la zone à enregistrer"
 
 #: gradia/recording/area_selector.py:83
 msgid "Esc  Cancel  ·  Enter  Record  ·  Drag handles to resize"
-msgstr "Échap  Annuler  ·  Entrée  Enregistrer  ·  Tirez les poignées pour redimensionner"
+msgstr ""
+"Échap  Annuler  ·  Entrée  Enregistrer  ·  Tirez les poignées pour "
+"redimensionner"
 
 #: gradia/recording/area_selector.py:91
 msgid "_Cancel"
@@ -1129,14 +1239,6 @@ msgstr "Enregistrement du fichier…"
 #: gradia/recording/options_popover.py:57
 msgid "Record"
 msgstr "Enregistrer"
-
-#: gradia/recording/options_popover.py:69
-msgid "60 fps"
-msgstr "60 i/s"
-
-#: gradia/recording/options_popover.py:73
-msgid "Off"
-msgstr "Non"
 
 #: gradia/recording/options_popover.py:80
 msgid "Show Pointer"
@@ -1225,7 +1327,9 @@ msgstr "Impossible de démarrer l’enregistrement"
 
 #: gradia/recording/recorder.py:362
 msgid "Cannot write the video file. Check the video folder in the preferences."
-msgstr "Impossible d’écrire le fichier vidéo. Vérifiez le dossier vidéo dans les préférences."
+msgstr ""
+"Impossible d’écrire le fichier vidéo. Vérifiez le dossier vidéo dans les "
+"préférences."
 
 #: gradia/recording/recorder.py:364
 #, python-brace-format
@@ -1269,8 +1373,8 @@ msgid "Screenshots moved to trash"
 msgstr "Captures d’écran déplacées vers la corbeille"
 
 #: gradia/ui/dialog/ocr_dialog.py:110 gradia/ui/dialog/ocr_dialog.py:124
-#: gradia/ui/preferences/preferences_window.py:153
-#: gradia/ui/preferences/preferences_window.py:247
+#: gradia/ui/preferences/preferences_window.py:188
+#: gradia/ui/preferences/preferences_window.py:310
 msgid "Copied!"
 msgstr "Copié !"
 
@@ -1424,7 +1528,10 @@ msgstr "Échec de la capture d’écran"
 msgid ""
 "Klipo may not be allowed to take screenshots. Run install-shortcuts.sh or "
 "allow it with: flatpak permission-set screenshot screenshot {app_id} yes"
-msgstr "Klipo n’a peut-être pas le droit de faire des captures d’écran. Lancez install-shortcuts.sh ou autorisez-le avec : flatpak permission-set screenshot screenshot {app_id} yes"
+msgstr ""
+"Klipo n’a peut-être pas le droit de faire des captures d’écran. Lancez "
+"install-shortcuts.sh ou autorisez-le avec : flatpak permission-set "
+"screenshot screenshot {app_id} yes"
 
 #: gradia/ui/image_loaders.py:365 gradia/ui/image_loaders.py:392
 msgid "Edited Screenshot From %Y-%m-%d %H-%M-%S"
@@ -1456,17 +1563,31 @@ msgstr "« {} » téléchargé"
 msgid "Failed to Download '{}'"
 msgstr "Échec du téléchargement de « {} »"
 
-#: gradia/ui/preferences/preferences_window.py:115
-msgid "Close Instantly"
-msgstr "Fermer immédiatement"
+#: gradia/ui/preferences/preferences_window.py:98
+msgid "Not Set"
+msgstr "Non défini"
 
-#: gradia/ui/preferences/preferences_window.py:116
-msgid "Ask for Confirmation"
-msgstr "Demander une confirmation"
+#: gradia/ui/preferences/preferences_window.py:102
+msgid "Screenshots"
+msgstr "Captures d’écran"
 
-#: gradia/ui/preferences/preferences_window.py:117
-msgid "Copy and Close"
-msgstr "Copier et fermer"
+#: gradia/ui/preferences/preferences_window.py:134
+msgid "No video encoder found"
+msgstr "Aucun encodeur vidéo trouvé"
+
+#: gradia/ui/preferences/preferences_window.py:138
+#, python-brace-format
+msgid "{encoder} detected"
+msgstr "{encoder} détecté"
+
+#: gradia/ui/preferences/preferences_window.py:142
+#, python-brace-format
+msgid "Not available, using {encoder}"
+msgstr "Non disponible, utilisation de {encoder}"
+
+#: gradia/ui/preferences/preferences_window.py:237
+msgid "The screen will be asked again at the next recording"
+msgstr "L’écran sera redemandé au prochain enregistrement"
 
 #: gradia/ui/preferences/provider_selection_window.py:133
 msgid "_Custom Provider"
@@ -1697,6 +1818,43 @@ msgstr "Confirmer le téléversement"
 #: gradia/ui/window.py:701
 msgid "Upload"
 msgstr "Téléverser"
+
+#~ msgid "_Recent Directory"
+#~ msgstr "Dossier _récent"
+
+#~ msgid "Used for home screen"
+#~ msgstr "Utilisé pour l’écran d’accueil"
+
+#~ msgid "_Screenshot Shortcut"
+#~ msgstr "Raccourci de _capture d’écran"
+
+#~ msgid "Save Options"
+#~ msgstr "Options d’enregistrement"
+
+#~ msgid "Default format for saved screenshots"
+#~ msgstr "Format par défaut pour les captures d’écran enregistrées"
+
+#~ msgid "_When Exiting"
+#~ msgstr "_À la fermeture"
+
+#~ msgid "Replace last screenshot file with annotated version on close"
+#~ msgstr ""
+#~ "Remplacer le dernier fichier de capture d’écran par la version annotée à "
+#~ "la fermeture"
+
+#~ msgid "Automatically move screenshots taken from within the app to trash"
+#~ msgstr ""
+#~ "Déplacer automatiquement les captures d’écran prises depuis l’application "
+#~ "vers la corbeille"
+
+#~ msgid "Trash screenshots on app close"
+#~ msgstr "Supprimer les captures d’écran à la fermeture de l’application"
+
+#~ msgid "Close Instantly"
+#~ msgstr "Fermer immédiatement"
+
+#~ msgid "Copy and Close"
+#~ msgstr "Copier et fermer"
 
 #~ msgid "Gradia"
 #~ msgstr "Gradia"

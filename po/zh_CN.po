@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gradia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 23:30-0400\n"
+"POT-Creation-Date: 2026-10-14 09:18-0400\n"
 "PO-Revision-Date: 2025-09-28 10:44+0800\n"
 "Last-Translator: G-Src <gsrc@fsfans.club>\n"
 "Language-Team: Chinese <>\n"
@@ -338,7 +338,7 @@ msgid "Crop Image"
 msgstr "拖放图片到此处"
 
 #: data/ui/image_stack.blp:127 data/ui/ocr_dialog.blp:5
-#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:131
+#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:305
 msgid "Text Extraction"
 msgstr "文本提取"
 
@@ -393,15 +393,17 @@ msgstr ""
 msgid "0 s"
 msgstr ""
 
-#: data/ui/main_window.blp:45 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:45 data/ui/preferences_window.blp:25
+#: data/ui/preferences_window.blp:166 gradia/recording/options_popover.py:73
 msgid "3 s"
 msgstr ""
 
-#: data/ui/main_window.blp:46 gradia/recording/options_popover.py:73
+#: data/ui/main_window.blp:46 data/ui/preferences_window.blp:26
+#: data/ui/preferences_window.blp:167 gradia/recording/options_popover.py:73
 msgid "5 s"
 msgstr ""
 
-#: data/ui/main_window.blp:47
+#: data/ui/main_window.blp:47 data/ui/preferences_window.blp:27
 msgid "10 s"
 msgstr ""
 
@@ -450,7 +452,7 @@ msgstr ""
 msgid "Recording Options"
 msgstr "保存选项"
 
-#: data/ui/main_window.blp:106
+#: data/ui/main_window.blp:106 data/ui/preferences_window.blp:136
 msgid "Video"
 msgstr ""
 
@@ -747,121 +749,219 @@ msgstr "延迟截图"
 msgid "Delay the capture by a given duration (in milliseconds)."
 msgstr "以此时间延迟捕捉（格式为毫秒）。"
 
-#: data/ui/preferences_window.blp:7 gradia/ui/ui_parts.py:158
+#: data/ui/preferences_window.blp:8 gradia/ui/ui_parts.py:158
 msgid "Preferences"
 msgstr "偏好"
 
-#: data/ui/preferences_window.blp:11 gradia/ui/ui_parts.py:155
+#: data/ui/preferences_window.blp:12 gradia/ui/ui_parts.py:155
 msgid "General"
 msgstr "常规"
 
-#: data/ui/preferences_window.blp:14
-msgid "Screenshots"
-msgstr "截图"
-
-#: data/ui/preferences_window.blp:17
+#: data/ui/preferences_window.blp:16
 #, fuzzy
-msgid "_Recent Directory"
-msgstr "最近目录"
+msgid "Capture"
+msgstr "功能"
 
 #: data/ui/preferences_window.blp:19
-msgid "Used for home screen"
-msgstr "被用于主页面"
-
-#: data/ui/preferences_window.blp:45
 #, fuzzy
-msgid "_Screenshot Shortcut"
-msgstr "截图快捷键"
+msgid "Default _Delay"
+msgstr "默认"
+
+#: data/ui/preferences_window.blp:24
+msgid "No Delay"
+msgstr ""
+
+#: data/ui/preferences_window.blp:33
+#, fuzzy
+msgid "_Keyboard Shortcuts…"
+msgstr "键盘快捷键"
+
+#: data/ui/preferences_window.blp:34
+msgid "Print, Shift+Print, Alt+Print, Ctrl+Shift+Alt+R"
+msgstr ""
 
 #: data/ui/preferences_window.blp:51
-msgid "Save Options"
-msgstr "保存选项"
+msgid "Saving"
+msgstr ""
 
 #: data/ui/preferences_window.blp:54
+#, fuzzy
+msgid "_Save Folder"
+msgstr "打开文件夹"
+
+#: data/ui/preferences_window.blp:66 data/ui/preferences_window.blp:126
+#: data/ui/preferences_window.blp:218
+#, fuzzy
+msgid "Choose Folder"
+msgstr "选择颜色"
+
+#: data/ui/preferences_window.blp:73
 #, fuzzy
 msgid "_Image Format"
 msgstr "图片格式"
 
-#: data/ui/preferences_window.blp:56
-msgid "Default format for saved screenshots"
-msgstr "保存截图的默认格式"
+#: data/ui/preferences_window.blp:78
+#, fuzzy
+msgid "C_ompress Images"
+msgstr "压缩图片"
 
-#: data/ui/preferences_window.blp:61
+#: data/ui/preferences_window.blp:84
 msgid "Closing"
 msgstr "关闭中"
 
-#: data/ui/preferences_window.blp:64
-#, fuzzy
-msgid "_When Exiting"
-msgstr "退出时"
-
-#: data/ui/preferences_window.blp:69
+#: data/ui/preferences_window.blp:87
 msgid "C_lose After Copying"
 msgstr ""
 
-#: data/ui/preferences_window.blp:71
+#: data/ui/preferences_window.blp:89
 msgid "Close the editor once the image is on the clipboard"
 msgstr ""
 
-#: data/ui/preferences_window.blp:76
+#: data/ui/preferences_window.blp:93
 #, fuzzy
-msgid "_Overwrite Last Screenshot on Close"
-msgstr "关闭时覆盖最后一个截图"
+msgid "_Ask Before Closing"
+msgstr "请求确认"
 
-#: data/ui/preferences_window.blp:78
-msgid "Replace it with the annotated version"
-msgstr "用已注释版本替换"
+#: data/ui/preferences_window.blp:95
+msgid "Warn when an annotated image was not copied or saved"
+msgstr ""
 
-#: data/ui/preferences_window.blp:79
-msgid "Replace last screenshot file with annotated version on close"
-msgstr "退出时用已注释版本替换最后一个截图"
-
-#: data/ui/preferences_window.blp:84
+#: data/ui/preferences_window.blp:99
 #, fuzzy
 msgid "_Trash Screenshots on Close"
 msgstr "关闭应用时将截图移至回收站"
 
-#: data/ui/preferences_window.blp:86
-msgid "Automatically move screenshots taken from within the app to trash"
-msgstr "自动将应用内截图移至垃圾桶"
+#: data/ui/preferences_window.blp:104
+#, fuzzy
+msgid "_Overwrite Last Screenshot on Close"
+msgstr "关闭时覆盖最后一个截图"
 
-#: data/ui/preferences_window.blp:87
-msgid "Trash screenshots on app close"
-msgstr "应用退出时将截图移至回收站"
+#: data/ui/preferences_window.blp:106
+msgid "Replace it with the annotated version"
+msgstr "用已注释版本替换"
 
-#: data/ui/preferences_window.blp:93
+#: data/ui/preferences_window.blp:111
+msgid "Recent Screenshots"
+msgstr "最近截图"
+
+#: data/ui/preferences_window.blp:114
+#, fuzzy
+msgid "Screens_hots Folder"
+msgstr "截图文件夹"
+
+#: data/ui/preferences_window.blp:140
+#, fuzzy
+msgid "Recording"
+msgstr "导出失败"
+
+#: data/ui/preferences_window.blp:143
+#, fuzzy
+msgid "_Format"
+msgstr "图片格式"
+
+#: data/ui/preferences_window.blp:148
+msgid "Frame _Rate"
+msgstr ""
+
+#: data/ui/preferences_window.blp:153
+msgid "30 fps"
+msgstr ""
+
+#: data/ui/preferences_window.blp:154 gradia/recording/options_popover.py:69
+msgid "60 fps"
+msgstr ""
+
+#: data/ui/preferences_window.blp:160
+msgid "_Countdown"
+msgstr ""
+
+#: data/ui/preferences_window.blp:165 gradia/recording/options_popover.py:73
+msgid "Off"
+msgstr ""
+
+#: data/ui/preferences_window.blp:173
+msgid "Show _Pointer"
+msgstr ""
+
+#: data/ui/preferences_window.blp:179
+msgid "Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:182
+msgid "System _Sound"
+msgstr ""
+
+#: data/ui/preferences_window.blp:192
+msgid "_Microphone"
+msgstr ""
+
+#: data/ui/preferences_window.blp:203
+#, fuzzy
+msgid "Files"
+msgstr "图片文件"
+
+#: data/ui/preferences_window.blp:206
+#, fuzzy
+msgid "_Video Folder"
+msgstr "打开文件夹"
+
+#: data/ui/preferences_window.blp:226
+msgid "Encoder"
+msgstr ""
+
+#: data/ui/preferences_window.blp:229
+msgid "Hardware Encoding"
+msgstr ""
+
+#: data/ui/preferences_window.blp:230
+msgid "Checking…"
+msgstr ""
+
+#: data/ui/preferences_window.blp:244
+msgid "Choose Screen _Again"
+msgstr ""
+
+#: data/ui/preferences_window.blp:245
+msgid "Forget the remembered screen"
+msgstr ""
+
+#: data/ui/preferences_window.blp:265
+msgid "Sharing"
+msgstr ""
+
+#: data/ui/preferences_window.blp:269
 msgid "Image Upload Providers"
 msgstr "图片上传提供商"
 
-#: data/ui/preferences_window.blp:94
+#: data/ui/preferences_window.blp:270
 msgid "Connect to your favorite upload providers, or create a link yourself"
 msgstr "连接到您最爱的上传提供商，或自行创建链接"
 
-#: data/ui/preferences_window.blp:97
+#: data/ui/preferences_window.blp:273
 #, fuzzy
 msgid "_Provider"
 msgstr "提供商"
 
-#: data/ui/preferences_window.blp:108
-#: gradia/ui/preferences/preferences_window.py:81
+#: data/ui/preferences_window.blp:284
+#: gradia/ui/preferences/preferences_window.py:151
 msgid "None Selected"
 msgstr "未选择"
 
-#: data/ui/preferences_window.blp:122
+#: data/ui/preferences_window.blp:298
 #, fuzzy
 msgid "_Confirm on Upload"
 msgstr "上传时确认"
 
-#: data/ui/preferences_window.blp:124 data/ui/preferences_window.blp:125
+#: data/ui/preferences_window.blp:300
 msgid "Ask for confirmation before running the upload command"
 msgstr "运行上传指令前请求确认"
 
-#: data/ui/preferences_window.blp:135
+#: data/ui/preferences_window.blp:309
 #, fuzzy
 msgid "_Language Models"
 msgstr "语言模型"
 
-#: data/ui/preferences_window.blp:137
+#: data/ui/preferences_window.blp:311
 msgid "Download Models to improve per-language accuracy"
 msgstr "下载模型来增强单独一个语言的准确性"
 
@@ -1182,14 +1282,6 @@ msgstr ""
 msgid "Record"
 msgstr ""
 
-#: gradia/recording/options_popover.py:69
-msgid "60 fps"
-msgstr ""
-
-#: gradia/recording/options_popover.py:73
-msgid "Off"
-msgstr ""
-
 #: gradia/recording/options_popover.py:80
 msgid "Show Pointer"
 msgstr ""
@@ -1327,8 +1419,8 @@ msgid "Screenshots moved to trash"
 msgstr "截图已移至回收站"
 
 #: gradia/ui/dialog/ocr_dialog.py:110 gradia/ui/dialog/ocr_dialog.py:124
-#: gradia/ui/preferences/preferences_window.py:153
-#: gradia/ui/preferences/preferences_window.py:247
+#: gradia/ui/preferences/preferences_window.py:188
+#: gradia/ui/preferences/preferences_window.py:310
 msgid "Copied!"
 msgstr "已复制！"
 
@@ -1520,19 +1612,31 @@ msgstr ""
 msgid "Failed to Download '{}'"
 msgstr "加载截图失败"
 
-#: gradia/ui/preferences/preferences_window.py:115
-msgid "Close Instantly"
-msgstr "立即关闭"
+#: gradia/ui/preferences/preferences_window.py:98
+msgid "Not Set"
+msgstr ""
 
-#: gradia/ui/preferences/preferences_window.py:116
-#, fuzzy
-msgid "Ask for Confirmation"
-msgstr "请求确认"
+#: gradia/ui/preferences/preferences_window.py:102
+msgid "Screenshots"
+msgstr "截图"
 
-#: gradia/ui/preferences/preferences_window.py:117
-#, fuzzy
-msgid "Copy and Close"
-msgstr "复制并关闭 "
+#: gradia/ui/preferences/preferences_window.py:134
+msgid "No video encoder found"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:138
+#, python-brace-format
+msgid "{encoder} detected"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:142
+#, python-brace-format
+msgid "Not available, using {encoder}"
+msgstr ""
+
+#: gradia/ui/preferences/preferences_window.py:237
+msgid "The screen will be asked again at the next recording"
+msgstr ""
 
 #: gradia/ui/preferences/provider_selection_window.py:133
 #, fuzzy
@@ -1774,6 +1878,43 @@ msgstr "确认上传"
 msgid "Upload"
 msgstr "上传"
 
+#, fuzzy
+#~ msgid "_Recent Directory"
+#~ msgstr "最近目录"
+
+#~ msgid "Used for home screen"
+#~ msgstr "被用于主页面"
+
+#, fuzzy
+#~ msgid "_Screenshot Shortcut"
+#~ msgstr "截图快捷键"
+
+#~ msgid "Save Options"
+#~ msgstr "保存选项"
+
+#~ msgid "Default format for saved screenshots"
+#~ msgstr "保存截图的默认格式"
+
+#, fuzzy
+#~ msgid "_When Exiting"
+#~ msgstr "退出时"
+
+#~ msgid "Replace last screenshot file with annotated version on close"
+#~ msgstr "退出时用已注释版本替换最后一个截图"
+
+#~ msgid "Automatically move screenshots taken from within the app to trash"
+#~ msgstr "自动将应用内截图移至垃圾桶"
+
+#~ msgid "Trash screenshots on app close"
+#~ msgstr "应用退出时将截图移至回收站"
+
+#~ msgid "Close Instantly"
+#~ msgstr "立即关闭"
+
+#, fuzzy
+#~ msgid "Copy and Close"
+#~ msgstr "复制并关闭 "
+
 #~ msgid "Gradia"
 #~ msgstr "Gradia"
 
@@ -1969,9 +2110,6 @@ msgstr "上传"
 #~ msgid "Enter text…"
 #~ msgstr "输入文字…"
 
-#~ msgid "Screenshots Folder"
-#~ msgstr "截图文件夹"
-
 #~ msgid "What folder to use for the home page"
 #~ msgstr "使用哪个文件夹作为主页展示"
 
@@ -2046,12 +2184,6 @@ msgstr "上传"
 
 #~ msgid "Options"
 #~ msgstr "图片选项"
-
-#~ msgid "Recent Screenshots"
-#~ msgstr "最近截图"
-
-#~ msgid "Compress image"
-#~ msgstr "压缩图片"
 
 #~ msgid "On supported formats"
 #~ msgstr "仅限支持格式"

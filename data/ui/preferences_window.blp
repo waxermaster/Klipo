@@ -1,93 +1,269 @@
 using Gtk 4.0;
 using Adw 1;
 
+// Layout validated with klipo-design/mockups-v3/p1.png (General) and p2.png (Video)
 template $GradiaPreferencesWindow: Adw.PreferencesDialog {
-  content-width: 600;
-  content-height: 500;
+  content-width: 640;
+  content-height: 720;
   title: _("Preferences");
 
   Adw.PreferencesPage {
-    name: "preferences";
+    name: "general";
     title: _("General");
+    icon-name: "preferences-system-symbolic";
 
     Adw.PreferencesGroup {
-      title: _("Screenshots");
+      title: _("Capture");
 
-      Adw.ActionRow {
-        title: _("_Recent Directory");
+      Adw.ComboRow default_delay_combo {
+        title: _("Default _Delay");
         use-underline: true;
-        subtitle: _("Used for home screen");
+
+        model: Gtk.StringList {
+          strings [
+            _("No Delay"),
+            _("3 s"),
+            _("5 s"),
+            _("10 s"),
+          ]
+        };
+      }
+
+      Adw.ActionRow help_button {
+        title: _("_Keyboard Shortcuts…");
+        subtitle: _("Print, Shift+Print, Alt+Print, Ctrl+Shift+Alt+R");
+        use-underline: true;
         activatable: true;
-        activated => $on_folder_row_clicked();
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "input-keyboard-symbolic";
+        }
 
         [suffix]
-        Box {
-          spacing: 6;
-          valign: center;
-
-          Label folder_label {
-            label: "-";
-
-            styles [
-              "dim-label",
-            ]
-          }
-
-          Gtk.Image {
-            icon-name: "go-next-symbolic";
-          }
+        Gtk.Image {
+          icon-name: "go-next-symbolic";
         }
       }
     }
 
-    Adw.PreferencesGroup {
-      Adw.ButtonRow help_button {
-        title: _("_Screenshot Shortcut");
-        use-underline: true;
-      }
-    }
-
     Adw.PreferencesGroup save_format_group {
-      title: _("Save Options");
+      title: _("Saving");
+
+      Adw.ActionRow save_folder_row {
+        title: _("_Save Folder");
+        use-underline: true;
+        activatable-widget: save_folder_button;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "folder-symbolic";
+        }
+
+        [suffix]
+        Gtk.Button save_folder_button {
+          icon-name: "folder-open-symbolic";
+          tooltip-text: _("Choose Folder");
+          valign: center;
+          clicked => $on_save_folder_clicked();
+        }
+      }
 
       Adw.ComboRow save_format_combo {
         title: _("_Image Format");
         use-underline: true;
-        subtitle: _("Default format for saved screenshots");
+      }
+
+      Adw.SwitchRow compress_switch {
+        title: _("C_ompress Images");
+        use-underline: true;
       }
     }
 
     Adw.PreferencesGroup {
       title: _("Closing");
 
-      Adw.ComboRow exiting_combo {
-        title: _("_When Exiting");
-        use-underline: true;
-      }
-
       Adw.SwitchRow close_after_copy_switch {
         title: _("C_lose After Copying");
         use-underline: true;
         subtitle: _("Close the editor once the image is on the clipboard");
-        activatable: true;
+      }
+
+      Adw.SwitchRow ask_before_closing_switch {
+        title: _("_Ask Before Closing");
+        use-underline: true;
+        subtitle: _("Warn when an annotated image was not copied or saved");
+      }
+
+      Adw.SwitchRow delete_screenshot_switch {
+        title: _("_Trash Screenshots on Close");
+        use-underline: true;
       }
 
       Adw.SwitchRow overwrite_screenshot_switch {
         title: _("_Overwrite Last Screenshot on Close");
         use-underline: true;
         subtitle: _("Replace it with the annotated version");
-        tooltip-text: _("Replace last screenshot file with annotated version on close");
-        activatable: true;
-      }
-
-      Adw.SwitchRow delete_screenshot_switch {
-        title: _("_Trash Screenshots on Close");
-        use-underline: true;
-        subtitle: _("Automatically move screenshots taken from within the app to trash");
-        tooltip-text: _("Trash screenshots on app close");
-        activatable: true;
       }
     }
+
+    Adw.PreferencesGroup {
+      title: _("Recent Screenshots");
+
+      Adw.ActionRow screenshots_folder_row {
+        title: _("Screens_hots Folder");
+        use-underline: true;
+        activatable-widget: screenshots_folder_button;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "folder-symbolic";
+        }
+
+        [suffix]
+        Gtk.Button screenshots_folder_button {
+          icon-name: "folder-open-symbolic";
+          tooltip-text: _("Choose Folder");
+          valign: center;
+          clicked => $on_folder_row_clicked();
+        }
+      }
+    }
+  }
+
+  Adw.PreferencesPage {
+    name: "video";
+    title: _("Video");
+    icon-name: "camera-video-symbolic";
+
+    Adw.PreferencesGroup {
+      title: _("Recording");
+
+      Adw.ComboRow video_format_combo {
+        title: _("_Format");
+        use-underline: true;
+      }
+
+      Adw.ComboRow framerate_combo {
+        title: _("Frame _Rate");
+        use-underline: true;
+
+        model: Gtk.StringList {
+          strings [
+            _("30 fps"),
+            _("60 fps"),
+          ]
+        };
+      }
+
+      Adw.ComboRow countdown_combo {
+        title: _("_Countdown");
+        use-underline: true;
+
+        model: Gtk.StringList {
+          strings [
+            _("Off"),
+            _("3 s"),
+            _("5 s"),
+          ]
+        };
+      }
+
+      Adw.SwitchRow show_pointer_switch {
+        title: _("Show _Pointer");
+        use-underline: true;
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Sound");
+
+      Adw.SwitchRow desktop_audio_switch {
+        title: _("System _Sound");
+        use-underline: true;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "audio-speakers-symbolic";
+        }
+      }
+
+      Adw.SwitchRow microphone_switch {
+        title: _("_Microphone");
+        use-underline: true;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "audio-input-microphone-symbolic";
+        }
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Files");
+
+      Adw.ActionRow video_folder_row {
+        title: _("_Video Folder");
+        use-underline: true;
+        activatable-widget: video_folder_button;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "folder-videos-symbolic";
+        }
+
+        [suffix]
+        Gtk.Button video_folder_button {
+          icon-name: "folder-open-symbolic";
+          tooltip-text: _("Choose Folder");
+          valign: center;
+          clicked => $on_video_folder_clicked();
+        }
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Encoder");
+
+      Adw.ActionRow encoder_row {
+        title: _("Hardware Encoding");
+        subtitle: _("Checking…");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "computer-symbolic";
+        }
+
+        [suffix]
+        Gtk.Image encoder_status_icon {
+          icon-name: "content-loading-symbolic";
+        }
+      }
+
+      Adw.ActionRow forget_screen_row {
+        title: _("Choose Screen _Again");
+        subtitle: _("Forget the remembered screen");
+        use-underline: true;
+        activatable: true;
+        activated => $on_forget_screen_clicked();
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "video-display-symbolic";
+        }
+
+        [suffix]
+        Gtk.Image {
+          icon-name: "go-next-symbolic";
+        }
+      }
+    }
+  }
+
+  Adw.PreferencesPage {
+    name: "sharing";
+    title: _("Sharing");
+    icon-name: "send-to-symbolic";
 
     Adw.PreferencesGroup {
       title: _("Image Upload Providers");
@@ -122,8 +298,6 @@ template $GradiaPreferencesWindow: Adw.PreferencesDialog {
         title: _("_Confirm on Upload");
         use-underline: true;
         subtitle: _("Ask for confirmation before running the upload command");
-        tooltip-text: _("Ask for confirmation before running the upload command");
-        activatable: true;
       }
     }
 
@@ -146,4 +320,3 @@ template $GradiaPreferencesWindow: Adw.PreferencesDialog {
     }
   }
 }
-
