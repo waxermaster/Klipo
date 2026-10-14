@@ -306,6 +306,20 @@ class TextAction(DrawingAction):
         self.intrinsic_image_bounds = intrinsic_image_bounds
         self.font_size = font_size
 
+    def _setup_layout(self, layout, size: float) -> None:
+        font_desc = Pango.FontDescription()
+        font_desc.set_family(self.options.font)
+        font_desc.set_size(int(size * Pango.SCALE))
+        if getattr(self.options, "bold", False):
+            font_desc.set_weight(Pango.Weight.BOLD)
+        if getattr(self.options, "italic", False):
+            font_desc.set_style(Pango.Style.ITALIC)
+        layout.set_font_description(font_desc)
+        if getattr(self.options, "underline", False):
+            attributes = Pango.AttrList()
+            attributes.insert(Pango.attr_underline_new(Pango.Underline.SINGLE))
+            layout.set_attributes(attributes)
+
     def contains_emoji(self) -> bool:
         for char in self.text:
             cat = unicodedata.category(char)
@@ -358,10 +372,7 @@ class TextAction(DrawingAction):
 
         for line in lines:
             temp_layout = PangoCairo.create_layout(cr)
-            font_desc = Pango.FontDescription()
-            font_desc.set_family(self.options.font)
-            font_desc.set_size(int(self.font_size * scale * Pango.SCALE))
-            temp_layout.set_font_description(font_desc)
+            self._setup_layout(temp_layout, self.font_size * scale)
             temp_layout.set_text(line, -1)
             temp_layout.set_alignment(Pango.Alignment.CENTER)
 
@@ -399,10 +410,7 @@ class TextAction(DrawingAction):
         x_widget, y_widget = image_to_widget_coords(*self.position)
 
         layout = PangoCairo.create_layout(cr)
-        font_desc = Pango.FontDescription()
-        font_desc.set_family(self.options.font)
-        font_desc.set_size(int(self.font_size * scale * Pango.SCALE))
-        layout.set_font_description(font_desc)
+        self._setup_layout(layout, self.font_size * scale)
         layout.set_text(self.text, -1)
         layout.set_alignment(Pango.Alignment.CENTER)
 
@@ -440,10 +448,7 @@ class TextAction(DrawingAction):
         temp_surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 1, 1)
         temp_cr = cairo.Context(temp_surface)
         layout = PangoCairo.create_layout(temp_cr)
-        font_desc = Pango.FontDescription()
-        font_desc.set_family(self.options.font)
-        font_desc.set_size(int(self.font_size * Pango.SCALE))
-        layout.set_font_description(font_desc)
+        self._setup_layout(layout, self.font_size)
         layout.set_text(self.text, -1)
         layout.set_alignment(Pango.Alignment.CENTER)
 

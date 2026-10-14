@@ -26,9 +26,120 @@ template $GradiaDrawingToolsGroup: Box {
     tool-changed => $on_tool_changed();
   }
 
-  Label {
+  // Text tool: font, size and style
+  Box text_style_box {
+    orientation: vertical;
+    visible: false;
+
+    Label {
+      label: _("Font");
+      xalign: 0;
+
+      styles [
+        "caption-heading",
+        "dim-label",
+      ]
+    }
+
+    $GradiaFontDropdown font_dropdown {
+      margin-top: 6;
+      font-changed => $on_font_changed();
+    }
+
+    Label {
+      label: _("Size");
+      xalign: 0;
+      margin-top: 12;
+
+      styles [
+        "caption-heading",
+        "dim-label",
+      ]
+    }
+
+    SpinButton text_size_spin {
+      margin-top: 6;
+      numeric: true;
+      digits: 0;
+
+      adjustment: Adjustment {
+        lower: 6;
+        upper: 300;
+        value: 22;
+        step-increment: 2;
+        page-increment: 10;
+        value-changed => $on_text_size_changed();
+      };
+    }
+
+    Box {
+      margin-top: 12;
+      homogeneous: true;
+
+      styles [
+        "linked",
+      ]
+
+      ToggleButton bold_toggle {
+        tooltip-text: _("Bold");
+        toggled => $on_text_style_toggled();
+
+        child: Box {
+          spacing: 6;
+          halign: center;
+
+          Image {
+            icon-name: "format-text-bold-symbolic";
+          }
+
+          Label {
+            label: _("Bold");
+          }
+        };
+      }
+
+      ToggleButton italic_toggle {
+        tooltip-text: _("Italic");
+        toggled => $on_text_style_toggled();
+
+        child: Box {
+          spacing: 6;
+          halign: center;
+
+          Image {
+            icon-name: "format-text-italic-symbolic";
+          }
+
+          Label {
+            label: _("Italic");
+          }
+        };
+      }
+
+      ToggleButton underline_toggle {
+        tooltip-text: _("Underline");
+        toggled => $on_text_style_toggled();
+
+        child: Box {
+          spacing: 6;
+          halign: center;
+
+          Image {
+            icon-name: "format-text-underline-symbolic";
+          }
+
+          Label {
+            label: _("Underline");
+          }
+        };
+      }
+    }
+  }
+
+  Label color_label {
     label: _("Color");
     xalign: 0;
+    margin-top: 12;
 
     styles [
       "caption-heading",
@@ -41,7 +152,7 @@ template $GradiaDrawingToolsGroup: Box {
     color-changed => $on_primary_color_changed();
   }
 
-  Label {
+  Label size_label {
     label: _("Size");
     xalign: 0;
     margin-top: 12;
@@ -55,6 +166,9 @@ template $GradiaDrawingToolsGroup: Box {
   Scale size_scale {
     orientation: horizontal;
     margin-top: 6;
+    draw-value: true;
+    value-pos: right;
+    digits: 0;
 
     adjustment: Adjustment {
       value-changed => $on_size_scale_changed();
@@ -62,6 +176,133 @@ template $GradiaDrawingToolsGroup: Box {
       upper: 25;
       value: 14;
       step-increment: 2;
+    };
+  }
+
+  Revealer extra_stack_revealer {
+    reveal-child: true;
+    transition-type: slide_up;
+    transition-duration: 200;
+    valign: start;
+
+    child: Stack extra_stack {
+      transition-type: crossfade;
+      transition-duration: 200;
+
+      StackPage {
+        name: "empty";
+
+        child: Box {
+          visible: true;
+        };
+      }
+
+      StackPage {
+        name: "fill";
+
+        child: Box {
+          spacing: 8;
+          homogeneous: true;
+          margin-top: 12;
+
+          $GradiaSimpleColorPicker fill_0 {
+            icon-name: "fill-symbolic";
+            text: _("Fill");
+            hexpand: true;
+            color-changed => $on_fill_color_changed();
+          }
+        };
+      }
+
+      StackPage {
+        name: "fill-border";
+
+        child: Box {
+          spacing: 8;
+          homogeneous: true;
+          margin-top: 12;
+
+          $GradiaSimpleColorPicker fill_1 {
+            icon-name: "fill-symbolic";
+            text: _("Fill");
+            hexpand: true;
+            color-changed => $on_fill_color_changed();
+          }
+
+          $GradiaSimpleColorPicker outline_1 {
+            icon-name: "outline-color-symbolic";
+            text: _("Border");
+            hexpand: true;
+            color-changed => $on_outline_color_changed();
+          }
+        };
+      }
+
+      StackPage {
+        name: "text";
+
+        child: Box {
+          orientation: vertical;
+
+          Label {
+            label: _("Background");
+            xalign: 0;
+            margin-top: 12;
+
+            styles [
+              "caption-heading",
+              "dim-label",
+            ]
+          }
+
+          Box {
+            spacing: 8;
+            margin-top: 6;
+
+            $GradiaSimpleColorPicker fill_2 {
+              icon-name: "fill-symbolic";
+              text: _("Background");
+              hexpand: true;
+              color-changed => $on_fill_color_changed();
+            }
+
+            Button {
+              tooltip-text: _("No Background");
+              clicked => $on_no_background_clicked();
+
+              child: Box {
+                spacing: 6;
+
+                Image {
+                  icon-name: "action-unavailable-symbolic";
+                }
+
+                Label {
+                  label: _("None");
+                }
+              };
+            }
+          }
+
+          Label {
+            label: _("Outline");
+            xalign: 0;
+            margin-top: 12;
+
+            styles [
+              "caption-heading",
+              "dim-label",
+            ]
+          }
+
+          $GradiaSimpleColorPicker outline_2 {
+            margin-top: 6;
+            icon-name: "outline-color-symbolic";
+            text: _("Outline");
+            color-changed => $on_outline_color_changed();
+          }
+        };
+      }
     };
   }
 
@@ -92,94 +333,4 @@ template $GradiaDrawingToolsGroup: Box {
       page-increment: 10;
     };
   }
-
-  Revealer extra_stack_revealer {
-    reveal-child: true;
-    transition-type: slide_up;
-    transition-duration: 200;
-    valign: start;
-
-    child: Stack extra_stack {
-      transition-type: crossfade;
-      transition-duration: 200;
-
-      StackPage {
-        name: "empty";
-
-        child: Box {
-          visible: true;
-        };
-      }
-
-      StackPage {
-        name: "fill";
-
-        child: Box {
-          spacing: 8;
-          homogeneous: true;
-          margin-top: 6;
-
-          $GradiaSimpleColorPicker fill_0 {
-            icon-name: "fill-symbolic";
-            text: _("Fill");
-            hexpand: true;
-            color-changed => $on_fill_color_changed();
-          }
-        };
-      }
-
-      StackPage {
-        name: "fill-border";
-
-        child: Box {
-          spacing: 8;
-          homogeneous: true;
-          margin-top: 6;
-
-          $GradiaSimpleColorPicker fill_1 {
-            icon-name: "fill-symbolic";
-            text: _("Fill");
-            hexpand: true;
-            color-changed => $on_fill_color_changed();
-          }
-
-          $GradiaSimpleColorPicker outline_1 {
-            icon-name: "outline-color-symbolic";
-            text: _("Border");
-            hexpand: true;
-            color-changed => $on_outline_color_changed();
-          }
-        };
-      }
-
-      StackPage {
-        name: "text";
-
-        child: Box {
-          spacing: 6;
-          margin-top: 6;
-
-          $GradiaSimpleColorPicker fill_2 {
-            icon-name: "fill-symbolic";
-            hexpand: true;
-            color-changed => $on_fill_color_changed();
-            tooltip-text: _("Fill Color Picker");
-          }
-
-          $GradiaSimpleColorPicker outline_2 {
-            icon-name: "outline-color-symbolic";
-            hexpand: true;
-            color-changed => $on_outline_color_changed();
-            tooltip-text: _("Outline Color Picker");
-          }
-
-          $GradiaFontDropdown font_dropdown {
-            width-request: 160;
-            font-changed => $on_font_changed();
-          }
-        };
-      }
-    };
-  }
 }
-

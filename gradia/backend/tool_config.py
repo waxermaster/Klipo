@@ -33,6 +33,7 @@ class ToolOption:
         font: str = None,
         on_change_callback: Optional[Callable[['ToolOption'], None]] = None,
         is_temporary: bool = False,
+        extras: Optional[dict] = None,
     ) -> None:
         self.mode = mode
         self._size = size
@@ -42,6 +43,30 @@ class ToolOption:
         self._font = font or "Adwaita Sans"
         self._on_change_callback = on_change_callback
         self._is_temporary = is_temporary
+        # Tool specific settings added by Klipo (text style, censor style…)
+        self._extras = {**self.EXTRA_DEFAULTS, **(extras or {})}
+
+    EXTRA_DEFAULTS = {
+        "bold": False,
+        "italic": False,
+        "underline": False,
+        "censor_style": "pixelate",  # or "blur"
+        "strength": 50,              # censor strength, 1-100
+    }
+
+    def _get_extra(self, key):
+        return self._extras[key]
+
+    def _set_extra(self, key, value):
+        if self._extras[key] != value:
+            self._extras[key] = value
+            self._notify_change()
+
+    bold = property(lambda self: self._get_extra("bold"), lambda self, v: self._set_extra("bold", v))
+    italic = property(lambda self: self._get_extra("italic"), lambda self, v: self._set_extra("italic", v))
+    underline = property(lambda self: self._get_extra("underline"), lambda self, v: self._set_extra("underline", v))
+    censor_style = property(lambda self: self._get_extra("censor_style"), lambda self, v: self._set_extra("censor_style", v))
+    strength = property(lambda self: self._get_extra("strength"), lambda self, v: self._set_extra("strength", v))
 
     def _rgba_to_str(self, rgba: Gdk.RGBA) -> str:
         return f"rgba({rgba.red:.2f}, {rgba.green:.2f}, {rgba.blue:.2f}, {rgba.alpha:.2f})"
@@ -118,6 +143,7 @@ class ToolOption:
             "fill_color": (self.fill_color.red, self.fill_color.green, self.fill_color.blue, self.fill_color.alpha),
             "border_color": (self.border_color.red, self.border_color.green, self.border_color.blue, self.border_color.alpha),
             "font": self.font,
+            "extras": self._extras,
         }
         return json.dumps(data)
 
@@ -138,6 +164,7 @@ class ToolOption:
             border_color=tuple_to_rgba(data.get("border_color")),
             font=data.get("font", "Adwaita Sans"),
             on_change_callback=on_change_callback,
+            extras=data.get("extras"),
         )
 
     def copy(self, is_temporary: bool = False) -> "ToolOption":
@@ -150,6 +177,7 @@ class ToolOption:
             font=self.font,
             on_change_callback=self._on_change_callback if not is_temporary else None,
             is_temporary=is_temporary,
+            extras=dict(self._extras),
         )
 
     def update_without_notify(self, **kwargs):
@@ -163,6 +191,9 @@ class ToolOption:
             self._border_color_str = self._rgba_to_str(kwargs['border_color'])
         if 'font' in kwargs:
             self._font = kwargs['font']
+        for key in self.EXTRA_DEFAULTS:
+            if key in kwargs:
+                self._extras[key] = kwargs[key]
 
 
 class ToolOptionsManager:

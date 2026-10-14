@@ -54,7 +54,7 @@ from gradia.ui.preferences.provider_selection_window import ProviderListPage
 class GradiaMainWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'GradiaMainWindow'
 
-    SIDEBAR_WIDTH: int = 300
+    SIDEBAR_WIDTH: int = 340
 
     DELAY_CHOICES: list[int] = [0, 3, 5, 10]
     TOOL_ORDER: list[DrawingMode] = [

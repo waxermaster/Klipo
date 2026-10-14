@@ -16,7 +16,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 from typing import Optional
 from gi.repository import Gtk, Gdk, GObject, GLib
-from gradia.overlay.drawing_actions import DrawingMode
+from gradia.overlay.drawing_actions import DrawingMode, TextAction
 from gradia.ui.widget.quick_color_picker import QuickColorPicker, SimpleColorPicker
 from gradia.ui.widget.drawing_tools_grid import DrawingToolsGrid
 from gradia.backend.tool_config import ToolOption, ToolOptionsManager, ToolConfig
@@ -32,6 +32,13 @@ class DrawingToolsGroup(Gtk.Box):
     tool_title_label = Gtk.Template.Child()
     opacity_scale = Gtk.Template.Child()
     opacity_label = Gtk.Template.Child()
+    text_style_box = Gtk.Template.Child()
+    text_size_spin = Gtk.Template.Child()
+    bold_toggle = Gtk.Template.Child()
+    italic_toggle = Gtk.Template.Child()
+    underline_toggle = Gtk.Template.Child()
+    color_label = Gtk.Template.Child()
+    size_label = Gtk.Template.Child()
     color_picker = Gtk.Template.Child()
     extra_stack = Gtk.Template.Child()
     extra_stack_revealer = Gtk.Template.Child()
@@ -100,8 +107,18 @@ class DrawingToolsGroup(Gtk.Box):
         self.tool_title_icon.set_from_icon_name(tool_config.icon)
         self.tool_title_label.set_label(tool_config.mode.label())
 
-        self.size_scale.set_sensitive(tool_config.has_scale)
-        self.color_picker.set_sensitive(tool_config.has_primary_color)
+        is_text = tool_config.mode == DrawingMode.TEXT
+        self.text_style_box.set_visible(is_text)
+        self.color_label.set_label(_("Text Color") if is_text else _("Color"))
+        self.size_scale.set_visible(tool_config.has_scale)
+        self.size_label.set_visible(tool_config.has_scale)
+        self.color_picker.set_visible(tool_config.has_primary_color)
+        self.color_label.set_visible(tool_config.has_primary_color)
+        self.bold_toggle.set_active(tool_option.bold)
+        self.italic_toggle.set_active(tool_option.italic)
+        self.underline_toggle.set_active(tool_option.underline)
+        if is_text:
+            self.text_size_spin.set_value(self._get_text_size())
         self.extra_stack.set_visible_child_name(tool_config.shown_stack)
         self.extra_stack_revealer.set_reveal_child(tool_config.shown_stack != "empty")
 
@@ -230,6 +247,58 @@ class DrawingToolsGroup(Gtk.Box):
         color.alpha = self.opacity_scale.get_value() / 100
         active_tool_option.primary_color = color
         self.apply_changes()
+
+    def _get_overlay(self):
+        root = self.get_root()
+        return root.drawing_overlay if root else None
+
+    def _get_selected_text_action(self):
+        overlay = self._get_overlay()
+        if overlay is None:
+            return None
+        for action in (overlay.editing_text_action, overlay.selected_action):
+            if isinstance(action, TextAction):
+                return action
+        return None
+
+    def _get_text_size(self) -> float:
+        action = self._get_selected_text_action()
+        if action is not None:
+            return action.font_size
+        overlay = self._get_overlay()
+        return overlay.font_size if overlay else 22
+
+    @Gtk.Template.Callback()
+    def on_text_size_changed(self, adjustment: Gtk.Adjustment):
+        if self._updating_ui:
+            return
+        overlay = self._get_overlay()
+        if overlay is None:
+            return
+        size = adjustment.get_value()
+        action = self._get_selected_text_action()
+        if action is not None:
+            action.font_size = size
+        else:
+            overlay.font_size = size
+        overlay.queue_draw()
+
+    @Gtk.Template.Callback()
+    def on_text_style_toggled(self, _button: Gtk.ToggleButton):
+        if self._updating_ui:
+            return
+        active_tool_option = self._get_active_tool_option()
+        if active_tool_option is None:
+            return
+        active_tool_option.bold = self.bold_toggle.get_active()
+        active_tool_option.italic = self.italic_toggle.get_active()
+        active_tool_option.underline = self.underline_toggle.get_active()
+        self.apply_changes()
+
+    @Gtk.Template.Callback()
+    def on_no_background_clicked(self, _button: Gtk.Button):
+        transparent = Gdk.RGBA(0, 0, 0, 0)
+        self.fill_2.set_color(transparent)
 
     @Gtk.Template.Callback()
     def on_opacity_changed(self, adjustment: Gtk.Adjustment):
