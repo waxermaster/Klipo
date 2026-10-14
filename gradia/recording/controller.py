@@ -56,7 +56,7 @@ class RecordingController:
             return
         self._hold()
         self.app.withdraw_notification(NOTIFICATION_RESULT)
-        self.recorder.start()
+        self.recorder.start(self.recorder.settings.video_source)
 
     def stop(self) -> None:
         self.recorder.stop()
@@ -77,7 +77,7 @@ class RecordingController:
     # Recorder events
 
     def _on_state_changed(self, recorder: Recorder) -> None:
-        if recorder.state == RecorderState.RECORDING and self._indicator is None:
+        if recorder.state in (RecorderState.COUNTDOWN, RecorderState.RECORDING) and self._indicator is None:
             self._hide_editor_windows()
             self._indicator = RecordingIndicator(recorder, application=self.app)
             self._indicator.present()

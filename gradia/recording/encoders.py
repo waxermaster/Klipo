@@ -42,7 +42,7 @@ _CONVERT = f"videoconvert chroma-mode=none dither=none matrix-mode=output-only n
 class Encoder:
     name: str           # shown to the user, e.g. "NVIDIA NVENC"
     element: str        # factory that must exist
-    video_bin: str      # gst-launch description, from raw video to encoded stream
+    description: str    # gst-launch description, from raw media to encoded stream
     hardware: bool = False
 
 
@@ -53,7 +53,11 @@ class VideoFormat:
     extension: str
     muxer: Optional[str]          # None when the encoder writes the file format itself (GIF)
     encoders: tuple[Encoder, ...]
-    supports_audio: bool = True
+    audio_encoders: tuple[Encoder, ...] = ()
+
+    @property
+    def supports_audio(self) -> bool:
+        return bool(self.audio_encoders)
 
 
 H264_SOFTWARE = Encoder(
@@ -75,6 +79,10 @@ FORMATS: dict[str, VideoFormat] = {
             Encoder("OpenH264", "openh264enc",
                     f"{_CONVERT} ! video/x-raw,format=I420 ! openh264enc ! h264parse"),
         ),
+        (
+            Encoder("AAC", "avenc_aac", "audioconvert ! avenc_aac bitrate=192000 ! aacparse"),
+            Encoder("MP3", "lamemp3enc", "audioconvert ! lamemp3enc ! mpegaudioparse"),
+        ),
     ),
     "webm": VideoFormat(
         "webm", "WebM (VP8)", "webm",
@@ -84,12 +92,12 @@ FORMATS: dict[str, VideoFormat] = {
                     f"{_CONVERT} ! vp8enc max-quantizer=17 cpu-used=16 deadline=1 static-threshold=100 "
                     f"keyframe-mode=disabled buffer-size=20000 threads={_THREADS}"),
         ),
+        (Encoder("Opus", "opusenc", "audioconvert ! opusenc"),),
     ),
     "gif": VideoFormat(
         "gif", "GIF", "gif",
         None,
         (Encoder("GIF", "gifenc", f"{_CONVERT} ! gifenc repeat=-1 speed=30"),),
-        supports_audio=False,
     ),
 }
 
@@ -98,17 +106,18 @@ FALLBACK_FORMAT = "webm"
 _probe_cache: dict[str, bool] = {}
 
 
-def _encoder_works(encoder: Encoder) -> bool:
+_VIDEO_TEST_SOURCE = "videotestsrc num-buffers=5 ! video/x-raw,width=320,height=240,framerate=30/1"
+_AUDIO_TEST_SOURCE = "audiotestsrc num-buffers=10 ! audio/x-raw,rate=48000,channels=2"
+
+
+def _encoder_works(encoder: Encoder, test_source: str = _VIDEO_TEST_SOURCE) -> bool:
     if encoder.element in _probe_cache:
         return _probe_cache[encoder.element]
 
     works = False
     if Gst.ElementFactory.find(encoder.element) is not None:
         try:
-            pipeline = Gst.parse_launch(
-                "videotestsrc num-buffers=5 ! video/x-raw,width=320,height=240,framerate=30/1 "
-                f"! {encoder.video_bin} ! fakesink"
-            )
+            pipeline = Gst.parse_launch(f"{test_source} ! {encoder.description} ! fakesink")
             pipeline.set_state(Gst.State.PLAYING)
             message = pipeline.get_bus().timed_pop_filtered(
                 5 * Gst.SECOND, Gst.MessageType.EOS | Gst.MessageType.ERROR)
@@ -132,3 +141,11 @@ def choose(format_id: str) -> tuple[VideoFormat, Encoder, bool]:
                 logger.info(f"Recording {video_format.label} with {encoder.name}")
                 return video_format, encoder, video_format is not wanted
     raise RuntimeError("No working video encoder found")
+
+
+def choose_audio(video_format: VideoFormat) -> Optional[Encoder]:
+    """Audio encoder for a format, or None if it has no audio or none works."""
+    for encoder in video_format.audio_encoders:
+        if _encoder_works(encoder, _AUDIO_TEST_SOURCE):
+            return encoder
+    return None

@@ -143,6 +143,22 @@ class Settings:
         return self._settings.get_boolean("video-show-pointer")
 
     @property
+    def video_source(self) -> str:
+        return self._settings.get_string("video-source")
+
+    @property
+    def record_countdown(self) -> int:
+        return self._settings.get_uint("record-countdown")
+
+    @property
+    def record_desktop_audio(self) -> bool:
+        return self._settings.get_boolean("record-desktop-audio")
+
+    @property
+    def record_microphone(self) -> bool:
+        return self._settings.get_boolean("record-microphone")
+
+    @property
     def screencast_restore_token(self) -> str:
         return self._settings.get_string("screencast-restore-token")
 

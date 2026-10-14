@@ -85,9 +85,13 @@ class RecordingIndicator(Adw.ApplicationWindow):
         self.connect("map", lambda *_: GLib.timeout_add(100, self._keep_above))
         self.connect("close-request", self._on_close_request)
         self._update()
+        self._on_tick()
 
     def _on_tick(self) -> bool:
-        self.time_label.set_label(format_duration(self.recorder.elapsed_seconds()))
+        if self.recorder.state == RecorderState.COUNTDOWN:
+            self.time_label.set_label(str(self.recorder.countdown_left))
+        else:
+            self.time_label.set_label(format_duration(self.recorder.elapsed_seconds()))
         return True
 
     def _update(self) -> None:
@@ -102,7 +106,11 @@ class RecordingIndicator(Adw.ApplicationWindow):
             self.dot.remove_css_class("paused")
 
         caption = f"{self.recorder.format_label} · {self.recorder.settings.video_framerate} fps"
-        if state == RecorderState.PAUSED:
+        if getattr(self.recorder, "has_audio", False):
+            caption += " · " + _("Audio")
+        if state == RecorderState.COUNTDOWN:
+            caption = _("Recording starts in…")
+        elif state == RecorderState.PAUSED:
             caption = _("Paused")
         elif state == RecorderState.STOPPING:
             caption = _("Saving…")

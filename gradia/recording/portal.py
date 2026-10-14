@@ -98,6 +98,7 @@ class ScreenCastSession:
         show_pointer: bool = True,
         restore_token: str = "",
         multiple: bool = False,
+        persist: bool = True,
     ) -> None:
         self._on_ready = on_ready
         self._on_error = on_error
@@ -106,6 +107,7 @@ class ScreenCastSession:
             "cursor_mode": self._cursor_mode(show_pointer),
             "restore_token": restore_token,
             "multiple": multiple,
+            "persist": persist,
         }
         if not self._options["source_types"]:
             self._fail(PortalError(_("The desktop does not support screen recording")))
@@ -142,8 +144,9 @@ class ScreenCastSession:
                 "types": GLib.Variant("u", self._options["source_types"]),
                 "multiple": GLib.Variant("b", self._options["multiple"]),
                 "cursor_mode": GLib.Variant("u", self._options["cursor_mode"]),
-                "persist_mode": GLib.Variant("u", PERSIST_UNTIL_REVOKED),
             }
+            if self._options["persist"]:
+                options["persist_mode"] = GLib.Variant("u", PERSIST_UNTIL_REVOKED)
             if self._options["restore_token"]:
                 options["restore_token"] = GLib.Variant("s", self._options["restore_token"])
             return GLib.Variant("(oa{sv})", (self._session_handle, options))

@@ -11,6 +11,7 @@
     "--socket=wayland",
     "--filesystem=xdg-pictures",
     "--filesystem=xdg-videos",
+    "--socket=pulseaudio",
     "--share=network"
   ],
   "build-options": {

@@ -102,6 +102,28 @@
       <default>true</default>
       <summary>Show the mouse pointer in screen recordings</summary>
     </key>
+    <key name="video-source" type="s">
+      <choices>
+        <choice value="screen"/>
+        <choice value="window"/>
+        <choice value="area"/>
+      </choices>
+      <default>'screen'</default>
+      <summary>What to record: a screen, a window or an area</summary>
+    </key>
+    <key name="record-countdown" type="u">
+      <range min="0" max="10"/>
+      <default>0</default>
+      <summary>Seconds of countdown before a recording starts</summary>
+    </key>
+    <key name="record-desktop-audio" type="b">
+      <default>false</default>
+      <summary>Record the sound played by the computer</summary>
+    </key>
+    <key name="record-microphone" type="b">
+      <default>false</default>
+      <summary>Record the microphone</summary>
+    </key>
     <key name="screencast-restore-token" type="s">
       <default>''</default>
       <summary>Portal token used to record again without asking which screen</summary>
