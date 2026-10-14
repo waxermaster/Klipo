@@ -80,8 +80,8 @@ python3 -m unittest discover -s tests
 1. Rename, single instance, command line options, Flatpak build ✅
 2. ksnip-style editor, reliable clipboard copy, close without confirmation ✅
 3. `install-shortcuts.sh` for GNOME keyboard shortcuts ✅
-4. Basic video recording (screen, MP4)
-5. Area and window recording, audio, GIF/WebM, countdown, preview
+4. Basic video recording (screen, MP4) ✅
+5. Area and window recording, audio, GIF/WebM, countdown, preview ✅
 6. Preferences, translations, documentation
 
 ## Credits
