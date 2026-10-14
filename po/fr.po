@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gradia\n"
+"Project-Id-Version: klipo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 15:35+0200\n"
+"POT-Creation-Date: 2026-10-13 23:30-0400\n"
 "PO-Revision-Date: 2026-05-01 21:57+0900\n"
 "Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
 "Language-Team: \n"
@@ -19,115 +19,81 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.9\n"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:2
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:11
-msgid "Gradia"
-msgstr "Gradia"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:2
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:11
+msgid "Klipo"
+msgstr "Klipo"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:3
-msgid "Make your images ready for the world"
-msgstr "Préparez vos images pour le monde entier"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:3
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:12
+#: gradia/ui/ui_parts.py:32
+msgid "Take, annotate and copy screenshots"
+msgstr "Capturez, annotez et copiez vos captures d’écran"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:10
-msgid "Image;Gradient;Background;Screenshot;Edit;"
-msgstr "Image;Dégradé;Arrière-plan;Capture d’écran;Modification;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/io.github.waxermaster.Klipo.desktop.in.in:12
+msgid "Screenshot;Capture;Annotate;Snip;Clipboard;Edit;"
+msgstr "Capture d’écran;Capture;Annoter;Découper;Presse-papiers;Modifier;Screenshot;"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:15
+#: data/io.github.waxermaster.Klipo.desktop.in.in:18
 msgid "New Window"
 msgstr "Nouvelle fenêtre"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:20
-msgid "Take Screenshot"
-msgstr "Prendre une capture d’écran"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:23
+msgid "Capture Area"
+msgstr "Capturer une zone"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:25
-msgid "Take Fullscreen Screenshot"
-msgstr "Prendre une capture d’écran en plein écran"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:28
+msgid "Capture All Screens"
+msgstr "Capturer tous les écrans"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:12
-msgid "Annotate your screenshots"
-msgstr "Annotez vos captures d’écran"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:33
+msgid "Capture Window"
+msgstr "Capturer une fenêtre"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:15
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:15
 msgid ""
-"Gradia helps you get your screenshots ready for sharing, whether quickly "
-"with friends or colleagues, or professionally with the entire world."
-msgstr ""
-"Gradia vous aide à préparer vos captures d’écran pour les partager, que ce "
-"soit rapidement avec des amis ou des collègues, ou professionnellement avec "
-"le monde entier."
+"Klipo is a fast screenshot tool: press a shortcut, select an area, annotate "
+"it and copy it to the clipboard, without ever having to save a file."
+msgstr "Klipo est un outil de capture d’écran rapide : un raccourci, une zone sélectionnée, quelques annotations, et l’image est dans le presse-papiers, sans jamais devoir enregistrer de fichier."
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:16
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:16
 msgid "Key features:"
 msgstr "Fonctionnalités clés :"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:18
-msgid "Ten annotation modes, including text, arrow, and censor"
-msgstr "Dix modes d’annotation, dont texte, flèche et censure"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:18
+msgid "Area, window and full screen capture through the desktop portal"
+msgstr "Capture d’une zone, d’une fenêtre ou de l’écran entier via le portail du bureau"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:19
-msgid "Optional image and gradient backgrounds"
-msgstr "Images et dégradés en arrière-plan facultatifs"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:19
+msgid ""
+"Annotations that stay editable: arrows, shapes, text, highlighter, numbered "
+"steps and censoring"
+msgstr "Des annotations qui restent modifiables : flèches, formes, texte, surligneur, étapes numérotées et floutage"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:20
-msgid "Image settings like shadow, padding, and auto-balance"
-msgstr ""
-"Paramètres d’image tels que l’ombre portée, la marge interne et la balance "
-"automatique"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:20
+msgid "One-key tool shortcuts and a compact editor"
+msgstr "Un raccourci d’une lettre par outil et un éditeur compact"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:21
-msgid "Quick upload flow to easily share images via services like Imgur"
-msgstr ""
-"Flux de téléversement rapide pour partager facilement les images via des "
-"services tels qu’Imgur"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:21
+msgid "Optional backgrounds, padding and shadows"
+msgstr "Arrière-plans, marges et ombres facultatifs"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:22
-msgid "Convert code snippets into clean high-resolution images"
-msgstr "Convertissez des extraits de code en images nettes haute résolution"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:22
+msgid "Text recognition and quick upload"
+msgstr "Reconnaissance de texte et envoi rapide"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:26
-msgid "Alexander Vanhee"
-msgstr "Alexander Vanhee"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:24
+msgid "Klipo is a fork of Gradia by Alexander Vanhee."
+msgstr "Klipo est un dérivé de Gradia, d’Alexander Vanhee."
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:266
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:270
-msgid "Edited screenshot"
-msgstr "Capture d’écran modifiée"
-
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:274
-msgid "Startup view"
-msgstr "Vue au démarrage"
-
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:278
-msgid "UI element showcase"
-msgstr "Présentation des éléments d’IU"
-
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:282
-#: data/ui/image_generator_window.blp:5 data/ui/image_sidebar.blp:224
-#: data/ui/welcome_page.blp:79
-#: gradia/ui/image_creation/source_image_generator.py:397
-msgid "Source Snippets"
-msgstr "Extraits de code source"
-
-#: data/ui/background_selector.blp:15
-msgid "None"
-msgstr "Aucun"
-
-#: data/ui/background_selector.blp:20
-msgid "Solid"
-msgstr "Plein"
-
-#: data/ui/background_selector.blp:25
-msgid "Gradient"
-msgstr "Dégradé"
-
-#: data/ui/background_selector.blp:30
-msgid "Image"
-msgstr "Image"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:27
+msgid "Wilfred"
+msgstr "Wilfred"
 
 #: data/ui/confirm_close_dialog.blp:5
-msgid "Close Gradia?"
-msgstr "Fermer Gradia ?"
+msgid "Close Klipo?"
+msgstr "Fermer Klipo ?"
 
 #: data/ui/confirm_close_dialog.blp:6
 msgid "Are you sure you want to exit? All unsaved changes will be lost."
@@ -137,11 +103,11 @@ msgstr ""
 
 #: data/ui/confirm_close_dialog.blp:11
 #: gradia/ui/dialog/delete_screenshots_dialog.py:54
-#: gradia/ui/image_exporters.py:149 gradia/ui/window.py:479
+#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:700
 msgid "Cancel"
 msgstr "Annuler"
 
-#: data/ui/confirm_close_dialog.blp:12 data/ui/ocr_dialog.blp:83
+#: data/ui/confirm_close_dialog.blp:12 data/ui/ocr_dialog.blp:94
 msgid "Copy"
 msgstr "Copier"
 
@@ -153,111 +119,164 @@ msgstr "Fermer"
 msgid "Don't Ask Again"
 msgstr "Ne plus demander"
 
-#: data/ui/drawing_tools_group.blp:7
-msgid "Annotation Tools"
-msgstr "Outils d’annotation"
+#: data/ui/drawing_tools_group.blp:16
+#: data/ui/preferences/provider_detail_page.blp:56
+#: gradia/overlay/drawing_actions.py:54 gradia/ui/ui_parts.py:130
+msgid "Select"
+msgstr "Sélection"
 
-#: data/ui/drawing_tools_group.blp:60 data/ui/drawing_tools_group.blp:75
+#: data/ui/drawing_tools_group.blp:35
+msgid "Font"
+msgstr "Police"
+
+#: data/ui/drawing_tools_group.blp:50 data/ui/drawing_tools_group.blp:221
+msgid "Size"
+msgstr "Taille"
+
+#: data/ui/drawing_tools_group.blp:84 data/ui/drawing_tools_group.blp:96
+msgid "Bold"
+msgstr "Gras"
+
+#: data/ui/drawing_tools_group.blp:102 data/ui/drawing_tools_group.blp:114
+msgid "Italic"
+msgstr "Italique"
+
+#: data/ui/drawing_tools_group.blp:120 data/ui/drawing_tools_group.blp:132
+msgid "Underline"
+msgstr "Souligné"
+
+#: data/ui/drawing_tools_group.blp:152
+msgid "Blur"
+msgstr "Flou"
+
+#: data/ui/drawing_tools_group.blp:157
+msgid "Pixelate"
+msgstr "Pixeliser"
+
+#: data/ui/drawing_tools_group.blp:164
+msgid "Strength"
+msgstr "Intensité"
+
+#: data/ui/drawing_tools_group.blp:192
+msgid ""
+"Hides sensitive information. The original pixels are never kept in copied or "
+"saved images."
+msgstr "Masque les informations sensibles. Les pixels d’origine ne sont jamais conservés dans les images copiées ou enregistrées."
+
+#: data/ui/drawing_tools_group.blp:205 gradia/ui/drawing_tools_group.py:123
+msgid "Color"
+msgstr "Couleur"
+
+#: data/ui/drawing_tools_group.blp:275 data/ui/drawing_tools_group.blp:292
 msgid "Fill"
 msgstr "Remplir"
 
-#: data/ui/drawing_tools_group.blp:82
+#: data/ui/drawing_tools_group.blp:299
 msgid "Border"
 msgstr "Bordure"
 
-#: data/ui/drawing_tools_group.blp:98
-msgid "Fill Color Picker"
-msgstr "Sélecteur de couleur de remplissage"
+#: data/ui/drawing_tools_group.blp:313 data/ui/drawing_tools_group.blp:329
+msgid "Background"
+msgstr "Fond"
 
-#: data/ui/drawing_tools_group.blp:105
-msgid "Outline Color Picker"
-msgstr "Sélecteur de couleur de contour"
+#: data/ui/drawing_tools_group.blp:335
+msgid "No Background"
+msgstr "Aucun fond"
 
-#: data/ui/gradient_step_dialog.blp:7
+#: data/ui/drawing_tools_group.blp:346
+msgid "None"
+msgstr "Aucun"
+
+#: data/ui/drawing_tools_group.blp:353 data/ui/drawing_tools_group.blp:366
+msgid "Outline"
+msgstr "Contour"
+
+#: data/ui/drawing_tools_group.blp:375
+msgid "Opacity"
+msgstr "Opacité"
+
+#: data/ui/gradient_step_dialog.blp:8
 msgid "Edit Gradient Steps"
 msgstr "Modifier les paliers"
 
-#: data/ui/gradient_step_dialog.blp:35
+#: data/ui/gradient_step_dialog.blp:49
 msgid "Gradient Steps"
 msgstr "Paliers"
 
-#: data/ui/gradient_step_dialog.blp:36
+#: data/ui/gradient_step_dialog.blp:50
 msgid "You can add up to five steps"
 msgstr "Vous pouvez ajouter jusqu’à cinq paliers"
 
-#: data/ui/gradient_step_dialog.blp:39
+#: data/ui/gradient_step_dialog.blp:54
 msgid "Add Step"
 msgstr "Ajouter un palier"
 
-#: data/ui/image_generator_window.blp:29
+#: data/ui/image_generator_window.blp:5 data/ui/welcome_page.blp:36
+#: gradia/ui/image_creation/source_image_generator.py:397
+msgid "Source Snippets"
+msgstr "Extraits de code source"
+
+#: data/ui/image_generator_window.blp:35
 msgid "Language"
 msgstr "Langue"
 
-#: data/ui/image_generator_window.blp:39
+#: data/ui/image_generator_window.blp:50
 msgid "Style"
 msgstr "Style"
 
-#: data/ui/image_generator_window.blp:54
+#: data/ui/image_generator_window.blp:72
 msgid "Default"
 msgstr "Par défaut"
 
-#: data/ui/image_generator_window.blp:69
+#: data/ui/image_generator_window.blp:93
 msgid "Window Frame"
 msgstr "Bordure de fenêtre"
 
-#: data/ui/image_generator_window.blp:74
+#: data/ui/image_generator_window.blp:99
 msgid "Add a window frame around the code"
 msgstr "Ajouter une bordure de fenêtre autour du code"
 
-#: data/ui/image_generator_window.blp:81
+#: data/ui/image_generator_window.blp:108
 msgid "Line Numbers"
 msgstr "Numéros de ligne"
 
-#: data/ui/image_generator_window.blp:86
+#: data/ui/image_generator_window.blp:114
 msgid "Add a number before each new line of code"
 msgstr "Ajouter un numéro avant chaque nouvelle ligne de code"
 
-#: data/ui/image_generator_window.blp:113
+#: data/ui/image_generator_window.blp:145
 msgid "Export"
 msgstr "Exporter"
 
-#: data/ui/image_sidebar.blp:17 data/ui/welcome_page.blp:60
-msgid "Open Image…"
-msgstr "Ouvrir une image…"
+#: data/ui/image_sidebar.blp:25
+msgid "Beautify"
+msgstr "Embellir"
 
-#: data/ui/image_sidebar.blp:24 data/ui/welcome_page.blp:49
-msgid "Take a Screenshot…"
-msgstr "Prendre une capture d’écran…"
-
-#: data/ui/image_sidebar.blp:31 data/ui/welcome_page.blp:24
-msgid "Main Menu"
-msgstr "Menu principal"
-
-#: data/ui/image_sidebar.blp:52
+#: data/ui/image_sidebar.blp:40
 msgid "Image Options"
 msgstr "Options de l’image"
 
-#: data/ui/image_sidebar.blp:55
-msgid "Padding"
-msgstr "Marge interne"
+#: data/ui/image_sidebar.blp:43
+msgid "_Padding"
+msgstr "_Marge interne"
 
-#: data/ui/image_sidebar.blp:67
-msgid "Corner Radius"
-msgstr "Arrondi des angles"
+#: data/ui/image_sidebar.blp:57
+msgid "_Corner Radius"
+msgstr "_Arrondi des angles"
 
-#: data/ui/image_sidebar.blp:83
-msgid "Shadow"
-msgstr "Ombre"
+#: data/ui/image_sidebar.blp:76
+msgid "_Shadow"
+msgstr "_Ombre"
 
-#: data/ui/image_sidebar.blp:103
-msgid "Auto Balance"
-msgstr "Balance automatique"
+#: data/ui/image_sidebar.blp:98
+msgid "_Auto Balance"
+msgstr "Équilibrage _automatique"
 
-#: data/ui/image_sidebar.blp:108
-msgid "Rotation"
-msgstr "Rotation"
+#: data/ui/image_sidebar.blp:104
+msgid "_Rotation"
+msgstr "_Rotation"
 
-#: data/ui/image_sidebar.blp:117
+#: data/ui/image_sidebar.blp:114
 msgid "Rotate Anticlockwise"
 msgstr "Rotation dans le sens anti-horaire"
 
@@ -265,117 +284,261 @@ msgstr "Rotation dans le sens anti-horaire"
 msgid "Rotate Clockwise"
 msgstr "Rotation dans le sens horaire"
 
-#: data/ui/image_sidebar.blp:136
+#: data/ui/image_sidebar.blp:141
 msgid "Current File"
 msgstr "Fichier actuel"
 
-#: data/ui/image_sidebar.blp:139
+#: data/ui/image_sidebar.blp:144
 msgid "Name"
 msgstr "Nom"
 
-#: data/ui/image_sidebar.blp:140 data/ui/image_sidebar.blp:146
-#: data/ui/image_sidebar.blp:165
+#: data/ui/image_sidebar.blp:145 data/ui/image_sidebar.blp:155
+#: data/ui/image_sidebar.blp:178
 msgid "N/A"
 msgstr "N/D"
 
-#: data/ui/image_sidebar.blp:145
-msgid "Location"
-msgstr "Emplacement"
+#: data/ui/image_sidebar.blp:153
+msgid "_Location"
+msgstr "_Emplacement"
 
-#: data/ui/image_sidebar.blp:156
+#: data/ui/image_sidebar.blp:168 gradia/ui/image_exporters.py:193
 msgid "Open Folder"
 msgstr "Ouvrir le dossier"
 
-#: data/ui/image_sidebar.blp:164
+#: data/ui/image_sidebar.blp:177
 msgid "Modified image size"
 msgstr "Taille de l’image modifiée"
 
-#: data/ui/image_sidebar.blp:183
-msgid "Save As…"
-msgstr "Enregistrer sous…"
-
-#: data/ui/image_sidebar.blp:194
-msgid "Copy to Clipboard"
-msgstr "Copier dans le presse-papiers"
-
-#: data/ui/image_sidebar.blp:204 gradia/ui/ui_parts.py:103
-msgid "Share Image"
-msgstr "Partager l’image"
-
-#: data/ui/image_sidebar.blp:228
-msgid "Delete Taken Screenshot(s)"
-msgstr "Supprimer les captures d’écran prises"
-
-#: data/ui/image_sidebar.blp:235 data/ui/preferences_window.blp:6
-#: data/ui/welcome_page.blp:85 gradia/ui/ui_parts.py:131
-msgid "Preferences"
-msgstr "Préférences"
-
-#: data/ui/image_sidebar.blp:239 data/ui/welcome_page.blp:89
-#: gradia/ui/ui_parts.py:130
-msgid "Keyboard Shortcuts"
-msgstr "Raccourcis clavier"
-
-#: data/ui/image_sidebar.blp:243 data/ui/welcome_page.blp:93
-msgid "About Gradia"
-msgstr "À propos de Gradia"
-
-#: data/ui/image_stack.blp:8 data/ui/welcome_page.blp:15
+#: data/ui/image_stack.blp:8 data/ui/welcome_page.blp:18
 msgid "Drop Image Here"
 msgstr "Déposez une image ici"
 
-#: data/ui/image_stack.blp:79
+#: data/ui/image_stack.blp:27
+msgid "Back"
+msgstr "Retour"
+
+#: data/ui/image_stack.blp:95
 msgid "Open Sidebar"
 msgstr "Ouvrir la barre latérale"
 
-#: data/ui/image_stack.blp:92
-msgid "Crop…"
-msgstr "Recadrer…"
+#: data/ui/image_stack.blp:111
+msgid "Crop Image"
+msgstr "Recadrer l’image"
 
-#: data/ui/image_stack.blp:105 data/ui/ocr_dialog.blp:5
-#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:91
+#: data/ui/image_stack.blp:127 data/ui/ocr_dialog.blp:5
+#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:131
 msgid "Text Extraction"
 msgstr "Extraction de texte"
 
-#: data/ui/image_stack.blp:118 gradia/ui/ui_parts.py:108
+#: data/ui/image_stack.blp:143 gradia/ui/ui_parts.py:129
 msgid "Erase Selected"
 msgstr "Effacer la sélection"
 
-#: data/ui/image_stack.blp:136
-msgid "Reset Crop Selection"
-msgstr "Réinitialiser la sélection de recadrage"
+#: data/ui/image_stack.blp:161
+msgid "Disable Crop"
+msgstr "Annuler le recadrage"
 
-#: data/ui/image_stack.blp:165
+#: data/ui/image_stack.blp:190
 msgid "Confirm"
 msgstr "Confirmer"
 
-#: data/ui/image_stack.blp:166
+#: data/ui/image_stack.blp:191
 msgid "Confirm Crop Selection"
 msgstr "Confirmer la sélection de recadrage"
 
-#: data/ui/image_stack.blp:205 gradia/ui/ui_parts.py:127
+#: data/ui/image_stack.blp:235
 msgid "Reset Zoom"
 msgstr "Réinitialiser le zoom"
 
-#: data/ui/image_stack.blp:229 gradia/ui/ui_parts.py:126
+#: data/ui/image_stack.blp:259 gradia/ui/ui_parts.py:147
 msgid "Zoom Out"
 msgstr "Zoom arrière"
 
-#: data/ui/image_stack.blp:239 gradia/ui/ui_parts.py:125
+#: data/ui/image_stack.blp:269 gradia/ui/ui_parts.py:146
 msgid "Zoom In"
 msgstr "Zoom avant"
 
-#: data/ui/image_stack.blp:255 gradia/ui/ui_parts.py:106
+#: data/ui/image_stack.blp:288 gradia/ui/ui_parts.py:127
+#: gradia/ui/window.py:260
 msgid "Undo"
 msgstr "Annuler"
 
-#: data/ui/image_stack.blp:265 gradia/ui/ui_parts.py:107
+#: data/ui/image_stack.blp:298 gradia/ui/ui_parts.py:128
+#: gradia/ui/window.py:261
 msgid "Redo"
 msgstr "Rétablir"
 
-#: data/ui/image_stack.blp:275
+#: data/ui/image_stack.blp:308
 msgid "Clear All"
 msgstr "Tout effacer"
+
+#: data/ui/main_window.blp:35 data/ui/main_window.blp:40
+msgid "Delay before capturing"
+msgstr "Délai avant la capture"
+
+#: data/ui/main_window.blp:44
+msgid "0 s"
+msgstr "0 s"
+
+#: data/ui/main_window.blp:45 gradia/recording/options_popover.py:73
+msgid "3 s"
+msgstr "3 s"
+
+#: data/ui/main_window.blp:46 gradia/recording/options_popover.py:73
+msgid "5 s"
+msgstr "5 s"
+
+#: data/ui/main_window.blp:47
+msgid "10 s"
+msgstr "10 s"
+
+#: data/ui/main_window.blp:60
+msgid "Select an area to capture (Ctrl+A)"
+msgstr "Sélectionner une zone à capturer (Ctrl+A)"
+
+#: data/ui/main_window.blp:64 gradia/recording/options_popover.py:60
+msgid "Area"
+msgstr "Zone"
+
+#: data/ui/main_window.blp:70
+msgid "Capture the active window"
+msgstr "Capturer la fenêtre active"
+
+#: data/ui/main_window.blp:74 gradia/recording/options_popover.py:60
+msgid "Window"
+msgstr "Fenêtre"
+
+#: data/ui/main_window.blp:80
+msgid "Capture the screen under the pointer"
+msgstr "Capturer l’écran sous le pointeur"
+
+#: data/ui/main_window.blp:84 gradia/recording/options_popover.py:60
+msgid "Screen"
+msgstr "Écran"
+
+#: data/ui/main_window.blp:90
+msgid "Capture all screens"
+msgstr "Capturer tous les écrans"
+
+#: data/ui/main_window.blp:94
+msgid "All Screens"
+msgstr "Tous les écrans"
+
+#: data/ui/main_window.blp:101
+msgid "Record the screen (Ctrl+Shift+Alt+R)"
+msgstr "Enregistrer l’écran (Ctrl+Maj+Alt+R)"
+
+#: data/ui/main_window.blp:102
+msgid "Recording Options"
+msgstr "Options d’enregistrement"
+
+#: data/ui/main_window.blp:106
+msgid "Video"
+msgstr "Vidéo"
+
+#: data/ui/main_window.blp:116
+msgid "Copy to Clipboard (Ctrl+C)"
+msgstr "Copier dans le presse-papiers (Ctrl+C)"
+
+#: data/ui/main_window.blp:121
+msgid "_Copy"
+msgstr "_Copier"
+
+#: data/ui/main_window.blp:131
+msgid "Save to the default folder (Ctrl+S)"
+msgstr "Enregistrer dans le dossier par défaut (Ctrl+S)"
+
+#: data/ui/main_window.blp:136
+msgid "_Save"
+msgstr "_Enregistrer"
+
+#: data/ui/main_window.blp:142
+msgid "Choose where to save (Ctrl+Shift+S)"
+msgstr "Choisir où enregistrer (Ctrl+Maj+S)"
+
+#: data/ui/main_window.blp:147
+msgid "Save _As"
+msgstr "Enregistrer _sous"
+
+#: data/ui/main_window.blp:154
+msgid "Share Image (Ctrl+M)"
+msgstr "Partager l’image (Ctrl+M)"
+
+#: data/ui/main_window.blp:161 data/ui/welcome_page.blp:28
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: data/ui/main_window.blp:209
+msgid "Zoom Out (Ctrl+−)"
+msgstr "Zoom arrière (Ctrl+−)"
+
+#: data/ui/main_window.blp:218
+msgid "Actual Size (Ctrl+1)"
+msgstr "Taille réelle (Ctrl+1)"
+
+#: data/ui/main_window.blp:231
+msgid "Zoom In (Ctrl++)"
+msgstr "Zoom avant (Ctrl++)"
+
+#: data/ui/main_window.blp:240
+msgid "Fit to Window (Ctrl+0)"
+msgstr "Ajuster à la fenêtre (Ctrl+0)"
+
+#: data/ui/main_window.blp:245
+msgid "Fit"
+msgstr "Ajuster"
+
+#: data/ui/main_window.blp:323
+msgid "_Open Image…"
+msgstr "_Ouvrir une image…"
+
+#: data/ui/main_window.blp:328
+msgid "_Paste Image"
+msgstr "_Coller une image"
+
+#: data/ui/main_window.blp:333
+msgid "Open Containing _Folder"
+msgstr "Ouvrir le _dossier"
+
+#: data/ui/main_window.blp:340
+msgid "_Pin Image on Screen"
+msgstr "É_pingler l’image à l’écran"
+
+#: data/ui/main_window.blp:345
+msgid "_Upload / Share…"
+msgstr "_Envoyer / Partager…"
+
+#: data/ui/main_window.blp:350
+msgid "Clear All _Annotations"
+msgstr "Effacer toutes les _annotations"
+
+#: data/ui/main_window.blp:355
+msgid "Recognize _Text"
+msgstr "Reconnaître le _texte"
+
+#: data/ui/main_window.blp:360
+msgid "_Source Snippets"
+msgstr "Extraits de code _source"
+
+#: data/ui/main_window.blp:365
+msgid "_Delete Taken Screenshot(s)"
+msgstr "_Supprimer les captures prises"
+
+#: data/ui/main_window.blp:372 data/ui/welcome_page.blp:94
+msgid "_Preferences"
+msgstr "_Préférences"
+
+#: data/ui/main_window.blp:377 data/ui/welcome_page.blp:99
+msgid "_Keyboard Shortcuts"
+msgstr "_Raccourcis clavier"
+
+#: data/ui/main_window.blp:382
+msgid "D_onate to Gradia"
+msgstr "Faire un _don à Gradia"
+
+#: data/ui/main_window.blp:387 data/ui/welcome_page.blp:109
+msgid "_About Klipo"
+msgstr "À _propos de Klipo"
 
 #: data/ui/ocr_dialog.blp:16
 msgid "Crop image to adjust OCR area"
@@ -385,22 +548,21 @@ msgstr "Recadrer l’image pour ajuster la zone OCR"
 msgid "Select Language"
 msgstr "Sélectionner la langue"
 
-#: data/ui/ocr_dialog.blp:52
+#: data/ui/ocr_dialog.blp:57
 msgid "No Text Found"
 msgstr "Aucun texte trouvé"
 
-#: data/ui/ocr_dialog.blp:53
+#: data/ui/ocr_dialog.blp:58
 msgid "Please make a new selection"
 msgstr "Veuillez faire une nouvelle sélection"
 
 #: data/ui/preferences/custom_provider_page.blp:6
-#: gradia/ui/preferences/provider_selection_window.py:132
 #: gradia/ui/provider_selection_window.py:133
 msgid "Custom Provider"
 msgstr "Fournisseur personnalisé"
 
 #: data/ui/preferences/custom_provider_page.blp:13
-#: gradia/ui/image_exporters.py:148
+#: gradia/ui/image_exporters.py:149 gradia/ui/ui_parts.py:118
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -418,20 +580,26 @@ msgstr ""
 "comme espace réservé pour le chemin d’accès au fichier."
 
 #: data/ui/preferences/ocr_model_page.blp:5
-#: data/ui/preferences/ocr_model_page.blp:28 data/ui/preferences_window.blp:93
 msgid "Language Models"
 msgstr "Modèles linguistiques"
 
-#: data/ui/preferences/ocr_model_page.blp:29
-msgid "Using the correct language model can improve OCR accuracy."
-msgstr ""
-"L’utilisation du modèle linguistique approprié peut améliorer la précision "
-"de l’OCR."
+#: data/ui/preferences/ocr_model_page.blp:21
+msgid "Search languages…"
+msgstr "Rechercher une langue…"
 
-#: data/ui/preferences/provider_detail_page.blp:56
-#: gradia/overlay/drawing_actions.py:54 gradia/ui/ui_parts.py:109
-msgid "Select"
-msgstr "Sélection"
+#: data/ui/preferences/ocr_model_page.blp:50
+msgid ""
+"A Language Model is required to use the OCR feature.\n"
+"Using the correct language model improves OCR accuracy."
+msgstr "Un modèle linguistique est nécessaire pour la reconnaissance de texte.\nUtiliser le modèle de la bonne langue améliore la précision."
+
+#: data/ui/preferences/ocr_model_page.blp:68
+msgid "No Results Found"
+msgstr "Aucun résultat"
+
+#: data/ui/preferences/ocr_model_page.blp:69
+msgid "Try a different search term"
+msgstr "Essayez un autre terme de recherche"
 
 #: data/ui/preferences/provider_detail_page.blp:63
 msgid "About"
@@ -489,7 +657,7 @@ msgstr "Guide des raccourcis de capture d’écran"
 msgid "Shortcut Setup Instructions"
 msgstr "Instructions de configuration des raccourcis"
 
-#: data/ui/preferences/screenshot_guide_page.blp:44
+#: data/ui/preferences/screenshot_guide_page.blp:45
 msgid ""
 "If you'd like the app to <b>open automatically</b> after taking a "
 "screenshot, you can set up a custom keyboard shortcut:\n"
@@ -498,44 +666,33 @@ msgid ""
 "1. Go to <b>Settings</b> → <b>Keyboard</b> → <b>View and Customize "
 "Shortcuts</b> → <b>Custom Shortcuts</b>.\n"
 "2. Click the <b>+</b> button to create a new shortcut.\n"
-"3. Set the <b>Name</b> to something like <i>Open Gradia with Screenshot</"
-"i>.\n"
+"3. Set the <b>Name</b> to something like <i>Klipo Screenshot</i>.\n"
 "4. For the <b>Command</b>, copy one of the commands below:"
-msgstr ""
-"Si vous souhaitez que l’application s’ouvre automatiquement après une "
-"capture d’écran, vous pouvez configurer un raccourci clavier personnalisé :\n"
-"\n"
-"<b>Étapes :</b>\n"
-"1. Accédez à <b>Paramètres</b> → <b>Clavier</b> → <b>Voir et personnaliser "
-"les raccourcis</b> → <b>Raccourcis personnalisés</b>.\n"
-"2. Cliquez sur le bouton <b>+</b> pour créer un raccourci.\n"
-"3. Définissez le <b>Nom</b> sur quelque chose comme <i>Ouvrir Gradia avec "
-"une capture d’écran</i>.\n"
-"4. Pour la <b>Commande</b>, copiez l’une des commandes ci-dessous :"
+msgstr "Si vous souhaitez que l’application <b>s’ouvre automatiquement</b> après une capture d’écran, vous pouvez créer un raccourci clavier personnalisé :\n\n<b>Étapes :</b>\n1. Ouvrez <b>Paramètres</b> → <b>Clavier</b> → <b>Afficher et personnaliser les raccourcis</b> → <b>Raccourcis personnalisés</b>.\n2. Cliquez sur le bouton <b>+</b> pour créer un raccourci.\n3. Nommez-le par exemple <i>Capture Klipo</i>.\n4. Comme <b>Commande</b>, copiez l’une des commandes ci-dessous :"
 
-#: data/ui/preferences/screenshot_guide_page.blp:59
+#: data/ui/preferences/screenshot_guide_page.blp:61
 msgid "Interactive Screenshot"
 msgstr "Capture d’écran interactive"
 
-#: data/ui/preferences/screenshot_guide_page.blp:65
+#: data/ui/preferences/screenshot_guide_page.blp:68
 msgid "Allows you to select an area to screenshot"
 msgstr "Vous permet de sélectionner une zone à capturer"
 
-#: data/ui/preferences/screenshot_guide_page.blp:75
-#: data/ui/preferences/screenshot_guide_page.blp:100
-#: data/ui/preferences/screenshot_guide_page.blp:137
+#: data/ui/preferences/screenshot_guide_page.blp:79
+#: data/ui/preferences/screenshot_guide_page.blp:106
+#: data/ui/preferences/screenshot_guide_page.blp:145
 msgid "Copy to clipboard"
 msgstr "Copier dans le presse-papiers"
 
-#: data/ui/preferences/screenshot_guide_page.blp:84
+#: data/ui/preferences/screenshot_guide_page.blp:88
 msgid "Full Screen Screenshot"
 msgstr "Capture d’écran plein écran"
 
-#: data/ui/preferences/screenshot_guide_page.blp:90
+#: data/ui/preferences/screenshot_guide_page.blp:95
 msgid "Takes a screenshot of all screens instantly"
 msgstr "Prend une capture d’écran de tous les écrans instantanément"
 
-#: data/ui/preferences/screenshot_guide_page.blp:104
+#: data/ui/preferences/screenshot_guide_page.blp:110
 msgid ""
 "5. Assign a keyboard shortcut of your choice (<tt>Ctrl + Print</tt> should "
 "be free by default)."
@@ -543,119 +700,135 @@ msgstr ""
 "5. Attribuez un raccourci clavier de votre choix (<tt>Ctrl + Impr. écran</"
 "tt> devrait être libre par défaut)."
 
-#: data/ui/preferences/screenshot_guide_page.blp:121
+#: data/ui/preferences/screenshot_guide_page.blp:127
 msgid "Delayed Screenshot"
 msgstr "Capture d’écran différée"
 
-#: data/ui/preferences/screenshot_guide_page.blp:127
+#: data/ui/preferences/screenshot_guide_page.blp:134
 msgid "Delay the capture by a given duration (in milliseconds)."
 msgstr "Retarder la capture d’une durée donnée (en millisecondes)."
 
-#: data/ui/preferences_window.blp:9 gradia/ui/ui_parts.py:129
+#: data/ui/preferences_window.blp:7 gradia/ui/ui_parts.py:158
+msgid "Preferences"
+msgstr "Préférences"
+
+#: data/ui/preferences_window.blp:11 gradia/ui/ui_parts.py:155
 msgid "General"
 msgstr "Général"
 
-#: data/ui/preferences_window.blp:11
+#: data/ui/preferences_window.blp:14
 msgid "Screenshots"
 msgstr "Captures d’écran"
 
-#: data/ui/preferences_window.blp:14
-msgid "Recent Directory"
-msgstr "Dossier récent"
+#: data/ui/preferences_window.blp:17
+msgid "_Recent Directory"
+msgstr "Dossier _récent"
 
-#: data/ui/preferences_window.blp:15
+#: data/ui/preferences_window.blp:19
 msgid "Used for home screen"
 msgstr "Utilisé pour l’écran d’accueil"
 
-#: data/ui/preferences_window.blp:35
-msgid "Screenshot Shortcut"
-msgstr "Raccourci de capture d’écran"
+#: data/ui/preferences_window.blp:45
+msgid "_Screenshot Shortcut"
+msgstr "Raccourci de _capture d’écran"
 
-#: data/ui/preferences_window.blp:39
+#: data/ui/preferences_window.blp:51
 msgid "Save Options"
 msgstr "Options d’enregistrement"
 
-#: data/ui/preferences_window.blp:41
-msgid "Image Format"
-msgstr "Format d’image"
+#: data/ui/preferences_window.blp:54
+msgid "_Image Format"
+msgstr "_Format d’image"
 
-#: data/ui/preferences_window.blp:42
+#: data/ui/preferences_window.blp:56
 msgid "Default format for saved screenshots"
 msgstr "Format par défaut pour les captures d’écran enregistrées"
 
-#: data/ui/preferences_window.blp:46
+#: data/ui/preferences_window.blp:61
 msgid "Closing"
 msgstr "Fermeture"
 
-#: data/ui/preferences_window.blp:48
-msgid "When Exiting"
-msgstr "À la fermeture"
+#: data/ui/preferences_window.blp:64
+msgid "_When Exiting"
+msgstr "_À la fermeture"
 
-#: data/ui/preferences_window.blp:51
-msgid "Overwrite last screenshot on close"
-msgstr "Écraser la dernière capture d’écran à la fermeture"
+#: data/ui/preferences_window.blp:69
+msgid "C_lose After Copying"
+msgstr "_Fermer après la copie"
 
-#: data/ui/preferences_window.blp:52
+#: data/ui/preferences_window.blp:71
+msgid "Close the editor once the image is on the clipboard"
+msgstr "Fermer l’éditeur dès que l’image est dans le presse-papiers"
+
+#: data/ui/preferences_window.blp:76
+msgid "_Overwrite Last Screenshot on Close"
+msgstr "_Écraser la dernière capture à la fermeture"
+
+#: data/ui/preferences_window.blp:78
 msgid "Replace it with the annotated version"
 msgstr "La remplacer par la version annotée"
 
-#: data/ui/preferences_window.blp:53
+#: data/ui/preferences_window.blp:79
 msgid "Replace last screenshot file with annotated version on close"
 msgstr ""
 "Remplacer le dernier fichier de capture d’écran par la version annotée à la "
 "fermeture"
 
-#: data/ui/preferences_window.blp:57
-msgid "Trash Screenshots on Close"
-msgstr "Mettre les captures d’écran à la corbeille à la fermeture"
+#: data/ui/preferences_window.blp:84
+msgid "_Trash Screenshots on Close"
+msgstr "Mettre les captures à la _corbeille à la fermeture"
 
-#: data/ui/preferences_window.blp:58
+#: data/ui/preferences_window.blp:86
 msgid "Automatically move screenshots taken from within the app to trash"
 msgstr ""
 "Déplacer automatiquement les captures d’écran prises depuis l’application "
 "vers la corbeille"
 
-#: data/ui/preferences_window.blp:59
+#: data/ui/preferences_window.blp:87
 msgid "Trash screenshots on app close"
 msgstr "Supprimer les captures d’écran à la fermeture de l’application"
 
-#: data/ui/preferences_window.blp:64
+#: data/ui/preferences_window.blp:93
 msgid "Image Upload Providers"
 msgstr "Fournisseurs de téléversement d’images"
 
-#: data/ui/preferences_window.blp:65
+#: data/ui/preferences_window.blp:94
 msgid "Connect to your favorite upload providers, or create a link yourself"
 msgstr ""
 "Connectez-vous à vos fournisseurs de téléversement préférés ou créez vous-"
 "même un lien"
 
-#: data/ui/preferences_window.blp:67
-msgid "Provider"
-msgstr "Fournisseur"
+#: data/ui/preferences_window.blp:97
+msgid "_Provider"
+msgstr "_Service"
 
-#: data/ui/preferences_window.blp:75
-#: gradia/ui/preferences/preferences_window.py:78
+#: data/ui/preferences_window.blp:108
+#: gradia/ui/preferences/preferences_window.py:81
 msgid "None Selected"
 msgstr "Aucun sélectionné"
 
-#: data/ui/preferences_window.blp:84
-msgid "Confirm on Upload"
-msgstr "Confirmer lors du téléversement"
+#: data/ui/preferences_window.blp:122
+msgid "_Confirm on Upload"
+msgstr "_Confirmer avant l’envoi"
 
-#: data/ui/preferences_window.blp:85 data/ui/preferences_window.blp:86
+#: data/ui/preferences_window.blp:124 data/ui/preferences_window.blp:125
 msgid "Ask for confirmation before running the upload command"
 msgstr ""
 "Demander une confirmation avant d’exécuter la commande de téléversement"
 
-#: data/ui/preferences_window.blp:94
+#: data/ui/preferences_window.blp:135
+msgid "_Language Models"
+msgstr "_Modèles linguistiques"
+
+#: data/ui/preferences_window.blp:137
 msgid "Download Models to improve per-language accuracy"
 msgstr "Télécharger des modèles pour améliorer la précision par langue"
 
-#: data/ui/recent_picker.blp:24
+#: data/ui/recent_picker.blp:27
 msgid "Screenshot Folder Not Found"
 msgstr "Dossier des captures d’écran introuvable"
 
-#: data/ui/recent_picker.blp:31
+#: data/ui/recent_picker.blp:35
 msgid "Please set it in the Preferences menu"
 msgstr "Veuillez le définir dans le menu Préférences"
 
@@ -668,8 +841,8 @@ msgid "Open Step Dialog"
 msgstr "Ouvrir la boîte de dialogue de paliers"
 
 #: data/ui/selectors/gradient_selector.blp:14
-msgid "Gradient Presets…"
-msgstr "Préréglages de dégradé…"
+msgid "Gradient Presets"
+msgstr "Dégradés prédéfinis"
 
 #: data/ui/selectors/gradient_selector.blp:50
 msgid "Linear"
@@ -692,8 +865,8 @@ msgid "Image Background"
 msgstr "Image d’arrière-plan"
 
 #: data/ui/selectors/image_selector.blp:9
-msgid "Image Presets…"
-msgstr "Préréglages de l’image…"
+msgid "Image Presets"
+msgstr "Images prédéfinies"
 
 #: data/ui/selectors/image_selector.blp:13
 msgid "Select Image"
@@ -711,153 +884,109 @@ msgstr "Formats d’image supportés"
 msgid "Solid Color Background"
 msgstr "Couleur unie"
 
-#: data/ui/welcome_page.blp:31
+#: data/ui/welcome_page.blp:42
 msgid "Enhance an Image"
 msgstr "Améliorer une image"
 
-#: data/ui/welcome_page.blp:32
+#: data/ui/welcome_page.blp:43
 msgid "Drag and drop one here"
 msgstr "Déposez une image ici"
 
-#: gradia/app_constants.py:68
+#: data/ui/welcome_page.blp:61
+msgid "Take a Screenshot…"
+msgstr "Prendre une capture d’écran…"
+
+#: data/ui/welcome_page.blp:74
+msgid "Open Image…"
+msgstr "Ouvrir une image…"
+
+#: data/ui/welcome_page.blp:104
+msgid "_D_onate to Gradia"
+msgstr "Faire un _don à Gradia"
+
+#: gradia/app_constants.py:26
+msgid "Red Flame"
+msgstr "Flamme rouge"
+
+#: gradia/app_constants.py:32
+msgid "Sunset Orange"
+msgstr "Orange couchant"
+
+#: gradia/app_constants.py:38
+msgid "Golden Hour"
+msgstr "Heure dorée"
+
+#: gradia/app_constants.py:44
+msgid "Mint Fresh"
+msgstr "Menthe fraîche"
+
+#: gradia/app_constants.py:50
+msgid "Ocean Breeze"
+msgstr "Brise marine"
+
+#: gradia/app_constants.py:56
+msgid "Purple Dream"
+msgstr "Rêve violet"
+
+#: gradia/app_constants.py:74
 msgid "PNG Image (*.png)"
 msgstr "Image PNG (*.png)"
 
-#: gradia/app_constants.py:75
+#: gradia/app_constants.py:81
 msgid "JPEG Image (*.jpg)"
 msgstr "Image JPEG (*.jpg)"
 
-#: gradia/app_constants.py:82
+#: gradia/app_constants.py:88
 msgid "WebP Image (*.webp)"
 msgstr "Image WebP (*.webp)"
 
-#: gradia/backend/tool_config.py:214 gradia/backend/tool_config.py:223
-#: gradia/backend/tool_config.py:334 gradia/graphics/solid.py:190
+#: gradia/backend/tool_config.py:245 gradia/backend/tool_config.py:254
+#: gradia/backend/tool_config.py:365 gradia/graphics/solid.py:190
 #: gradia/ui/widget/quick_color_picker.py:24
 msgid "Red"
 msgstr "Rouge"
 
-#: gradia/backend/tool_config.py:215 gradia/backend/tool_config.py:224
-#: gradia/backend/tool_config.py:335 gradia/graphics/solid.py:193
+#: gradia/backend/tool_config.py:246 gradia/backend/tool_config.py:255
+#: gradia/backend/tool_config.py:366 gradia/graphics/solid.py:193
 #: gradia/ui/widget/quick_color_picker.py:25
 msgid "Green"
 msgstr "Vert"
 
-#: gradia/backend/tool_config.py:216 gradia/backend/tool_config.py:225
-#: gradia/backend/tool_config.py:336 gradia/graphics/solid.py:194
+#: gradia/backend/tool_config.py:247 gradia/backend/tool_config.py:256
+#: gradia/backend/tool_config.py:367 gradia/graphics/solid.py:194
 #: gradia/ui/widget/quick_color_picker.py:26
 msgid "Blue"
 msgstr "Bleu"
 
-#: gradia/backend/tool_config.py:217 gradia/backend/tool_config.py:226
-#: gradia/backend/tool_config.py:337 gradia/graphics/solid.py:192
+#: gradia/backend/tool_config.py:248 gradia/backend/tool_config.py:257
+#: gradia/backend/tool_config.py:368 gradia/graphics/solid.py:192
 #: gradia/ui/widget/quick_color_picker.py:27
 msgid "Yellow"
 msgstr "Jaune"
 
-#: gradia/backend/tool_config.py:218 gradia/backend/tool_config.py:228
+#: gradia/backend/tool_config.py:249 gradia/backend/tool_config.py:259
 #: gradia/graphics/solid.py:201 gradia/ui/widget/quick_color_picker.py:28
 msgid "Black"
 msgstr "Noir"
 
-#: gradia/backend/tool_config.py:219 gradia/backend/tool_config.py:227
-#: gradia/backend/tool_config.py:339 gradia/graphics/solid.py:200
+#: gradia/backend/tool_config.py:250 gradia/backend/tool_config.py:258
+#: gradia/backend/tool_config.py:370 gradia/graphics/solid.py:200
 #: gradia/ui/widget/quick_color_picker.py:29
 msgid "White"
 msgstr "Blanc"
 
-#: gradia/backend/tool_config.py:229 gradia/graphics/solid.py:203
+#: gradia/backend/tool_config.py:260 gradia/graphics/solid.py:203
 #: gradia/ui/widget/quick_color_picker.py:33
 msgid "Transparent"
 msgstr "Transparent"
 
-#: gradia/backend/tool_config.py:338 gradia/graphics/solid.py:195
+#: gradia/backend/tool_config.py:369 gradia/graphics/solid.py:195
 msgid "Purple"
 msgstr "Violet"
 
-#: gradia/backend/ocr.py:42
-msgid "English"
-msgstr "Anglais"
-
-#: gradia/backend/ocr.py:43
-msgid "Chinese Simplified"
-msgstr "Chinois simplifié"
-
-#: gradia/backend/ocr.py:44
-msgid "Chinese Traditional"
-msgstr "Chinois traditionnel"
-
-#: gradia/backend/ocr.py:45
-msgid "Spanish"
-msgstr "Espagnol"
-
-#: gradia/backend/ocr.py:46
-msgid "French"
-msgstr "Français"
-
-#: gradia/backend/ocr.py:47
-msgid "German"
-msgstr "Allemand"
-
-#: gradia/backend/ocr.py:48
-msgid "Japanese"
-msgstr "Japonais"
-
-#: gradia/backend/ocr.py:49
-msgid "Arabic"
-msgstr "Arabe"
-
-#: gradia/backend/ocr.py:50
-msgid "Russian"
-msgstr "Russe"
-
-#: gradia/backend/ocr.py:51
-msgid "Portuguese"
-msgstr "Portugais"
-
-#: gradia/backend/ocr.py:52
-msgid "Italian"
-msgstr "Italien"
-
-#: gradia/backend/ocr.py:53
-msgid "Korean"
-msgstr "Coréen"
-
-#: gradia/backend/ocr.py:54
-msgid "Hindi"
-msgstr "Hindi"
-
-#: gradia/backend/ocr.py:55
-msgid "Dutch"
-msgstr "Néerlandais"
-
-#: gradia/backend/ocr.py:56
-msgid "Turkish"
-msgstr "Turc"
-
-#: gradia/backend/ocr.py:57
-msgid "Kazakh"
-msgstr "Kazakh"
-
-#: gradia/backend/ocr.py:58
-msgid "Occitan"
-msgstr "Occitan"
-
-#: gradia/backend/ocr.py:59
-msgid "Polish"
-msgstr "Polonais"
-
-#: gradia/backend/ocr.py:60
-msgid "Ukrainian"
-msgstr "Ukrainien"
-
-#: gradia/backend/ocr.py:61
-msgid "Telugu"
-msgstr "Télougou"
-
-#: gradia/graphics/solid.py:130
-msgid "More Colors..."
-msgstr "Plus de couleurs..."
+#: gradia/graphics/solid.py:130 gradia/ui/widget/quick_color_picker.py:103
+msgid "More Colors"
+msgstr "Plus de couleurs"
 
 #: gradia/graphics/solid.py:191
 msgid "Orange"
@@ -883,41 +1012,229 @@ msgstr "Cyan pastel"
 msgid "Gray"
 msgstr "Gris"
 
-#: gradia/overlay/drawing_actions.py:48 gradia/ui/ui_parts.py:110
+#: gradia/overlay/crop_overlay.py:36
+#: gradia/ui/widget/background_aspect_ratio_selector.py:52
+msgid "_Aspect Ratio"
+msgstr "_Format"
+
+#: gradia/overlay/drawing_actions.py:48 gradia/ui/ui_parts.py:135
 msgid "Pen"
 msgstr "Stylo"
 
-#: gradia/overlay/drawing_actions.py:49 gradia/ui/ui_parts.py:113
+#: gradia/overlay/drawing_actions.py:49 gradia/ui/ui_parts.py:131
 msgid "Arrow"
 msgstr "Flèche"
 
-#: gradia/overlay/drawing_actions.py:50 gradia/ui/ui_parts.py:112
+#: gradia/overlay/drawing_actions.py:50 gradia/ui/ui_parts.py:132
 msgid "Line"
 msgstr "Ligne"
 
-#: gradia/overlay/drawing_actions.py:51 gradia/ui/ui_parts.py:114
+#: gradia/overlay/drawing_actions.py:51 gradia/ui/ui_parts.py:133
 msgid "Rectangle"
 msgstr "Rectangle"
 
-#: gradia/overlay/drawing_actions.py:52 gradia/ui/ui_parts.py:115
-msgid "Oval"
-msgstr "Ovale"
+#: gradia/overlay/drawing_actions.py:52 gradia/ui/ui_parts.py:134
+msgid "Ellipse"
+msgstr "Ellipse"
 
-#: gradia/overlay/drawing_actions.py:53 gradia/ui/ui_parts.py:111
+#: gradia/overlay/drawing_actions.py:53 gradia/ui/ui_parts.py:137
 msgid "Text"
 msgstr "Texte"
 
-#: gradia/overlay/drawing_actions.py:55 gradia/ui/ui_parts.py:116
+#: gradia/overlay/drawing_actions.py:55 gradia/ui/ui_parts.py:136
 msgid "Highlighter"
 msgstr "Surligneur"
 
-#: gradia/overlay/drawing_actions.py:56 gradia/ui/ui_parts.py:117
-msgid "Censor"
-msgstr "Censure"
+#: gradia/overlay/drawing_actions.py:56
+msgid "Blur / Pixelate"
+msgstr "Flou / pixelisation"
 
-#: gradia/overlay/drawing_actions.py:57 gradia/ui/ui_parts.py:118
-msgid "Number"
-msgstr "Numéro"
+#: gradia/overlay/drawing_actions.py:57 gradia/ui/ui_parts.py:139
+msgid "Numbered Step"
+msgstr "Étape numérotée"
+
+#: gradia/recording/area_selector.py:51 gradia/recording/area_selector.py:103
+msgid "Select Area to Record"
+msgstr "Sélectionner la zone à enregistrer"
+
+#: gradia/recording/area_selector.py:83
+msgid "Esc  Cancel  ·  Enter  Record  ·  Drag handles to resize"
+msgstr "Échap  Annuler  ·  Entrée  Enregistrer  ·  Tirez les poignées pour redimensionner"
+
+#: gradia/recording/area_selector.py:91
+msgid "_Cancel"
+msgstr "_Annuler"
+
+#: gradia/recording/area_selector.py:94
+msgid "_Reset"
+msgstr "_Réinitialiser"
+
+#: gradia/recording/area_selector.py:99
+msgid "_Record"
+msgstr "_Enregistrer"
+
+#: gradia/recording/area_selector.py:104
+msgid "Drag to select, Enter to record"
+msgstr "Faites glisser pour sélectionner, Entrée pour enregistrer"
+
+#: gradia/recording/controller.py:111
+msgid "Recording Failed"
+msgstr "Échec de l’enregistrement"
+
+#: gradia/recording/controller.py:122
+msgid "Recording Paused"
+msgstr "Enregistrement en pause"
+
+#: gradia/recording/controller.py:122
+msgid "Klipo Is Recording"
+msgstr "Klipo enregistre"
+
+#: gradia/recording/controller.py:126 gradia/recording/indicator.py:101
+msgid "Resume"
+msgstr "Reprendre"
+
+#: gradia/recording/controller.py:126 gradia/recording/indicator.py:65
+#: gradia/recording/indicator.py:101
+msgid "Pause"
+msgstr "Pause"
+
+#: gradia/recording/controller.py:127
+msgid "Stop"
+msgstr "Arrêter"
+
+#: gradia/recording/indicator.py:45
+msgid "Klipo Recording"
+msgstr "Enregistrement Klipo"
+
+#: gradia/recording/indicator.py:69
+msgid "Stop Recording"
+msgstr "Arrêter l’enregistrement"
+
+#: gradia/recording/indicator.py:110
+msgid "Audio"
+msgstr "Son"
+
+#: gradia/recording/indicator.py:112
+msgid "Recording starts in…"
+msgstr "L’enregistrement commence dans…"
+
+#: gradia/recording/indicator.py:114
+msgid "Paused"
+msgstr "En pause"
+
+#: gradia/recording/indicator.py:116
+msgid "Saving…"
+msgstr "Enregistrement du fichier…"
+
+#: gradia/recording/options_popover.py:57
+msgid "Record"
+msgstr "Enregistrer"
+
+#: gradia/recording/options_popover.py:69
+msgid "60 fps"
+msgstr "60 i/s"
+
+#: gradia/recording/options_popover.py:73
+msgid "Off"
+msgstr "Non"
+
+#: gradia/recording/options_popover.py:80
+msgid "Show Pointer"
+msgstr "Afficher le pointeur"
+
+#: gradia/recording/options_popover.py:81
+msgid "System Sound"
+msgstr "Son du système"
+
+#: gradia/recording/options_popover.py:82
+msgid "Microphone"
+msgstr "Microphone"
+
+#: gradia/recording/options_popover.py:91
+msgid "_Start Recording"
+msgstr "_Démarrer l’enregistrement"
+
+#: gradia/recording/options_popover.py:94
+msgid "Ctrl+Shift+Alt+R to start or stop"
+msgstr "Ctrl+Maj+Alt+R pour démarrer ou arrêter"
+
+#: gradia/recording/options_popover.py:100
+msgid "Format"
+msgstr "Format"
+
+#: gradia/recording/options_popover.py:101
+msgid "Frame Rate"
+msgstr "Images par seconde"
+
+#: gradia/recording/options_popover.py:102
+msgid "Countdown"
+msgstr "Compte à rebours"
+
+#: gradia/recording/portal.py:113
+msgid "The desktop does not support screen recording"
+msgstr "Le bureau ne prend pas en charge l’enregistrement d’écran"
+
+#: gradia/recording/portal.py:211 gradia/recording/recorder.py:162
+msgid "Screen recording was cancelled"
+msgstr "L’enregistrement de l’écran a été annulé"
+
+#: gradia/recording/portal.py:213
+msgid "The desktop refused to start screen recording"
+msgstr "Le bureau a refusé de démarrer l’enregistrement d’écran"
+
+#: gradia/recording/preview.py:65 gradia/recording/preview.py:68
+msgid "Recording Saved"
+msgstr "Enregistrement sauvegardé"
+
+#: gradia/recording/preview.py:77
+msgid "_Copy File"
+msgstr "_Copier le fichier"
+
+#: gradia/recording/preview.py:81
+msgid "Open _Folder"
+msgstr "Ouvrir le _dossier"
+
+#: gradia/recording/preview.py:85
+msgid "_Delete"
+msgstr "_Supprimer"
+
+#: gradia/recording/preview.py:88
+msgid "Move the recording to the trash"
+msgstr "Mettre l’enregistrement à la corbeille"
+
+#: gradia/recording/preview.py:94
+msgid "Paste it into Files, Discord or a browser"
+msgstr "Collez-le dans Fichiers, Discord ou un navigateur"
+
+#: gradia/recording/preview.py:120
+msgid "File copied: paste it anywhere"
+msgstr "Fichier copié : collez-le où vous voulez"
+
+#: gradia/recording/preview.py:135
+msgid "Could not move the recording to the trash"
+msgstr "Impossible de mettre l’enregistrement à la corbeille"
+
+#: gradia/recording/recorder.py:214
+#, python-brace-format
+msgid "Could not start the recording: {error}"
+msgstr "Impossible de démarrer l’enregistrement : {error}"
+
+#: gradia/recording/recorder.py:219
+msgid "Could not start the recording"
+msgstr "Impossible de démarrer l’enregistrement"
+
+#: gradia/recording/recorder.py:362
+msgid "Cannot write the video file. Check the video folder in the preferences."
+msgstr "Impossible d’écrire le fichier vidéo. Vérifiez le dossier vidéo dans les préférences."
+
+#: gradia/recording/recorder.py:364
+#, python-brace-format
+msgid "Recording failed: {error}"
+msgstr "Échec de l’enregistrement : {error}"
+
+#: gradia/recording/recorder.py:383 gradia/ui/image_exporters.py:174
+msgid "Klipo %Y-%m-%d %H-%M-%S"
+msgstr "Klipo %Y-%m-%d %H-%M-%S"
 
 #: gradia/ui/dialog/delete_screenshots_dialog.py:33
 msgid "No screenshots to delete"
@@ -951,229 +1268,349 @@ msgstr "Capture d’écran déplacée vers la corbeille"
 msgid "Screenshots moved to trash"
 msgstr "Captures d’écran déplacées vers la corbeille"
 
-#: gradia/ui/dialog/ocr_dialog.py:118
-#: gradia/ui/preferences/preferences_window.py:150
-#: gradia/ui/preferences/preferences_window.py:243
+#: gradia/ui/dialog/ocr_dialog.py:110 gradia/ui/dialog/ocr_dialog.py:124
+#: gradia/ui/preferences/preferences_window.py:153
+#: gradia/ui/preferences/preferences_window.py:247
 msgid "Copied!"
 msgstr "Copié !"
+
+#: gradia/ui/documents.py:47
+msgid "New Capture"
+msgstr "Nouvelle capture"
+
+#: gradia/ui/documents.py:49
+#, python-brace-format
+msgid "Screenshot {time}"
+msgstr "Capture {time}"
+
+#: gradia/ui/documents.py:51
+msgid "Pasted Image"
+msgstr "Image collée"
+
+#: gradia/ui/drawing_tools_group.py:123
+msgid "Text Color"
+msgstr "Couleur du texte"
 
 #: gradia/ui/image_creation/source_image_generator.py:554
 msgid "Source Snippet From %Y-%m-%d %H-%M-%S"
 msgstr "Extrait de code source du %d-%m-%Y %H:%M:%S"
 
-#: gradia/ui/image_exporters.py:103
+#: gradia/ui/image_exporters.py:104
 msgid "Edit"
 msgstr "Modifier"
 
-#: gradia/ui/image_exporters.py:106
+#: gradia/ui/image_exporters.py:107
 msgid "Enhanced Screenshot"
 msgstr "Capture d’écran améliorée"
 
-#: gradia/ui/image_exporters.py:145
+#: gradia/ui/image_exporters.py:146
 msgid "Save Image As"
 msgstr "Enregistrer l’image"
 
-#: gradia/ui/image_exporters.py:174
-msgid "Unsupported image file extension"
-msgstr "Extension de fichier image non prise en charge"
-
-#: gradia/ui/image_exporters.py:183
-msgid "Image Saved"
-msgstr "Image enregistrée"
-
-#: gradia/ui/image_exporters.py:185
+#: gradia/ui/image_exporters.py:185 gradia/ui/image_exporters.py:217
 msgid "Export Failed"
 msgstr "Échec de l’exportation"
 
-#: gradia/ui/image_exporters.py:252
+#: gradia/ui/image_exporters.py:192
+#, python-brace-format
+msgid "Saved as {name}"
+msgstr "Enregistré sous {name}"
+
+#: gradia/ui/image_exporters.py:206
+msgid "Unsupported image file extension"
+msgstr "Extension de fichier image non prise en charge"
+
+#: gradia/ui/image_exporters.py:215
+msgid "Image Saved"
+msgstr "Image enregistrée"
+
+#: gradia/ui/image_exporters.py:301
 msgid "No processed image available"
 msgstr "Aucune image traitée disponible à enregistrer"
 
-#: gradia/ui/image_exporters.py:278 gradia/ui/image_exporters.py:460
+#: gradia/ui/image_exporters.py:332 gradia/ui/image_exporters.py:516
 msgid "Image Copied"
 msgstr "Image copiée"
 
-#: gradia/ui/image_exporters.py:281 gradia/ui/image_exporters.py:288
+#: gradia/ui/image_exporters.py:337 gradia/ui/image_exporters.py:344
 msgid "Failed to copy image to clipboard"
 msgstr "Échec de la copie de l’image dans le presse-papiers"
 
-#: gradia/ui/image_exporters.py:302
+#: gradia/ui/image_exporters.py:358
 msgid "Link generated successfully"
 msgstr "Lien généré avec succès"
 
-#: gradia/ui/image_exporters.py:303
+#: gradia/ui/image_exporters.py:359
 msgid "Open Link"
 msgstr "Ouvrir le lien"
 
-#: gradia/ui/image_exporters.py:340
+#: gradia/ui/image_exporters.py:396
 msgid "Custom command failed: "
 msgstr "Échec de la commande personnalisée : "
 
-#: gradia/ui/image_exporters.py:346
+#: gradia/ui/image_exporters.py:402
 msgid "Warning: "
 msgstr "Avertissement : "
 
-#: gradia/ui/image_exporters.py:357
+#: gradia/ui/image_exporters.py:413
 msgid "Result copied to clipboard"
 msgstr "Résultat copié dans le presse-papiers"
 
-#: gradia/ui/image_exporters.py:359
+#: gradia/ui/image_exporters.py:415
 msgid "No output from command"
 msgstr "Aucune sortie de la commande"
 
-#: gradia/ui/image_exporters.py:362
+#: gradia/ui/image_exporters.py:418
 msgid "Failed to run custom export command"
 msgstr "Échec de l’exécution de la commande d’exportation personnalisée"
 
-#: gradia/ui/image_exporters.py:408 gradia/ui/image_exporters.py:435
+#: gradia/ui/image_exporters.py:464 gradia/ui/image_exporters.py:491
 msgid "Close Operation Failed"
 msgstr "Échec de l’opération de fermeture"
 
-#: gradia/ui/image_exporters.py:408 gradia/ui/image_exporters.py:435
+#: gradia/ui/image_exporters.py:464 gradia/ui/image_exporters.py:491
 msgid "Failed to export image"
 msgstr "Échec de l’exportation de l’image"
 
-#: gradia/ui/image_exporters.py:461
+#: gradia/ui/image_exporters.py:517
 msgid "You can now paste it from the clipboard."
 msgstr "Vous pouvez maintenant le coller à partir du presse-papiers."
 
-#: gradia/ui/image_loaders.py:87 gradia/ui/image_loaders.py:98
-#: gradia/ui/image_loaders.py:111
+#: gradia/ui/image_loaders.py:89 gradia/ui/image_loaders.py:100
+#: gradia/ui/image_loaders.py:113
 msgid "Not a supported image format"
 msgstr "Format d’image non pris en charge"
 
-#: gradia/ui/image_loaders.py:122
+#: gradia/ui/image_loaders.py:124
 msgid "URL is not a supported image format"
 msgstr "L’URL n’est pas un format d’image pris en charge"
 
-#: gradia/ui/image_loaders.py:131
+#: gradia/ui/image_loaders.py:133
 msgid "Failed to load image from URL."
 msgstr "Échec du chargement de l’image depuis l’URL."
 
-#: gradia/ui/image_loaders.py:140
+#: gradia/ui/image_loaders.py:142 gradia/ui/ui_parts.py:114
 msgid "Open Image"
 msgstr "Ouvrir une image"
 
-#: gradia/ui/image_loaders.py:143
+#: gradia/ui/image_loaders.py:145
 msgid "Image Files"
 msgstr "Fichiers image"
 
-#: gradia/ui/image_loaders.py:248 gradia/ui/image_loaders.py:263
+#: gradia/ui/image_loaders.py:220
+msgid "Pasted Image From %Y-%m-%d %H-%M-%S"
+msgstr "Image collée du %Y-%m-%d %H-%M-%S"
+
+#: gradia/ui/image_loaders.py:226
+msgid "No image on the clipboard"
+msgstr "Aucune image dans le presse-papiers"
+
+#: gradia/ui/image_loaders.py:280 gradia/ui/image_loaders.py:301
 msgid "Failed to take screenshot"
 msgstr "Échec de la capture d’écran"
 
-#: gradia/ui/image_loaders.py:278
+#: gradia/ui/image_loaders.py:319
 msgid "Screenshot cancelled"
 msgstr "Capture d’écran annulée"
 
-#: gradia/ui/image_loaders.py:293 gradia/ui/image_loaders.py:316
+#. GNOME only asks for screenshot permission while the app is
+#. focused, which it is not while its window is hidden.
+#: gradia/ui/image_loaders.py:323
+msgid "Screenshot Failed"
+msgstr "Échec de la capture d’écran"
+
+#: gradia/ui/image_loaders.py:324
+#, python-brace-format
+msgid ""
+"Klipo may not be allowed to take screenshots. Run install-shortcuts.sh or "
+"allow it with: flatpak permission-set screenshot screenshot {app_id} yes"
+msgstr "Klipo n’a peut-être pas le droit de faire des captures d’écran. Lancez install-shortcuts.sh ou autorisez-le avec : flatpak permission-set screenshot screenshot {app_id} yes"
+
+#: gradia/ui/image_loaders.py:365 gradia/ui/image_loaders.py:392
 msgid "Edited Screenshot From %Y-%m-%d %H-%M-%S"
 msgstr "Capture d’écran modifiée du %d-%m-%Y %H:%M:%S"
 
-#: gradia/ui/image_loaders.py:300 gradia/ui/image_loaders.py:323
+#: gradia/ui/image_loaders.py:376 gradia/ui/image_loaders.py:399
 msgid "Screenshot captured!"
 msgstr "Capture d’écran effectuée !"
 
-#: gradia/ui/image_loaders.py:307
+#: gradia/ui/image_loaders.py:383
 msgid "Failed to process screenshot"
 msgstr "Échec du traitement de la capture d’écran"
 
-#: gradia/ui/image_loaders.py:327
+#: gradia/ui/image_loaders.py:403
 msgid "Failed to load screenshot"
 msgstr "Échec du chargement de la capture d’écran"
 
-#: gradia/ui/image_loaders.py:391
+#: gradia/ui/image_loaders.py:467
 msgid "Source snippet Generated!"
 msgstr "Extrait de code source généré !"
 
-#: gradia/ui/preferences/preferences_window.py:112
-msgid "Ask For Confirmation"
-msgstr "Demander une confirmation"
+#: gradia/ui/preferences/ocr_model_page.py:113
+#, python-brace-format
+msgid "Downloaded '{}' Successfully"
+msgstr "« {} » téléchargé"
 
-#: gradia/ui/preferences/preferences_window.py:113
-msgid "Copy and Close "
-msgstr "Copier et fermer "
+#: gradia/ui/preferences/ocr_model_page.py:119
+#, python-brace-format
+msgid "Failed to Download '{}'"
+msgstr "Échec du téléchargement de « {} »"
 
-#: gradia/ui/preferences/preferences_window.py:114
+#: gradia/ui/preferences/preferences_window.py:115
 msgid "Close Instantly"
 msgstr "Fermer immédiatement"
 
+#: gradia/ui/preferences/preferences_window.py:116
+msgid "Ask for Confirmation"
+msgstr "Demander une confirmation"
+
+#: gradia/ui/preferences/preferences_window.py:117
+msgid "Copy and Close"
+msgstr "Copier et fermer"
+
 #: gradia/ui/preferences/provider_selection_window.py:133
+msgid "_Custom Provider"
+msgstr "Service _personnalisé"
+
+#: gradia/ui/preferences/provider_selection_window.py:134
 #: gradia/ui/provider_selection_window.py:134
 msgid "Create your own custom upload command"
 msgstr "Créez votre propre commande de téléversement personnalisée"
 
-#: gradia/ui/preferences/provider_selection_window.py:301
+#: gradia/ui/preferences/provider_selection_window.py:303
 #: gradia/ui/provider_selection_window.py:302
 msgid "Custom"
 msgstr "Personnalisé"
 
-#: gradia/ui/ui_parts.py:32
-msgid "Make your images ready for all"
-msgstr "Préparez vos images pour tous"
-
 #. Translators: This is a place to put your credits (formats: "Name https://example.com" or "Name <email@example.com>", no quotes) and is not meant to be translated literally.
-#: gradia/ui/ui_parts.py:45
+#: gradia/ui/ui_parts.py:41
 msgid "translator-credits"
 msgstr ""
 "Thomas Citharel\n"
 "p-sage\n"
 "Julien Humbert <julroy67@gmail.com>"
 
-#: gradia/ui/ui_parts.py:51
+#: gradia/ui/ui_parts.py:47
+msgid "Based on Gradia by"
+msgstr "Basé sur Gradia, par"
+
+#: gradia/ui/ui_parts.py:56
+msgid "Inspired by"
+msgstr "Inspiré par"
+
+#: gradia/ui/ui_parts.py:66
 msgid "Code and Design Borrowed from"
 msgstr "Code et design empruntés à"
 
-#: gradia/ui/ui_parts.py:63
+#: gradia/ui/ui_parts.py:78
 msgid "Image Sources"
 msgstr "Sources de l’image"
 
-#: gradia/ui/ui_parts.py:98
+#: gradia/ui/ui_parts.py:113
 msgid "File Actions"
 msgstr "Actions de fichier"
 
-#: gradia/ui/ui_parts.py:99
-msgid "Open File"
-msgstr "Ouvrir le fichier"
+#: gradia/ui/ui_parts.py:115
+msgid "Take a Screenshot"
+msgstr "Prendre une capture d’écran"
 
-#: gradia/ui/ui_parts.py:100
-msgid "Save to File"
-msgstr "Enregistrer le fichier"
-
-#: gradia/ui/ui_parts.py:101
+#: gradia/ui/ui_parts.py:116
 msgid "Copy Image to Clipboard"
 msgstr "Copier l’image dans le presse-papiers"
 
-#: gradia/ui/ui_parts.py:102
+#: gradia/ui/ui_parts.py:117
 msgid "Paste From Clipboard"
 msgstr "Coller depuis le presse-papiers"
 
-#: gradia/ui/ui_parts.py:105
+#: gradia/ui/ui_parts.py:119
+msgid "Save As"
+msgstr "Enregistrer sous"
+
+#: gradia/ui/ui_parts.py:120
+msgid "Upload / Share"
+msgstr "Envoyer / Partager"
+
+#: gradia/ui/ui_parts.py:121
+msgid "Pin Image on Screen"
+msgstr "Épingler l’image à l’écran"
+
+#: gradia/ui/ui_parts.py:122
+msgid "Close Tab"
+msgstr "Fermer l’onglet"
+
+#: gradia/ui/ui_parts.py:123
+msgid "Next / Previous Tab"
+msgstr "Onglet suivant / précédent"
+
+#: gradia/ui/ui_parts.py:124
+msgid "Recognize Text"
+msgstr "Reconnaître le texte"
+
+#: gradia/ui/ui_parts.py:126
 msgid "Annotations"
 msgstr "Annotations"
 
-#: gradia/ui/ui_parts.py:120
+#: gradia/ui/ui_parts.py:138
+msgid "Censor"
+msgstr "Censure"
+
+#: gradia/ui/ui_parts.py:141
 msgid "Cropping"
 msgstr "Recadrage"
 
-#: gradia/ui/ui_parts.py:121
+#: gradia/ui/ui_parts.py:142
 msgid "Toggle Crop Mode"
 msgstr "Activer/désactiver le mode recadrage"
 
-#: gradia/ui/ui_parts.py:122
+#: gradia/ui/ui_parts.py:143
 msgid "Reset Crop"
 msgstr "Réinitialiser le recadrage"
 
-#: gradia/ui/ui_parts.py:124
+#: gradia/ui/ui_parts.py:145
 msgid "Zooming"
 msgstr "Zoom"
 
-#: gradia/ui/ui_parts.py:132
+#: gradia/ui/ui_parts.py:148
+msgid "Fit to Window"
+msgstr "Ajuster à la fenêtre"
+
+#: gradia/ui/ui_parts.py:149
+msgid "Actual Size"
+msgstr "Taille réelle"
+
+#: gradia/ui/ui_parts.py:150
+msgid "Pan Left"
+msgstr "Défiler vers la gauche"
+
+#: gradia/ui/ui_parts.py:151
+msgid "Pan Right"
+msgstr "Défiler vers la droite"
+
+#: gradia/ui/ui_parts.py:152
+msgid "Pan Up"
+msgstr "Défiler vers le haut"
+
+#: gradia/ui/ui_parts.py:153
+msgid "Pan Down"
+msgstr "Défiler vers le bas"
+
+#: gradia/ui/ui_parts.py:156
+msgid "Toggle Sidebar"
+msgstr "Afficher ou masquer le panneau"
+
+#: gradia/ui/ui_parts.py:157
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis clavier"
+
+#: gradia/ui/ui_parts.py:159
 msgid "Open Source Snippets"
 msgstr "Ouvrir des extraits de code source"
 
+#: gradia/ui/ui_parts.py:160
+msgid "Delete Taken Screenshots"
+msgstr "Supprimer les captures prises"
+
 #: gradia/ui/widget/aspect_ratio_button.py:26
-#: gradia/ui/widget/background_aspect_ratio_selector.py:52
 msgid "Aspect Ratio"
 msgstr "Rapport largeur/hauteur"
 
@@ -1201,18 +1638,197 @@ msgstr "Hauteur"
 msgid "Set"
 msgstr "Définir"
 
-#: gradia/ui/widget/quick_color_picker.py:103
-msgid "More Colors…"
-msgstr "Plus de couleurs…"
-
 #: gradia/ui/widget/quick_color_picker.py:108
 msgid "Choose Color"
 msgstr "Choisir une couleur"
 
-#: gradia/ui/window.py:476
+#: gradia/ui/widget/toggle_group.py:47
+msgid "_None"
+msgstr "_Aucun"
+
+#: gradia/ui/widget/toggle_group.py:48
+msgid "_Solid"
+msgstr "_Uni"
+
+#: gradia/ui/widget/toggle_group.py:49
+msgid "_Gradient"
+msgstr "_Dégradé"
+
+#: gradia/ui/widget/toggle_group.py:50
+msgid "_Image"
+msgstr "_Image"
+
+#: gradia/ui/window.py:246
+msgid "Crop (C)"
+msgstr "Recadrer (C)"
+
+#: gradia/ui/window.py:260
+msgid "Undo (Ctrl+Z)"
+msgstr "Annuler (Ctrl+Z)"
+
+#: gradia/ui/window.py:261
+msgid "Redo (Ctrl+Shift+Z)"
+msgstr "Rétablir (Ctrl+Maj+Z)"
+
+#: gradia/ui/window.py:262
+msgid "Delete"
+msgstr "Supprimer"
+
+#: gradia/ui/window.py:262
+msgid "Delete Selected Annotation (Delete)"
+msgstr "Supprimer l’annotation sélectionnée (Suppr)"
+
+#: gradia/ui/window.py:289
+msgid "New Capture (Ctrl+A)"
+msgstr "Nouvelle capture (Ctrl+A)"
+
+#: gradia/ui/window.py:646
+msgid "Failed to pin image"
+msgstr "Impossible d’épingler l’image"
+
+#: gradia/ui/window.py:680
+msgid "Select Provider"
+msgstr "Choisir un service"
+
+#: gradia/ui/window.py:697
 msgid "Confirm Upload"
 msgstr "Confirmer le téléversement"
 
-#: gradia/ui/window.py:480
+#: gradia/ui/window.py:701
 msgid "Upload"
 msgstr "Téléverser"
+
+#~ msgid "Gradia"
+#~ msgstr "Gradia"
+
+#~ msgid "Make your images ready for the world"
+#~ msgstr "Préparez vos images pour le monde entier"
+
+#~ msgid "Image;Gradient;Background;Screenshot;Edit;"
+#~ msgstr "Image;Dégradé;Arrière-plan;Capture d’écran;Modification;"
+
+#~ msgid "Take Fullscreen Screenshot"
+#~ msgstr "Prendre une capture d’écran en plein écran"
+
+#~ msgid ""
+#~ "Gradia helps you get your screenshots ready for sharing, whether quickly "
+#~ "with friends or colleagues, or professionally with the entire world."
+#~ msgstr ""
+#~ "Gradia vous aide à préparer vos captures d’écran pour les partager, que "
+#~ "ce soit rapidement avec des amis ou des collègues, ou professionnellement "
+#~ "avec le monde entier."
+
+#~ msgid "Ten annotation modes, including text, arrow, and censor"
+#~ msgstr "Dix modes d’annotation, dont texte, flèche et censure"
+
+#~ msgid "Optional image and gradient backgrounds"
+#~ msgstr "Images et dégradés en arrière-plan facultatifs"
+
+#~ msgid "Image settings like shadow, padding, and auto-balance"
+#~ msgstr ""
+#~ "Paramètres d’image tels que l’ombre portée, la marge interne et la "
+#~ "balance automatique"
+
+#~ msgid "Quick upload flow to easily share images via services like Imgur"
+#~ msgstr ""
+#~ "Flux de téléversement rapide pour partager facilement les images via des "
+#~ "services tels qu’Imgur"
+
+#~ msgid "Convert code snippets into clean high-resolution images"
+#~ msgstr "Convertissez des extraits de code en images nettes haute résolution"
+
+#~ msgid "Alexander Vanhee"
+#~ msgstr "Alexander Vanhee"
+
+#~ msgid "Edited screenshot"
+#~ msgstr "Capture d’écran modifiée"
+
+#~ msgid "Startup view"
+#~ msgstr "Vue au démarrage"
+
+#~ msgid "UI element showcase"
+#~ msgstr "Présentation des éléments d’IU"
+
+#~ msgid "Annotation Tools"
+#~ msgstr "Outils d’annotation"
+
+#~ msgid "Fill Color Picker"
+#~ msgstr "Sélecteur de couleur de remplissage"
+
+#~ msgid "Outline Color Picker"
+#~ msgstr "Sélecteur de couleur de contour"
+
+#~ msgid "Crop…"
+#~ msgstr "Recadrer…"
+
+#~ msgid "Reset Crop Selection"
+#~ msgstr "Réinitialiser la sélection de recadrage"
+
+#~ msgid "English"
+#~ msgstr "Anglais"
+
+#~ msgid "Chinese Simplified"
+#~ msgstr "Chinois simplifié"
+
+#~ msgid "Chinese Traditional"
+#~ msgstr "Chinois traditionnel"
+
+#~ msgid "Spanish"
+#~ msgstr "Espagnol"
+
+#~ msgid "French"
+#~ msgstr "Français"
+
+#~ msgid "German"
+#~ msgstr "Allemand"
+
+#~ msgid "Japanese"
+#~ msgstr "Japonais"
+
+#~ msgid "Arabic"
+#~ msgstr "Arabe"
+
+#~ msgid "Russian"
+#~ msgstr "Russe"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugais"
+
+#~ msgid "Korean"
+#~ msgstr "Coréen"
+
+#~ msgid "Hindi"
+#~ msgstr "Hindi"
+
+#~ msgid "Dutch"
+#~ msgstr "Néerlandais"
+
+#~ msgid "Turkish"
+#~ msgstr "Turc"
+
+#~ msgid "Kazakh"
+#~ msgstr "Kazakh"
+
+#~ msgid "Occitan"
+#~ msgstr "Occitan"
+
+#~ msgid "Polish"
+#~ msgstr "Polonais"
+
+#~ msgid "Ukrainian"
+#~ msgstr "Ukrainien"
+
+#~ msgid "Telugu"
+#~ msgstr "Télougou"
+
+#~ msgid "Oval"
+#~ msgstr "Ovale"
+
+#~ msgid "Make your images ready for all"
+#~ msgstr "Préparez vos images pour tous"
+
+#~ msgid "Save to File"
+#~ msgstr "Enregistrer le fichier"
+
+#~ msgid "More Colors…"
+#~ msgstr "Plus de couleurs…"

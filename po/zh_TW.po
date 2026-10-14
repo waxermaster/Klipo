@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gradia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 15:35+0200\n"
+"POT-Creation-Date: 2026-10-13 23:30-0400\n"
 "PO-Revision-Date: 2026-06-04 11:26+0800\n"
 "Last-Translator: Alang Hsu <alang.hsu@gmail.com>\n"
 "Language-Team: Chinese (Traditional)\n"
@@ -17,106 +17,83 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Hermes Agent + po_gen.py\n"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:2
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:11
-msgid "Gradia"
-msgstr "Gradia"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:2
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:11
+msgid "Klipo"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:3
-msgid "Make your images ready for the world"
-msgstr "為您的圖片做好發布準備"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:3
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:12
+#: gradia/ui/ui_parts.py:32
+#, fuzzy
+msgid "Take, annotate and copy screenshots"
+msgstr "為您的螢幕截圖加上標註"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:10
-msgid "Image;Gradient;Background;Screenshot;Edit;"
-msgstr "圖片;漸層;背景;螢幕截圖;編輯;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/io.github.waxermaster.Klipo.desktop.in.in:12
+msgid "Screenshot;Capture;Annotate;Snip;Clipboard;Edit;"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:15
+#: data/io.github.waxermaster.Klipo.desktop.in.in:18
 msgid "New Window"
 msgstr "新視窗"
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:20
-msgid "Take Screenshot"
-msgstr "擷取螢幕截圖"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:23
+msgid "Capture Area"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.desktop.in.in:25
-msgid "Take Fullscreen Screenshot"
-msgstr "擷取全螢幕截圖"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:28
+msgid "Capture All Screens"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:12
-msgid "Annotate your screenshots"
-msgstr "為您的螢幕截圖加上標註"
+#: data/io.github.waxermaster.Klipo.desktop.in.in:33
+#, fuzzy
+msgid "Capture Window"
+msgstr "新視窗"
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:15
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:15
 msgid ""
-"Gradia helps you get your screenshots ready for sharing, whether quickly with friends or colleagues, or professionally with the entire world."
-msgstr "Gradia 協助您準備好分享螢幕截圖，無論是快速與朋友或同事分享，還是專業地與全世界分享。"
+"Klipo is a fast screenshot tool: press a shortcut, select an area, annotate "
+"it and copy it to the clipboard, without ever having to save a file."
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:16
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:16
 msgid "Key features:"
 msgstr "主要功能："
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:18
-msgid "Ten annotation modes, including text, arrow, and censor"
-msgstr "十種標註模式，包含文字、箭頭與馬賽克"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:18
+msgid "Area, window and full screen capture through the desktop portal"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:19
-msgid "Optional image and gradient backgrounds"
-msgstr "可選擇圖片與漸層背景"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:19
+msgid ""
+"Annotations that stay editable: arrows, shapes, text, highlighter, numbered "
+"steps and censoring"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:20
-msgid "Image settings like shadow, padding, and auto-balance"
-msgstr "圖片設定如陰影、內距與自動平衡"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:20
+msgid "One-key tool shortcuts and a compact editor"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:21
-msgid "Quick upload flow to easily share images via services like Imgur"
-msgstr "快速上傳流程，輕鬆透過 Imgur 等服務分享圖片"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:21
+msgid "Optional backgrounds, padding and shadows"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:22
-msgid "Convert code snippets into clean high-resolution images"
-msgstr "將程式碼片段轉換為乾淨的高解析度圖片"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:22
+msgid "Text recognition and quick upload"
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:26
-msgid "Alexander Vanhee"
-msgstr "Alexander Vanhee"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:24
+msgid "Klipo is a fork of Gradia by Alexander Vanhee."
+msgstr ""
 
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:266
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:270
-msgid "Edited screenshot"
-msgstr "已編輯的截圖"
-
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:274
-msgid "Startup view"
-msgstr "啟動畫面"
-
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:278
-msgid "UI element showcase"
-msgstr "UI 元件展示"
-
-#: data/be.alexandervanhee.gradia.metainfo.xml.in.in:282
-#: data/ui/image_generator_window.blp:5 data/ui/image_sidebar.blp:224
-#: data/ui/welcome_page.blp:79
-#: gradia/ui/image_creation/source_image_generator.py:397
-msgid "Source Snippets"
-msgstr "原始碼片段"
-
-#: data/ui/background_selector.blp:15
-msgid "None"
-msgstr "無"
-
-#: data/ui/background_selector.blp:20
-msgid "Solid"
-msgstr "純色"
-
-#: data/ui/background_selector.blp:25
-msgid "Gradient"
-msgstr "漸層"
-
-#: data/ui/background_selector.blp:30
-msgid "Image"
-msgstr "圖片"
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:27
+msgid "Wilfred"
+msgstr ""
 
 #: data/ui/confirm_close_dialog.blp:5
-msgid "Close Gradia?"
+#, fuzzy
+msgid "Close Klipo?"
 msgstr "關閉 Gradia？"
 
 #: data/ui/confirm_close_dialog.blp:6
@@ -125,11 +102,11 @@ msgstr "確定要退出嗎？所有未儲存的變更將會遺失。"
 
 #: data/ui/confirm_close_dialog.blp:11
 #: gradia/ui/dialog/delete_screenshots_dialog.py:54
-#: gradia/ui/image_exporters.py:149 gradia/ui/window.py:479
+#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:700
 msgid "Cancel"
 msgstr "取消"
 
-#: data/ui/confirm_close_dialog.blp:12 data/ui/ocr_dialog.blp:83
+#: data/ui/confirm_close_dialog.blp:12 data/ui/ocr_dialog.blp:94
 msgid "Copy"
 msgstr "複製"
 
@@ -141,111 +118,172 @@ msgstr "關閉"
 msgid "Don't Ask Again"
 msgstr "不再詢問"
 
-#: data/ui/drawing_tools_group.blp:7
-msgid "Annotation Tools"
-msgstr "標註工具"
+#: data/ui/drawing_tools_group.blp:16
+#: data/ui/preferences/provider_detail_page.blp:56
+#: gradia/overlay/drawing_actions.py:54 gradia/ui/ui_parts.py:130
+msgid "Select"
+msgstr "選取"
 
-#: data/ui/drawing_tools_group.blp:60 data/ui/drawing_tools_group.blp:75
+#: data/ui/drawing_tools_group.blp:35
+msgid "Font"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:50 data/ui/drawing_tools_group.blp:221
+msgid "Size"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:84 data/ui/drawing_tools_group.blp:96
+msgid "Bold"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:102 data/ui/drawing_tools_group.blp:114
+#, fuzzy
+msgid "Italic"
+msgstr "義大利文"
+
+#: data/ui/drawing_tools_group.blp:120 data/ui/drawing_tools_group.blp:132
+msgid "Underline"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:152
+msgid "Blur"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:157
+msgid "Pixelate"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:164
+msgid "Strength"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:192
+msgid ""
+"Hides sensitive information. The original pixels are never kept in copied or "
+"saved images."
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:205 gradia/ui/drawing_tools_group.py:123
+msgid "Color"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:275 data/ui/drawing_tools_group.blp:292
 msgid "Fill"
 msgstr "填滿"
 
-#: data/ui/drawing_tools_group.blp:82
+#: data/ui/drawing_tools_group.blp:299
 msgid "Border"
 msgstr "邊框"
 
-#: data/ui/drawing_tools_group.blp:98
-msgid "Fill Color Picker"
-msgstr "填滿色彩選取器"
+#: data/ui/drawing_tools_group.blp:313 data/ui/drawing_tools_group.blp:329
+#, fuzzy
+msgid "Background"
+msgstr "圖片背景"
 
-#: data/ui/drawing_tools_group.blp:105
-msgid "Outline Color Picker"
-msgstr "外框色彩選取器"
+#: data/ui/drawing_tools_group.blp:335
+#, fuzzy
+msgid "No Background"
+msgstr "圖片背景"
 
-#: data/ui/gradient_step_dialog.blp:7
+#: data/ui/drawing_tools_group.blp:346
+msgid "None"
+msgstr "無"
+
+#: data/ui/drawing_tools_group.blp:353 data/ui/drawing_tools_group.blp:366
+msgid "Outline"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:375
+msgid "Opacity"
+msgstr ""
+
+#: data/ui/gradient_step_dialog.blp:8
 msgid "Edit Gradient Steps"
 msgstr "編輯漸層色階"
 
-#: data/ui/gradient_step_dialog.blp:35
+#: data/ui/gradient_step_dialog.blp:49
 msgid "Gradient Steps"
 msgstr "漸層色階"
 
-#: data/ui/gradient_step_dialog.blp:36
+#: data/ui/gradient_step_dialog.blp:50
 msgid "You can add up to five steps"
 msgstr "最多可新增五個色階"
 
-#: data/ui/gradient_step_dialog.blp:39
+#: data/ui/gradient_step_dialog.blp:54
 msgid "Add Step"
 msgstr "新增色階"
 
-#: data/ui/image_generator_window.blp:29
+#: data/ui/image_generator_window.blp:5 data/ui/welcome_page.blp:36
+#: gradia/ui/image_creation/source_image_generator.py:397
+msgid "Source Snippets"
+msgstr "原始碼片段"
+
+#: data/ui/image_generator_window.blp:35
 msgid "Language"
 msgstr "語言"
 
-#: data/ui/image_generator_window.blp:39
+#: data/ui/image_generator_window.blp:50
 msgid "Style"
 msgstr "樣式"
 
-#: data/ui/image_generator_window.blp:54
+#: data/ui/image_generator_window.blp:72
 msgid "Default"
 msgstr "預設"
 
-#: data/ui/image_generator_window.blp:69
+#: data/ui/image_generator_window.blp:93
 msgid "Window Frame"
 msgstr "視窗邊框"
 
-#: data/ui/image_generator_window.blp:74
+#: data/ui/image_generator_window.blp:99
 msgid "Add a window frame around the code"
 msgstr "在程式碼周圍加入視窗外框"
 
-#: data/ui/image_generator_window.blp:81
+#: data/ui/image_generator_window.blp:108
 msgid "Line Numbers"
 msgstr "行號"
 
-#: data/ui/image_generator_window.blp:86
+#: data/ui/image_generator_window.blp:114
 msgid "Add a number before each new line of code"
 msgstr "在每一行程式碼前加上行號"
 
-#: data/ui/image_generator_window.blp:113
+#: data/ui/image_generator_window.blp:145
 msgid "Export"
 msgstr "匯出"
 
-#: data/ui/image_sidebar.blp:17 data/ui/welcome_page.blp:60
-msgid "Open Image…"
-msgstr "開啟圖片…"
+#: data/ui/image_sidebar.blp:25
+msgid "Beautify"
+msgstr ""
 
-#: data/ui/image_sidebar.blp:24 data/ui/welcome_page.blp:49
-msgid "Take a Screenshot…"
-msgstr "擷取螢幕截圖…"
-
-#: data/ui/image_sidebar.blp:31 data/ui/welcome_page.blp:24
-msgid "Main Menu"
-msgstr "主選單"
-
-#: data/ui/image_sidebar.blp:52
+#: data/ui/image_sidebar.blp:40
 msgid "Image Options"
 msgstr "圖片選項"
 
-#: data/ui/image_sidebar.blp:55
-msgid "Padding"
+#: data/ui/image_sidebar.blp:43
+#, fuzzy
+msgid "_Padding"
 msgstr "內距"
 
-#: data/ui/image_sidebar.blp:67
-msgid "Corner Radius"
+#: data/ui/image_sidebar.blp:57
+#, fuzzy
+msgid "_Corner Radius"
 msgstr "圓角半徑"
 
-#: data/ui/image_sidebar.blp:83
-msgid "Shadow"
+#: data/ui/image_sidebar.blp:76
+#, fuzzy
+msgid "_Shadow"
 msgstr "陰影"
 
-#: data/ui/image_sidebar.blp:103
-msgid "Auto Balance"
+#: data/ui/image_sidebar.blp:98
+#, fuzzy
+msgid "_Auto Balance"
 msgstr "自動平衡"
 
-#: data/ui/image_sidebar.blp:108
-msgid "Rotation"
+#: data/ui/image_sidebar.blp:104
+#, fuzzy
+msgid "_Rotation"
 msgstr "旋轉"
 
-#: data/ui/image_sidebar.blp:117
+#: data/ui/image_sidebar.blp:114
 msgid "Rotate Anticlockwise"
 msgstr "逆時針旋轉"
 
@@ -253,117 +291,283 @@ msgstr "逆時針旋轉"
 msgid "Rotate Clockwise"
 msgstr "順時針旋轉"
 
-#: data/ui/image_sidebar.blp:136
+#: data/ui/image_sidebar.blp:141
 msgid "Current File"
 msgstr "目前檔案"
 
-#: data/ui/image_sidebar.blp:139
+#: data/ui/image_sidebar.blp:144
 msgid "Name"
 msgstr "名稱"
 
-#: data/ui/image_sidebar.blp:140 data/ui/image_sidebar.blp:146
-#: data/ui/image_sidebar.blp:165
+#: data/ui/image_sidebar.blp:145 data/ui/image_sidebar.blp:155
+#: data/ui/image_sidebar.blp:178
 msgid "N/A"
 msgstr "不適用"
 
-#: data/ui/image_sidebar.blp:145
-msgid "Location"
+#: data/ui/image_sidebar.blp:153
+#, fuzzy
+msgid "_Location"
 msgstr "位置"
 
-#: data/ui/image_sidebar.blp:156
+#: data/ui/image_sidebar.blp:168 gradia/ui/image_exporters.py:193
 msgid "Open Folder"
 msgstr "開啟資料夾"
 
-#: data/ui/image_sidebar.blp:164
+#: data/ui/image_sidebar.blp:177
 msgid "Modified image size"
 msgstr "修改後的圖片尺寸"
 
-#: data/ui/image_sidebar.blp:183
-msgid "Save As…"
-msgstr "另存新檔…"
-
-#: data/ui/image_sidebar.blp:194
-msgid "Copy to Clipboard"
-msgstr "複製到剪貼簿"
-
-#: data/ui/image_sidebar.blp:204 gradia/ui/ui_parts.py:103
-msgid "Share Image"
-msgstr "分享圖片"
-
-#: data/ui/image_sidebar.blp:228
-msgid "Delete Taken Screenshot(s)"
-msgstr "刪除已擷取的螢幕截圖"
-
-#: data/ui/image_sidebar.blp:235 data/ui/preferences_window.blp:6
-#: data/ui/welcome_page.blp:85 gradia/ui/ui_parts.py:131
-msgid "Preferences"
-msgstr "偏好設定"
-
-#: data/ui/image_sidebar.blp:239 data/ui/welcome_page.blp:89
-#: gradia/ui/ui_parts.py:130
-msgid "Keyboard Shortcuts"
-msgstr "鍵盤快速鍵"
-
-#: data/ui/image_sidebar.blp:243 data/ui/welcome_page.blp:93
-msgid "About Gradia"
-msgstr "關於 Gradia"
-
-#: data/ui/image_stack.blp:8 data/ui/welcome_page.blp:15
+#: data/ui/image_stack.blp:8 data/ui/welcome_page.blp:18
 msgid "Drop Image Here"
 msgstr "將圖片拖放到此處"
 
-#: data/ui/image_stack.blp:79
+#: data/ui/image_stack.blp:27
+msgid "Back"
+msgstr ""
+
+#: data/ui/image_stack.blp:95
 msgid "Open Sidebar"
 msgstr "開啟側邊欄"
 
-#: data/ui/image_stack.blp:92
-msgid "Crop…"
-msgstr "裁切…"
+#: data/ui/image_stack.blp:111
+#, fuzzy
+msgid "Crop Image"
+msgstr "將圖片拖放到此處"
 
-#: data/ui/image_stack.blp:105 data/ui/ocr_dialog.blp:5
-#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:91
+#: data/ui/image_stack.blp:127 data/ui/ocr_dialog.blp:5
+#: data/ui/ocr_dialog.blp:15 data/ui/preferences_window.blp:131
 msgid "Text Extraction"
 msgstr "文字擷取"
 
-#: data/ui/image_stack.blp:118 gradia/ui/ui_parts.py:108
+#: data/ui/image_stack.blp:143 gradia/ui/ui_parts.py:129
 msgid "Erase Selected"
 msgstr "清除選取範圍"
 
-#: data/ui/image_stack.blp:136
-msgid "Reset Crop Selection"
-msgstr "重設裁切選取範圍"
+#: data/ui/image_stack.blp:161
+#, fuzzy
+msgid "Disable Crop"
+msgstr "重設裁切"
 
-#: data/ui/image_stack.blp:165
+#: data/ui/image_stack.blp:190
 msgid "Confirm"
 msgstr "確認"
 
-#: data/ui/image_stack.blp:166
+#: data/ui/image_stack.blp:191
 msgid "Confirm Crop Selection"
 msgstr "確認裁切選取範圍"
 
-#: data/ui/image_stack.blp:205 gradia/ui/ui_parts.py:127
+#: data/ui/image_stack.blp:235
 msgid "Reset Zoom"
 msgstr "重設縮放"
 
-#: data/ui/image_stack.blp:229 gradia/ui/ui_parts.py:126
+#: data/ui/image_stack.blp:259 gradia/ui/ui_parts.py:147
 msgid "Zoom Out"
 msgstr "縮小"
 
-#: data/ui/image_stack.blp:239 gradia/ui/ui_parts.py:125
+#: data/ui/image_stack.blp:269 gradia/ui/ui_parts.py:146
 msgid "Zoom In"
 msgstr "放大"
 
-#: data/ui/image_stack.blp:255 gradia/ui/ui_parts.py:106
+#: data/ui/image_stack.blp:288 gradia/ui/ui_parts.py:127
+#: gradia/ui/window.py:260
 msgid "Undo"
 msgstr "復原"
 
-#: data/ui/image_stack.blp:265 gradia/ui/ui_parts.py:107
+#: data/ui/image_stack.blp:298 gradia/ui/ui_parts.py:128
+#: gradia/ui/window.py:261
 msgid "Redo"
 msgstr "重做"
 
-#: data/ui/image_stack.blp:275
+#: data/ui/image_stack.blp:308
 msgid "Clear All"
 msgstr "全部清除"
+
+#: data/ui/main_window.blp:35 data/ui/main_window.blp:40
+msgid "Delay before capturing"
+msgstr ""
+
+#: data/ui/main_window.blp:44
+msgid "0 s"
+msgstr ""
+
+#: data/ui/main_window.blp:45 gradia/recording/options_popover.py:73
+msgid "3 s"
+msgstr ""
+
+#: data/ui/main_window.blp:46 gradia/recording/options_popover.py:73
+msgid "5 s"
+msgstr ""
+
+#: data/ui/main_window.blp:47
+msgid "10 s"
+msgstr ""
+
+#: data/ui/main_window.blp:60
+msgid "Select an area to capture (Ctrl+A)"
+msgstr ""
+
+#: data/ui/main_window.blp:64 gradia/recording/options_popover.py:60
+msgid "Area"
+msgstr ""
+
+#: data/ui/main_window.blp:70
+msgid "Capture the active window"
+msgstr ""
+
+#: data/ui/main_window.blp:74 gradia/recording/options_popover.py:60
+#, fuzzy
+msgid "Window"
+msgstr "新視窗"
+
+#: data/ui/main_window.blp:80
+msgid "Capture the screen under the pointer"
+msgstr ""
+
+#: data/ui/main_window.blp:84 gradia/recording/options_popover.py:60
+#, fuzzy
+msgid "Screen"
+msgstr "綠色"
+
+#: data/ui/main_window.blp:90
+msgid "Capture all screens"
+msgstr ""
+
+#: data/ui/main_window.blp:94
+#, fuzzy
+msgid "All Screens"
+msgstr "螢幕截圖"
+
+#: data/ui/main_window.blp:101
+msgid "Record the screen (Ctrl+Shift+Alt+R)"
+msgstr ""
+
+#: data/ui/main_window.blp:102
+#, fuzzy
+msgid "Recording Options"
+msgstr "儲存選項"
+
+#: data/ui/main_window.blp:106
+msgid "Video"
+msgstr ""
+
+#: data/ui/main_window.blp:116
+#, fuzzy
+msgid "Copy to Clipboard (Ctrl+C)"
+msgstr "複製到剪貼簿"
+
+#: data/ui/main_window.blp:121
+#, fuzzy
+msgid "_Copy"
+msgstr "複製"
+
+#: data/ui/main_window.blp:131
+msgid "Save to the default folder (Ctrl+S)"
+msgstr ""
+
+#: data/ui/main_window.blp:136
+#, fuzzy
+msgid "_Save"
+msgstr "儲存"
+
+#: data/ui/main_window.blp:142
+msgid "Choose where to save (Ctrl+Shift+S)"
+msgstr ""
+
+#: data/ui/main_window.blp:147
+#, fuzzy
+msgid "Save _As"
+msgstr "另存新檔…"
+
+#: data/ui/main_window.blp:154
+#, fuzzy
+msgid "Share Image (Ctrl+M)"
+msgstr "分享圖片"
+
+#: data/ui/main_window.blp:161 data/ui/welcome_page.blp:28
+msgid "Main Menu"
+msgstr "主選單"
+
+#: data/ui/main_window.blp:209
+msgid "Zoom Out (Ctrl+−)"
+msgstr ""
+
+#: data/ui/main_window.blp:218
+msgid "Actual Size (Ctrl+1)"
+msgstr ""
+
+#: data/ui/main_window.blp:231
+#, fuzzy
+msgid "Zoom In (Ctrl++)"
+msgstr "放大"
+
+#: data/ui/main_window.blp:240
+msgid "Fit to Window (Ctrl+0)"
+msgstr ""
+
+#: data/ui/main_window.blp:245
+msgid "Fit"
+msgstr ""
+
+#: data/ui/main_window.blp:323
+#, fuzzy
+msgid "_Open Image…"
+msgstr "開啟圖片…"
+
+#: data/ui/main_window.blp:328
+#, fuzzy
+msgid "_Paste Image"
+msgstr "分享圖片"
+
+#: data/ui/main_window.blp:333
+#, fuzzy
+msgid "Open Containing _Folder"
+msgstr "開啟資料夾"
+
+#: data/ui/main_window.blp:340
+msgid "_Pin Image on Screen"
+msgstr ""
+
+#: data/ui/main_window.blp:345
+msgid "_Upload / Share…"
+msgstr ""
+
+#: data/ui/main_window.blp:350
+#, fuzzy
+msgid "Clear All _Annotations"
+msgstr "標註"
+
+#: data/ui/main_window.blp:355
+msgid "Recognize _Text"
+msgstr ""
+
+#: data/ui/main_window.blp:360
+#, fuzzy
+msgid "_Source Snippets"
+msgstr "原始碼片段"
+
+#: data/ui/main_window.blp:365
+#, fuzzy
+msgid "_Delete Taken Screenshot(s)"
+msgstr "刪除已擷取的螢幕截圖"
+
+#: data/ui/main_window.blp:372 data/ui/welcome_page.blp:94
+#, fuzzy
+msgid "_Preferences"
+msgstr "偏好設定"
+
+#: data/ui/main_window.blp:377 data/ui/welcome_page.blp:99
+#, fuzzy
+msgid "_Keyboard Shortcuts"
+msgstr "鍵盤快速鍵"
+
+#: data/ui/main_window.blp:382
+#, fuzzy
+msgid "D_onate to Gradia"
+msgstr "關於 Gradia"
+
+#: data/ui/main_window.blp:387 data/ui/welcome_page.blp:109
+msgid "_About Klipo"
+msgstr ""
 
 #: data/ui/ocr_dialog.blp:16
 msgid "Crop image to adjust OCR area"
@@ -373,22 +577,21 @@ msgstr "裁切圖片以調整 OCR 區域"
 msgid "Select Language"
 msgstr "選擇語言"
 
-#: data/ui/ocr_dialog.blp:52
+#: data/ui/ocr_dialog.blp:57
 msgid "No Text Found"
 msgstr "找不到文字"
 
-#: data/ui/ocr_dialog.blp:53
+#: data/ui/ocr_dialog.blp:58
 msgid "Please make a new selection"
 msgstr "請重新選取"
 
 #: data/ui/preferences/custom_provider_page.blp:6
-#: gradia/ui/preferences/provider_selection_window.py:132
 #: gradia/ui/provider_selection_window.py:133
 msgid "Custom Provider"
 msgstr "自訂提供者"
 
 #: data/ui/preferences/custom_provider_page.blp:13
-#: gradia/ui/image_exporters.py:148
+#: gradia/ui/image_exporters.py:149 gradia/ui/ui_parts.py:118
 msgid "Save"
 msgstr "儲存"
 
@@ -399,22 +602,34 @@ msgstr "上傳指令"
 
 #: data/ui/preferences/custom_provider_page.blp:37
 msgid ""
-"Enter a custom command to upload files. Use $1 as a placeholder for the file path."
+"Enter a custom command to upload files. Use $1 as a placeholder for the file "
+"path."
 msgstr "輸入上傳檔案的自訂指令。使用 $1 作為檔案路徑的佔位符。"
 
 #: data/ui/preferences/ocr_model_page.blp:5
-#: data/ui/preferences/ocr_model_page.blp:28 data/ui/preferences_window.blp:93
 msgid "Language Models"
 msgstr "語言模型"
 
-#: data/ui/preferences/ocr_model_page.blp:29
-msgid "Using the correct language model can improve OCR accuracy."
+#: data/ui/preferences/ocr_model_page.blp:21
+#, fuzzy
+msgid "Search languages…"
+msgstr "選擇語言"
+
+#: data/ui/preferences/ocr_model_page.blp:50
+#, fuzzy
+msgid ""
+"A Language Model is required to use the OCR feature.\n"
+"Using the correct language model improves OCR accuracy."
 msgstr "使用正確的語言模型可以提升 OCR 準確度。"
 
-#: data/ui/preferences/provider_detail_page.blp:56
-#: gradia/overlay/drawing_actions.py:54 gradia/ui/ui_parts.py:109
-msgid "Select"
-msgstr "選取"
+#: data/ui/preferences/ocr_model_page.blp:68
+#, fuzzy
+msgid "No Results Found"
+msgstr "找不到文字"
+
+#: data/ui/preferences/ocr_model_page.blp:69
+msgid "Try a different search term"
+msgstr ""
 
 #: data/ui/preferences/provider_detail_page.blp:63
 msgid "About"
@@ -458,7 +673,8 @@ msgstr "提供者"
 
 #: data/ui/preferences/provider_list_page.blp:57
 msgid ""
-"Select a third party image upload provider. These have their own terms and conditions."
+"Select a third party image upload provider. These have their own terms and "
+"conditions."
 msgstr "選取協力廠商圖片上傳提供者。這些提供者有其各自的使用條款。"
 
 #: data/ui/preferences/screenshot_guide_page.blp:6
@@ -469,157 +685,188 @@ msgstr "螢幕截圖快速鍵指南"
 msgid "Shortcut Setup Instructions"
 msgstr "快速鍵設定說明"
 
-#: data/ui/preferences/screenshot_guide_page.blp:44
+#: data/ui/preferences/screenshot_guide_page.blp:45
+#, fuzzy
 msgid ""
-"If you'd like the app to <b>open automatically</b> after taking a screenshot, you can set up a custom keyboard shortcut:\n"
+"If you'd like the app to <b>open automatically</b> after taking a "
+"screenshot, you can set up a custom keyboard shortcut:\n"
 "\n"
 "<b>Steps:</b>\n"
-"1. Go to <b>Settings</b> → <b>Keyboard</b> → <b>View and Customize Shortcuts</b> → <b>Custom Shortcuts</b>.\n"
+"1. Go to <b>Settings</b> → <b>Keyboard</b> → <b>View and Customize "
+"Shortcuts</b> → <b>Custom Shortcuts</b>.\n"
 "2. Click the <b>+</b> button to create a new shortcut.\n"
-"3. Set the <b>Name</b> to something like <i>Open Gradia with Screenshot</i>.\n"
+"3. Set the <b>Name</b> to something like <i>Klipo Screenshot</i>.\n"
 "4. For the <b>Command</b>, copy one of the commands below:"
 msgstr ""
-"如果您希望在擷取螢幕截圖後讓應用程式<b>自動開啟</b>，您可以設定自訂鍵盤快速鍵：\n"
+"如果您希望在擷取螢幕截圖後讓應用程式<b>自動開啟</b>，您可以設定自訂鍵盤快速"
+"鍵：\n"
 "\n"
 "<b>步驟：</b>\n"
-"1. 前往<b>設定</b> → <b>鍵盤</b> → <b>檢視及自訂快速鍵</b> → <b>自訂快速鍵</b>。\n"
+"1. 前往<b>設定</b> → <b>鍵盤</b> → <b>檢視及自訂快速鍵</b> → <b>自訂快速鍵</"
+"b>。\n"
 "2. 按一下<b>+</b>按鈕以建立新的快速鍵。\n"
 "3. 將<b>名稱</b>設為類似<i>以截圖開啟 Gradia</i>。\n"
 "4. 在<b>指令</b>中，貼上以下其中一個指令："
 
-#: data/ui/preferences/screenshot_guide_page.blp:59
+#: data/ui/preferences/screenshot_guide_page.blp:61
 msgid "Interactive Screenshot"
 msgstr "互動式截圖"
 
-#: data/ui/preferences/screenshot_guide_page.blp:65
+#: data/ui/preferences/screenshot_guide_page.blp:68
 msgid "Allows you to select an area to screenshot"
 msgstr "讓您選取要截圖的區域"
 
-#: data/ui/preferences/screenshot_guide_page.blp:75
-#: data/ui/preferences/screenshot_guide_page.blp:100
-#: data/ui/preferences/screenshot_guide_page.blp:137
+#: data/ui/preferences/screenshot_guide_page.blp:79
+#: data/ui/preferences/screenshot_guide_page.blp:106
+#: data/ui/preferences/screenshot_guide_page.blp:145
 msgid "Copy to clipboard"
 msgstr "複製到剪貼簿"
 
-#: data/ui/preferences/screenshot_guide_page.blp:84
+#: data/ui/preferences/screenshot_guide_page.blp:88
 msgid "Full Screen Screenshot"
 msgstr "全螢幕截圖"
 
-#: data/ui/preferences/screenshot_guide_page.blp:90
+#: data/ui/preferences/screenshot_guide_page.blp:95
 msgid "Takes a screenshot of all screens instantly"
 msgstr "立即擷取所有螢幕畫面"
 
-#: data/ui/preferences/screenshot_guide_page.blp:104
+#: data/ui/preferences/screenshot_guide_page.blp:110
 msgid ""
-"5. Assign a keyboard shortcut of your choice (<tt>Ctrl + Print</tt> should be free by default)."
+"5. Assign a keyboard shortcut of your choice (<tt>Ctrl + Print</tt> should "
+"be free by default)."
 msgstr "5. 指定您偏好的鍵盤快速鍵（<tt>Ctrl + Print</tt> 預設應為閒置狀態）。"
 
-#: data/ui/preferences/screenshot_guide_page.blp:121
+#: data/ui/preferences/screenshot_guide_page.blp:127
 msgid "Delayed Screenshot"
 msgstr "延遲截圖"
 
-#: data/ui/preferences/screenshot_guide_page.blp:127
+#: data/ui/preferences/screenshot_guide_page.blp:134
 msgid "Delay the capture by a given duration (in milliseconds)."
 msgstr "延遲指定時間後再進行擷取（毫秒）。"
 
-#: data/ui/preferences_window.blp:9 gradia/ui/ui_parts.py:129
+#: data/ui/preferences_window.blp:7 gradia/ui/ui_parts.py:158
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: data/ui/preferences_window.blp:11 gradia/ui/ui_parts.py:155
 msgid "General"
 msgstr "一般"
 
-#: data/ui/preferences_window.blp:11
+#: data/ui/preferences_window.blp:14
 msgid "Screenshots"
 msgstr "螢幕截圖"
 
-#: data/ui/preferences_window.blp:14
-msgid "Recent Directory"
+#: data/ui/preferences_window.blp:17
+#, fuzzy
+msgid "_Recent Directory"
 msgstr "最近使用的目錄"
 
-#: data/ui/preferences_window.blp:15
+#: data/ui/preferences_window.blp:19
 msgid "Used for home screen"
 msgstr "用於主畫面"
 
-#: data/ui/preferences_window.blp:35
-msgid "Screenshot Shortcut"
+#: data/ui/preferences_window.blp:45
+#, fuzzy
+msgid "_Screenshot Shortcut"
 msgstr "螢幕截圖快速鍵"
 
-#: data/ui/preferences_window.blp:39
+#: data/ui/preferences_window.blp:51
 msgid "Save Options"
 msgstr "儲存選項"
 
-#: data/ui/preferences_window.blp:41
-msgid "Image Format"
+#: data/ui/preferences_window.blp:54
+#, fuzzy
+msgid "_Image Format"
 msgstr "圖片格式"
 
-#: data/ui/preferences_window.blp:42
+#: data/ui/preferences_window.blp:56
 msgid "Default format for saved screenshots"
 msgstr "儲存截圖的預設格式"
 
-#: data/ui/preferences_window.blp:46
+#: data/ui/preferences_window.blp:61
 msgid "Closing"
 msgstr "關閉"
 
-#: data/ui/preferences_window.blp:48
-msgid "When Exiting"
+#: data/ui/preferences_window.blp:64
+#, fuzzy
+msgid "_When Exiting"
 msgstr "退出時"
 
-#: data/ui/preferences_window.blp:51
-msgid "Overwrite last screenshot on close"
+#: data/ui/preferences_window.blp:69
+msgid "C_lose After Copying"
+msgstr ""
+
+#: data/ui/preferences_window.blp:71
+msgid "Close the editor once the image is on the clipboard"
+msgstr ""
+
+#: data/ui/preferences_window.blp:76
+#, fuzzy
+msgid "_Overwrite Last Screenshot on Close"
 msgstr "關閉時覆蓋上一張截圖"
 
-#: data/ui/preferences_window.blp:52
+#: data/ui/preferences_window.blp:78
 msgid "Replace it with the annotated version"
 msgstr "取代為已標註版本"
 
-#: data/ui/preferences_window.blp:53
+#: data/ui/preferences_window.blp:79
 msgid "Replace last screenshot file with annotated version on close"
 msgstr "關閉時以已標註版本取代上一張截圖檔案"
 
-#: data/ui/preferences_window.blp:57
-msgid "Trash Screenshots on Close"
+#: data/ui/preferences_window.blp:84
+#, fuzzy
+msgid "_Trash Screenshots on Close"
 msgstr "關閉時將截圖移至回收桶"
 
-#: data/ui/preferences_window.blp:58
+#: data/ui/preferences_window.blp:86
 msgid "Automatically move screenshots taken from within the app to trash"
 msgstr "自動將應用程式內擷取的截圖移至回收桶"
 
-#: data/ui/preferences_window.blp:59
+#: data/ui/preferences_window.blp:87
 msgid "Trash screenshots on app close"
 msgstr "關閉應用程式時將截圖移至回收桶"
 
-#: data/ui/preferences_window.blp:64
+#: data/ui/preferences_window.blp:93
 msgid "Image Upload Providers"
 msgstr "圖片上傳提供者"
 
-#: data/ui/preferences_window.blp:65
+#: data/ui/preferences_window.blp:94
 msgid "Connect to your favorite upload providers, or create a link yourself"
 msgstr "連結您喜愛的上傳提供者，或自行建立連結"
 
-#: data/ui/preferences_window.blp:67
-msgid "Provider"
+#: data/ui/preferences_window.blp:97
+#, fuzzy
+msgid "_Provider"
 msgstr "提供者"
 
-#: data/ui/preferences_window.blp:75
-#: gradia/ui/preferences/preferences_window.py:78
+#: data/ui/preferences_window.blp:108
+#: gradia/ui/preferences/preferences_window.py:81
 msgid "None Selected"
 msgstr "未選取"
 
-#: data/ui/preferences_window.blp:84
-msgid "Confirm on Upload"
+#: data/ui/preferences_window.blp:122
+#, fuzzy
+msgid "_Confirm on Upload"
 msgstr "上傳前確認"
 
-#: data/ui/preferences_window.blp:85 data/ui/preferences_window.blp:86
+#: data/ui/preferences_window.blp:124 data/ui/preferences_window.blp:125
 msgid "Ask for confirmation before running the upload command"
 msgstr "執行上傳指令前要求確認"
 
-#: data/ui/preferences_window.blp:94
+#: data/ui/preferences_window.blp:135
+#, fuzzy
+msgid "_Language Models"
+msgstr "語言模型"
+
+#: data/ui/preferences_window.blp:137
 msgid "Download Models to improve per-language accuracy"
 msgstr "下載模型以提升各語言準確度"
 
-#: data/ui/recent_picker.blp:24
+#: data/ui/recent_picker.blp:27
 msgid "Screenshot Folder Not Found"
 msgstr "找不到螢幕截圖資料夾"
 
-#: data/ui/recent_picker.blp:31
+#: data/ui/recent_picker.blp:35
 msgid "Please set it in the Preferences menu"
 msgstr "請在偏好設定選單中設定"
 
@@ -632,7 +879,8 @@ msgid "Open Step Dialog"
 msgstr "開啟色階對話框"
 
 #: data/ui/selectors/gradient_selector.blp:14
-msgid "Gradient Presets…"
+#, fuzzy
+msgid "Gradient Presets"
 msgstr "漸層預設…"
 
 #: data/ui/selectors/gradient_selector.blp:50
@@ -656,7 +904,8 @@ msgid "Image Background"
 msgstr "圖片背景"
 
 #: data/ui/selectors/image_selector.blp:9
-msgid "Image Presets…"
+#, fuzzy
+msgid "Image Presets"
 msgstr "圖片預設…"
 
 #: data/ui/selectors/image_selector.blp:13
@@ -675,152 +924,112 @@ msgstr "支援的圖片格式"
 msgid "Solid Color Background"
 msgstr "純色背景"
 
-#: data/ui/welcome_page.blp:31
+#: data/ui/welcome_page.blp:42
 msgid "Enhance an Image"
 msgstr "增強圖片"
 
-#: data/ui/welcome_page.blp:32
+#: data/ui/welcome_page.blp:43
 msgid "Drag and drop one here"
 msgstr "將圖片拖放到此處"
 
-#: gradia/app_constants.py:68
+#: data/ui/welcome_page.blp:61
+msgid "Take a Screenshot…"
+msgstr "擷取螢幕截圖…"
+
+#: data/ui/welcome_page.blp:74
+msgid "Open Image…"
+msgstr "開啟圖片…"
+
+#: data/ui/welcome_page.blp:104
+#, fuzzy
+msgid "_D_onate to Gradia"
+msgstr "關於 Gradia"
+
+#: gradia/app_constants.py:26
+msgid "Red Flame"
+msgstr ""
+
+#: gradia/app_constants.py:32
+#, fuzzy
+msgid "Sunset Orange"
+msgstr "橘色"
+
+#: gradia/app_constants.py:38
+msgid "Golden Hour"
+msgstr ""
+
+#: gradia/app_constants.py:44
+msgid "Mint Fresh"
+msgstr ""
+
+#: gradia/app_constants.py:50
+msgid "Ocean Breeze"
+msgstr ""
+
+#: gradia/app_constants.py:56
+#, fuzzy
+msgid "Purple Dream"
+msgstr "紫色"
+
+#: gradia/app_constants.py:74
 msgid "PNG Image (*.png)"
 msgstr "PNG 圖片 (*.png)"
 
-#: gradia/app_constants.py:75
+#: gradia/app_constants.py:81
 msgid "JPEG Image (*.jpg)"
 msgstr "JPEG 圖片 (*.jpg)"
 
-#: gradia/app_constants.py:82
+#: gradia/app_constants.py:88
 msgid "WebP Image (*.webp)"
 msgstr "WebP 圖片 (*.webp)"
 
-#: gradia/backend/tool_config.py:214 gradia/backend/tool_config.py:223
-#: gradia/backend/tool_config.py:334 gradia/graphics/solid.py:190
+#: gradia/backend/tool_config.py:245 gradia/backend/tool_config.py:254
+#: gradia/backend/tool_config.py:365 gradia/graphics/solid.py:190
 #: gradia/ui/widget/quick_color_picker.py:24
 msgid "Red"
 msgstr "紅色"
 
-#: gradia/backend/tool_config.py:215 gradia/backend/tool_config.py:224
-#: gradia/backend/tool_config.py:335 gradia/graphics/solid.py:193
+#: gradia/backend/tool_config.py:246 gradia/backend/tool_config.py:255
+#: gradia/backend/tool_config.py:366 gradia/graphics/solid.py:193
 #: gradia/ui/widget/quick_color_picker.py:25
 msgid "Green"
 msgstr "綠色"
 
-#: gradia/backend/tool_config.py:216 gradia/backend/tool_config.py:225
-#: gradia/backend/tool_config.py:336 gradia/graphics/solid.py:194
+#: gradia/backend/tool_config.py:247 gradia/backend/tool_config.py:256
+#: gradia/backend/tool_config.py:367 gradia/graphics/solid.py:194
 #: gradia/ui/widget/quick_color_picker.py:26
 msgid "Blue"
 msgstr "藍色"
 
-#: gradia/backend/tool_config.py:217 gradia/backend/tool_config.py:226
-#: gradia/backend/tool_config.py:337 gradia/graphics/solid.py:192
+#: gradia/backend/tool_config.py:248 gradia/backend/tool_config.py:257
+#: gradia/backend/tool_config.py:368 gradia/graphics/solid.py:192
 #: gradia/ui/widget/quick_color_picker.py:27
 msgid "Yellow"
 msgstr "黃色"
 
-#: gradia/backend/tool_config.py:218 gradia/backend/tool_config.py:228
+#: gradia/backend/tool_config.py:249 gradia/backend/tool_config.py:259
 #: gradia/graphics/solid.py:201 gradia/ui/widget/quick_color_picker.py:28
 msgid "Black"
 msgstr "黑色"
 
-#: gradia/backend/tool_config.py:219 gradia/backend/tool_config.py:227
-#: gradia/backend/tool_config.py:339 gradia/graphics/solid.py:200
+#: gradia/backend/tool_config.py:250 gradia/backend/tool_config.py:258
+#: gradia/backend/tool_config.py:370 gradia/graphics/solid.py:200
 #: gradia/ui/widget/quick_color_picker.py:29
 msgid "White"
 msgstr "白色"
 
-#: gradia/backend/tool_config.py:229 gradia/graphics/solid.py:203
+#: gradia/backend/tool_config.py:260 gradia/graphics/solid.py:203
 #: gradia/ui/widget/quick_color_picker.py:33
 msgid "Transparent"
 msgstr "透明"
 
-#: gradia/backend/tool_config.py:338 gradia/graphics/solid.py:195
+#: gradia/backend/tool_config.py:369 gradia/graphics/solid.py:195
 msgid "Purple"
 msgstr "紫色"
 
-#: gradia/backend/ocr.py:42
-msgid "English"
-msgstr "英文"
-
-#: gradia/backend/ocr.py:43
-msgid "Chinese Simplified"
-msgstr "簡體中文"
-
-#: gradia/backend/ocr.py:44
-msgid "Chinese Traditional"
-msgstr "繁體中文"
-
-#: gradia/backend/ocr.py:45
-msgid "Spanish"
-msgstr "西班牙文"
-
-#: gradia/backend/ocr.py:46
-msgid "French"
-msgstr "法文"
-
-#: gradia/backend/ocr.py:47
-msgid "German"
-msgstr "德文"
-
-#: gradia/backend/ocr.py:48
-msgid "Japanese"
-msgstr "日文"
-
-#: gradia/backend/ocr.py:49
-msgid "Arabic"
-msgstr "阿拉伯文"
-
-#: gradia/backend/ocr.py:50
-msgid "Russian"
-msgstr "俄文"
-
-#: gradia/backend/ocr.py:51
-msgid "Portuguese"
-msgstr "葡萄牙文"
-
-#: gradia/backend/ocr.py:52
-msgid "Italian"
-msgstr "義大利文"
-
-#: gradia/backend/ocr.py:53
-msgid "Korean"
-msgstr "韓文"
-
-#: gradia/backend/ocr.py:54
-msgid "Hindi"
-msgstr "印地文"
-
-#: gradia/backend/ocr.py:55
-msgid "Dutch"
-msgstr "荷蘭文"
-
-#: gradia/backend/ocr.py:56
-msgid "Turkish"
-msgstr "土耳其文"
-
-#: gradia/backend/ocr.py:57
-msgid "Kazakh"
-msgstr "哈薩克文"
-
-#: gradia/backend/ocr.py:58
-msgid "Occitan"
-msgstr "奧克文"
-
-#: gradia/backend/ocr.py:59
-msgid "Polish"
-msgstr "波蘭文"
-
-#: gradia/backend/ocr.py:60
-msgid "Ukrainian"
-msgstr "烏克蘭文"
-
-#: gradia/backend/ocr.py:61
-msgid "Telugu"
-msgstr "泰盧固文"
-
-#: gradia/graphics/solid.py:130
-msgid "More Colors..."
+#: gradia/graphics/solid.py:130 gradia/ui/widget/quick_color_picker.py:103
+#, fuzzy
+msgid "More Colors"
 msgstr "更多色彩..."
 
 #: gradia/graphics/solid.py:191
@@ -847,41 +1056,239 @@ msgstr "粉彩青"
 msgid "Gray"
 msgstr "灰色"
 
-#: gradia/overlay/drawing_actions.py:48 gradia/ui/ui_parts.py:110
+#: gradia/overlay/crop_overlay.py:36
+#: gradia/ui/widget/background_aspect_ratio_selector.py:52
+#, fuzzy
+msgid "_Aspect Ratio"
+msgstr "長寬比"
+
+#: gradia/overlay/drawing_actions.py:48 gradia/ui/ui_parts.py:135
 msgid "Pen"
 msgstr "畫筆"
 
-#: gradia/overlay/drawing_actions.py:49 gradia/ui/ui_parts.py:113
+#: gradia/overlay/drawing_actions.py:49 gradia/ui/ui_parts.py:131
 msgid "Arrow"
 msgstr "箭頭"
 
-#: gradia/overlay/drawing_actions.py:50 gradia/ui/ui_parts.py:112
+#: gradia/overlay/drawing_actions.py:50 gradia/ui/ui_parts.py:132
 msgid "Line"
 msgstr "線條"
 
-#: gradia/overlay/drawing_actions.py:51 gradia/ui/ui_parts.py:114
+#: gradia/overlay/drawing_actions.py:51 gradia/ui/ui_parts.py:133
 msgid "Rectangle"
 msgstr "矩形"
 
-#: gradia/overlay/drawing_actions.py:52 gradia/ui/ui_parts.py:115
-msgid "Oval"
-msgstr "橢圓"
+#: gradia/overlay/drawing_actions.py:52 gradia/ui/ui_parts.py:134
+msgid "Ellipse"
+msgstr ""
 
-#: gradia/overlay/drawing_actions.py:53 gradia/ui/ui_parts.py:111
+#: gradia/overlay/drawing_actions.py:53 gradia/ui/ui_parts.py:137
 msgid "Text"
 msgstr "文字"
 
-#: gradia/overlay/drawing_actions.py:55 gradia/ui/ui_parts.py:116
+#: gradia/overlay/drawing_actions.py:55 gradia/ui/ui_parts.py:136
 msgid "Highlighter"
 msgstr "螢光筆"
 
-#: gradia/overlay/drawing_actions.py:56 gradia/ui/ui_parts.py:117
-msgid "Censor"
-msgstr "馬賽克"
+#: gradia/overlay/drawing_actions.py:56
+msgid "Blur / Pixelate"
+msgstr ""
 
-#: gradia/overlay/drawing_actions.py:57 gradia/ui/ui_parts.py:118
-msgid "Number"
+#: gradia/overlay/drawing_actions.py:57 gradia/ui/ui_parts.py:139
+#, fuzzy
+msgid "Numbered Step"
 msgstr "編號"
+
+#: gradia/recording/area_selector.py:51 gradia/recording/area_selector.py:103
+msgid "Select Area to Record"
+msgstr ""
+
+#: gradia/recording/area_selector.py:83
+msgid "Esc  Cancel  ·  Enter  Record  ·  Drag handles to resize"
+msgstr ""
+
+#: gradia/recording/area_selector.py:91
+#, fuzzy
+msgid "_Cancel"
+msgstr "取消"
+
+#: gradia/recording/area_selector.py:94
+#, fuzzy
+msgid "_Reset"
+msgstr "重設縮放"
+
+#: gradia/recording/area_selector.py:99
+msgid "_Record"
+msgstr ""
+
+#: gradia/recording/area_selector.py:104
+msgid "Drag to select, Enter to record"
+msgstr ""
+
+#: gradia/recording/controller.py:111
+#, fuzzy
+msgid "Recording Failed"
+msgstr "匯出失敗"
+
+#: gradia/recording/controller.py:122
+msgid "Recording Paused"
+msgstr ""
+
+#: gradia/recording/controller.py:122
+msgid "Klipo Is Recording"
+msgstr ""
+
+#: gradia/recording/controller.py:126 gradia/recording/indicator.py:101
+msgid "Resume"
+msgstr ""
+
+#: gradia/recording/controller.py:126 gradia/recording/indicator.py:65
+#: gradia/recording/indicator.py:101
+msgid "Pause"
+msgstr ""
+
+#: gradia/recording/controller.py:127
+msgid "Stop"
+msgstr ""
+
+#: gradia/recording/indicator.py:45
+msgid "Klipo Recording"
+msgstr ""
+
+#: gradia/recording/indicator.py:69
+msgid "Stop Recording"
+msgstr ""
+
+#: gradia/recording/indicator.py:110
+msgid "Audio"
+msgstr ""
+
+#: gradia/recording/indicator.py:112
+msgid "Recording starts in…"
+msgstr ""
+
+#: gradia/recording/indicator.py:114
+msgid "Paused"
+msgstr ""
+
+#: gradia/recording/indicator.py:116
+msgid "Saving…"
+msgstr ""
+
+#: gradia/recording/options_popover.py:57
+msgid "Record"
+msgstr ""
+
+#: gradia/recording/options_popover.py:69
+msgid "60 fps"
+msgstr ""
+
+#: gradia/recording/options_popover.py:73
+msgid "Off"
+msgstr ""
+
+#: gradia/recording/options_popover.py:80
+msgid "Show Pointer"
+msgstr ""
+
+#: gradia/recording/options_popover.py:81
+msgid "System Sound"
+msgstr ""
+
+#: gradia/recording/options_popover.py:82
+msgid "Microphone"
+msgstr ""
+
+#: gradia/recording/options_popover.py:91
+msgid "_Start Recording"
+msgstr ""
+
+#: gradia/recording/options_popover.py:94
+msgid "Ctrl+Shift+Alt+R to start or stop"
+msgstr ""
+
+#: gradia/recording/options_popover.py:100
+#, fuzzy
+msgid "Format"
+msgstr "圖片格式"
+
+#: gradia/recording/options_popover.py:101
+msgid "Frame Rate"
+msgstr ""
+
+#: gradia/recording/options_popover.py:102
+msgid "Countdown"
+msgstr ""
+
+#: gradia/recording/portal.py:113
+msgid "The desktop does not support screen recording"
+msgstr ""
+
+#: gradia/recording/portal.py:211 gradia/recording/recorder.py:162
+#, fuzzy
+msgid "Screen recording was cancelled"
+msgstr "截圖已取消"
+
+#: gradia/recording/portal.py:213
+msgid "The desktop refused to start screen recording"
+msgstr ""
+
+#: gradia/recording/preview.py:65 gradia/recording/preview.py:68
+msgid "Recording Saved"
+msgstr ""
+
+#: gradia/recording/preview.py:77
+#, fuzzy
+msgid "_Copy File"
+msgstr "開啟檔案"
+
+#: gradia/recording/preview.py:81
+#, fuzzy
+msgid "Open _Folder"
+msgstr "開啟資料夾"
+
+#: gradia/recording/preview.py:85
+msgid "_Delete"
+msgstr ""
+
+#: gradia/recording/preview.py:88
+msgid "Move the recording to the trash"
+msgstr ""
+
+#: gradia/recording/preview.py:94
+msgid "Paste it into Files, Discord or a browser"
+msgstr ""
+
+#: gradia/recording/preview.py:120
+msgid "File copied: paste it anywhere"
+msgstr ""
+
+#: gradia/recording/preview.py:135
+msgid "Could not move the recording to the trash"
+msgstr ""
+
+#: gradia/recording/recorder.py:214
+#, python-brace-format
+msgid "Could not start the recording: {error}"
+msgstr ""
+
+#: gradia/recording/recorder.py:219
+msgid "Could not start the recording"
+msgstr ""
+
+#: gradia/recording/recorder.py:362
+msgid "Cannot write the video file. Check the video folder in the preferences."
+msgstr ""
+
+#: gradia/recording/recorder.py:364
+#, python-brace-format
+msgid "Recording failed: {error}"
+msgstr ""
+
+#: gradia/recording/recorder.py:383 gradia/ui/image_exporters.py:174
+#, fuzzy
+msgid "Klipo %Y-%m-%d %H-%M-%S"
+msgstr "原始碼片段 %Y-%m-%d %H-%M-%S"
 
 #: gradia/ui/dialog/delete_screenshots_dialog.py:33
 msgid "No screenshots to delete"
@@ -915,226 +1322,362 @@ msgstr "截圖已移至回收桶"
 msgid "Screenshots moved to trash"
 msgstr "截圖已移至回收桶"
 
-#: gradia/ui/dialog/ocr_dialog.py:118
-#: gradia/ui/preferences/preferences_window.py:150
-#: gradia/ui/preferences/preferences_window.py:243
+#: gradia/ui/dialog/ocr_dialog.py:110 gradia/ui/dialog/ocr_dialog.py:124
+#: gradia/ui/preferences/preferences_window.py:153
+#: gradia/ui/preferences/preferences_window.py:247
 msgid "Copied!"
 msgstr "已複製！"
+
+#: gradia/ui/documents.py:47
+#, fuzzy
+msgid "New Capture"
+msgstr "功能"
+
+#: gradia/ui/documents.py:49
+#, fuzzy, python-brace-format
+msgid "Screenshot {time}"
+msgstr "螢幕截圖"
+
+#: gradia/ui/documents.py:51
+#, fuzzy
+msgid "Pasted Image"
+msgstr "分享圖片"
+
+#: gradia/ui/drawing_tools_group.py:123
+#, fuzzy
+msgid "Text Color"
+msgstr "選擇色彩"
 
 #: gradia/ui/image_creation/source_image_generator.py:554
 msgid "Source Snippet From %Y-%m-%d %H-%M-%S"
 msgstr "原始碼片段 %Y-%m-%d %H-%M-%S"
 
-#: gradia/ui/image_exporters.py:103
+#: gradia/ui/image_exporters.py:104
 msgid "Edit"
 msgstr "編輯"
 
-#: gradia/ui/image_exporters.py:106
+#: gradia/ui/image_exporters.py:107
 msgid "Enhanced Screenshot"
 msgstr "增強截圖"
 
-#: gradia/ui/image_exporters.py:145
+#: gradia/ui/image_exporters.py:146
 msgid "Save Image As"
 msgstr "圖片另存為"
 
-#: gradia/ui/image_exporters.py:174
-msgid "Unsupported image file extension"
-msgstr "不支援的圖片檔案副檔名"
-
-#: gradia/ui/image_exporters.py:183
-msgid "Image Saved"
-msgstr "圖片已儲存"
-
-#: gradia/ui/image_exporters.py:185
+#: gradia/ui/image_exporters.py:185 gradia/ui/image_exporters.py:217
 msgid "Export Failed"
 msgstr "匯出失敗"
 
-#: gradia/ui/image_exporters.py:252
+#: gradia/ui/image_exporters.py:192
+#, python-brace-format
+msgid "Saved as {name}"
+msgstr ""
+
+#: gradia/ui/image_exporters.py:206
+msgid "Unsupported image file extension"
+msgstr "不支援的圖片檔案副檔名"
+
+#: gradia/ui/image_exporters.py:215
+msgid "Image Saved"
+msgstr "圖片已儲存"
+
+#: gradia/ui/image_exporters.py:301
 msgid "No processed image available"
 msgstr "沒有可用的已處理圖片"
 
-#: gradia/ui/image_exporters.py:278 gradia/ui/image_exporters.py:460
+#: gradia/ui/image_exporters.py:332 gradia/ui/image_exporters.py:516
 msgid "Image Copied"
 msgstr "圖片已複製"
 
-#: gradia/ui/image_exporters.py:281 gradia/ui/image_exporters.py:288
+#: gradia/ui/image_exporters.py:337 gradia/ui/image_exporters.py:344
 msgid "Failed to copy image to clipboard"
 msgstr "複製圖片到剪貼簿失敗"
 
-#: gradia/ui/image_exporters.py:302
+#: gradia/ui/image_exporters.py:358
 msgid "Link generated successfully"
 msgstr "連結已成功產生"
 
-#: gradia/ui/image_exporters.py:303
+#: gradia/ui/image_exporters.py:359
 msgid "Open Link"
 msgstr "開啟連結"
 
-#: gradia/ui/image_exporters.py:340
+#: gradia/ui/image_exporters.py:396
 msgid "Custom command failed: "
 msgstr "自訂指令失敗："
 
-#: gradia/ui/image_exporters.py:346
+#: gradia/ui/image_exporters.py:402
 msgid "Warning: "
 msgstr "警告："
 
-#: gradia/ui/image_exporters.py:357
+#: gradia/ui/image_exporters.py:413
 msgid "Result copied to clipboard"
 msgstr "結果已複製到剪貼簿"
 
-#: gradia/ui/image_exporters.py:359
+#: gradia/ui/image_exporters.py:415
 msgid "No output from command"
 msgstr "指令沒有輸出"
 
-#: gradia/ui/image_exporters.py:362
+#: gradia/ui/image_exporters.py:418
 msgid "Failed to run custom export command"
 msgstr "執行自訂匯出指令失敗"
 
-#: gradia/ui/image_exporters.py:408 gradia/ui/image_exporters.py:435
+#: gradia/ui/image_exporters.py:464 gradia/ui/image_exporters.py:491
 msgid "Close Operation Failed"
 msgstr "關閉操作失敗"
 
-#: gradia/ui/image_exporters.py:408 gradia/ui/image_exporters.py:435
+#: gradia/ui/image_exporters.py:464 gradia/ui/image_exporters.py:491
 msgid "Failed to export image"
 msgstr "匯出圖片失敗"
 
-#: gradia/ui/image_exporters.py:461
+#: gradia/ui/image_exporters.py:517
 msgid "You can now paste it from the clipboard."
 msgstr "您現在可以從剪貼簿貼上。"
 
-#: gradia/ui/image_loaders.py:87 gradia/ui/image_loaders.py:98
-#: gradia/ui/image_loaders.py:111
+#: gradia/ui/image_loaders.py:89 gradia/ui/image_loaders.py:100
+#: gradia/ui/image_loaders.py:113
 msgid "Not a supported image format"
 msgstr "不支援的圖片格式"
 
-#: gradia/ui/image_loaders.py:122
+#: gradia/ui/image_loaders.py:124
 msgid "URL is not a supported image format"
 msgstr "URL 不屬於支援的圖片格式"
 
-#: gradia/ui/image_loaders.py:131
+#: gradia/ui/image_loaders.py:133
 msgid "Failed to load image from URL."
 msgstr "從 URL 載入圖片失敗。"
 
-#: gradia/ui/image_loaders.py:140
+#: gradia/ui/image_loaders.py:142 gradia/ui/ui_parts.py:114
 msgid "Open Image"
 msgstr "開啟圖片"
 
-#: gradia/ui/image_loaders.py:143
+#: gradia/ui/image_loaders.py:145
 msgid "Image Files"
 msgstr "圖片檔案"
 
-#: gradia/ui/image_loaders.py:248 gradia/ui/image_loaders.py:263
+#: gradia/ui/image_loaders.py:220
+#, fuzzy
+msgid "Pasted Image From %Y-%m-%d %H-%M-%S"
+msgstr "已編輯截圖 %Y-%m-%d %H-%M-%S"
+
+#: gradia/ui/image_loaders.py:226
+#, fuzzy
+msgid "No image on the clipboard"
+msgstr "複製圖片到剪貼簿"
+
+#: gradia/ui/image_loaders.py:280 gradia/ui/image_loaders.py:301
 msgid "Failed to take screenshot"
 msgstr "擷取截圖失敗"
 
-#: gradia/ui/image_loaders.py:278
+#: gradia/ui/image_loaders.py:319
 msgid "Screenshot cancelled"
 msgstr "截圖已取消"
 
-#: gradia/ui/image_loaders.py:293 gradia/ui/image_loaders.py:316
+#. GNOME only asks for screenshot permission while the app is
+#. focused, which it is not while its window is hidden.
+#: gradia/ui/image_loaders.py:323
+#, fuzzy
+msgid "Screenshot Failed"
+msgstr "截圖已取消"
+
+#: gradia/ui/image_loaders.py:324
+#, python-brace-format
+msgid ""
+"Klipo may not be allowed to take screenshots. Run install-shortcuts.sh or "
+"allow it with: flatpak permission-set screenshot screenshot {app_id} yes"
+msgstr ""
+
+#: gradia/ui/image_loaders.py:365 gradia/ui/image_loaders.py:392
 msgid "Edited Screenshot From %Y-%m-%d %H-%M-%S"
 msgstr "已編輯截圖 %Y-%m-%d %H-%M-%S"
 
-#: gradia/ui/image_loaders.py:300 gradia/ui/image_loaders.py:323
+#: gradia/ui/image_loaders.py:376 gradia/ui/image_loaders.py:399
 msgid "Screenshot captured!"
 msgstr "截圖已擷取！"
 
-#: gradia/ui/image_loaders.py:307
+#: gradia/ui/image_loaders.py:383
 msgid "Failed to process screenshot"
 msgstr "處理截圖失敗"
 
-#: gradia/ui/image_loaders.py:327
+#: gradia/ui/image_loaders.py:403
 msgid "Failed to load screenshot"
 msgstr "載入截圖失敗"
 
-#: gradia/ui/image_loaders.py:391
+#: gradia/ui/image_loaders.py:467
 msgid "Source snippet Generated!"
 msgstr "原始碼片段已產生！"
 
-#: gradia/ui/preferences/preferences_window.py:112
-msgid "Ask For Confirmation"
-msgstr "要求確認"
+#: gradia/ui/preferences/ocr_model_page.py:113
+#, python-brace-format
+msgid "Downloaded '{}' Successfully"
+msgstr ""
 
-#: gradia/ui/preferences/preferences_window.py:113
-msgid "Copy and Close "
-msgstr "複製並關閉 "
+#: gradia/ui/preferences/ocr_model_page.py:119
+#, fuzzy, python-brace-format
+msgid "Failed to Download '{}'"
+msgstr "載入截圖失敗"
 
-#: gradia/ui/preferences/preferences_window.py:114
+#: gradia/ui/preferences/preferences_window.py:115
 msgid "Close Instantly"
 msgstr "立即關閉"
 
+#: gradia/ui/preferences/preferences_window.py:116
+#, fuzzy
+msgid "Ask for Confirmation"
+msgstr "要求確認"
+
+#: gradia/ui/preferences/preferences_window.py:117
+#, fuzzy
+msgid "Copy and Close"
+msgstr "複製並關閉 "
+
 #: gradia/ui/preferences/provider_selection_window.py:133
+#, fuzzy
+msgid "_Custom Provider"
+msgstr "自訂提供者"
+
+#: gradia/ui/preferences/provider_selection_window.py:134
 #: gradia/ui/provider_selection_window.py:134
 msgid "Create your own custom upload command"
 msgstr "建立您自己的自訂上傳指令"
 
-#: gradia/ui/preferences/provider_selection_window.py:301
+#: gradia/ui/preferences/provider_selection_window.py:303
 #: gradia/ui/provider_selection_window.py:302
 msgid "Custom"
 msgstr "自訂"
 
-#: gradia/ui/ui_parts.py:32
-msgid "Make your images ready for all"
-msgstr "為您的圖片做好全面發布準備"
-
 #. Translators: This is a place to put your credits (formats: "Name https://example.com" or "Name <email@example.com>", no quotes) and is not meant to be translated literally.
-#: gradia/ui/ui_parts.py:45
+#: gradia/ui/ui_parts.py:41
 msgid "translator-credits"
 msgstr "Alang Hsu <alang.hsu@gmail.com>"
 
-#: gradia/ui/ui_parts.py:51
+#: gradia/ui/ui_parts.py:47
+msgid "Based on Gradia by"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:56
+msgid "Inspired by"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:66
 msgid "Code and Design Borrowed from"
 msgstr "程式碼與設計參考自"
 
-#: gradia/ui/ui_parts.py:63
+#: gradia/ui/ui_parts.py:78
 msgid "Image Sources"
 msgstr "圖片來源"
 
-#: gradia/ui/ui_parts.py:98
+#: gradia/ui/ui_parts.py:113
 msgid "File Actions"
 msgstr "檔案操作"
 
-#: gradia/ui/ui_parts.py:99
-msgid "Open File"
-msgstr "開啟檔案"
+#: gradia/ui/ui_parts.py:115
+#, fuzzy
+msgid "Take a Screenshot"
+msgstr "擷取螢幕截圖"
 
-#: gradia/ui/ui_parts.py:100
-msgid "Save to File"
-msgstr "儲存為檔案"
-
-#: gradia/ui/ui_parts.py:101
+#: gradia/ui/ui_parts.py:116
 msgid "Copy Image to Clipboard"
 msgstr "複製圖片到剪貼簿"
 
-#: gradia/ui/ui_parts.py:102
+#: gradia/ui/ui_parts.py:117
 msgid "Paste From Clipboard"
 msgstr "從剪貼簿貼上"
 
-#: gradia/ui/ui_parts.py:105
+#: gradia/ui/ui_parts.py:119
+#, fuzzy
+msgid "Save As"
+msgstr "另存新檔…"
+
+#: gradia/ui/ui_parts.py:120
+#, fuzzy
+msgid "Upload / Share"
+msgstr "上傳"
+
+#: gradia/ui/ui_parts.py:121
+msgid "Pin Image on Screen"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:122
+#, fuzzy
+msgid "Close Tab"
+msgstr "關閉"
+
+#: gradia/ui/ui_parts.py:123
+msgid "Next / Previous Tab"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:124
+msgid "Recognize Text"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:126
 msgid "Annotations"
 msgstr "標註"
 
-#: gradia/ui/ui_parts.py:120
+#: gradia/ui/ui_parts.py:138
+msgid "Censor"
+msgstr "馬賽克"
+
+#: gradia/ui/ui_parts.py:141
 msgid "Cropping"
 msgstr "裁切"
 
-#: gradia/ui/ui_parts.py:121
+#: gradia/ui/ui_parts.py:142
 msgid "Toggle Crop Mode"
 msgstr "切換裁切模式"
 
-#: gradia/ui/ui_parts.py:122
+#: gradia/ui/ui_parts.py:143
 msgid "Reset Crop"
 msgstr "重設裁切"
 
-#: gradia/ui/ui_parts.py:124
+#: gradia/ui/ui_parts.py:145
 msgid "Zooming"
 msgstr "縮放"
 
-#: gradia/ui/ui_parts.py:132
+#: gradia/ui/ui_parts.py:148
+#, fuzzy
+msgid "Fit to Window"
+msgstr "新視窗"
+
+#: gradia/ui/ui_parts.py:149
+msgid "Actual Size"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:150
+msgid "Pan Left"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:151
+msgid "Pan Right"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:152
+msgid "Pan Up"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:153
+msgid "Pan Down"
+msgstr ""
+
+#: gradia/ui/ui_parts.py:156
+#, fuzzy
+msgid "Toggle Sidebar"
+msgstr "開啟側邊欄"
+
+#: gradia/ui/ui_parts.py:157
+msgid "Keyboard Shortcuts"
+msgstr "鍵盤快速鍵"
+
+#: gradia/ui/ui_parts.py:159
 msgid "Open Source Snippets"
 msgstr "開啟原始碼片段"
 
+#: gradia/ui/ui_parts.py:160
+#, fuzzy
+msgid "Delete Taken Screenshots"
+msgstr "刪除已擷取的螢幕截圖"
+
 #: gradia/ui/widget/aspect_ratio_button.py:26
-#: gradia/ui/widget/background_aspect_ratio_selector.py:52
 msgid "Aspect Ratio"
 msgstr "長寬比"
 
@@ -1162,18 +1705,198 @@ msgstr "高度"
 msgid "Set"
 msgstr "設定"
 
-#: gradia/ui/widget/quick_color_picker.py:103
-msgid "More Colors…"
-msgstr "更多色彩…"
-
 #: gradia/ui/widget/quick_color_picker.py:108
 msgid "Choose Color"
 msgstr "選擇色彩"
 
-#: gradia/ui/window.py:476
+#: gradia/ui/widget/toggle_group.py:47
+#, fuzzy
+msgid "_None"
+msgstr "無"
+
+#: gradia/ui/widget/toggle_group.py:48
+#, fuzzy
+msgid "_Solid"
+msgstr "純色"
+
+#: gradia/ui/widget/toggle_group.py:49
+#, fuzzy
+msgid "_Gradient"
+msgstr "漸層"
+
+#: gradia/ui/widget/toggle_group.py:50
+#, fuzzy
+msgid "_Image"
+msgstr "圖片"
+
+#: gradia/ui/window.py:246
+msgid "Crop (C)"
+msgstr ""
+
+#: gradia/ui/window.py:260
+msgid "Undo (Ctrl+Z)"
+msgstr ""
+
+#: gradia/ui/window.py:261
+msgid "Redo (Ctrl+Shift+Z)"
+msgstr ""
+
+#: gradia/ui/window.py:262
+msgid "Delete"
+msgstr ""
+
+#: gradia/ui/window.py:262
+msgid "Delete Selected Annotation (Delete)"
+msgstr ""
+
+#: gradia/ui/window.py:289
+msgid "New Capture (Ctrl+A)"
+msgstr ""
+
+#: gradia/ui/window.py:646
+#, fuzzy
+msgid "Failed to pin image"
+msgstr "匯出圖片失敗"
+
+#: gradia/ui/window.py:680
+#, fuzzy
+msgid "Select Provider"
+msgstr "提供者"
+
+#: gradia/ui/window.py:697
 msgid "Confirm Upload"
 msgstr "確認上傳"
 
-#: gradia/ui/window.py:480
+#: gradia/ui/window.py:701
 msgid "Upload"
 msgstr "上傳"
+
+#~ msgid "Gradia"
+#~ msgstr "Gradia"
+
+#~ msgid "Make your images ready for the world"
+#~ msgstr "為您的圖片做好發布準備"
+
+#~ msgid "Image;Gradient;Background;Screenshot;Edit;"
+#~ msgstr "圖片;漸層;背景;螢幕截圖;編輯;"
+
+#~ msgid "Take Fullscreen Screenshot"
+#~ msgstr "擷取全螢幕截圖"
+
+#~ msgid ""
+#~ "Gradia helps you get your screenshots ready for sharing, whether quickly "
+#~ "with friends or colleagues, or professionally with the entire world."
+#~ msgstr ""
+#~ "Gradia 協助您準備好分享螢幕截圖，無論是快速與朋友或同事分享，還是專業地與"
+#~ "全世界分享。"
+
+#~ msgid "Ten annotation modes, including text, arrow, and censor"
+#~ msgstr "十種標註模式，包含文字、箭頭與馬賽克"
+
+#~ msgid "Optional image and gradient backgrounds"
+#~ msgstr "可選擇圖片與漸層背景"
+
+#~ msgid "Image settings like shadow, padding, and auto-balance"
+#~ msgstr "圖片設定如陰影、內距與自動平衡"
+
+#~ msgid "Quick upload flow to easily share images via services like Imgur"
+#~ msgstr "快速上傳流程，輕鬆透過 Imgur 等服務分享圖片"
+
+#~ msgid "Convert code snippets into clean high-resolution images"
+#~ msgstr "將程式碼片段轉換為乾淨的高解析度圖片"
+
+#~ msgid "Alexander Vanhee"
+#~ msgstr "Alexander Vanhee"
+
+#~ msgid "Edited screenshot"
+#~ msgstr "已編輯的截圖"
+
+#~ msgid "Startup view"
+#~ msgstr "啟動畫面"
+
+#~ msgid "UI element showcase"
+#~ msgstr "UI 元件展示"
+
+#~ msgid "Annotation Tools"
+#~ msgstr "標註工具"
+
+#~ msgid "Fill Color Picker"
+#~ msgstr "填滿色彩選取器"
+
+#~ msgid "Outline Color Picker"
+#~ msgstr "外框色彩選取器"
+
+#~ msgid "Crop…"
+#~ msgstr "裁切…"
+
+#~ msgid "Reset Crop Selection"
+#~ msgstr "重設裁切選取範圍"
+
+#~ msgid "English"
+#~ msgstr "英文"
+
+#~ msgid "Chinese Simplified"
+#~ msgstr "簡體中文"
+
+#~ msgid "Chinese Traditional"
+#~ msgstr "繁體中文"
+
+#~ msgid "Spanish"
+#~ msgstr "西班牙文"
+
+#~ msgid "French"
+#~ msgstr "法文"
+
+#~ msgid "German"
+#~ msgstr "德文"
+
+#~ msgid "Japanese"
+#~ msgstr "日文"
+
+#~ msgid "Arabic"
+#~ msgstr "阿拉伯文"
+
+#~ msgid "Russian"
+#~ msgstr "俄文"
+
+#~ msgid "Portuguese"
+#~ msgstr "葡萄牙文"
+
+#~ msgid "Korean"
+#~ msgstr "韓文"
+
+#~ msgid "Hindi"
+#~ msgstr "印地文"
+
+#~ msgid "Dutch"
+#~ msgstr "荷蘭文"
+
+#~ msgid "Turkish"
+#~ msgstr "土耳其文"
+
+#~ msgid "Kazakh"
+#~ msgstr "哈薩克文"
+
+#~ msgid "Occitan"
+#~ msgstr "奧克文"
+
+#~ msgid "Polish"
+#~ msgstr "波蘭文"
+
+#~ msgid "Ukrainian"
+#~ msgstr "烏克蘭文"
+
+#~ msgid "Telugu"
+#~ msgstr "泰盧固文"
+
+#~ msgid "Oval"
+#~ msgstr "橢圓"
+
+#~ msgid "Make your images ready for all"
+#~ msgstr "為您的圖片做好全面發布準備"
+
+#~ msgid "Save to File"
+#~ msgstr "儲存為檔案"
+
+#~ msgid "More Colors…"
+#~ msgstr "更多色彩…"
