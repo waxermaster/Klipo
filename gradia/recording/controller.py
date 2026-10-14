@@ -29,6 +29,7 @@ from gi.repository import Adw, Gio, GLib
 
 from gradia.backend.logger import Logger
 from gradia.recording.indicator import RecordingIndicator
+from gradia.recording.preview import RecordingPreview
 from gradia.recording.recorder import Recorder, RecorderState
 
 logger = Logger()
@@ -88,14 +89,10 @@ class RecordingController:
         self._last_path = path
         self._close_indicator()
         self.app.withdraw_notification(NOTIFICATION_RECORDING)
-
-        notification = Gio.Notification.new(_("Recording Saved"))
-        notification.set_body(os.path.basename(path) if path else "")
-        notification.set_icon(Gio.ThemedIcon(name="camera-video-symbolic"))
-        notification.add_button(_("Open Folder"), "app.open-recordings-folder")
-        notification.set_default_action("app.open-recordings-folder")
-        self.app.send_notification(NOTIFICATION_RESULT, notification)
         logger.info(f"Recording saved to {path}")
+
+        if path and os.path.exists(path):
+            RecordingPreview(path, application=self.app).present()
 
         self._restore_editor_windows()
         self._release()

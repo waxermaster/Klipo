@@ -74,6 +74,27 @@ def copy_png_to_clipboard(png_bytes: bytes) -> bool:
     return True
 
 
+def copy_files_to_clipboard(paths: list[str]) -> bool:
+    """Copy files so they can be pasted in Files, chat apps or browsers."""
+    display = Gdk.Display.get_default()
+    if not display or not paths:
+        return False
+
+    files = [Gio.File.new_for_path(path) for path in paths]
+    uris = "\r\n".join(f.get_uri() for f in files) + "\r\n"
+    gnome_copied = "copy\n" + "\n".join(f.get_uri() for f in files)
+    content_provider = Gdk.ContentProvider.new_union([
+        Gdk.ContentProvider.new_for_value(Gdk.FileList.new_from_list(files)),
+        Gdk.ContentProvider.new_for_bytes("text/uri-list", GLib.Bytes.new(uris.encode())),
+        Gdk.ContentProvider.new_for_bytes("x-special/gnome-copied-files", GLib.Bytes.new(gnome_copied.encode())),
+        Gdk.ContentProvider.new_for_bytes("text/plain;charset=utf-8", GLib.Bytes.new("\n".join(paths).encode())),
+    ])
+    clipboard: Gdk.Clipboard = display.get_clipboard()
+    clipboard.set_content(content_provider)
+    ClipboardKeeper.get().keep(clipboard, content_provider)
+    return True
+
+
 class ClipboardKeeper:
     """Holds the application while it owns the clipboard.
 
