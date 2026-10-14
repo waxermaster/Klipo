@@ -253,6 +253,9 @@ template $GradiaDrawingToolsGroup: Box {
     child: Stack extra_stack {
       transition-type: crossfade;
       transition-duration: 200;
+      // Each page keeps its own height (the text page is much taller)
+      vhomogeneous: false;
+      interpolate-size: true;
 
       StackPage {
         name: "empty";
@@ -266,15 +269,46 @@ template $GradiaDrawingToolsGroup: Box {
         name: "fill";
 
         child: Box {
-          spacing: 8;
-          homogeneous: true;
-          margin-top: 12;
+          orientation: vertical;
 
-          $GradiaSimpleColorPicker fill_0 {
-            icon-name: "fill-symbolic";
-            text: _("Fill");
-            hexpand: true;
-            color-changed => $on_fill_color_changed();
+          Label {
+            label: _("Fill");
+            xalign: 0;
+            margin-top: 12;
+
+            styles [
+              "caption-heading",
+              "dim-label",
+            ]
+          }
+
+          Box {
+            spacing: 8;
+            margin-top: 6;
+
+            $GradiaSimpleColorPicker fill_0 {
+              icon-name: "fill-symbolic";
+              text: _("Fill");
+              hexpand: true;
+              color-changed => $on_fill_color_changed();
+            }
+
+            Button {
+              tooltip-text: _("Outline Only");
+              clicked => $on_no_fill_clicked();
+
+              child: Box {
+                spacing: 6;
+
+                Image {
+                  icon-name: "action-unavailable-symbolic";
+                }
+
+                Label {
+                  label: _("None");
+                }
+              };
+            }
           }
         };
       }
@@ -286,6 +320,7 @@ template $GradiaDrawingToolsGroup: Box {
           spacing: 8;
           homogeneous: true;
           margin-top: 12;
+          valign: start;
 
           $GradiaSimpleColorPicker fill_1 {
             icon-name: "fill-symbolic";

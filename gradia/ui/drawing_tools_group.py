@@ -327,6 +327,10 @@ class DrawingToolsGroup(Gtk.Box):
         self.apply_changes()
 
     @Gtk.Template.Callback()
+    def on_no_fill_clicked(self, _button: Gtk.Button):
+        self.fill_0.set_color(Gdk.RGBA(0, 0, 0, 0))
+
+    @Gtk.Template.Callback()
     def on_no_background_clicked(self, _button: Gtk.Button):
         transparent = Gdk.RGBA(0, 0, 0, 0)
         self.fill_2.set_color(transparent)

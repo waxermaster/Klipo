@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gradia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 09:18-0400\n"
+"POT-Creation-Date: 2026-10-14 13:10-0400\n"
 "PO-Revision-Date: 2026-05-23 00:46+0200\n"
 "Last-Translator: Jordi Bultó <jbulto@gmail.com>\n"
 "Language-Team: Catalan\n"
@@ -24,9 +24,7 @@ msgstr ""
 msgid "Klipo"
 msgstr ""
 
-#: data/io.github.waxermaster.Klipo.desktop.in.in:3
-#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:12
-#: gradia/ui/ui_parts.py:32
+#: data/io.github.waxermaster.Klipo.desktop.in.in:3 gradia/ui/ui_parts.py:32
 #, fuzzy
 msgid "Take, annotate and copy screenshots"
 msgstr "Anota les captures de pantalla"
@@ -53,6 +51,11 @@ msgstr ""
 msgid "Capture Window"
 msgstr "Finestra nova"
 
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:12
+#, fuzzy
+msgid "Take, annotate and copy screenshots, record your screen"
+msgstr "Anota les captures de pantalla"
+
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:15
 msgid ""
 "Klipo is a fast screenshot tool: press a shortcut, select an area, annotate "
@@ -74,22 +77,26 @@ msgid ""
 msgstr ""
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:20
-msgid "One-key tool shortcuts and a compact editor"
+msgid "One-key tool shortcuts, tabs and a compact editor"
 msgstr ""
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:21
-msgid "Optional backgrounds, padding and shadows"
+msgid "Screen recording to MP4, WebM or GIF, with sound and hardware encoding"
 msgstr ""
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:22
+msgid "Optional backgrounds, padding and shadows"
+msgstr ""
+
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:23
 msgid "Text recognition and quick upload"
 msgstr ""
 
-#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:24
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:25
 msgid "Klipo is a fork of Gradia by Alexander Vanhee."
 msgstr ""
 
-#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:27
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:28
 msgid "Wilfred"
 msgstr ""
 
@@ -104,7 +111,7 @@ msgstr "Esteu segur que voleu sortir? Es perdran tots els canvis no desats."
 
 #: data/ui/confirm_close_dialog.blp:11
 #: gradia/ui/dialog/delete_screenshots_dialog.py:54
-#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:700
+#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:702
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -169,33 +176,38 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: data/ui/drawing_tools_group.blp:275 data/ui/drawing_tools_group.blp:292
+#: data/ui/drawing_tools_group.blp:275 data/ui/drawing_tools_group.blp:291
+#: data/ui/drawing_tools_group.blp:327
 msgid "Fill"
 msgstr "Farciment"
 
-#: data/ui/drawing_tools_group.blp:299
+#: data/ui/drawing_tools_group.blp:297
+msgid "Outline Only"
+msgstr ""
+
+#: data/ui/drawing_tools_group.blp:308 data/ui/drawing_tools_group.blp:381
+msgid "None"
+msgstr "Cap"
+
+#: data/ui/drawing_tools_group.blp:334
 msgid "Border"
 msgstr "Vora"
 
-#: data/ui/drawing_tools_group.blp:313 data/ui/drawing_tools_group.blp:329
+#: data/ui/drawing_tools_group.blp:348 data/ui/drawing_tools_group.blp:364
 #, fuzzy
 msgid "Background"
 msgstr "Imatge de fons"
 
-#: data/ui/drawing_tools_group.blp:335
+#: data/ui/drawing_tools_group.blp:370
 #, fuzzy
 msgid "No Background"
 msgstr "Imatge de fons"
 
-#: data/ui/drawing_tools_group.blp:346
-msgid "None"
-msgstr "Cap"
-
-#: data/ui/drawing_tools_group.blp:353 data/ui/drawing_tools_group.blp:366
+#: data/ui/drawing_tools_group.blp:388 data/ui/drawing_tools_group.blp:401
 msgid "Outline"
 msgstr ""
 
-#: data/ui/drawing_tools_group.blp:375
+#: data/ui/drawing_tools_group.blp:410
 msgid "Opacity"
 msgstr ""
 
@@ -1870,21 +1882,21 @@ msgstr ""
 msgid "New Capture (Ctrl+A)"
 msgstr ""
 
-#: gradia/ui/window.py:646
+#: gradia/ui/window.py:648
 #, fuzzy
 msgid "Failed to pin image"
 msgstr "No s'ha pogut exportar la imatge"
 
-#: gradia/ui/window.py:680
+#: gradia/ui/window.py:682
 #, fuzzy
 msgid "Select Provider"
 msgstr "Proveïdor"
 
-#: gradia/ui/window.py:697
+#: gradia/ui/window.py:699
 msgid "Confirm Upload"
 msgstr "Confirma la pujada"
 
-#: gradia/ui/window.py:701
+#: gradia/ui/window.py:703
 msgid "Upload"
 msgstr "Puja"
 

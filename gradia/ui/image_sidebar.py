@@ -57,6 +57,7 @@ class ImageSidebar(Adw.Bin):
     rotate_left_button: Gtk.Button = Gtk.Template.Child()
     rotate_right_button: Gtk.Button = Gtk.Template.Child()
     aspect_ratio_selector: AspectRatioSelector = Gtk.Template.Child()
+    beautify_expander: Gtk.Expander = Gtk.Template.Child()
 
     def __init__(
         self,
@@ -196,6 +197,9 @@ class ImageSidebar(Adw.Bin):
     def _on_background_mode_changed(self, mode: str) -> None:
         self._background_mode = mode
         is_disabled = mode == "none"
+        # An active background changes every copied image: keep its settings in sight
+        if not is_disabled:
+            self.beautify_expander.set_expanded(True)
         self._updating_widgets = True
 
         self._set_selective_visiblility(is_disabled)

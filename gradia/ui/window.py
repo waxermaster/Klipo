@@ -597,6 +597,8 @@ class GradiaMainWindow(Adw.ApplicationWindow):
             paintable: Gdk.Paintable = Gdk.Texture.new_for_pixbuf(self.processed_pixbuf)
             self.picture.set_paintable(paintable)
             self._hide_loading_state()
+            # The new size is only laid out after this frame
+            GLib.timeout_add(200, self._update_zoom_label)
         return False
 
     def _update_processed_image_size(self, width, height) -> None:

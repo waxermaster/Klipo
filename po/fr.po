@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klipo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 09:18-0400\n"
+"POT-Creation-Date: 2026-10-14 13:10-0400\n"
 "PO-Revision-Date: 2026-05-01 21:57+0900\n"
 "Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
 "Language-Team: \n"
@@ -24,9 +24,7 @@ msgstr ""
 msgid "Klipo"
 msgstr "Klipo"
 
-#: data/io.github.waxermaster.Klipo.desktop.in.in:3
-#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:12
-#: gradia/ui/ui_parts.py:32
+#: data/io.github.waxermaster.Klipo.desktop.in.in:3 gradia/ui/ui_parts.py:32
 msgid "Take, annotate and copy screenshots"
 msgstr "Capturez, annotez et copiez vos captures d’écran"
 
@@ -51,6 +49,10 @@ msgstr "Capturer tous les écrans"
 #: data/io.github.waxermaster.Klipo.desktop.in.in:33
 msgid "Capture Window"
 msgstr "Capturer une fenêtre"
+
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:12
+msgid "Take, annotate and copy screenshots, record your screen"
+msgstr "Capturez, annotez et copiez vos captures d’écran, enregistrez votre écran"
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:15
 msgid ""
@@ -80,22 +82,26 @@ msgstr ""
 "surligneur, étapes numérotées et floutage"
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:20
-msgid "One-key tool shortcuts and a compact editor"
-msgstr "Un raccourci d’une lettre par outil et un éditeur compact"
+msgid "One-key tool shortcuts, tabs and a compact editor"
+msgstr "Un raccourci d’une lettre par outil, des onglets et un éditeur compact"
 
 #: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:21
+msgid "Screen recording to MP4, WebM or GIF, with sound and hardware encoding"
+msgstr "Enregistrement d’écran en MP4, WebM ou GIF, avec le son et l’encodage matériel"
+
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:22
 msgid "Optional backgrounds, padding and shadows"
 msgstr "Arrière-plans, marges et ombres facultatifs"
 
-#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:22
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:23
 msgid "Text recognition and quick upload"
 msgstr "Reconnaissance de texte et envoi rapide"
 
-#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:24
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:25
 msgid "Klipo is a fork of Gradia by Alexander Vanhee."
 msgstr "Klipo est un dérivé de Gradia, d’Alexander Vanhee."
 
-#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:27
+#: data/io.github.waxermaster.Klipo.metainfo.xml.in.in:28
 msgid "Wilfred"
 msgstr "Wilfred"
 
@@ -111,7 +117,7 @@ msgstr ""
 
 #: data/ui/confirm_close_dialog.blp:11
 #: gradia/ui/dialog/delete_screenshots_dialog.py:54
-#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:700
+#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:702
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -177,31 +183,36 @@ msgstr ""
 msgid "Color"
 msgstr "Couleur"
 
-#: data/ui/drawing_tools_group.blp:275 data/ui/drawing_tools_group.blp:292
+#: data/ui/drawing_tools_group.blp:275 data/ui/drawing_tools_group.blp:291
+#: data/ui/drawing_tools_group.blp:327
 msgid "Fill"
 msgstr "Remplir"
 
-#: data/ui/drawing_tools_group.blp:299
-msgid "Border"
-msgstr "Bordure"
+#: data/ui/drawing_tools_group.blp:297
+msgid "Outline Only"
+msgstr "Contour seulement"
 
-#: data/ui/drawing_tools_group.blp:313 data/ui/drawing_tools_group.blp:329
-msgid "Background"
-msgstr "Fond"
-
-#: data/ui/drawing_tools_group.blp:335
-msgid "No Background"
-msgstr "Aucun fond"
-
-#: data/ui/drawing_tools_group.blp:346
+#: data/ui/drawing_tools_group.blp:308 data/ui/drawing_tools_group.blp:381
 msgid "None"
 msgstr "Aucun"
 
-#: data/ui/drawing_tools_group.blp:353 data/ui/drawing_tools_group.blp:366
+#: data/ui/drawing_tools_group.blp:334
+msgid "Border"
+msgstr "Bordure"
+
+#: data/ui/drawing_tools_group.blp:348 data/ui/drawing_tools_group.blp:364
+msgid "Background"
+msgstr "Fond"
+
+#: data/ui/drawing_tools_group.blp:370
+msgid "No Background"
+msgstr "Aucun fond"
+
+#: data/ui/drawing_tools_group.blp:388 data/ui/drawing_tools_group.blp:401
 msgid "Outline"
 msgstr "Contour"
 
-#: data/ui/drawing_tools_group.blp:375
+#: data/ui/drawing_tools_group.blp:410
 msgid "Opacity"
 msgstr "Opacité"
 
@@ -1803,19 +1814,19 @@ msgstr "Supprimer l’annotation sélectionnée (Suppr)"
 msgid "New Capture (Ctrl+A)"
 msgstr "Nouvelle capture (Ctrl+A)"
 
-#: gradia/ui/window.py:646
+#: gradia/ui/window.py:648
 msgid "Failed to pin image"
 msgstr "Impossible d’épingler l’image"
 
-#: gradia/ui/window.py:680
+#: gradia/ui/window.py:682
 msgid "Select Provider"
 msgstr "Choisir un service"
 
-#: gradia/ui/window.py:697
+#: gradia/ui/window.py:699
 msgid "Confirm Upload"
 msgstr "Confirmer le téléversement"
 
-#: gradia/ui/window.py:701
+#: gradia/ui/window.py:703
 msgid "Upload"
 msgstr "Téléverser"
 
