@@ -35,6 +35,7 @@ from gradia.ui.image_loaders import ImportManager
 from gradia.graphics.loaded_image import LoadedImage, ImageOrigin
 from gradia.ui.image_sidebar import ImageSidebar, ImageOptions
 from gradia.ui.image_stack import ImageStack
+from gradia.ui.documents import EditorDocument
 from gradia.ui.widget.drawing_tools_grid import rail_button_content
 from gradia.ui.ui_parts import *
 from gradia.ui.welcome_page import WelcomePage
@@ -75,6 +76,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
     image_size_label: Gtk.Label = Gtk.Template.Child()
     zoom_percent_button: Gtk.Button = Gtk.Template.Child()
     tab_view: Adw.TabView = Gtk.Template.Child()
+    tab_bar: Adw.TabBar = Gtk.Template.Child()
 
     welcome_page: Gtk.StackPage = Gtk.Template.Child()
 
@@ -117,6 +119,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self._setup_sidebar()
         self._setup_tool_rail()
         self._setup_capture_controls()
+        self._setup_tabs()
         self._setup()
 
         self.connect("close-request", self._on_close_request)
@@ -136,7 +139,10 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.create_action("shortcuts", self._on_shortcuts_activated)
         self.create_action("about", self._on_about_activated)
         self.create_action("donate", lambda *args: Gtk.UriLauncher.new("https://ko-fi.com/alexandervanhee").launch(None, None, None, None))
-        self.create_action("quit", lambda *_: self.close(),  ['<primary>q', '<primary>w'])
+        self.create_action("quit", lambda *_: self.close(),  ['<primary>q'])
+        self.create_action("close-tab", lambda *_: self.close_current_tab(), ['<primary>w'])
+        self.create_action("next-tab", lambda *_: self.tab_view.select_next_page() or self.tab_view.set_selected_page(self.tab_view.get_nth_page(0)) if self.tab_view.get_n_pages() else None, ['<primary>Page_Down', '<primary>Tab'])
+        self.create_action("previous-tab", lambda *_: self.tab_view.select_previous_page() or self.tab_view.set_selected_page(self.tab_view.get_nth_page(self.tab_view.get_n_pages() - 1)) if self.tab_view.get_n_pages() else None, ['<primary>Page_Up', '<primary><Shift>Tab'])
         self.create_action("shortcuts", self._on_shortcuts_activated,  ['<primary>question'])
 
         self.create_action("open", lambda *_: self.import_manager.open_file_dialog(), ["<Primary>o"])
@@ -265,6 +271,90 @@ class GradiaMainWindow(Adw.ApplicationWindow):
     def _on_delay_changed(self, dropdown: Gtk.DropDown, _pspec) -> None:
         self.settings.screenshot_delay = self.DELAY_CHOICES[dropdown.get_selected()]
 
+    """
+    Tabs
+    """
+
+    def _setup_tabs(self) -> None:
+        self._documents: dict[Adw.TabPage, EditorDocument] = {}
+        self._current_page: Optional[Adw.TabPage] = None
+        self._switching_tabs = False
+        self.tab_view.connect("notify::selected-page", self._on_selected_page_changed)
+        self.tab_view.connect("close-page", self._on_close_page)
+
+        new_capture_button = Gtk.Button(icon_name="list-add-symbolic", tooltip_text=_("New Capture (Ctrl+A)"),
+                                        action_name="win.capture-area", css_classes=["flat"])
+        self.tab_bar.set_end_action_widget(new_capture_button)
+
+    def _store_current_document(self) -> None:
+        document = self._documents.get(self._current_page)
+        if document is None:
+            return
+        if self.image_bin.crop_enabled:
+            self.image_bin.on_toggle_crop()
+        self.drawing_overlay._close_text_entry()
+        document.store_from(self)
+
+    def _open_document_tab(self) -> EditorDocument:
+        """Create a tab for an image that is about to be loaded, and select it."""
+        self._store_current_document()
+        document = EditorDocument()
+        # Appending the first page selects it: don't treat that as a tab switch
+        self._switching_tabs = True
+        page = self.tab_view.append(Adw.Bin())
+        self._documents[page] = document
+        self.tab_view.set_selected_page(page)
+        self._switching_tabs = False
+        self._current_page = page
+        return document
+
+    def _on_selected_page_changed(self, tab_view: Adw.TabView, _pspec) -> None:
+        if self._switching_tabs:
+            return
+        page = tab_view.get_selected_page()
+        if page is None or page is self._current_page:
+            return
+
+        self._store_current_document()
+        self._current_page = page
+        document = self._documents[page]
+        self.image = document.image
+        document.restore_to(self)
+        if self.image is not None:
+            self._update_sidebar_file_info(self.image)
+            self.show_loading_state()
+            self.show_close_confirmation = document.unsaved
+            self.process_image(callback=self._on_document_shown)
+
+    def _on_document_shown(self) -> None:
+        self._set_export_ready(True)
+        self.lookup_action("open-folder").set_enabled(self.image.has_proper_folder())
+
+    def _on_close_page(self, tab_view: Adw.TabView, page: Adw.TabPage) -> bool:
+        if tab_view.get_n_pages() <= 1:
+            # Closing the last tab closes the window, with the usual close behaviour
+            tab_view.close_page_finish(page, False)
+            self.close()
+            return Gdk.EVENT_STOP
+
+        tab_view.close_page_finish(page, True)
+        self._documents.pop(page, None)
+        return Gdk.EVENT_STOP
+
+    def close_current_tab(self) -> None:
+        page = self.tab_view.get_selected_page()
+        if page is not None:
+            self.tab_view.close_page(page)
+        else:
+            self.close()
+
+    def _update_current_tab_title(self) -> None:
+        document = self._documents.get(self._current_page)
+        if document is not None:
+            self._current_page.set_title(document.title())
+            if document.image is not None:
+                self._current_page.set_tooltip(document.image.get_proper_name())
+
     def _capture(self, mode: ScreenshotMode) -> None:
         self.app.take_screenshot(mode, self.settings.screenshot_delay, window=self)
 
@@ -318,7 +408,10 @@ class GradiaMainWindow(Adw.ApplicationWindow):
     def close_after_copy(self) -> None:
         """Close right away: the image is already on the clipboard."""
         self.show_close_confirmation = False
-        self._finalize_close(copy=False)
+        if self.tab_view.get_n_pages() > 1:
+            self.close_current_tab()
+        else:
+            self._finalize_close(copy=False)
 
     def _on_confirm_close_ok(self) -> None:
         self._finalize_close(copy=False)
@@ -432,11 +525,17 @@ class GradiaMainWindow(Adw.ApplicationWindow):
     """
 
     def set_image(self, image: LoadedImage, copy_after_processing=False):
+        # A new image opens in a new tab, unless the current tab is still empty
+        document = self._documents.get(self._current_page)
+        if document is None or self.image is not None:
+            document = self._open_document_tab()
+        document.image = image
         self.image = image
         self.drawing_overlay.clear_drawing()
         self.image_bin.reset_crop_selection(silent=True)
         self.sidebar.reset_rotation()
         self._update_sidebar_file_info(image)
+        self._update_current_tab_title()
 
         if self.welcome_content:
             self.welcome_content.recent_picker.set_visible(False)
