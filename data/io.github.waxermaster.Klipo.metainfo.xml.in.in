@@ -9,7 +9,7 @@
 		<control>touch</control>
 	</supports>
 	<name>Klipo</name>
-	<summary>Take, annotate and copy screenshots</summary>
+	<summary>Take, annotate and copy screenshots, record your screen</summary>
 	<launchable type="desktop-id">@APP_ID@.desktop</launchable>
 	<description>
 		<p>Klipo is a fast screenshot tool: press a shortcut, select an area, annotate it and copy it to the clipboard, without ever having to save a file.</p>
@@ -17,7 +17,8 @@
 		<ul>
 			<li>Area, window and full screen capture through the desktop portal</li>
 			<li>Annotations that stay editable: arrows, shapes, text, highlighter, numbered steps and censoring</li>
-			<li>One-key tool shortcuts and a compact editor</li>
+			<li>One-key tool shortcuts, tabs and a compact editor</li>
+			<li>Screen recording to MP4, WebM or GIF, with sound and hardware encoding</li>
 			<li>Optional backgrounds, padding and shadows</li>
 			<li>Text recognition and quick upload</li>
 		</ul>
