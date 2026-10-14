@@ -15,6 +15,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import os
+
 from gi.repository import Gio, Gdk, Gtk, GLib
 from gradia.constants import app_id
 
@@ -99,6 +101,18 @@ class Settings:
         if value not in ("confirm", "copy", "none"):
             value = "none"
         self._settings.set_string("exit-method", value)
+
+    @property
+    def save_folder(self) -> str:
+        folder = self._settings.get_string("save-folder")
+        if folder:
+            return folder
+        pictures = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES) or GLib.get_home_dir()
+        return os.path.join(pictures, "Klipo")
+
+    @save_folder.setter
+    def save_folder(self, value: str) -> None:
+        self._settings.set_string("save-folder", value)
 
     @property
     def close_after_copy(self) -> bool:

@@ -22,6 +22,7 @@ import time
 
 
 from gi.repository import Gtk, Gio, GdkPixbuf, GLib, Gdk
+from gradia.utils.timestamp_filename import TimestampedFilenameGenerator
 from gradia.clipboard import copy_text_to_clipboard, save_pixbuff_to_path, copy_pixbuf_to_clipboard, copy_png_to_clipboard
 from gradia.backend.logger import Logger
 from gradia.app_constants import SUPPORTED_EXPORT_FORMATS, DEFAULT_EXPORT_FORMAT
@@ -161,6 +162,37 @@ class FileDialogExporter(BaseImageExporter):
 
         dialog.connect("response", lambda d, r: self._on_dialog_response(d, r, target_format))
         dialog.show()
+
+    def quick_save(self) -> None:
+        """Save next to previous quick saves with a timestamped name, without asking."""
+        if not self._ensure_processed_image_available():
+            return
+
+        format_type = self.settings.export_format if self.settings.export_format in SUPPORTED_EXPORT_FORMATS else DEFAULT_EXPORT_FORMAT
+        extension = SUPPORTED_EXPORT_FORMATS[format_type]['extensions'][0]
+        folder = self.settings.save_folder
+        name = TimestampedFilenameGenerator().generate(_("Klipo %Y-%m-%d %H-%M-%S"))
+        save_path = os.path.join(folder, name + extension)
+        suffix = 2
+        while os.path.exists(save_path):
+            save_path = os.path.join(folder, f"{name} ({suffix}){extension}")
+            suffix += 1
+
+        try:
+            os.makedirs(folder, exist_ok=True)
+            self._save_image(save_path, format_type)
+        except Exception as e:
+            self.window._show_notification(_("Export Failed"))
+            logger.error(f"Failed to save image: {e}")
+            return
+
+        self.window.show_close_confirmation = False
+        folder_uri = GLib.filename_to_uri(folder)
+        self.window._show_notification(
+            _("Saved as {name}").format(name=os.path.basename(save_path)),
+            _("Open Folder"),
+            lambda: Gio.AppInfo.launch_default_for_uri(folder_uri, None),
+        )
 
     def _on_dialog_response(self, dialog, response_id, suggested_format):
         if response_id == Gtk.ResponseType.ACCEPT:
@@ -505,6 +537,10 @@ class ExportManager:
     def save_to_file(self) -> None:
         """Export to file using file dialog"""
         self.file_exporter.save_to_file()
+
+    def quick_save(self) -> None:
+        """Export to the default folder with a timestamped name"""
+        self.file_exporter.quick_save()
 
     def copy_to_clipboard(self, silent = False) -> None:
         """Export to clipboard"""

@@ -61,17 +61,18 @@ class DrawingMode(Enum):
     def shortcuts(self):
         return DrawingMode._shortcuts[self]
 
+# One-letter shortcuts follow ksnip; C (crop) is a window action
 DrawingMode._shortcuts = {
-    DrawingMode.SELECT:       ["0", "KP_0", "grave", "s"],
-    DrawingMode.PEN:          ["1", "KP_1", "d", "p"],
-    DrawingMode.TEXT:         ["2", "KP_2", "t"],
-    DrawingMode.LINE:         ["3", "KP_3", "l"],
-    DrawingMode.ARROW:        ["4", "KP_4", "a"],
-    DrawingMode.SQUARE:       ["5", "KP_5", "r"],
-    DrawingMode.CIRCLE:       ["6", "KP_6", "o"],
-    DrawingMode.HIGHLIGHTER:  ["7", "KP_7", "h"],
-    DrawingMode.CENSOR:       ["8", "KP_8", "c"],
-    DrawingMode.NUMBER:       ["9", "KP_9", "n"],
+    DrawingMode.SELECT:       ["s", "0", "KP_0", "grave"],
+    DrawingMode.PEN:          ["p", "1", "KP_1"],
+    DrawingMode.TEXT:         ["t", "2", "KP_2"],
+    DrawingMode.LINE:         ["l", "3", "KP_3"],
+    DrawingMode.ARROW:        ["f", "4", "KP_4"],
+    DrawingMode.SQUARE:       ["r", "5", "KP_5"],
+    DrawingMode.CIRCLE:       ["e", "6", "KP_6"],
+    DrawingMode.HIGHLIGHTER:  ["h", "7", "KP_7"],
+    DrawingMode.CENSOR:       ["b", "8", "KP_8"],
+    DrawingMode.NUMBER:       ["n", "9", "KP_9"],
 }
 
 

@@ -10,11 +10,11 @@
       <summary>Dictionary of tool configuration strings</summary>
     </key>
     <key name="image-padding" type="i">
-      <default>5</default>
+      <default>0</default>
       <summary>Padding percentage around the image</summary>
     </key>
     <key name="image-corner-radius" type="i">
-      <default>2</default>
+      <default>0</default>
       <summary>Radius of the rounded corners</summary>
     </key>
     <key name="image-aspect-ratio" type="s">
@@ -22,7 +22,7 @@
       <summary>Aspect ratio of the final image</summary>
     </key>
     <key name="image-shadow-strength" type="i">
-      <default>5</default>
+      <default>0</default>
       <summary>Intensity of the shadow behind the image</summary>
     </key>
     <key name="image-auto-balance" type="b">
@@ -71,6 +71,10 @@
     <key name="exit-method" type="s">
       <default>'none'</default>
       <summary>What happens when an editor window is closed: 'none', 'confirm' or 'copy'.</summary>
+    </key>
+    <key name="save-folder" type="s">
+      <default>''</default>
+      <summary>Folder used by quick save (Ctrl+S); empty means Pictures/Klipo</summary>
     </key>
     <key name="close-after-copy" type="b">
       <default>false</default>

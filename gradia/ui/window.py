@@ -137,21 +137,23 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.create_action("del-selected", lambda *_: self.drawing_overlay.remove_selected_action(), ["<Primary>x", "Delete"])
 
         self.create_action("open-folder", lambda *_: self.open_loaded_image_folder(), enabled=False)
-        self.create_action("save", lambda *_: self.export_manager.save_to_file(), ["<Primary>s"], enabled=False)
+        self.create_action("save", lambda *_: self.export_manager.quick_save(), ["<Primary>s"], enabled=False)
+        self.create_action("save-as", lambda *_: self.export_manager.save_to_file(), ["<Primary><Shift>s"], enabled=False)
         self.create_action("copy", lambda *_: self.export_manager.copy_to_clipboard(), ["<Primary>c"], enabled=False)
         self.create_action("command", lambda *_: self._run_custom_command(), ["<Primary>m"])
 
         self.create_action("aspect-ratio-crop", lambda _, variant: self.image_bin.set_aspect_ratio(variant.get_double()), vt="d")
-        self.create_action("crop", lambda *_: self.image_bin.on_toggle_crop(), ["<Primary>r"])
+        self.create_action("crop", lambda *_: self.image_bin.on_toggle_crop(), ["c", "<Primary>r"], disable_on_entry_focus=True)
         self.create_action("crop-back", lambda *_: self.image_bin.crop_back(), ["Escape"])
         self.create_action("reset-crop", lambda *_: self.image_bin.reset_crop_selection(), ["<Primary><Shift>r"])
         self.create_action("sidebar-shown", lambda action, param: self.split_view.set_show_sidebar(param.get_boolean()), vt="b")
         self.create_action("toggle-sidebar", lambda *_: self.split_view.set_show_sidebar(not self.split_view.get_show_sidebar()), ["F9"])
-        self.create_action("ocr", lambda *_: self.on_ocr(), ["<Primary>o"], stateful=True)
+        self.create_action("ocr", lambda *_: self.on_ocr(), ["<Primary><Shift>o"], stateful=True)
 
         self.create_action("zoom-in", lambda *_: self.image_bin.zoom_in(), ["<Control>plus", "<Control>equal", "<Control>KP_Add"])
         self.create_action("zoom-out", lambda *_: self.image_bin.zoom_out(), ["<Control>minus", "<Control>KP_Subtract"])
         self.create_action("reset-zoom", lambda *_: self.image_bin.reset_zoom(), ["<Control>0", "<Control>KP_0"])
+        self.create_action("zoom-actual-size", lambda *_: self.image_bin.zoom_actual_size(), ["<Control>1", "<Control>KP_1"])
         self.create_action("pan-left", lambda *_: self.image_bin.pan(50, 0), ["<Control>Left"])
         self.create_action("pan-right", lambda *_: self.image_bin.pan(-50, 0), ["<Control>Right"])
         self.create_action("pan-up", lambda *_: self.image_bin.pan(0, 50), ["<Control>Up"])
@@ -449,7 +451,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
 
     def _set_export_ready(self, enabled: bool) -> None:
         self.image_ready = True
-        for action_name in ["save", "copy"]:
+        for action_name in ["save", "save-as", "copy"]:
             action = self.lookup_action(action_name)
             if action:
                 action.set_enabled(enabled)
