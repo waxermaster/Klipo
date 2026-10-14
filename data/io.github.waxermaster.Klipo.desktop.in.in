@@ -1,0 +1,35 @@
+[Desktop Entry]
+Name=Klipo
+Comment=Take, annotate and copy screenshots
+Exec=klipo %U
+Icon=@APP_ID@
+StartupNotify=true
+DBusActivatable=true
+Terminal=false
+Type=Application
+Categories=Graphics;Utility;
+# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords=Screenshot;Capture;Annotate;Snip;Clipboard;Edit;
+MimeType=image/png;image/jpeg;image/webp;
+Actions=new-window;take-screenshot;take-fullscreen-screenshot;take-window-screenshot;
+X-Purism-FormFactor=Workstation;Mobile;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=klipo --new-window
+Icon=application-new-window
+
+[Desktop Action take-screenshot]
+Name=Capture Area
+Exec=klipo --screenshot=INTERACTIVE
+Icon=camera-photo
+
+[Desktop Action take-fullscreen-screenshot]
+Name=Capture All Screens
+Exec=klipo --screenshot=FULL
+Icon=camera-photo
+
+[Desktop Action take-window-screenshot]
+Name=Capture Window
+Exec=klipo --screenshot=WINDOW
+Icon=camera-photo

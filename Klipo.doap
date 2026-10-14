@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name>Klipo</name>
+  <shortdesc xml:lang="en">Take, annotate and copy screenshots</shortdesc>
+  <description xml:lang="en">
+    Klipo is a GTK 4 screenshot and screen recording tool, forked from Gradia.
+  </description>
+
+  <homepage rdf:resource="https://github.com/waxermaster/Klipo" />
+  <download-page rdf:resource="https://github.com/waxermaster/Klipo/releases" />
+  <bug-database rdf:resource="https://github.com/waxermaster/Klipo/issues" />
+
+  <programming-language>Python</programming-language>
+
+  <platform>GTK 4</platform>
+  <platform>Libadwaita</platform>
+
+  <license rdf:resource="https://www.gnu.org/licenses/gpl-3.0.html" />
+  <created>2026-10-13</created>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Wilfred</foaf:name>
+      <foaf:account>
+        <foaf:OnlineAccount>
+          <foaf:accountServiceHomepage rdf:resource="https://github.com" />
+          <foaf:accountName>waxermaster</foaf:accountName>
+        </foaf:OnlineAccount>
+      </foaf:account>
+    </foaf:Person>
+  </maintainer>
+</Project>
+

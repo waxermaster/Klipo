@@ -1,5 +1,5 @@
-project('gradia', 'c',
-            version: '1.14.0',
+project('klipo', 'c',
+            version: '0.1.0',
       meson_version: '>= 1.0.0',
     default_options: ['warning_level=2',
                       'werror=false'
@@ -12,14 +12,14 @@ gnome = import('gnome')
 python = import('python')
 
 # Project information
-PROJECT_URL = 'https://gradia.alexandervanhee.be/'
-VCS_URL = 'https://github.com/AlexanderVanhee/Gradia'
-BUGTRACKER_URL = 'https://github.com/AlexanderVanhee/Gradia/issues'
-HELP_URL = 'https://github.com/AlexanderVanhee/Gradia/discussions'
+PROJECT_URL = 'https://github.com/waxermaster/Klipo'
+VCS_URL = 'https://github.com/waxermaster/Klipo'
+BUGTRACKER_URL = 'https://github.com/waxermaster/Klipo/issues'
+HELP_URL = 'https://github.com/waxermaster/Klipo/discussions'
 
 # Constants
-PROJECT_RDNN_NAME = 'be.alexandervanhee.gradia'
-ROOT_PATH = '/be/alexandervanhee/gradia'
+PROJECT_RDNN_NAME = 'io.github.waxermaster.Klipo'
+ROOT_PATH = '/io/github/waxermaster/Klipo'
 PKGDATA_DIR = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
 MODULE_DIR =  join_paths(PKGDATA_DIR, 'gradia')
 
@@ -86,6 +86,8 @@ conf.set('OCR_ORIGINAL_TESSDATA_DIR', OCR_ORIGINAL_TESSDATA_DIR)
 
 # Install project information
 conf.set('RELEASE_VER', meson.project_version())
+# Upload provider lists are published by upstream Gradia, per Gradia release
+conf.set('UPSTREAM_VER', '1.14.0')
 conf.set('PROJECT_URL', PROJECT_URL)
 conf.set('VCS_URL', VCS_URL)
 conf.set('BUGTRACKER_URL', BUGTRACKER_URL)

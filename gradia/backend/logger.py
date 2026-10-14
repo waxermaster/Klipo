@@ -88,7 +88,7 @@ class Logger(logging.getLoggerClass()):
         The constructor for Logger class.
         """
 
-        super().__init__(name="Gradia")
+        super().__init__(name="Klipo")
 
         if issue_footer_levels:
             self.issue_footer_levels = issue_footer_levels

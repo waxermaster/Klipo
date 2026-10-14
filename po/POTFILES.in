@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/be.alexandervanhee.gradia.desktop.in.in
-data/be.alexandervanhee.gradia.metainfo.xml.in.in
+data/io.github.waxermaster.Klipo.desktop.in.in
+data/io.github.waxermaster.Klipo.metainfo.xml.in.in
 data/ui/background_selector.blp
 data/ui/confirm_close_dialog.blp
 data/ui/drawing_tools_group.blp

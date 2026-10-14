@@ -36,7 +36,7 @@ class ImageBackground(Background):
     @property
     def SAVED_IMAGE_PATH(self) -> Path:
         cache_dir = GLib.get_user_cache_dir()
-        return Path(cache_dir) / 'gradia' / 'last_image.png'
+        return Path(cache_dir) / 'klipo' / 'last_image.png'
 
     def __init__(self, file_path: Optional[str] = None) -> None:
         self.file_path: Optional[str] = file_path

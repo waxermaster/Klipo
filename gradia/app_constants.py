@@ -58,15 +58,15 @@ PREDEFINED_GRADIENTS: list[Gradient] = [
 ]
 
 PRESET_IMAGES = [
-    "/be/alexandervanhee/gradia/images/adwaita.webp",
-    "/be/alexandervanhee/gradia/images/blobs.webp",
-    "/be/alexandervanhee/gradia/images/coral.webp",
-    "/be/alexandervanhee/gradia/images/drool.webp",
-    "/be/alexandervanhee/gradia/images/graph.png",
-    "/be/alexandervanhee/gradia/images/mesh.webp",
-    "/be/alexandervanhee/gradia/images/pink.webp",
-    "/be/alexandervanhee/gradia/images/sky.webp",
-    "/be/alexandervanhee/gradia/images/swirl.webp",
+    "/io/github/waxermaster/Klipo/images/adwaita.webp",
+    "/io/github/waxermaster/Klipo/images/blobs.webp",
+    "/io/github/waxermaster/Klipo/images/coral.webp",
+    "/io/github/waxermaster/Klipo/images/drool.webp",
+    "/io/github/waxermaster/Klipo/images/graph.png",
+    "/io/github/waxermaster/Klipo/images/mesh.webp",
+    "/io/github/waxermaster/Klipo/images/pink.webp",
+    "/io/github/waxermaster/Klipo/images/sky.webp",
+    "/io/github/waxermaster/Klipo/images/swirl.webp",
 ]
 
 SUPPORTED_EXPORT_FORMATS = {

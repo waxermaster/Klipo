@@ -6,9 +6,9 @@ Thank you for your interest in translating Gradia! This guide will help you cont
 
 1. **Fork the Gradia repository** and clone it to your local machine.
 
-2. Locate the translation template file, found at `po/gradia.pot`.
+2. Locate the translation template file, found at `po/klipo.pot`.
 
-3. Open the `gradia.pot` file in [Poedit](https://poedit.net/).
+3. Open the `klipo.pot` file in [Poedit](https://poedit.net/).
 
 4. In Poedit, create a new translation by selecting your target language. Poedit will generate a new `.po` file for that language.
 
@@ -30,7 +30,7 @@ you can force the app to run in English using the following environment variable
 "--env=LANGUAGE=en"
 ```
 
-To apply this in a more permanent fashion, add it under the `finish-args` section of `build-aux/be.alexandervanhee.gradia.Devel.json` before building the app.
+To apply this in a more permanent fashion, add it under the `finish-args` section of `build-aux/io.github.waxermaster.Klipo.Devel.json` before building the app.
 
 ## Submitting Your Translation
 

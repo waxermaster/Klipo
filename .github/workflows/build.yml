@@ -25,6 +25,6 @@ jobs:
       - name: Build Flatpak bundle
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
-          bundle: gradia.flatpak
-          manifest-path: build-aux/flatpak/be.alexandervanhee.gradia.json
+          bundle: klipo.flatpak
+          manifest-path: build-aux/flatpak/io.github.waxermaster.Klipo.json
           cache-key: flatpak-builder-${{ github.sha }}

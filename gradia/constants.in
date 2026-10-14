@@ -22,6 +22,7 @@ localedir        = '@LOCALE_DIR@'
 
 app_id           = '@APP_ID@'
 rel_ver          = '@RELEASE_VER@'
+upstream_ver     = '@UPSTREAM_VER@'
 version          = '@VERSION@'
 build_type       = '@BUILD_TYPE@'
 

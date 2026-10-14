@@ -34,8 +34,15 @@ from gradia.ui.dialog.ocr_launcher import present_ocr_dialog
 from gradia.backend.logger import Logger
 from gradia.backend.ocr import OCR
 from gradia.utils.std_image_loader import StdinImageLoader
+from gradia.cli import CliError, ScreenshotMode, parse_args
 
 logging = Logger()
+
+
+def help_text() -> str:
+    file = Gio.File.new_for_uri(f"resource://{rootdir}/help.txt")
+    _ok, contents, _etag = file.load_contents(None)
+    return contents.decode("utf-8")
 
 
 class GradiaApp(Adw.Application):
@@ -67,6 +74,19 @@ class GradiaApp(Adw.Application):
         open_action.connect("activate", self._on_open_action)
         self.add_action(open_action)
 
+        # Desktop file actions: with DBusActivatable=true GNOME activates
+        # these actions instead of running the Exec lines.
+        desktop_actions = {
+            "new-window": lambda *_: self._open_window(new_window=True),
+            "take-screenshot": lambda *_: self._take_screenshot(ScreenshotMode.INTERACTIVE),
+            "take-fullscreen-screenshot": lambda *_: self._take_screenshot(ScreenshotMode.FULL),
+            "take-window-screenshot": lambda *_: self._take_screenshot(ScreenshotMode.WINDOW),
+        }
+        for name, callback in desktop_actions.items():
+            action = Gio.SimpleAction.new(name, None)
+            action.connect("activate", callback)
+            self.add_action(action)
+
     def _on_pin_action(self, action: Gio.SimpleAction, parameter: Optional[GLib.Variant]) -> None:
         if parameter is None:
             logging.warning("'pin' action invoked without a path")
@@ -93,58 +113,76 @@ class GradiaApp(Adw.Application):
         args = command_line.get_arguments()[1:]
         logging.info(f"Command line arguments: {args}")
 
-        if "--help" in args or "-h" in args:
-            self._print_help()
+        try:
+            opts = parse_args(args)
+        except CliError as e:
+            command_line.printerr_literal(f"klipo: {e}\nTry 'klipo --help' for more information.\n")
+            return 2
+
+        if opts.help:
+            command_line.print_literal(help_text())
             return 0
 
+        if opts.version:
+            command_line.print_literal(f"Klipo {self.version}\n")
+            return 0
+
+        if opts.record:
+            # Video recording is implemented in a later phase
+            command_line.printerr_literal("klipo: video recording is not available yet\n")
+            return 1
+
         files_to_open = []
-        screenshot_file = None
-        ocr_file = None
-        pin = "--pin" in args
+        for arg in opts.files:
+            path = Gio.File.new_for_commandline_arg_and_cwd(arg, command_line.get_cwd() or os.getcwd()).get_path()
+            if path:
+                files_to_open.append(path)
+            else:
+                logging.warning(f"Argument {arg} does not have a valid path.")
 
-        for arg in args:
-            if arg.startswith("--screenshot-file="):
-                screenshot_file = arg.split("=", 1)[1]
-                logging.info(f"Screenshot file detected: {screenshot_file}")
-            elif arg.startswith("--ocr-file="):
-                ocr_file = arg.split("=", 1)[1]
-                logging.info(f"OCR file detected: {ocr_file}")
-            elif arg == "--pin":
-                pass
-            elif not arg.startswith("--"):
-                try:
-                    file = Gio.File.new_for_commandline_arg(arg)
-                    path = file.get_path()
-                    if path:
-                        files_to_open.append(path)
-                        logging.debug(f"File to open detected: {path}")
-                    else:
-                        logging.warning(f"Argument {arg} does not have a valid path.")
-                except Exception as e:
-                    logging.warning(f"Failed to parse file URI {arg}.", exception=e, show_exception=True)
-
-        if ocr_file:
-            self._open_ocr_standalone(ocr_file)
-        elif pin:
+        if opts.ocr_file:
+            self._open_ocr_standalone(opts.ocr_file)
+        elif opts.pin:
             for path in files_to_open:
                 self._open_pin_window(file_path=path)
             if not files_to_open:
                 logging.warning("--pin specified but no files provided.")
+        elif opts.screenshot:
+            self._take_screenshot(opts.screenshot, opts.delay_seconds)
         elif files_to_open:
             for path in files_to_open:
-                self._open_window(file_path=path)
-        elif screenshot_file:
-            self._open_window(start_screenshot=screenshot_file)
+                self._open_window(file_path=path, new_window=opts.new_window)
+        elif opts.new_window:
+            self._open_window(new_window=True)
         else:
             self.activate()
 
         return 0
 
-    def _print_help(self):
-        file = Gio.File.new_for_uri("resource:///be/alexandervanhee/gradia/help.txt")
-        stream = file.read(None)
-        contents = stream.read_bytes(4096, None).get_data().decode("utf-8")
-        print(contents)
+    def _get_editor_window(self) -> Optional[GradiaMainWindow]:
+        active = self.get_active_window()
+        if isinstance(active, GradiaMainWindow):
+            return active
+        for window in self.get_windows():
+            if isinstance(window, GradiaMainWindow):
+                return window
+        return None
+
+    def _take_screenshot(self, mode: ScreenshotMode, delay_seconds: int = 0) -> None:
+        # WINDOW and SCREEN have no direct portal equivalent yet: they fall
+        # back to the interactive GNOME UI and to all monitors respectively.
+        flags = Xdp.ScreenshotFlags.NONE if mode in (ScreenshotMode.FULL, ScreenshotMode.SCREEN) else Xdp.ScreenshotFlags.INTERACTIVE
+
+        window = self._get_editor_window()
+        close_on_cancel = window is None
+        if window is None:
+            window = self._create_window()
+
+        window.import_manager.take_screenshot(
+            flags,
+            delay_seconds=delay_seconds,
+            close_on_cancel=close_on_cancel,
+        )
 
     def do_open(self, files: Sequence[Gio.File], hint: str):
         logging.debug(f"do_open called with files: {[file.get_path() for file in files]} and hint: {hint}")
@@ -165,24 +203,26 @@ class GradiaApp(Adw.Application):
         else:
             self._open_window(None)
 
-    def _open_window(
-        self,
-        file_path: Optional[str] = None,
-        start_screenshot: Optional[str] = None,
-    ):
-        logging.info(f"Opening window with file_path={file_path}")
+    def _create_window(self) -> GradiaMainWindow:
         temp_dir = tempfile.mkdtemp()
         logging.debug(f"Created temp directory: {temp_dir}")
         self.temp_dirs.append(temp_dir)
 
-        window = GradiaMainWindow(
+        return GradiaMainWindow(
             temp_dir=temp_dir,
             version=self.version,
             application=self,
-            file_path=file_path,
-            start_screenshot=start_screenshot,
         )
-        window.show()
+
+    def _open_window(self, file_path: Optional[str] = None, new_window: bool = False):
+        """Show an editor window, reusing the existing one unless asked otherwise."""
+        logging.info(f"Opening window with file_path={file_path}")
+        window = None if new_window else self._get_editor_window()
+        if window is None:
+            window = self._create_window()
+        if file_path:
+            window.import_manager.load_from_file(file_path)
+        window.present()
 
     def _open_pin_window(self, file_path: Optional[str] = None):
         logging.info(f"Opening pin window with file_path={file_path}")
@@ -236,6 +276,18 @@ class GradiaApp(Adw.Application):
 def main(version: str) -> int:
     try:
         logging.info("Application starting…")
+
+        # Answer --help, --version and usage errors in this process: output
+        # printed by an already running (sandboxed) instance is not relayed back.
+        try:
+            opts = parse_args(sys.argv[1:])
+        except CliError as e:
+            print(f"klipo: {e}\nTry 'klipo --help' for more information.", file=sys.stderr)
+            return 2
+        if opts.help or opts.version:
+            print(help_text() if opts.help else f"Klipo {version}")
+            return 0
+
         loader = StdinImageLoader()
         image_path = loader.read_from_stdin()
 

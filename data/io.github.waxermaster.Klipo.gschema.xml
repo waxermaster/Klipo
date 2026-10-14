@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="@APP_ID@" path="/io/github/waxermaster/Klipo/">
+     <key name="draw-mode" type="s">
+      <default>'SELECT'</default>
+      <summary>Current drawing mode</summary>
+    </key>
+    <key name="tool-config" type="a{ss}">
+      <default>{'tool_highlighter': "{\"mode\": \"HIGHLIGHTER\", \"size\": 14, \"primary_color\": [0.96, 0.83, 0.18, 0.4], \"fill_color\": [1.0, 1.0, 1.0, 1.0], \"border_color\": [0.0, 0.0, 0.0, 1.0]}", 'tool_number': "{\"mode\": \"NUMBER\", \"size\": 14, \"primary_color\": [0.0, 0.0, 0.0, 1.0], \"fill_color\": [1.0, 1.0, 1.0, 1.0], \"border_color\": [0.0, 0.0, 0.0, 0.0]}", 'tool_circle': "{\"mode\": \"CIRCLE\", \"size\": 14, \"primary_color\": [1.0, 1.0, 1.0, 1.0], \"fill_color\": [1.0, 1.0, 1.0, 1.0], \"border_color\": [0.0, 0.0, 0.0, 1.0]}", 'tool_square': "{\"mode\": \"SQUARE\", \"size\": 14, \"primary_color\": [1.0, 1.0, 1.0, 1.0], \"fill_color\": [1.0, 1.0, 1.0, 1.0], \"border_color\": [0.0, 0.0, 0.0, 1.0]}", 'tool_arrow': "{\"mode\": \"ARROW\", \"size\": 14, \"primary_color\": [0.0, 0.0, 0.0, 1.0], \"fill_color\": [1.0, 1.0, 1.0, 1.0], \"border_color\": [0.0, 0.0, 0.0, 1.0]}", 'tool_line': "{\"mode\": \"LINE\", \"size\": 14, \"primary_color\": [0.0, 0.0, 0.0, 1.0], \"fill_color\": [1.0, 1.0, 1.0, 1.0], \"border_color\": [0.0, 0.0, 0.0, 1.0]}", 'tool_pen': "{\"mode\": \"PEN\", \"size\": 14, \"primary_color\": [0.0, 0.0, 0.0, 1.0], \"fill_color\": [1.0, 1.0, 1.0, 1.0], \"border_color\": [0.0, 0.0, 0.0, 1.0]}"}</default>
+      <summary>Dictionary of tool configuration strings</summary>
+    </key>
+    <key name="image-padding" type="i">
+      <default>5</default>
+      <summary>Padding percentage around the image</summary>
+    </key>
+    <key name="image-corner-radius" type="i">
+      <default>2</default>
+      <summary>Radius of the rounded corners</summary>
+    </key>
+    <key name="image-aspect-ratio" type="s">
+      <default>''</default>
+      <summary>Aspect ratio of the final image</summary>
+    </key>
+    <key name="image-shadow-strength" type="i">
+      <default>5</default>
+      <summary>Intensity of the shadow behind the image</summary>
+    </key>
+    <key name="image-auto-balance" type="b">
+      <default>false</default>
+      <summary>If images with same colored edges should be balanced</summary>
+    </key>
+
+    <key name="background-mode" type="s">
+      <default>'none'</default>
+      <summary>The selected background mode</summary>
+    </key>
+    <key name="solid-state" type="s">
+      <default>"{\"color\": \"#4A90E2\", \"alpha\": 1.0}"</default>
+      <summary>Serialized state of the solid background</summary>
+    </key>
+
+    <key name="gradient-state" type="s">
+      <default>"{\"mode\": \"linear\", \"steps\": [[0.0, \"rgb(87,227,137)\"], [1.0, \"rgb(53,132,228)\"]], \"angle\": 135}"</default>
+      <summary>Serialized state of the gradient background</summary>
+    </key>
+    <key name="image-state" type="s">
+      <default>''</default>
+      <summary>Serialized state of the image background</summary>
+    </key>
+
+   <key name="screenshot-folder" type="s">
+      <default>''</default>
+      <summary>Folder to use for recent picker</summary>
+    </key>
+    <key name="export-format" type="s">
+      <default>'png'</default>
+      <summary>The export format for the Save button</summary>
+    </key>
+    <key name="export-compress" type="b">
+      <default>true</default>
+      <summary>Whether to compress the exported file (if supported)</summary>
+    </key>
+    <key name="trash-screenshots-on-close" type="b">
+      <default>false</default>
+      <summary>Whether to trash all taken screenshots from the current session on close.</summary>
+    </key>
+    <key name="image-options-lock" type="b">
+      <default>false</default>
+      <summary>Whether to trash all taken screenshots from the current session on close.</summary>
+    </key>
+    <key name="exit-method" type="s">
+      <default>'confirm'</default>
+      <summary>Method of how the app exists.</summary>
+    </key>
+    <key name="overwrite-screenshot" type="b">
+      <default>false</default>
+      <summary>Overwrite currently opened screenshot on close</summary>
+    </key>
+    <key name="custom-export-command" type="s">
+      <default>''</default>
+      <summary>Custom command to run when pressing its button</summary>
+      <description>Command that receives the edited file path as stdin and returns clipboard output</description>
+    </key>
+    <key name="provider-name" type="s">
+      <default>''</default>
+      <summary>Name associated with the custom command</summary>
+    </key>
+    <key name="show-export-confirm-dialog" type="b">
+      <default>true</default>
+      <summary>Whether to ask before running the export command.</summary>
+    </key>
+
+    <key name="source-snippet-show-frame" type="b">
+      <default>true</default>
+      <summary>Whether to have a window frame for the source snippet.</summary>
+    </key>
+    <key name="source-snippet-show-line-numbers" type="b">
+      <default>true</default>
+      <summary>Whether to show a number before each line of code of the source snippet.</summary>
+    </key>
+    <key name="source-snippet-language" type="s">
+      <default>'c'</default>
+      <summary>Chosen programming language of the source snippet</summary>
+    </key>
+    <key name="source-snippet-code-text" type="s">
+      <default>'// Gradia&#10;#include &lt;pthread.h&gt;&#10;#include &lt;stdio.h&gt;&#10;&#10;void* say_hello(void* arg) {&#10;    puts("Hello from thread!");&#10;    return NULL;&#10;}&#10;&#10;int main() {&#10;    pthread_t t;&#10;    pthread_create(&amp;t, NULL, say_hello, NULL);&#10;    pthread_join(t, NULL);&#10;}'</default>
+      <summary>Code of the source snippet</summary>
+    </key>
+      <key name="source-snippet-title" type="s">
+      <default>'My Code'</default>
+      <summary>Title bar text of the source snippet</summary>
+    </key>
+    <key name="source-snippet-style-scheme" type="s">
+      <default>'Adwaita'</default>
+      <summary>Color scheme of the source snippet</summary>
+    </key>
+    <key name="trained-data" type="s">
+      <default>'eng'</default>
+      <summary>Last used OCR Language</summary>
+    </key>
+  </schema>
+</schemalist>
+

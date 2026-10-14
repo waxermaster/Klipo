@@ -27,7 +27,7 @@ endif
 
 # Install D-Bus service file (for D-Bus activation)
 configure_file(
-  input: 'be.alexandervanhee.gradia.service.in',
+  input: 'io.github.waxermaster.Klipo.service.in',
   output: '@0@.service'.format(APPLICATION_ID),
   configuration: configuration_data({
     'APP_ID': APPLICATION_ID,
@@ -38,8 +38,8 @@ configure_file(
 )
 
 # Compile resources
-gnome.compile_resources('gradia',
-  'gradia.gresource.xml.in',
+gnome.compile_resources('klipo',
+  'klipo.gresource.xml.in',
   gresource_bundle: true,
   dependencies: blueprints,
   source_dir: meson.current_build_dir(),

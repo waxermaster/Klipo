@@ -27,24 +27,39 @@ class AboutDialog:
 
     def create(self) -> Adw.AboutDialog:
         self.dialog = Adw.AboutDialog(
-            application_name="Gradia",
+            application_name="Klipo",
             version=self.version,
-            comments=_("Make your images ready for all"),
-            website="https://github.com/AlexanderVanhee/Gradia",
-            issue_url="https://github.com/AlexanderVanhee/Gradia/issues",
-            developer_name="Alexander Vanhee",
+            comments=_("Take, annotate and copy screenshots"),
+            website="https://github.com/waxermaster/Klipo",
+            issue_url="https://github.com/waxermaster/Klipo/issues",
+            developer_name="Wilfred",
             developers=[
-                "Alexander Vanhee https://github.com/AlexanderVanhee",
-                "tfuxu https://github.com/tfuxu",
-            ],
-            designers=[
-                "drpetrikov https://github.com/drpetrikov"
+                "Wilfred https://github.com/waxermaster",
             ],
             application_icon=constants.app_id,
             # Translators: This is a place to put your credits (formats: "Name https://example.com" or "Name <email@example.com>", no quotes) and is not meant to be translated literally.
             translator_credits=_("translator-credits"),
-            copyright="Copyright © 2025 Alexander Vanhee",
+            copyright="Copyright © 2025 Alexander Vanhee\nCopyright © 2026 Klipo contributors",
             license_type=Gtk.License.GPL_3_0
+        )
+
+        self.dialog.add_credit_section(
+            _("Based on Gradia by"),
+            [
+                "Alexander Vanhee https://github.com/AlexanderVanhee",
+                "tfuxu https://github.com/tfuxu",
+                "drpetrikov https://github.com/drpetrikov",
+            ]
+        )
+
+        self.dialog.add_acknowledgement_section(
+            _("Inspired by"),
+            [
+                "Gradia https://github.com/AlexanderVanhee/Gradia",
+                "Kooha https://github.com/SeaDve/Kooha",
+                "ksnip https://github.com/ksnip/ksnip",
+                None
+            ]
         )
 
         self.dialog.add_acknowledgement_section(

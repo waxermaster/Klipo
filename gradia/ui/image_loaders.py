@@ -225,6 +225,7 @@ class ScreenshotImageLoader(BaseImageLoader):
         self._error_callback: Optional[Callable[[str], None]] = None
         self._success_callback: Optional[Callable[[], None]] = None
         self._screenshot_uris: list[str] = []
+        self._close_on_cancel = False
         self.window = window
 
     def _update_delete_action_state(self) -> None:
@@ -236,13 +237,17 @@ class ScreenshotImageLoader(BaseImageLoader):
         self,
         flags: Xdp.ScreenshotFlags = Xdp.ScreenshotFlags.INTERACTIVE,
         on_error_or_cancel: Optional[Callable[[str], None]] = None,
-        on_success: Optional[Callable[[], None]] = None
+        on_success: Optional[Callable[[], None]] = None,
+        delay_seconds: int = 0,
+        close_on_cancel: bool = False,
     ) -> None:
         try:
             self._error_callback = on_error_or_cancel
             self._success_callback = on_success
+            self._close_on_cancel = close_on_cancel
             self.window.hide()
-            GLib.timeout_add(150, self._do_take_screenshot, flags)
+            # 150 ms lets the compositor unmap the window before capturing
+            GLib.timeout_add(150 + max(0, delay_seconds) * 1000, self._do_take_screenshot, flags)
         except Exception as e:
             logger.error(f"Failed to initiate screenshot: {e}")
             self.window._show_notification(_("Failed to take screenshot"))
@@ -261,26 +266,36 @@ class ScreenshotImageLoader(BaseImageLoader):
         except Exception as e:
             logger.info(f"Failed during screenshot: {e}")
             self.window._show_notification(_("Failed to take screenshot"))
-            self.window.show()
+            self._show_or_close(failed=True)
             if self._error_callback:
                 self._error_callback(str(e))
             self._error_callback = None
         return False
 
     def _on_screenshot_taken(self, portal_object, result, user_data) -> None:
+        failed = False
         try:
             uri = self.portal.take_screenshot_finish(result)
             self._screenshot_uris.append(uri)
             self._handle_screenshot_uri(uri)
             self._update_delete_action_state()
         except GLib.Error as e:
+            failed = True
             logger.error(f"Screenshot error: {e}")
             self.window._show_notification(_("Screenshot cancelled"))
             if self._error_callback:
                 self._error_callback(str(e))
         finally:
-            self.window.show()
+            self._show_or_close(failed)
             self._error_callback = None
+
+    def _show_or_close(self, failed: bool) -> None:
+        # A window opened only to host a capture closes when that capture is cancelled
+        if failed and self._close_on_cancel:
+            self.window.destroy()
+        else:
+            self.window.present()
+        self._close_on_cancel = False
 
     def _handle_screenshot_uri(self, uri: str) -> None:
         try:
@@ -420,9 +435,11 @@ class ImportManager:
         self,
         flags: Xdp.ScreenshotFlags = Xdp.ScreenshotFlags.INTERACTIVE,
         on_error_or_cancel: Optional[Callable[[str], None]] = None,
-        on_success: Optional[Callable[[], None]] = None
+        on_success: Optional[Callable[[], None]] = None,
+        delay_seconds: int = 0,
+        close_on_cancel: bool = False,
     ) -> None:
-        self.screenshot_loader.take_screenshot(flags, on_error_or_cancel, on_success)
+        self.screenshot_loader.take_screenshot(flags, on_error_or_cancel, on_success, delay_seconds, close_on_cancel)
 
     def load_as_screenshot(self, file_path: str):
         self.screenshot_loader.load_path_as_screenshot(file_path)

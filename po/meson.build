@@ -1,1 +1,1 @@
-i18n.gettext('gradia', preset: 'glib')
+i18n.gettext('klipo', preset: 'glib')

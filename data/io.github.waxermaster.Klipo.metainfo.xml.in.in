@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>@APP_ID@</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>GPL-3.0-or-later</project_license>
+	<supports>
+		<control>pointing</control>
+		<control>keyboard</control>
+		<control>touch</control>
+	</supports>
+	<name>Klipo</name>
+	<summary>Take, annotate and copy screenshots</summary>
+	<launchable type="desktop-id">@APP_ID@.desktop</launchable>
+	<description>
+		<p>Klipo is a fast screenshot tool: press a shortcut, select an area, annotate it and copy it to the clipboard, without ever having to save a file.</p>
+		<p>Key features:</p>
+		<ul>
+			<li>Area, window and full screen capture through the desktop portal</li>
+			<li>Annotations that stay editable: arrows, shapes, text, highlighter, numbered steps and censoring</li>
+			<li>One-key tool shortcuts and a compact editor</li>
+			<li>Optional backgrounds, padding and shadows</li>
+			<li>Text recognition and quick upload</li>
+		</ul>
+		<p>Klipo is a fork of Gradia by Alexander Vanhee.</p>
+	</description>
+	<developer id="io.github.waxermaster">
+		<name>Wilfred</name>
+	</developer>
+	<url type="homepage">@PROJECT_URL@</url>
+	<url type="vcs-browser">@VCS_URL@</url>
+	<url type="bugtracker">@BUGTRACKER_URL@</url>
+	<translation type="gettext">klipo</translation>
+	<content_rating type="oars-1.1"/>
+	<branding>
+		<color type="primary" scheme_preference="light">#8ff0a4</color>
+		<color type="primary" scheme_preference="dark">#119458</color>
+	</branding>
+	<releases>
+		<release version="0.1.0" date="2026-10-13">
+			<description translate="no">
+				<p>First Klipo release, forked from Gradia 1.14.0.</p>
+			</description>
+		</release>
+	</releases>
+</component>

@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+# klipo.in
+#
+# Copyright (C) 2025 Alexander Vanhee
+# Copyright (C) 2026 Klipo contributors
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+import os
+import sys
+import signal
+import locale
+import gettext
+import logging
+import gi
+logging.getLogger("PIL").setLevel(logging.WARNING)
+VERSION = '@VERSION@'
+pkgdatadir = '@PKGDATA_DIR@'
+localedir = '@LOCALE_DIR@'
+sys.path.insert(1, pkgdatadir)
+signal.signal(signal.SIGINT, signal.SIG_DFL)
+locale.bindtextdomain('klipo', localedir)
+locale.textdomain('klipo')
+gettext.install('klipo', localedir)
+
+if __name__ == '__main__':
+    # Screenshots are taken by the primary instance (see main.py), so that
+    # a command sent to an already running Klipo reuses its editor window.
+    gi.require_version('Gtk', '4.0')
+    gi.require_version('Adw', '1')
+    gi.require_version('Xdp', '1.0')
+    from gi.repository import Gio, GLib
+
+    GLib.set_prgname("klipo")
+    resource = Gio.Resource.load(
+        os.path.join(pkgdatadir, 'klipo.gresource'))
+    resource._register()
+    from gradia import main
+    sys.exit(main.main(VERSION))

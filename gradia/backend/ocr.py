@@ -58,7 +58,7 @@ class OCR:
         if OCR._tessdata_cache is not None:
             return OCR._tessdata_cache
         data = Gio.resources_lookup_data(
-            "/be/alexandervanhee/gradia/models.json",
+            "/io/github/waxermaster/Klipo/models.json",
             Gio.ResourceLookupFlags.NONE
         )
         OCR._tessdata_cache = json.loads(data.get_data().decode("utf-8"))

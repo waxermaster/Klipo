@@ -22,7 +22,7 @@ gi.require_version("GtkSource", "5")
 from gi.repository import Gtk, Adw, GLib, Gdk, Soup, GdkPixbuf, GtkSource, Gio
 from gradia.backend.settings import Settings
 from gradia.backend.logger import Logger
-from gradia.constants import rel_ver
+from gradia.constants import upstream_ver
 from gradia.constants import rootdir  # pyright: ignore
 import json
 logger = Logger()
@@ -36,7 +36,7 @@ class ProviderListPage(Adw.NavigationPage):
     error_status = Gtk.Template.Child()
     providers_group = Gtk.Template.Child()
 
-    PROVIDERS_DATA_URL = f"https://gradia.alexandervanhee.be/upload-providers/{rel_ver}.json"
+    PROVIDERS_DATA_URL = f"https://gradia.alexandervanhee.be/upload-providers/{upstream_ver}.json"
 
     def __init__(self, preferences_dialog=None, on_provider_selected=None, can_pop=True, **kwargs):
         super().__init__(**kwargs)

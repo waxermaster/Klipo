@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/waxermaster/Klipo">
+    <file preprocess="xml-stripblanks">ui/selectors/gradient_selector.ui</file>
+    <file preprocess="xml-stripblanks">ui/selectors/image_selector.ui</file>
+    <file preprocess="xml-stripblanks">ui/selectors/solid_selector.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences/provider_list_page.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences/screenshot_guide_page.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences/provider_detail_page.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences/custom_provider_page.ui</file>
+    <file preprocess="xml-stripblanks">ui/background_selector.ui</file>
+    <file preprocess="xml-stripblanks">ui/drawing_tools_group.ui</file>
+    <file preprocess="xml-stripblanks">ui/image_sidebar.ui</file>
+    <file preprocess="xml-stripblanks">ui/image_stack.ui</file>
+    <file preprocess="xml-stripblanks">ui/main_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/recent_picker.ui</file>
+    <file preprocess="xml-stripblanks">ui/text_entry_popover.ui</file>
+    <file preprocess="xml-stripblanks">ui/welcome_page.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/confirm_close_dialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/image_generator_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/gradient_step_dialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/ocr_dialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences/ocr_model_page.ui</file>
+    <file>style.css</file>
+    <file>help.txt</file>
+    <file>models.json</file>
+  </gresource>
+  <gresource prefix="/io/github/waxermaster/Klipo">
+    <file>source-styles/builder-dark.xml</file>
+    <file>source-styles/ubuntu.xml</file>
+    <file>source-styles/vscode-dark.xml</file>
+  </gresource>
+  <gresource prefix="/io/github/waxermaster/Klipo">
+    <file>images/adwaita.webp</file>
+    <file>images/blobs.webp</file>
+    <file>images/coral.webp</file>
+    <file>images/drool.webp</file>
+    <file>images/graph.png</file>
+    <file>images/mesh.webp</file>
+    <file>images/pink.webp</file>
+    <file>images/sky.webp</file>
+    <file>images/swirl.webp</file>
+  </gresource>
+  <gresource prefix="/io/github/waxermaster/Klipo">
+    <file preprocess="xml-stripblanks">icons/scalable/actions/color-picker-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/color-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/image-alt-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/arrow1-top-right-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/clipboard-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/columns-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/edit-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/box-small-outline-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/circle-outline-thick-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/draw-line-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/text-insert2-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/pointer-primary-click-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/screenshooter-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/marker-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/checkerboard-big-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/checkerboard-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/one-circle-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/eraser4-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/settings-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/line-large-circle-outline-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/share-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/house-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/crop-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/crop-reset-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/aspect-ratio-16to9-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/aspect-ratio-3to2-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/aspect-ratio-4to3-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/aspect-ratio-5to4-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/aspect-ratio-free-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/aspect-ratio-square-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/aspect-ratio-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/linear-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/radial-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/conic-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/zoom-plus-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/zoom-minus-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/fill-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/outline-color-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/engineering-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/scanner-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/code-symbolic.svg</file>
+  </gresource>
+</gresources>
+

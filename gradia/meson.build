@@ -10,8 +10,8 @@ shared_library(
 
 # Generate Python executable
 configure_file(
-  input: 'gradia.in',
-  output: 'gradia',
+  input: 'klipo.in',
+  output: 'klipo',
   configuration: conf,
   install: true,
   install_dir: get_option('bindir'),
@@ -32,6 +32,7 @@ gradia_sources = [
   '__init__.py',
   'main.py',
   'clipboard.py',
+  'cli.py',
   'app_constants.py',
 ]
 

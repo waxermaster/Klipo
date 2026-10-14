@@ -226,9 +226,9 @@ class ScreenshotGuidePage(Adw.NavigationPage):
 
     def _get_command_for_screenshot_type(self, screenshot_type: str) -> str:
         if self._is_running_in_flatpak():
-            return f"flatpak run be.alexandervanhee.gradia --screenshot={screenshot_type}"
+            return f"flatpak run io.github.waxermaster.Klipo --screenshot={screenshot_type}"
         else:
-            return f"gradia --screenshot={screenshot_type}"
+            return f"klipo --screenshot={screenshot_type}"
 
     def _connect_signals(self):
         self.interactive_entry.connect("icon-press", self._on_entry_icon_press)

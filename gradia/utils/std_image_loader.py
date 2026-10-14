@@ -1,3 +1,4 @@
+import select
 import sys
 import os
 import shutil
@@ -17,19 +18,25 @@ class StdinImageLoader:
 
     def get_flatpak_safe_temp_dir(self) -> str:
         xdg_cache_home = os.environ.get("XDG_CACHE_HOME") or os.path.expanduser("~/.cache")
-        temp_dir = os.path.join(xdg_cache_home, "gradia", "stdin")
+        temp_dir = os.path.join(xdg_cache_home, "klipo", "stdin")
         os.makedirs(temp_dir, exist_ok=True)
         return temp_dir
 
     def read_from_stdin(self) -> Optional[str]:
-        if sys.stdin.isatty():
+        if sys.stdin is None or sys.stdin.isatty():
             return None
 
         try:
+            # Launchers (keyboard shortcuts, terminals of other apps) may hand
+            # us a pipe that never delivers data: never block on it.
+            ready, _w, _x = select.select([sys.stdin], [], [], 0.2)
+            if not ready:
+                return None
+
             logging.debug("Reading image from stdin…")
             image_data = sys.stdin.buffer.read()
             if not image_data:
-                raise ValueError("No image data received from stdin.")
+                return None
 
             image = Image.open(BytesIO(image_data))
             image.load()

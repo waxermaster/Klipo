@@ -1,25 +1,34 @@
-A screenshot editor application.
+Klipo - take, annotate and copy screenshots.
 
-Usage: gradia [OPTIONS] [FILES...]
+Usage: klipo [OPTIONS] [FILES...]
+
+If Klipo is already running, the command is sent to the running instance.
 
 Options:
-  -h, --help                    Show this help message and exit
-  --screenshot[=MODE]           Take a screenshot on startup
-                                MODE can be:
-                                  INTERACTIVE (default) - Interactive screenshot
-                                  FULL - Full screen screenshot
-  --delay=MILLISECONDS          Delay before taking screenshot (in milliseconds)
+  -h, --help              Show this help message and exit
+  -v, --version           Show the version and exit
+  --screenshot[=MODE]     Take a screenshot and open it in the editor
+                          MODE can be:
+                            INTERACTIVE (default) - select an area
+                            FULL                  - all monitors
+                            WINDOW                - active window
+                            SCREEN                - monitor under the pointer
+  --delay=SECONDS         Wait before taking the screenshot
+  --record                Start a video recording
+  --stop-recording        Stop the current video recording
+  --toggle-recording      Start or stop a video recording
+  --new-window            Open a new editor window
+  --pin FILES...          Pin images in floating windows
 
 Arguments:
-  FILES...                     Image files to open
+  FILES...                Image files to open
 
 Examples:
-  gradia                       Start Gradia normally
-  gradia image.png             Open image.png in Gradia
-  gradia --screenshot          Take an interactive screenshot
-  gradia --screenshot=FULL     Take a full screen screenshot
-  gradia --screenshot --delay=3000   Take screenshot after 3 second delay
-  gradia --screenshot=FULL --delay=1500   Take full screenshot after 1.5 second delay
-  cat image.png | gradia       Open image from standard input (stdin)
+  klipo                           Open the editor
+  klipo image.png                 Open image.png
+  klipo --screenshot              Select an area to capture
+  klipo --screenshot=FULL         Capture all monitors
+  klipo --screenshot --delay=3    Select an area after 3 seconds
+  cat image.png | klipo           Open an image from standard input
 
-Report bugs to: https://github.com/alexandervanhee/gradia
+Report bugs to: https://github.com/waxermaster/Klipo/issues

@@ -44,7 +44,7 @@ run_step "[1/3] Building Flatpak with flatpak-builder..." "$LOG" \
     --mirror-screenshots-url=https://dl.flathub.org/media/ \
     --repo=repo \
     builddir \
-    build-aux/flatpak/be.alexandervanhee.gradia.Devel.json
+    build-aux/flatpak/io.github.waxermaster.Klipo.Devel.json
 
 echo -n "[2/3] Setting up Meson builddir..."
 if meson setup builddir >"$LOG" 2>&1; then
@@ -60,7 +60,7 @@ else
 fi
 
 run_step "[3/3] Updating translation files..." "$LOG" \
-  ninja -C builddir gradia-update-po
+  ninja -C builddir klipo-update-po
 
 rm "$LOG"
 echo "✅ All steps completed successfully."
