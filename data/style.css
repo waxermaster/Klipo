@@ -359,3 +359,23 @@ image.symbolic-circular {
   font-size: 1.6em;
   font-weight: bold;
 }
+
+/* Area selector hint pill (mockup v3/v2) */
+.area-hint {
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+/* Solid red record buttons (mockups v3) */
+button.start-recording {
+  background-color: #e01b24;
+  color: white;
+}
+
+button.start-recording:hover {
+  background-color: #f03c44;
+}
+
+button.start-recording:disabled {
+  background-color: alpha(#e01b24, 0.4);
+}

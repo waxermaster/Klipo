@@ -95,9 +95,11 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
             };
           }
 
-          Gtk.Button {
+          // Click records with the current options; the arrow opens them
+          Adw.SplitButton video_button {
             action-name: "win.record";
-            tooltip-text: _("Record the screen");
+            tooltip-text: _("Record the screen (Ctrl+Shift+Alt+R)");
+            dropdown-tooltip: _("Recording Options");
 
             child: Adw.ButtonContent {
               icon-name: "camera-video-symbolic";

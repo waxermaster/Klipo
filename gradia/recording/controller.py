@@ -28,6 +28,7 @@ from typing import Optional
 from gi.repository import Adw, Gio, GLib
 
 from gradia.backend.logger import Logger
+from gradia.recording.area_selector import AreaSelector
 from gradia.recording.indicator import RecordingIndicator
 from gradia.recording.preview import RecordingPreview
 from gradia.recording.recorder import Recorder, RecorderState
@@ -45,6 +46,7 @@ class RecordingController:
         self.recorder.connect("state-changed", self._on_state_changed)
         self.recorder.connect("finished", self._on_finished)
         self.recorder.connect("failed", self._on_failed)
+        self.recorder.connect("area-needed", self._on_area_needed)
         self._indicator: Optional[RecordingIndicator] = None
         self._hidden_windows: list = []
         self._held = False
@@ -57,6 +59,8 @@ class RecordingController:
             return
         self._hold()
         self.app.withdraw_notification(NOTIFICATION_RESULT)
+        # Keep the editor out of the recording (and of the area preview)
+        self._hide_editor_windows()
         self.recorder.start(self.recorder.settings.video_source)
 
     def stop(self) -> None:
@@ -79,11 +83,14 @@ class RecordingController:
 
     def _on_state_changed(self, recorder: Recorder) -> None:
         if recorder.state in (RecorderState.COUNTDOWN, RecorderState.RECORDING) and self._indicator is None:
-            self._hide_editor_windows()
             self._indicator = RecordingIndicator(recorder, application=self.app)
             self._indicator.present()
         if recorder.state in (RecorderState.RECORDING, RecorderState.PAUSED):
             self._send_recording_notification()
+
+    def _on_area_needed(self, recorder: Recorder, result) -> None:
+        AreaSelector(result, on_selected=recorder.select_area, on_cancelled=recorder.stop,
+                     application=self.app).present()
 
     def _on_finished(self, _recorder: Recorder, path: str) -> None:
         self._last_path = path

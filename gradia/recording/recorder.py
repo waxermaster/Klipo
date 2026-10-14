@@ -90,6 +90,8 @@ class Recorder(GObject.Object):
         self._session: Optional[ScreenCastSession] = None
         self._portal_result: Optional[ScreenCastResult] = None
         self._crop: Optional[tuple[int, int, int, int]] = None
+        # Real size of the frames, measured by the area selector
+        self._frame_size: Optional[tuple[int, int]] = None
         self._pipeline: Optional[Gst.Pipeline] = None
         self._valves: list[Gst.Element] = []
         self._bus_watch_id = 0
@@ -118,6 +120,7 @@ class Recorder(GObject.Object):
             return
         self._source = source
         self._crop = None
+        self._frame_size = None
         self._set_state(RecorderState.STARTING)
 
         if source == SOURCE_WINDOW_MODE:
@@ -139,11 +142,12 @@ class Recorder(GObject.Object):
             persist=persist,
         )
 
-    def select_area(self, area: tuple[int, int, int, int]) -> None:
-        """Area mode: record only (x, y, width, height), in stream pixels."""
+    def select_area(self, area: tuple[int, int, int, int], frame_size: tuple[int, int]) -> None:
+        """Area mode: record only (x, y, width, height) of frames of frame_size pixels."""
         if self.state != RecorderState.SELECTING:
             return
         self._crop = area
+        self._frame_size = frame_size
         self._start_countdown()
 
     def stop(self) -> None:
@@ -267,7 +271,7 @@ class Recorder(GObject.Object):
 
     def _size_filters(self, stream: Stream) -> str:
         """Crop to the selected area, and keep an even size for the encoders."""
-        width, height = stream.size
+        width, height = self._frame_size or stream.size
         filters = ""
         if self._crop is not None and width > 0 and height > 0:
             x, y, crop_w, crop_h = self._crop

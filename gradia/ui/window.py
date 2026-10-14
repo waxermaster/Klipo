@@ -36,6 +36,7 @@ from gradia.graphics.loaded_image import LoadedImage, ImageOrigin
 from gradia.ui.image_sidebar import ImageSidebar, ImageOptions
 from gradia.ui.image_stack import ImageStack
 from gradia.ui.documents import EditorDocument
+from gradia.recording.options_popover import RecordingOptionsPopover
 from gradia.ui.widget.drawing_tools_grid import rail_button_content
 from gradia.ui.ui_parts import *
 from gradia.ui.welcome_page import WelcomePage
@@ -77,6 +78,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
     zoom_percent_button: Gtk.Button = Gtk.Template.Child()
     tab_view: Adw.TabView = Gtk.Template.Child()
     tab_bar: Adw.TabBar = Gtk.Template.Child()
+    video_button: Adw.SplitButton = Gtk.Template.Child()
 
     welcome_page: Gtk.StackPage = Gtk.Template.Child()
 
@@ -268,6 +270,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.delay_dropdown.set_selected(index)
         self.delay_dropdown.connect("notify::selected", self._on_delay_changed)
         self.share_button.set_visible(bool(self.settings.custom_export_command.strip()))
+        self.video_button.set_popover(RecordingOptionsPopover())
 
     def _on_delay_changed(self, dropdown: Gtk.DropDown, _pspec) -> None:
         self.settings.screenshot_delay = self.DELAY_CHOICES[dropdown.get_selected()]
