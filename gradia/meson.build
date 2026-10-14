@@ -53,3 +53,6 @@ install_subdir('ui', install_dir: MODULE_DIR)
 
 # Install utils modules
 install_subdir('utils', install_dir: MODULE_DIR)
+
+# Install screen recording modules
+install_subdir('recording', install_dir: MODULE_DIR)

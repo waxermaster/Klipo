@@ -25,7 +25,7 @@ from typing import Optional
 
 from PIL import Image
 
-from gi.repository import Adw, Gio, GLib, Xdp
+from gi.repository import Adw, Gio, GLib, Gst, Xdp
 
 from gradia.constants import app_id, rootdir  # pyright: ignore
 from gradia.ui.window import GradiaMainWindow
@@ -34,7 +34,8 @@ from gradia.ui.dialog.ocr_launcher import present_ocr_dialog
 from gradia.backend.logger import Logger
 from gradia.backend.ocr import OCR
 from gradia.utils.std_image_loader import StdinImageLoader
-from gradia.cli import CliError, ScreenshotMode, parse_args
+from gradia.cli import CliError, RecordCommand, ScreenshotMode, parse_args
+from gradia.recording.controller import RecordingController
 from gradia.backend.x11_capture import is_x11_session
 
 logging = Logger()
@@ -88,6 +89,21 @@ class GradiaApp(Adw.Application):
             action.connect("activate", callback)
             self.add_action(action)
 
+        # Screen recording, also used by notification buttons
+        Gst.init(None)
+        self.recording = RecordingController(self)
+        recording_actions = {
+            "record": self.recording.start,
+            "stop-recording": self.recording.stop,
+            "toggle-recording": self.recording.toggle,
+            "pause-recording": self.recording.toggle_pause,
+            "open-recordings-folder": self.recording.open_folder,
+        }
+        for name, callback in recording_actions.items():
+            action = Gio.SimpleAction.new(name, None)
+            action.connect("activate", lambda *_args, cb=callback: cb())
+            self.add_action(action)
+
     def _on_pin_action(self, action: Gio.SimpleAction, parameter: Optional[GLib.Variant]) -> None:
         if parameter is None:
             logging.warning("'pin' action invoked without a path")
@@ -129,9 +145,12 @@ class GradiaApp(Adw.Application):
             return 0
 
         if opts.record:
-            # Video recording is implemented in a later phase
-            command_line.printerr_literal("klipo: video recording is not available yet\n")
-            return 1
+            {
+                RecordCommand.START: self.recording.start,
+                RecordCommand.STOP: self.recording.stop,
+                RecordCommand.TOGGLE: self.recording.toggle,
+            }[opts.record]()
+            return 0
 
         files_to_open = []
         for arg in opts.files:

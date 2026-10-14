@@ -154,8 +154,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.create_action("capture-window", lambda *_: self._capture(ScreenshotMode.WINDOW))
         self.create_action("capture-screen", lambda *_: self._capture(ScreenshotMode.SCREEN))
         self.create_action("capture-all", lambda *_: self._capture(ScreenshotMode.FULL))
-        # Video recording arrives in a later phase
-        self.create_action("record", lambda *_: None, enabled=False)
+        self.create_action("record", lambda *_: self.app.activate_action("record", None))
         self.create_action("open-path", lambda action, param: self.import_manager.load_from_file(param.get_string()), vt="s")
 
         self.create_action(

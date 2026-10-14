@@ -335,3 +335,27 @@ image.symbolic-circular {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+/* Recording indicator (mockup 4) */
+.recording-indicator .recording-dot {
+  color: var(--destructive-bg-color, #e01b24);
+  font-size: 1.3em;
+}
+
+.recording-indicator .recording-dot.paused {
+  color: alpha(currentColor, 0.4);
+}
+
+.recording-indicator button.stop-button {
+  background-color: #e01b24;
+  color: white;
+}
+
+.recording-indicator button.stop-button:hover {
+  background-color: #f03c44;
+}
+
+.recording-indicator .recording-time {
+  font-size: 1.6em;
+  font-weight: bold;
+}

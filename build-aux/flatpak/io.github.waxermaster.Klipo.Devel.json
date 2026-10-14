@@ -10,6 +10,7 @@
     "--device=dri",
     "--socket=wayland",
     "--filesystem=xdg-pictures",
+    "--filesystem=xdg-videos",
     "--share=network"
   ],
   "build-options": {

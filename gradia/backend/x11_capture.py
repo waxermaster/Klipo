@@ -204,3 +204,50 @@ def crop_to_region(image_path: str, region: Rect, output_path: str) -> bool:
             return False
         image.crop((left, top, right, bottom)).save(output_path)
     return True
+
+
+class _XClientMessageEvent(ctypes.Structure):
+    _fields_ = [
+        ("type", ctypes.c_int), ("serial", ctypes.c_ulong), ("send_event", ctypes.c_int),
+        ("display", ctypes.c_void_p), ("window", ctypes.c_ulong), ("message_type", ctypes.c_ulong),
+        ("format", ctypes.c_int), ("data", ctypes.c_long * 5),
+    ]
+
+
+class _XEvent(ctypes.Union):
+    _fields_ = [("xclient", _XClientMessageEvent), ("pad", ctypes.c_long * 24)]
+
+
+def keep_window_above(gtk_window) -> bool:
+    """Ask the X11 window manager to keep a GTK window above the others."""
+    if not is_x11_session():
+        return False
+    import gi
+    gi.require_version("GdkX11", "4.0")
+    from gi.repository import GdkX11
+
+    surface = gtk_window.get_surface()
+    if not isinstance(surface, GdkX11.X11Surface):
+        return False
+    xid = surface.get_xid()
+
+    x11 = _X11()
+    try:
+        lib = x11.lib
+        lib.XSendEvent.argtypes = [ctypes.c_void_p, ctypes.c_ulong, ctypes.c_int, ctypes.c_long, ctypes.POINTER(_XEvent)]
+        lib.XFlush.argtypes = [ctypes.c_void_p]
+        event = _XEvent()
+        event.xclient.type = 33  # ClientMessage
+        event.xclient.send_event = 1
+        event.xclient.window = xid
+        event.xclient.message_type = lib.XInternAtom(x11.display, b"_NET_WM_STATE", False)
+        event.xclient.format = 32
+        event.xclient.data[0] = 1  # _NET_WM_STATE_ADD
+        event.xclient.data[1] = lib.XInternAtom(x11.display, b"_NET_WM_STATE_ABOVE", False)
+        event.xclient.data[3] = 1  # source: application
+        substructure_redirect_and_notify = (1 << 20) | (1 << 19)
+        lib.XSendEvent(x11.display, x11.root, False, substructure_redirect_and_notify, ctypes.byref(event))
+        lib.XFlush(x11.display)
+        return True
+    finally:
+        x11.close()

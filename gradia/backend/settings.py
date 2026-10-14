@@ -123,6 +123,34 @@ class Settings:
         self._settings.set_uint("screenshot-delay", value)
 
     @property
+    def video_folder(self) -> str:
+        folder = self._settings.get_string("video-folder")
+        if folder:
+            return folder
+        videos = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS) or GLib.get_home_dir()
+        return os.path.join(videos, "Klipo")
+
+    @property
+    def video_format(self) -> str:
+        return self._settings.get_string("video-format")
+
+    @property
+    def video_framerate(self) -> int:
+        return self._settings.get_uint("video-framerate")
+
+    @property
+    def video_show_pointer(self) -> bool:
+        return self._settings.get_boolean("video-show-pointer")
+
+    @property
+    def screencast_restore_token(self) -> str:
+        return self._settings.get_string("screencast-restore-token")
+
+    @screencast_restore_token.setter
+    def screencast_restore_token(self, value: str) -> None:
+        self._settings.set_string("screencast-restore-token", value)
+
+    @property
     def close_after_copy(self) -> bool:
         return self._settings.get_boolean("close-after-copy")
 
