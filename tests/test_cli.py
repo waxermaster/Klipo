@@ -51,6 +51,11 @@ class ParseArgsTest(unittest.TestCase):
         with self.assertRaises(CliError):
             parse_args(["--frobnicate"])
 
+    def test_edit_video(self):
+        self.assertEqual(parse_args(["--edit-video=clip.mp4"]).edit_video, "clip.mp4")
+        with self.assertRaises(CliError):
+            parse_args(["--edit-video"])
+
     def test_files_and_pin(self):
         opts = parse_args(["--pin", "a.png", "b.png"])
         self.assertTrue(opts.pin)

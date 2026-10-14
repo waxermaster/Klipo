@@ -49,6 +49,21 @@ and what you copied can still be pasted after Klipo is closed.
 - After recording: play the video, copy the file (paste it into Files, Discord or a
   browser), open its folder or move it to the trash
 
+### Video editor
+
+Open it with **Edit** after a recording, from the menu (Edit a Video…) or with
+`klipo --edit-video=FILE`:
+
+- Trim the start and the end with the handles of the video track
+- Crop the picture
+- Annotate with the same tools as screenshots (arrows, shapes, text, pen, highlighter,
+  numbered steps, blur / pixelate). Each annotation has its own time range, shown as a
+  bar in the timeline that can be moved or resized; annotations stay editable, with
+  undo / redo
+- Export to MP4, WebM or GIF, at the original size, 1080p, 720p, 480p or half size,
+  at 0.5× to 3× speed, with or without sound. A new "(edited)" file is written; the
+  original is never changed
+
 ## Installation
 
 Klipo is not on Flathub yet. Build and install it with Flatpak:
@@ -96,6 +111,7 @@ Klipo is a single instance application: every command is sent to the running Kli
 | `klipo --record` | Start a screen recording with the current options |
 | `klipo --stop-recording` | Stop the recording |
 | `klipo --toggle-recording` | Start or stop a recording |
+| `klipo --edit-video=clip.mp4` | Open a video in the video editor |
 | `klipo image.png` | Open an image |
 
 When installed as a Flatpak, prefix commands with `flatpak run io.github.waxermaster.Klipo`.
@@ -108,6 +124,9 @@ When installed as a Flatpak, prefix commands with `flatpak run io.github.waxerma
   there) and Screen captures all screens.
 - **The recording window can be recorded.** GNOME does not let apps exclude a window
   from a screen recording; the indicator is small and can be dragged aside.
+- **Exporting edited videos** uses x264 unless ffmpeg can use NVENC, which needs a
+  recent NVIDIA driver (610 or newer); screen recordings use NVENC through GStreamer
+  with older drivers too.
 - **Keeping windows above others** works on X11 only: on Wayland, use the window menu
   (Alt+Space → Always on Top) for the recording indicator.
 

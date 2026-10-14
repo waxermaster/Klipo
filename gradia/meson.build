@@ -56,3 +56,6 @@ install_subdir('utils', install_dir: MODULE_DIR)
 
 # Install screen recording modules
 install_subdir('recording', install_dir: MODULE_DIR)
+
+# Install video editor modules
+install_subdir('video_editor', install_dir: MODULE_DIR)

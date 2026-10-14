@@ -160,6 +160,16 @@ class GradiaApp(Adw.Application):
             else:
                 logging.warning(f"Argument {arg} does not have a valid path.")
 
+        if opts.edit_video:
+            from gradia.video_editor.editor_window import VideoEditorWindow
+            path = Gio.File.new_for_commandline_arg_and_cwd(opts.edit_video, command_line.get_cwd() or os.getcwd()).get_path()
+            try:
+                VideoEditorWindow(path, application=self).present()
+            except Exception as e:
+                command_line.printerr_literal(f"klipo: cannot open {opts.edit_video}: {e}\n")
+                return 1
+            return 0
+
         if opts.ocr_file:
             self._open_ocr_standalone(opts.ocr_file)
         elif opts.pin:

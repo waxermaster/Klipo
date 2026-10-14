@@ -53,6 +53,7 @@ class CliOptions:
     record: Optional[RecordCommand] = None
     pin: bool = False
     ocr_file: Optional[str] = None
+    edit_video: Optional[str] = None
     files: list[str] = field(default_factory=list)
 
 
@@ -101,6 +102,10 @@ def parse_args(args: list[str]) -> CliOptions:
             opts.record = record_flags[arg]
         elif arg == "--pin":
             opts.pin = True
+        elif name == "--edit-video":
+            if not has_value or not value:
+                raise CliError("--edit-video expects a file, e.g. --edit-video=recording.mp4")
+            opts.edit_video = value
         elif name == "--ocr-file" and has_value:
             opts.ocr_file = value
         elif arg.startswith("-") and arg != "-":

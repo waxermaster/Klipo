@@ -73,3 +73,7 @@ gradia/ui/widget/preset_button.py
 gradia/ui/widget/quick_color_picker.py
 gradia/ui/widget/toggle_group.py
 gradia/ui/window.py
+gradia/video_editor/editor_window.py
+gradia/video_editor/export.py
+gradia/video_editor/export_dialog.py
+gradia/video_editor/timeline.py

@@ -19,6 +19,7 @@ Options:
   --record                Start a video recording
   --stop-recording        Stop the current video recording
   --toggle-recording      Start or stop a video recording
+  --edit-video=FILE       Trim, crop, annotate or convert a video
   --new-window            Open a new editor window
   --pin FILES...          Pin images in floating windows
 

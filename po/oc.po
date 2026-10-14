@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gradia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 13:10-0400\n"
+"POT-Creation-Date: 2026-10-14 16:13-0400\n"
 "PO-Revision-Date: 2025-06-20 21:22+1000\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
@@ -110,7 +110,7 @@ msgstr "Volètz vertadièrament suprimir los fichièrs seguents ?"
 
 #: data/ui/confirm_close_dialog.blp:11
 #: gradia/ui/dialog/delete_screenshots_dialog.py:54
-#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:702
+#: gradia/ui/image_exporters.py:150 gradia/ui/window.py:723
 msgid "Cancel"
 msgstr "Anullar"
 
@@ -137,6 +137,7 @@ msgid "Font"
 msgstr "Polissa"
 
 #: data/ui/drawing_tools_group.blp:50 data/ui/drawing_tools_group.blp:221
+#: gradia/video_editor/export_dialog.py:56
 msgid "Size"
 msgstr "Talha"
 
@@ -309,7 +310,7 @@ msgstr ""
 msgid "Current File"
 msgstr "Fichièr actual"
 
-#: data/ui/image_sidebar.blp:144
+#: data/ui/image_sidebar.blp:144 gradia/video_editor/export_dialog.py:67
 msgid "Name"
 msgstr "Nom"
 
@@ -387,12 +388,12 @@ msgid "Zoom In"
 msgstr ""
 
 #: data/ui/image_stack.blp:288 gradia/ui/ui_parts.py:127
-#: gradia/ui/window.py:260
+#: gradia/ui/window.py:261 gradia/video_editor/editor_window.py:131
 msgid "Undo"
 msgstr "Desfar"
 
 #: data/ui/image_stack.blp:298 gradia/ui/ui_parts.py:128
-#: gradia/ui/window.py:261
+#: gradia/ui/window.py:262 gradia/video_editor/editor_window.py:133
 msgid "Redo"
 msgstr "Refar"
 
@@ -467,6 +468,7 @@ msgid "Recording Options"
 msgstr "Opcions de l'imatge"
 
 #: data/ui/main_window.blp:106 data/ui/preferences_window.blp:136
+#: gradia/video_editor/timeline.py:245
 msgid "Video"
 msgstr ""
 
@@ -536,50 +538,54 @@ msgid "_Paste Image"
 msgstr "Enregistrar l'imatge"
 
 #: data/ui/main_window.blp:333
+msgid "_Edit a Video…"
+msgstr ""
+
+#: data/ui/main_window.blp:338
 msgid "Open Containing _Folder"
 msgstr ""
 
-#: data/ui/main_window.blp:340
+#: data/ui/main_window.blp:345
 msgid "_Pin Image on Screen"
 msgstr ""
 
-#: data/ui/main_window.blp:345
+#: data/ui/main_window.blp:350
 msgid "_Upload / Share…"
 msgstr ""
 
-#: data/ui/main_window.blp:350
+#: data/ui/main_window.blp:355
 #, fuzzy
 msgid "Clear All _Annotations"
 msgstr "Escafar totas las anotacions"
 
-#: data/ui/main_window.blp:355
+#: data/ui/main_window.blp:360
 msgid "Recognize _Text"
 msgstr ""
 
-#: data/ui/main_window.blp:360
+#: data/ui/main_window.blp:365
 msgid "_Source Snippets"
 msgstr ""
 
-#: data/ui/main_window.blp:365
+#: data/ui/main_window.blp:370
 #, fuzzy
 msgid "_Delete Taken Screenshot(s)"
 msgstr "Suprimir las capturas d'ecran presas"
 
-#: data/ui/main_window.blp:372 data/ui/welcome_page.blp:94
+#: data/ui/main_window.blp:377 data/ui/welcome_page.blp:94
 msgid "_Preferences"
 msgstr ""
 
-#: data/ui/main_window.blp:377 data/ui/welcome_page.blp:99
+#: data/ui/main_window.blp:382 data/ui/welcome_page.blp:99
 #, fuzzy
 msgid "_Keyboard Shortcuts"
 msgstr "Acorchis de clavièr"
 
-#: data/ui/main_window.blp:382
+#: data/ui/main_window.blp:387
 #, fuzzy
 msgid "D_onate to Gradia"
 msgstr "A prepaus de Gradia"
 
-#: data/ui/main_window.blp:387 data/ui/welcome_page.blp:109
+#: data/ui/main_window.blp:392 data/ui/welcome_page.blp:109
 msgid "_About Klipo"
 msgstr ""
 
@@ -793,7 +799,7 @@ msgid "_Save Folder"
 msgstr "Dobrir fichièr"
 
 #: data/ui/preferences_window.blp:66 data/ui/preferences_window.blp:126
-#: data/ui/preferences_window.blp:218
+#: data/ui/preferences_window.blp:218 gradia/video_editor/export_dialog.py:71
 #, fuzzy
 msgid "Choose Folder"
 msgstr "Color del trach"
@@ -1214,6 +1220,7 @@ msgid "Esc  Cancel  ·  Enter  Record  ·  Drag handles to resize"
 msgstr ""
 
 #: gradia/recording/area_selector.py:91
+#: gradia/video_editor/export_dialog.py:156
 #, fuzzy
 msgid "_Cancel"
 msgstr "Anullar"
@@ -1305,6 +1312,7 @@ msgid "Ctrl+Shift+Alt+R to start or stop"
 msgstr ""
 
 #: gradia/recording/options_popover.py:100
+#: gradia/video_editor/export_dialog.py:51
 msgid "Format"
 msgstr ""
 
@@ -1352,15 +1360,24 @@ msgstr "Suprimir"
 msgid "Move the recording to the trash"
 msgstr ""
 
+#: gradia/recording/preview.py:91
+#, fuzzy
+msgid "_Edit"
+msgstr "Editar"
+
 #: gradia/recording/preview.py:94
+msgid "Trim, crop, annotate or convert the video"
+msgstr ""
+
+#: gradia/recording/preview.py:100
 msgid "Paste it into Files, Discord or a browser"
 msgstr ""
 
-#: gradia/recording/preview.py:120
+#: gradia/recording/preview.py:126
 msgid "File copied: paste it anywhere"
 msgstr ""
 
-#: gradia/recording/preview.py:135
+#: gradia/recording/preview.py:149
 msgid "Could not move the recording to the trash"
 msgstr ""
 
@@ -1852,46 +1869,194 @@ msgstr "Degradat"
 msgid "_Image"
 msgstr "Imatge"
 
-#: gradia/ui/window.py:246
+#: gradia/ui/window.py:247
 msgid "Crop (C)"
 msgstr ""
 
-#: gradia/ui/window.py:260
+#: gradia/ui/window.py:261 gradia/video_editor/editor_window.py:130
 msgid "Undo (Ctrl+Z)"
 msgstr ""
 
-#: gradia/ui/window.py:261
+#: gradia/ui/window.py:262 gradia/video_editor/editor_window.py:132
 msgid "Redo (Ctrl+Shift+Z)"
 msgstr ""
 
-#: gradia/ui/window.py:262
+#: gradia/ui/window.py:263
 msgid "Delete"
 msgstr "Suprimir"
 
-#: gradia/ui/window.py:262
+#: gradia/ui/window.py:263
 msgid "Delete Selected Annotation (Delete)"
 msgstr ""
 
-#: gradia/ui/window.py:289
+#: gradia/ui/window.py:290
 msgid "New Capture (Ctrl+A)"
 msgstr ""
 
+#: gradia/ui/window.py:643
+msgid "Videos"
+msgstr ""
+
 #: gradia/ui/window.py:648
+msgid "Edit a Video"
+msgstr ""
+
+#: gradia/ui/window.py:669
 #, fuzzy
 msgid "Failed to pin image"
 msgstr "Impossible d'enregistrar l'imatge"
 
-#: gradia/ui/window.py:682
+#: gradia/ui/window.py:703
 msgid "Select Provider"
 msgstr ""
 
-#: gradia/ui/window.py:699
+#: gradia/ui/window.py:720
 msgid "Confirm Upload"
 msgstr ""
 
-#: gradia/ui/window.py:703
+#: gradia/ui/window.py:724
 msgid "Upload"
 msgstr ""
+
+#. Header
+#: gradia/video_editor/editor_window.py:117
+#: gradia/video_editor/editor_window.py:129
+msgid "Edit Video"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:137
+msgid "_Export…"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:139
+msgid "Crop the video (C)"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:140
+msgid "Crop"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:186
+msgid "Play / Pause (Space)"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:190
+msgid "Playback and export speed"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:192
+msgid "Mute"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:198
+msgid "Timeline zoom"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:242
+#, fuzzy
+msgid "Start Here"
+msgstr "Vista d'aviada"
+
+#: gradia/video_editor/editor_window.py:242
+msgid "Show it from the playhead"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:244
+msgid "End Here"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:244
+msgid "Hide it at the playhead"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:248
+msgid "From"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:251
+msgid "To"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:257
+msgid "Visible"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:258
+msgid "Select an annotation to choose when it is shown."
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:510
+#, python-brace-format
+msgid "Exported as {name}"
+msgstr ""
+
+#: gradia/video_editor/editor_window.py:511
+msgid "Show"
+msgstr ""
+
+#: gradia/video_editor/export.py:261
+#, fuzzy
+msgid "Export cancelled"
+msgstr "Captura d’ecran anullada"
+
+#: gradia/video_editor/export.py:270
+msgid "ffmpeg failed"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:29
+msgid "Original"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:44
+msgid "Export Video"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:57
+msgid "Speed"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:59
+msgid "Keep Sound"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:63
+msgid "Output"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:68
+#, fuzzy
+msgid "Folder"
+msgstr "Dobrir fichièr"
+
+#: gradia/video_editor/export_dialog.py:74
+#, fuzzy
+msgid "File"
+msgstr "Fichièrs imatge"
+
+#: gradia/video_editor/export_dialog.py:79
+#: gradia/video_editor/export_dialog.py:171
+msgid "_Export"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:105
+#, python-brace-format
+msgid "{name} (edited)"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:112
+#, python-brace-format
+msgid "Duration {duration}"
+msgstr ""
+
+#: gradia/video_editor/export_dialog.py:152
+#, python-brace-format
+msgid "Encoding with {encoder}"
+msgstr ""
+
+#: gradia/video_editor/timeline.py:315
+#, fuzzy
+msgid "Annotation"
+msgstr "Anotacions"
 
 #, fuzzy
 #~ msgid "_Recent Directory"
@@ -1969,9 +2134,6 @@ msgstr ""
 
 #~ msgid "Edited picture"
 #~ msgstr "Imatge modificat"
-
-#~ msgid "Startup view"
-#~ msgstr "Vista d'aviada"
 
 #~ msgid "Current drawing mode"
 #~ msgstr "Mòde de dessenh actual"

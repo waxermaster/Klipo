@@ -62,7 +62,7 @@ class RecordingPreview(Adw.ApplicationWindow):
     __gtype_name__ = "KlipoRecordingPreview"
 
     def __init__(self, path: str, **kwargs) -> None:
-        super().__init__(title=_("Recording Saved"), default_width=680, default_height=560, **kwargs)
+        super().__init__(title=_("Recording Saved"), default_width=760, default_height=560, **kwargs)
         self.path = path
 
         header = Adw.HeaderBar(title_widget=Adw.WindowTitle(title=_("Recording Saved")))
@@ -88,8 +88,14 @@ class RecordingPreview(Adw.ApplicationWindow):
                                    tooltip_text=_("Move the recording to the trash"))
         delete_button.connect("clicked", self._on_delete)
 
+        edit_button = Gtk.Button(child=Adw.ButtonContent(icon_name="edit-symbolic", label=_("_Edit"),
+                                                         use_underline=True),
+                                 css_classes=["pill"], hexpand=True,
+                                 tooltip_text=_("Trim, crop, annotate or convert the video"))
+        edit_button.connect("clicked", self._on_edit)
+
         buttons = Gtk.Box(spacing=12, homogeneous=True)
-        for button in (copy_button, folder_button, delete_button):
+        for button in (copy_button, edit_button, folder_button, delete_button):
             buttons.append(button)
         hint = Gtk.Label(label=_("Paste it into Files, Discord or a browser"), xalign=0,
                          css_classes=["caption", "dim-label"])
@@ -118,6 +124,14 @@ class RecordingPreview(Adw.ApplicationWindow):
     def _on_copy(self, *_args) -> None:
         if copy_files_to_clipboard([self.path]):
             self.toast_overlay.add_toast(Adw.Toast.new(_("File copied: paste it anywhere")))
+
+    def _on_edit(self, *_args) -> None:
+        from gradia.video_editor.editor_window import VideoEditorWindow
+        stream = self.video.get_media_stream()
+        if stream is not None:
+            stream.pause()
+        VideoEditorWindow(self.path, application=self.get_application()).present()
+        self.close()
 
     def _on_open_folder(self, *_args) -> None:
         # Highlights the file in Files when possible

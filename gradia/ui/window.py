@@ -172,6 +172,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.create_action("copy", lambda *_: self.export_manager.copy_to_clipboard(), ["<Primary>c"], enabled=False)
         self.create_action("command", lambda *_: self._run_custom_command(), ["<Primary>m"])
         self.create_action("pin", lambda *_: self._pin_image(), ["<Primary><Shift>p"], enabled=False)
+        self.create_action("edit-video", lambda *_: self._choose_video_to_edit())
 
         self.create_action("aspect-ratio-crop", lambda _, variant: self.image_bin.set_aspect_ratio(variant.get_double()), vt="d")
         self.create_action("crop", lambda *_: self.image_bin.on_toggle_crop(), ["c", "<Primary>r"], disable_on_entry_focus=True)
@@ -637,6 +638,26 @@ class GradiaMainWindow(Adw.ApplicationWindow):
             action = self.lookup_action(action_name)
             if action:
                 action.set_enabled(enabled)
+
+    def _choose_video_to_edit(self) -> None:
+        video_filter = Gtk.FileFilter(name=_("Videos"))
+        video_filter.add_mime_type("video/*")
+        video_filter.add_mime_type("image/gif")
+        filters = Gio.ListStore.new(Gtk.FileFilter)
+        filters.append(video_filter)
+        dialog = Gtk.FileDialog(title=_("Edit a Video"), filters=filters,
+                                initial_folder=Gio.File.new_for_path(self.settings.video_folder))
+
+        def on_chosen(dialog, result):
+            try:
+                file = dialog.open_finish(result)
+            except GLib.Error:
+                return
+            if file and file.get_path():
+                from gradia.video_editor.editor_window import VideoEditorWindow
+                VideoEditorWindow(file.get_path(), application=self.app).present()
+
+        dialog.open(self, None, on_chosen)
 
     def _pin_image(self) -> None:
         """Show the annotated image in an always visible pin window."""
