@@ -117,7 +117,10 @@ class ShortcutsDialog:
                 (_("Paste From Clipboard"), "<Ctrl>V"),
                 (_("Save"), "<Ctrl>S"),
                 (_("Save As"), "<Ctrl><Shift>S"),
-                (_("Share Image"), "<Ctrl>M"),
+                (_("Upload / Share"), "<Ctrl>M"),
+                (_("Pin Image on Screen"), "<Ctrl><Shift>P"),
+                (_("Close Tab"), "<Ctrl>W"),
+                (_("Next / Previous Tab"), "<Ctrl>Tab <Ctrl><Shift>Tab"),
                 (_("Recognize Text"), "<Ctrl><Shift>O"),
             ]),
             (_("Annotations"), [

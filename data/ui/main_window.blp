@@ -323,6 +323,33 @@ menu app_menu {
     }
 
     item {
+      label: _("_Paste Image");
+      action: "win.paste";
+    }
+
+    item {
+      label: _("Open Containing _Folder");
+      action: "win.open-folder";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Pin Image on Screen");
+      action: "win.pin";
+    }
+
+    item {
+      label: _("_Upload / Share…");
+      action: "win.command";
+    }
+
+    item {
+      label: _("Clear All _Annotations");
+      action: "win.clear";
+    }
+
+    item {
       label: _("Recognize _Text");
       action: "win.ocr";
     }

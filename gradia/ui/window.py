@@ -170,6 +170,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.create_action("save-as", lambda *_: self.export_manager.save_to_file(), ["<Primary><Shift>s"], enabled=False)
         self.create_action("copy", lambda *_: self.export_manager.copy_to_clipboard(), ["<Primary>c"], enabled=False)
         self.create_action("command", lambda *_: self._run_custom_command(), ["<Primary>m"])
+        self.create_action("pin", lambda *_: self._pin_image(), ["<Primary><Shift>p"], enabled=False)
 
         self.create_action("aspect-ratio-crop", lambda _, variant: self.image_bin.set_aspect_ratio(variant.get_double()), vt="d")
         self.create_action("crop", lambda *_: self.image_bin.on_toggle_crop(), ["c", "<Primary>r"], disable_on_entry_focus=True)
@@ -267,6 +268,7 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         index = self.DELAY_CHOICES.index(delay) if delay in self.DELAY_CHOICES else 0
         self.delay_dropdown.set_selected(index)
         self.delay_dropdown.connect("notify::selected", self._on_delay_changed)
+        self.share_button.set_visible(bool(self.settings.custom_export_command.strip()))
 
     def _on_delay_changed(self, dropdown: Gtk.DropDown, _pspec) -> None:
         self.settings.screenshot_delay = self.DELAY_CHOICES[dropdown.get_selected()]
@@ -627,10 +629,20 @@ class GradiaMainWindow(Adw.ApplicationWindow):
 
     def _set_export_ready(self, enabled: bool) -> None:
         self.image_ready = True
-        for action_name in ["save", "save-as", "copy"]:
+        for action_name in ["save", "save-as", "copy", "pin"]:
             action = self.lookup_action(action_name)
             if action:
                 action.set_enabled(enabled)
+
+    def _pin_image(self) -> None:
+        """Show the annotated image in an always visible pin window."""
+        try:
+            path = os.path.join(self.temp_dir, f"pinned-{os.urandom(4).hex()}.png")
+            self.export_manager.file_exporter._save_image(path, "png")
+            self.app.activate_action("pin", GLib.Variant("s", path))
+        except Exception as e:
+            self._show_notification(_("Failed to pin image"))
+            print(f"Error pinning image: {e}")
 
     def open_loaded_image_folder(self):
         folder_uri = GLib.filename_to_uri(self.image.get_folder_path())
