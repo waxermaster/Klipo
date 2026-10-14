@@ -147,6 +147,22 @@ class DrawingAction:
     def translate(self, dx: int, dy: int):
         raise NotImplementedError
 
+    # Scalable annotations (text, numbered steps, pen and highlighter strokes)
+    # are resized by scaling a snapshot of their geometry taken when the
+    # resize starts, around the anchor (the corner or edge left in place).
+    uniform_scaling = False
+
+    def snapshot_geometry(self):
+        return None
+
+    def scale_geometry(self, snapshot, sx: float, sy: float, anchor: tuple[float, float]) -> None:
+        pass
+
+    @staticmethod
+    def _scale_point(point, sx: float, sy: float, anchor) -> tuple[int, int]:
+        ax, ay = anchor
+        return (int(round(ax + (point[0] - ax) * sx)), int(round(ay + (point[1] - ay) * sy)))
+
     def get_drawing_mode(self) -> DrawingMode:
         return self.options.mode
 
@@ -155,6 +171,13 @@ class StrokeAction(DrawingAction):
     def __init__(self, stroke: list[tuple[int, int]], options):
         self.stroke = stroke
         self.options = options
+        self._bounds = None
+
+    def snapshot_geometry(self):
+        return list(self.stroke)
+
+    def scale_geometry(self, snapshot, sx: float, sy: float, anchor) -> None:
+        self.stroke = [self._scale_point(p, sx, sy, anchor) for p in snapshot]
         self._bounds = None
 
     def draw(self, cr: cairo.Context, image_to_widget_coords: Callable[[int, int], tuple[float, float]], scale: float):
@@ -305,6 +328,16 @@ class TextAction(DrawingAction):
         self.text = text
         self.intrinsic_image_bounds = intrinsic_image_bounds
         self.font_size = font_size
+
+    uniform_scaling = True
+
+    def snapshot_geometry(self):
+        return (self.position, self.font_size)
+
+    def scale_geometry(self, snapshot, sx: float, sy: float, anchor) -> None:
+        position, font_size = snapshot
+        self.position = self._scale_point(position, sx, sy, anchor)
+        self.font_size = max(4.0, font_size * sx)
 
     def _setup_layout(self, layout, size: float) -> None:
         font_desc = Pango.FontDescription()
@@ -744,6 +777,16 @@ class NumberStampAction(DrawingAction):
         self.position = position
         self.number = number
         self.creation_time = time.time()
+
+    uniform_scaling = True
+
+    def snapshot_geometry(self):
+        return (self.position, self.options.size)
+
+    def scale_geometry(self, snapshot, sx: float, sy: float, anchor) -> None:
+        position, size = snapshot
+        self.position = self._scale_point(position, sx, sy, anchor)
+        self.options.update_without_notify(size=max(2, int(round(size * sx))))
 
     def draw(self, cr: cairo.Context, image_to_widget_coords: Callable[[int, int], tuple[float, float]], scale: float):
         x_widget, y_widget = image_to_widget_coords(*self.position)

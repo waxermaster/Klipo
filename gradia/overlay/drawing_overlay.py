@@ -114,7 +114,8 @@ class DrawingOverlay(Gtk.DrawingArea):
         self.emit('selection-changed', action.options if action else None)
 
     def _can_resize_action(self, action: DrawingAction) -> bool:
-        return isinstance(action, (RectAction, CircleAction, CensorAction, ArrowAction, LineAction))
+        return isinstance(action, (RectAction, CircleAction, CensorAction, ArrowAction, LineAction,
+                                   TextAction, NumberStampAction, StrokeAction))
 
     def _get_resize_handles(self, action: DrawingAction) -> list:
         if not self._can_resize_action(action):
@@ -205,8 +206,44 @@ class DrawingOverlay(Gtk.DrawingArea):
             if handle in [ResizeHandle.TOP_RIGHT, ResizeHandle.RIGHT, ResizeHandle.BOTTOM_RIGHT]:
                 max_x_start += delta_x
 
+            snapshot = getattr(self, "resize_start_geometry", None)
+            if snapshot is not None:
+                self._scale_action(action, handle, start_bounds, (min_x_start, min_y_start, max_x_start, max_y_start), snapshot)
+                return
+
             action.start = (int(min_x_start), int(min_y_start))
             action.end = (int(max_x_start), int(max_y_start))
+
+    def _scale_action(self, action, handle: ResizeHandle, old_rect, new_rect, snapshot) -> None:
+        old_min_x, old_min_y, old_max_x, old_max_y = old_rect
+        new_min_x, new_min_y, new_max_x, new_max_y = new_rect
+        old_w, old_h = max(1, old_max_x - old_min_x), max(1, old_max_y - old_min_y)
+        sx = max(0.05, (new_max_x - new_min_x) / old_w)
+        sy = max(0.05, (new_max_y - new_min_y) / old_h)
+
+        moves_left = handle in (ResizeHandle.TOP_LEFT, ResizeHandle.LEFT, ResizeHandle.BOTTOM_LEFT)
+        moves_top = handle in (ResizeHandle.TOP_LEFT, ResizeHandle.TOP, ResizeHandle.TOP_RIGHT)
+        horizontal = handle not in (ResizeHandle.TOP, ResizeHandle.BOTTOM)
+        vertical = handle not in (ResizeHandle.LEFT, ResizeHandle.RIGHT)
+        if not horizontal:
+            sx = 1.0
+        if not vertical:
+            sy = 1.0
+        anchor = (old_max_x if moves_left else old_min_x, old_max_y if moves_top else old_min_y)
+
+        if action.uniform_scaling:
+            # Text and numbered steps keep their proportions
+            if horizontal and vertical:
+                factor = (sx + sy) / 2
+            else:
+                factor = sx if horizontal else sy
+            sx = sy = factor
+            if not horizontal:
+                anchor = ((old_min_x + old_max_x) / 2, anchor[1])
+            if not vertical:
+                anchor = (anchor[0], (old_min_y + old_max_y) / 2)
+
+        action.scale_geometry(snapshot, sx, sy, anchor)
 
     def _get_image_bounds(self) -> Tuple[float, float, float, float]:
         if not self.picture_widget or not self.picture_widget.get_paintable():
@@ -597,6 +634,7 @@ class DrawingOverlay(Gtk.DrawingArea):
                     self.resize_handle = handle
                     self.resize_start_bounds = self.selected_action.get_bounds().get_bounding_rect()
                     self.resize_start_mouse = (img_x, img_y)
+                    self.resize_start_geometry = self.selected_action.snapshot_geometry()
                     return
                 elif self._is_point_in_selection_bounds(img_x, img_y):
                     self.is_moving_selection = True
