@@ -33,6 +33,10 @@ class DrawingToolsGroup(Gtk.Box):
     opacity_scale = Gtk.Template.Child()
     opacity_label = Gtk.Template.Child()
     text_style_box = Gtk.Template.Child()
+    censor_box = Gtk.Template.Child()
+    blur_toggle = Gtk.Template.Child()
+    pixelate_toggle = Gtk.Template.Child()
+    strength_scale = Gtk.Template.Child()
     text_size_spin = Gtk.Template.Child()
     bold_toggle = Gtk.Template.Child()
     italic_toggle = Gtk.Template.Child()
@@ -109,6 +113,13 @@ class DrawingToolsGroup(Gtk.Box):
 
         is_text = tool_config.mode == DrawingMode.TEXT
         self.text_style_box.set_visible(is_text)
+        is_censor = tool_config.mode == DrawingMode.CENSOR
+        self.censor_box.set_visible(is_censor)
+        if tool_option.censor_style == "blur":
+            self.blur_toggle.set_active(True)
+        else:
+            self.pixelate_toggle.set_active(True)
+        self.strength_scale.set_value(tool_option.strength)
         self.color_label.set_label(_("Text Color") if is_text else _("Color"))
         self.size_scale.set_visible(tool_config.has_scale)
         self.size_label.set_visible(tool_config.has_scale)
@@ -293,6 +304,26 @@ class DrawingToolsGroup(Gtk.Box):
         active_tool_option.bold = self.bold_toggle.get_active()
         active_tool_option.italic = self.italic_toggle.get_active()
         active_tool_option.underline = self.underline_toggle.get_active()
+        self.apply_changes()
+
+    @Gtk.Template.Callback()
+    def on_censor_style_toggled(self, button: Gtk.ToggleButton):
+        if self._updating_ui or not button.get_active():
+            return
+        active_tool_option = self._get_active_tool_option()
+        if active_tool_option is None:
+            return
+        active_tool_option.censor_style = "blur" if button is self.blur_toggle else "pixelate"
+        self.apply_changes()
+
+    @Gtk.Template.Callback()
+    def on_strength_changed(self, adjustment: Gtk.Adjustment):
+        if self._updating_ui:
+            return
+        active_tool_option = self._get_active_tool_option()
+        if active_tool_option is None:
+            return
+        active_tool_option.strength = int(adjustment.get_value())
         self.apply_changes()
 
     @Gtk.Template.Callback()

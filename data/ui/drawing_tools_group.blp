@@ -136,6 +136,71 @@ template $GradiaDrawingToolsGroup: Box {
     }
   }
 
+  // Censor tool: blur or pixelate, and how strongly
+  Box censor_box {
+    orientation: vertical;
+    visible: false;
+
+    Box {
+      homogeneous: true;
+
+      styles [
+        "linked",
+      ]
+
+      ToggleButton blur_toggle {
+        label: _("Blur");
+        toggled => $on_censor_style_toggled();
+      }
+
+      ToggleButton pixelate_toggle {
+        label: _("Pixelate");
+        group: blur_toggle;
+        toggled => $on_censor_style_toggled();
+      }
+    }
+
+    Label {
+      label: _("Strength");
+      xalign: 0;
+      margin-top: 12;
+
+      styles [
+        "caption-heading",
+        "dim-label",
+      ]
+    }
+
+    Scale strength_scale {
+      orientation: horizontal;
+      margin-top: 6;
+      draw-value: true;
+      value-pos: right;
+      digits: 0;
+
+      adjustment: Adjustment {
+        lower: 1;
+        upper: 100;
+        value: 50;
+        step-increment: 5;
+        page-increment: 10;
+        value-changed => $on_strength_changed();
+      };
+    }
+
+    Label {
+      label: _("Hides sensitive information. The original pixels are never kept in copied or saved images.");
+      xalign: 0;
+      wrap: true;
+      margin-top: 12;
+
+      styles [
+        "caption",
+        "dim-label",
+      ]
+    }
+  }
+
   Label color_label {
     label: _("Color");
     xalign: 0;

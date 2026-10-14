@@ -657,8 +657,11 @@ class CensorAction(RectAction):
         self.original_scale = scale
 
     def _get_scaled_block_size(self, current_scale: float) -> float:
-        scale_ratio = current_scale / self.original_scale
-        return self.base_block_size * scale_ratio
+        # Strength (1-100) sets the block size in image pixels, so the result
+        # looks the same at any zoom level and in the exported image.
+        strength = getattr(self.options, "strength", 50)
+        block_image_px = 3 + strength * 0.37
+        return max(1.0, block_image_px * current_scale)
 
     def draw(self, cr: cairo.Context, image_to_widget_coords: Callable[[int, int], tuple[float, float]], scale: float):
         crop = self._get_image_crop()
@@ -681,9 +684,15 @@ class CensorAction(RectAction):
             return
 
         scaled_block_size = self._get_scaled_block_size(scale)
-        self._draw_pixelation(cr, crop, x, y, width, height, scaled_block_size)
+        blur = getattr(self.options, "censor_style", "pixelate") == "blur"
+        self._draw_pixelation(cr, crop, x, y, width, height, scaled_block_size, smooth=blur)
 
-    def _draw_pixelation(self, cr: cairo.Context, crop: dict, x: float, y: float, width: float, height: float, block_size: float):
+    def _draw_pixelation(self, cr: cairo.Context, crop: dict, x: float, y: float, width: float, height: float, block_size: float, smooth: bool = False):
+        """Shrink the area to a few pixels and stretch it back.
+
+        Sharp blocks give pixelation; bilinear stretching gives a blur. Either
+        way the original detail is gone from the drawn result.
+        """
         cr.save()
         cr.rectangle(x, y, width, height)
         cr.clip()
@@ -706,7 +715,8 @@ class CensorAction(RectAction):
         cr.translate(x, y)
         cr.scale(width / blocks_x, height / blocks_y)
         pattern = cairo.SurfacePattern(tiny_surface)
-        pattern.set_filter(cairo.FILTER_NEAREST)
+        pattern.set_filter(cairo.FILTER_BILINEAR if smooth else cairo.FILTER_NEAREST)
+        pattern.set_extend(cairo.EXTEND_PAD)
         cr.set_source(pattern)
         cr.paint()
 
