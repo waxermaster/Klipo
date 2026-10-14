@@ -74,6 +74,18 @@ class DrawingToolsGrid(Gtk.Grid):
 
             self.attach(button, tool_config.column, tool_config.row, 1, 1)
 
+    def set_single_column(self, order: list[DrawingMode]) -> None:
+        """Lay the tools out as a vertical rail, in the given order."""
+        self.set_row_spacing(4)
+        self.set_column_homogeneous(False)
+        for button in self._buttons.values():
+            self.remove(button)
+        for row, mode in enumerate(order):
+            button = self._buttons[mode]
+            shortcut = mode.shortcuts[0].upper()
+            button.set_tooltip_text(f"{mode.label()} ({shortcut})")
+            self.attach(button, 0, row, 1, 1)
+
     def _on_button_toggled(self, button: Gtk.ToggleButton, mode: DrawingMode):
         if button.get_active():
             for other_mode, other_button in self._buttons.items():

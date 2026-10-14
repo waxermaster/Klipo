@@ -40,6 +40,7 @@ from gradia.ui.welcome_page import WelcomePage
 from gradia.utils.aspect_ratio import *
 from gradia.ui.preferences.preferences_window import PreferencesWindow
 from gradia.backend.settings import Settings
+from gradia.cli import ScreenshotMode
 from gradia.constants import rootdir, build_type # pyright: ignore
 from gradia.ui.dialog.delete_screenshots_dialog import DeleteScreenshotsDialog
 from gradia.ui.dialog.confirm_close_dialog import ConfirmCloseDialog
@@ -53,6 +54,13 @@ class GradiaMainWindow(Adw.ApplicationWindow):
 
     SIDEBAR_WIDTH: int = 300
 
+    DELAY_CHOICES: list[int] = [0, 3, 5, 10]
+    TOOL_ORDER: list[DrawingMode] = [
+        DrawingMode.SELECT, DrawingMode.ARROW, DrawingMode.LINE, DrawingMode.SQUARE,
+        DrawingMode.CIRCLE, DrawingMode.PEN, DrawingMode.HIGHLIGHTER, DrawingMode.TEXT,
+        DrawingMode.CENSOR, DrawingMode.NUMBER,
+    ]
+
     PAGE_IMAGE: str = "image"
     PAGE_LOADING: str = "loading"
 
@@ -60,6 +68,9 @@ class GradiaMainWindow(Adw.ApplicationWindow):
 
     toast_overlay: Adw.ToastOverlay = Gtk.Template.Child()
     toolbar_view: Adw.ToolbarView = Gtk.Template.Child()
+    delay_dropdown: Gtk.DropDown = Gtk.Template.Child()
+    share_button: Gtk.Button = Gtk.Template.Child()
+    tool_rail: Gtk.Box = Gtk.Template.Child()
 
     welcome_page: Gtk.StackPage = Gtk.Template.Child()
 
@@ -100,6 +111,8 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self._setup_actions()
         self._setup_image_stack()
         self._setup_sidebar()
+        self._setup_tool_rail()
+        self._setup_capture_controls()
         self._setup()
 
         self.connect("close-request", self._on_close_request)
@@ -126,7 +139,13 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.create_action("create-source-image", lambda *_: self.import_manager.generate_from_source_code(), ["<Primary>p"])
         self.create_action("load-drop", self.import_manager._on_drop_action, vt="s")
         self.create_action("paste", lambda *_: self.import_manager.load_from_clipboard(), ["<Primary>v"])
-        self.create_action("screenshot", lambda *_: self.import_manager.take_screenshot(), ["<Primary>a"])
+        self.create_action("screenshot", lambda *_: self._capture(ScreenshotMode.INTERACTIVE), ["<Primary>a"])
+        self.create_action("capture-area", lambda *_: self._capture(ScreenshotMode.INTERACTIVE))
+        self.create_action("capture-window", lambda *_: self._capture(ScreenshotMode.WINDOW))
+        self.create_action("capture-screen", lambda *_: self._capture(ScreenshotMode.SCREEN))
+        self.create_action("capture-all", lambda *_: self._capture(ScreenshotMode.FULL))
+        # Video recording arrives in a later phase
+        self.create_action("record", lambda *_: None, enabled=False)
         self.create_action("open-path", lambda action, param: self.import_manager.load_from_file(param.get_string()), vt="s")
 
         self.create_action(
@@ -199,7 +218,39 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.sidebar.set_size_request(self.SIDEBAR_WIDTH, -1)
         self.sidebar.set_visible(False)
 
-        self.share_button = self.sidebar.share_button
+    def _setup_tool_rail(self) -> None:
+        # The tool buttons live in the sidebar's tools group; show them as a
+        # ksnip-like vertical rail on the left instead.
+        grid = self.sidebar.drawing_tools_group.drawing_tools_grid
+        grid.get_parent().remove(grid)
+        grid.set_single_column(self.TOOL_ORDER)
+        grid.set_halign(Gtk.Align.CENTER)
+        self.tool_rail.append(grid)
+
+        self.tool_rail.append(Gtk.Separator(margin_top=4, margin_bottom=4))
+        for icon, action, tooltip in (
+            ("crop-symbolic", "win.crop", _("Crop (C)")),
+            ("edit-undo-symbolic", "win.undo", _("Undo (Ctrl+Z)")),
+            ("edit-redo-symbolic", "win.redo", _("Redo (Ctrl+Shift+Z)")),
+            ("eraser4-symbolic", "win.del-selected", _("Delete Selected Annotation (Delete)")),
+            ("user-trash-symbolic", "win.clear", _("Clear All Annotations")),
+        ):
+            button = Gtk.Button(icon_name=icon, action_name=action, tooltip_text=tooltip,
+                                halign=Gtk.Align.CENTER, width_request=40, height_request=40,
+                                css_classes=["flat", "circular"])
+            self.tool_rail.append(button)
+
+    def _setup_capture_controls(self) -> None:
+        delay = self.settings.screenshot_delay
+        index = self.DELAY_CHOICES.index(delay) if delay in self.DELAY_CHOICES else 0
+        self.delay_dropdown.set_selected(index)
+        self.delay_dropdown.connect("notify::selected", self._on_delay_changed)
+
+    def _on_delay_changed(self, dropdown: Gtk.DropDown, _pspec) -> None:
+        self.settings.screenshot_delay = self.DELAY_CHOICES[dropdown.get_selected()]
+
+    def _capture(self, mode: ScreenshotMode) -> None:
+        self.app.take_screenshot(mode, self.settings.screenshot_delay, window=self)
 
     def _setup(self) -> None:
         self.split_view.set_sidebar(self.sidebar)
@@ -388,7 +439,6 @@ class GradiaMainWindow(Adw.ApplicationWindow):
         self.show_close_confirmation = True
         self.image_stack.get_style_context().add_class("view")
         self.sidebar.set_visible(True)
-        self.toolbar_view.set_top_bar_style(Adw.ToolbarStyle.RAISED)
         self.image_stack.set_visible_child_name(self.PAGE_LOADING)
 
     def _hide_loading_state(self) -> None:

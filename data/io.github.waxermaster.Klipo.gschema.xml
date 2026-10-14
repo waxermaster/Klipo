@@ -76,6 +76,10 @@
       <default>''</default>
       <summary>Folder used by quick save (Ctrl+S); empty means Pictures/Klipo</summary>
     </key>
+    <key name="screenshot-delay" type="u">
+      <default>0</default>
+      <summary>Seconds to wait before capturing from the editor</summary>
+    </key>
     <key name="close-after-copy" type="b">
       <default>false</default>
       <summary>Close the editor after copying the image to the clipboard</summary>

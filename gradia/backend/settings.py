@@ -115,6 +115,14 @@ class Settings:
         self._settings.set_string("save-folder", value)
 
     @property
+    def screenshot_delay(self) -> int:
+        return self._settings.get_uint("screenshot-delay")
+
+    @screenshot_delay.setter
+    def screenshot_delay(self, value: int) -> None:
+        self._settings.set_uint("screenshot-delay", value)
+
+    @property
     def close_after_copy(self) -> bool:
         return self._settings.get_boolean("close-after-copy")
 

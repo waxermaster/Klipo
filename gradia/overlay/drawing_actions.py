@@ -49,12 +49,12 @@ class DrawingMode(Enum):
             "ARROW": _("Arrow"),
             "LINE": _("Line"),
             "SQUARE": _("Rectangle"),
-            "CIRCLE": _("Oval"),
+            "CIRCLE": _("Ellipse"),
             "TEXT": _("Text"),
             "SELECT": _("Select"),
             "HIGHLIGHTER": _("Highlighter"),
-            "CENSOR": _("Censor"),
-            "NUMBER": _("Number"),
+            "CENSOR": _("Blur / Pixelate"),
+            "NUMBER": _("Numbered Step"),
         }[self.value]
 
     @property

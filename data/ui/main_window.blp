@@ -3,12 +3,167 @@ using Adw 1;
 
 template $GradiaMainWindow: Adw.ApplicationWindow {
   title: "Klipo";
-  default-width: 975;
-  default-height: 675;
+  default-width: 1100;
+  default-height: 720;
 
   content: Adw.ToastOverlay toast_overlay {
     Adw.ToolbarView toolbar_view {
-      top-bar-style: flat;
+      top-bar-style: raised;
+
+      [top]
+      Adw.HeaderBar header_bar {
+        title-widget: Adw.Bin {};
+
+        [start]
+        Gtk.Box capture_box {
+          spacing: 2;
+
+          Gtk.Button {
+            action-name: "win.capture-area";
+            tooltip-text: _("Select an area to capture (Ctrl+A)");
+
+            child: Adw.ButtonContent {
+              icon-name: "screenshooter-symbolic";
+              label: _("Area");
+            };
+
+            styles [
+              "flat",
+            ]
+          }
+
+          Gtk.Button {
+            action-name: "win.capture-window";
+            tooltip-text: _("Capture the active window");
+
+            child: Adw.ButtonContent {
+              icon-name: "focus-windows-symbolic";
+              label: _("Window");
+            };
+
+            styles [
+              "flat",
+            ]
+          }
+
+          Gtk.Button {
+            action-name: "win.capture-screen";
+            tooltip-text: _("Capture the screen under the pointer");
+
+            child: Adw.ButtonContent {
+              icon-name: "video-display-symbolic";
+              label: _("Screen");
+            };
+
+            styles [
+              "flat",
+            ]
+          }
+
+          Gtk.Button {
+            action-name: "win.capture-all";
+            tooltip-text: _("Capture all screens");
+
+            child: Adw.ButtonContent {
+              icon-name: "view-dual-symbolic";
+              label: _("All Screens");
+            };
+
+            styles [
+              "flat",
+            ]
+          }
+
+          Gtk.Separator {
+            margin-start: 4;
+            margin-end: 4;
+
+            styles [
+              "spacer",
+            ]
+          }
+
+          Gtk.Button {
+            action-name: "win.record";
+            tooltip-text: _("Record the screen");
+
+            child: Adw.ButtonContent {
+              icon-name: "media-record-symbolic";
+              label: _("Video");
+            };
+
+            styles [
+              "flat",
+            ]
+          }
+
+          Gtk.DropDown delay_dropdown {
+            tooltip-text: _("Delay before capturing");
+            valign: center;
+            margin-start: 6;
+
+            model: Gtk.StringList {
+              strings [
+                _("No Delay"),
+                _("3 s"),
+                _("5 s"),
+                _("10 s"),
+              ]
+            };
+          }
+        }
+
+        [end]
+        Gtk.MenuButton main_menu_button {
+          icon-name: "open-menu-symbolic";
+          tooltip-text: _("Main Menu");
+          menu-model: app_menu;
+          primary: true;
+        }
+
+        [end]
+        Gtk.Button share_button {
+          icon-name: "share-symbolic";
+          tooltip-text: _("Share Image (Ctrl+M)");
+          action-name: "win.command";
+          visible: false;
+        }
+
+        [end]
+        Gtk.Button {
+          icon-name: "document-save-as-symbolic";
+          tooltip-text: _("Save As… (Ctrl+Shift+S)");
+          action-name: "win.save-as";
+        }
+
+        [end]
+        Gtk.Button {
+          tooltip-text: _("Save to the default folder (Ctrl+S)");
+          action-name: "win.save";
+
+          child: Adw.ButtonContent {
+            icon-name: "document-save-symbolic";
+            label: _("_Save");
+            use-underline: true;
+          };
+        }
+
+        [end]
+        Gtk.Button {
+          tooltip-text: _("Copy to Clipboard (Ctrl+C)");
+          action-name: "win.copy";
+
+          child: Adw.ButtonContent {
+            icon-name: "edit-copy-symbolic";
+            label: _("_Copy");
+            use-underline: true;
+          };
+
+          styles [
+            "suggested-action",
+          ]
+        }
+      }
 
       content: Gtk.Stack main_stack {
         transition-type: crossfade;
@@ -23,22 +178,52 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
         Gtk.StackPage main_page {
           name: "main";
 
-          child: Adw.BreakpointBin breakpoint_bin {
-            width-request: 200;
-            height-request: 50;
+          child: Gtk.Box editor_box {
+            orientation: horizontal;
 
-            Adw.Breakpoint breakpoint {
-              condition ("max-width: 695sp")
+            Gtk.ScrolledWindow tool_rail_scroller {
+              hscrollbar-policy: never;
+              propagate-natural-width: true;
 
-              setters {
-                split_view.collapsed: true;
-              }
+              child: Gtk.Box tool_rail {
+                orientation: vertical;
+                spacing: 4;
+                margin-top: 6;
+                margin-bottom: 6;
+                margin-start: 6;
+                margin-end: 6;
+
+                styles [
+                  "tool-rail",
+                ]
+              };
             }
 
-            child: Adw.OverlaySplitView split_view {
-              collapsed: false;
-              show-sidebar: true;
-            };
+            Gtk.Separator {
+              orientation: vertical;
+            }
+
+            Adw.BreakpointBin breakpoint_bin {
+              width-request: 200;
+              height-request: 50;
+              hexpand: true;
+
+              Adw.Breakpoint breakpoint {
+                condition ("max-width: 640sp")
+
+                setters {
+                  split_view.collapsed: true;
+                }
+              }
+
+              child: Adw.OverlaySplitView split_view {
+                collapsed: false;
+                show-sidebar: true;
+                sidebar-position: end;
+                min-sidebar-width: 260;
+                max-sidebar-width: 320;
+              };
+            }
           };
         }
       };
@@ -46,3 +231,48 @@ template $GradiaMainWindow: Adw.ApplicationWindow {
   };
 }
 
+menu app_menu {
+  section {
+    item {
+      label: _("_Open Image…");
+      action: "win.open";
+    }
+
+    item {
+      label: _("Recognize _Text");
+      action: "win.ocr";
+    }
+
+    item {
+      label: _("_Source Snippets");
+      action: "win.create-source-image";
+    }
+
+    item {
+      label: _("_Delete Taken Screenshot(s)");
+      action: "win.delete-screenshots";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Preferences");
+      action: "win.preferences";
+    }
+
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.shortcuts";
+    }
+
+    item {
+      label: _("D_onate to Gradia");
+      action: "win.donate";
+    }
+
+    item {
+      label: _("_About Klipo");
+      action: "win.about";
+    }
+  }
+}

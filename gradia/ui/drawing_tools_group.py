@@ -28,6 +28,8 @@ class DrawingToolsGroup(Gtk.Box):
     __gtype_name__ = "GradiaDrawingToolsGroup"
 
     size_scale = Gtk.Template.Child()
+    opacity_scale = Gtk.Template.Child()
+    opacity_label = Gtk.Template.Child()
     color_picker = Gtk.Template.Child()
     extra_stack = Gtk.Template.Child()
     extra_stack_revealer = Gtk.Template.Child()
@@ -108,6 +110,10 @@ class DrawingToolsGroup(Gtk.Box):
 
         if tool_config.has_primary_color:
             self.color_picker.set_color(tool_option.primary_color)
+
+        self.opacity_scale.set_visible(tool_config.has_primary_color)
+        self.opacity_label.set_visible(tool_config.has_primary_color)
+        self.opacity_scale.set_value(round(tool_option.primary_color.alpha * 100))
 
         self.fill_0.set_color(tool_option.fill_color, emit=False)
         self.fill_1.set_color(tool_option.fill_color, emit=False)
@@ -214,6 +220,23 @@ class DrawingToolsGroup(Gtk.Box):
             for picker in (self.outline_1, self.outline_2):
                 picker.set_color(Gdk.RGBA(0, 0, 0, 0))
 
+        # Picking a color keeps the opacity chosen with the slider
+        color = color.copy()
+        color.alpha = self.opacity_scale.get_value() / 100
+        active_tool_option.primary_color = color
+        self.apply_changes()
+
+    @Gtk.Template.Callback()
+    def on_opacity_changed(self, adjustment: Gtk.Adjustment):
+        if self._updating_ui:
+            return
+
+        active_tool_option = self._get_active_tool_option()
+        if active_tool_option is None:
+            return
+
+        color = active_tool_option.primary_color.copy()
+        color.alpha = adjustment.get_value() / 100
         active_tool_option.primary_color = color
         self.apply_changes()
 

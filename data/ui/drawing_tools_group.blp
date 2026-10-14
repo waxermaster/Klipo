@@ -4,7 +4,7 @@ template $GradiaDrawingToolsGroup: Box {
   orientation: vertical;
 
   Text {
-    text: _("Annotation Tools");
+    text: _("Tool Properties");
     margin-bottom: 12;
     sensitive: false;
 
@@ -18,9 +18,30 @@ template $GradiaDrawingToolsGroup: Box {
     tool-changed => $on_tool_changed();
   }
 
+  Label {
+    label: _("Color");
+    xalign: 0;
+
+    styles [
+      "caption-heading",
+      "dim-label",
+    ]
+  }
+
   $GradiaQuickColorPicker color_picker {
     margin-top: 6;
     color-changed => $on_primary_color_changed();
+  }
+
+  Label {
+    label: _("Size");
+    xalign: 0;
+    margin-top: 12;
+
+    styles [
+      "caption-heading",
+      "dim-label",
+    ]
   }
 
   Scale size_scale {
@@ -33,6 +54,34 @@ template $GradiaDrawingToolsGroup: Box {
       upper: 25;
       value: 14;
       step-increment: 2;
+    };
+  }
+
+  Label opacity_label {
+    label: _("Opacity");
+    xalign: 0;
+    margin-top: 12;
+
+    styles [
+      "caption-heading",
+      "dim-label",
+    ]
+  }
+
+  Scale opacity_scale {
+    orientation: horizontal;
+    margin-top: 6;
+    draw-value: true;
+    value-pos: right;
+    digits: 0;
+
+    adjustment: Adjustment {
+      value-changed => $on_opacity_changed();
+      lower: 10;
+      upper: 100;
+      value: 100;
+      step-increment: 5;
+      page-increment: 10;
     };
   }
 

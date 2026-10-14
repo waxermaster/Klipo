@@ -78,9 +78,9 @@ class GradiaApp(Adw.Application):
         # these actions instead of running the Exec lines.
         desktop_actions = {
             "new-window": lambda *_: self._open_window(new_window=True),
-            "take-screenshot": lambda *_: self._take_screenshot(ScreenshotMode.INTERACTIVE),
-            "take-fullscreen-screenshot": lambda *_: self._take_screenshot(ScreenshotMode.FULL),
-            "take-window-screenshot": lambda *_: self._take_screenshot(ScreenshotMode.WINDOW),
+            "take-screenshot": lambda *_: self.take_screenshot(ScreenshotMode.INTERACTIVE),
+            "take-fullscreen-screenshot": lambda *_: self.take_screenshot(ScreenshotMode.FULL),
+            "take-window-screenshot": lambda *_: self.take_screenshot(ScreenshotMode.WINDOW),
         }
         for name, callback in desktop_actions.items():
             action = Gio.SimpleAction.new(name, None)
@@ -148,7 +148,7 @@ class GradiaApp(Adw.Application):
             if not files_to_open:
                 logging.warning("--pin specified but no files provided.")
         elif opts.screenshot:
-            self._take_screenshot(opts.screenshot, opts.delay_seconds)
+            self.take_screenshot(opts.screenshot, opts.delay_seconds)
         elif files_to_open:
             for path in files_to_open:
                 self._open_window(file_path=path, new_window=opts.new_window)
@@ -168,12 +168,12 @@ class GradiaApp(Adw.Application):
                 return window
         return None
 
-    def _take_screenshot(self, mode: ScreenshotMode, delay_seconds: int = 0) -> None:
+    def take_screenshot(self, mode: ScreenshotMode, delay_seconds: int = 0, window: Optional[GradiaMainWindow] = None) -> None:
         # WINDOW and SCREEN have no direct portal equivalent yet: they fall
         # back to the interactive GNOME UI and to all monitors respectively.
         flags = Xdp.ScreenshotFlags.NONE if mode in (ScreenshotMode.FULL, ScreenshotMode.SCREEN) else Xdp.ScreenshotFlags.INTERACTIVE
 
-        window = self._get_editor_window()
+        window = window or self._get_editor_window()
         close_on_cancel = window is None
         if window is None:
             window = self._create_window()

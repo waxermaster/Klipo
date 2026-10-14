@@ -5,35 +5,6 @@ template $GradiaImageSidebar: Adw.Bin {
   child: Adw.ToolbarView {
     top-bar-style: flat;
 
-    [top]
-    Adw.HeaderBar {
-      centering-policy: loose;
-      show-end-title-buttons: false;
-      show-start-title-buttons: true;
-
-      [start]
-      Gtk.Button open_image_button {
-        icon-name: "document-open-symbolic";
-        tooltip-text: _("Open Image");
-        action-name: "win.open";
-      }
-
-      [start]
-      Gtk.Button screenshot_button {
-        icon-name: "screenshooter-symbolic";
-        tooltip-text: _("Take a Screenshot");
-        action-name: "win.screenshot";
-      }
-
-      [end]
-      Gtk.MenuButton about_menu_button {
-        icon-name: "open-menu-symbolic";
-        tooltip-text: _("Main Menu");
-        menu-model: app_menu;
-        primary: true;
-      }
-    }
-
     content: ScrolledWindow {
       child: Box {
         orientation: vertical;
@@ -46,7 +17,23 @@ template $GradiaImageSidebar: Adw.Bin {
 
         $GradiaDrawingToolsGroup drawing_tools_group {}
 
-        Adw.PreferencesGroup background_selector_group {}
+        Gtk.Expander beautify_expander {
+          margin-top: 6;
+
+          label-widget: Gtk.Label {
+            label: _("Beautify");
+
+            styles [
+              "heading",
+            ]
+          };
+
+          child: Gtk.Box {
+            orientation: vertical;
+            spacing: 12;
+            margin-top: 12;
+
+            Adw.PreferencesGroup background_selector_group {}
 
         Adw.PreferencesGroup image_options_group {
           title: _("Image Options");
@@ -146,6 +133,9 @@ template $GradiaImageSidebar: Adw.Bin {
           }
         }
 
+          };
+        }
+
         Adw.PreferencesGroup file_info_group {
           title: _("Current File");
 
@@ -194,88 +184,5 @@ template $GradiaImageSidebar: Adw.Bin {
       };
     };
 
-    [bottom]
-    Gtk.Box {
-      orientation: horizontal;
-      halign: center;
-      spacing: 15;
-      margin-top: 5;
-      margin-bottom: 5;
-
-      Gtk.Button save_button {
-        icon-name: "document-save-symbolic";
-        tooltip-text: _("Save File");
-        action-name: "win.save";
-
-        styles [
-          "suggested-action",
-          "pill",
-        ]
-      }
-
-      Gtk.Button copy_button {
-        icon-name: "edit-copy-symbolic";
-        tooltip-text: _("Copy to Clipboard");
-        action-name: "win.copy";
-
-        styles [
-          "raised",
-          "pill",
-        ]
-      }
-
-      Gtk.Button share_button {
-        icon-name: "share-symbolic";
-        tooltip-text: _("Share Image");
-        action-name: "win.command";
-        width-request: 45;
-
-        styles [
-          "raised",
-          "circular",
-        ]
-      }
-
-      styles [
-        "toolbar",
-      ]
-    }
   };
 }
-
-menu app_menu {
-  section {
-    item {
-      label: _("_Source Snippets");
-      action: "win.create-source-image";
-    }
-
-    item {
-      label: _("_Delete Taken Screenshot(s)");
-      action: "win.delete-screenshots";
-    }
-  }
-
-  section {
-    item {
-      label: _("_Preferences");
-      action: "win.preferences";
-    }
-
-    item {
-      label: _("_Keyboard Shortcuts");
-      action: "win.shortcuts";
-    }
-
-    item {
-      label: _("D_onate to Gradia");
-      action: "win.donate";
-    }
-
-    item {
-      label: _("_About Klipo");
-      action: "win.about";
-    }
-  }
-}
-

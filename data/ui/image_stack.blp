@@ -272,7 +272,10 @@ template $GradiaImageStack: Adw.Bin {
                   }
                 }
 
+                // Undo, redo and clear live in the window's tool rail
                 Gtk.Box {
+                  visible: false;
+
                   styles [
                     "osd-box",
                   ]

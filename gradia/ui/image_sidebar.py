@@ -54,7 +54,6 @@ class ImageSidebar(Adw.Bin):
     filename_row: Adw.ActionRow = Gtk.Template.Child()
     location_row: Adw.ActionRow = Gtk.Template.Child()
     processed_size_row: Adw.ActionRow = Gtk.Template.Child()
-    share_button: Gtk.Button = Gtk.Template.Child()
     rotate_left_button: Gtk.Button = Gtk.Template.Child()
     rotate_right_button: Gtk.Button = Gtk.Template.Child()
     aspect_ratio_selector: AspectRatioSelector = Gtk.Template.Child()
