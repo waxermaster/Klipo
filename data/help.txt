@@ -11,8 +11,10 @@ Options:
                           MODE can be:
                             INTERACTIVE (default) - select an area
                             FULL                  - all monitors
-                            WINDOW                - active window
+                            WINDOW                - active window (X11; on
+                                                    Wayland: pick it in GNOME)
                             SCREEN                - monitor under the pointer
+                                                    (X11; on Wayland: all)
   --delay=SECONDS         Wait before taking the screenshot
   --record                Start a video recording
   --stop-recording        Stop the current video recording

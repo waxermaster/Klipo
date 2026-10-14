@@ -35,6 +35,7 @@ from gradia.backend.logger import Logger
 from gradia.backend.ocr import OCR
 from gradia.utils.std_image_loader import StdinImageLoader
 from gradia.cli import CliError, ScreenshotMode, parse_args
+from gradia.backend.x11_capture import is_x11_session
 
 logging = Logger()
 
@@ -169,9 +170,16 @@ class GradiaApp(Adw.Application):
         return None
 
     def take_screenshot(self, mode: ScreenshotMode, delay_seconds: int = 0, window: Optional[GradiaMainWindow] = None) -> None:
-        # WINDOW and SCREEN have no direct portal equivalent yet: they fall
-        # back to the interactive GNOME UI and to all monitors respectively.
-        flags = Xdp.ScreenshotFlags.NONE if mode in (ScreenshotMode.FULL, ScreenshotMode.SCREEN) else Xdp.ScreenshotFlags.INTERACTIVE
+        # The portal has no "window" or "single screen" mode. On X11 we capture
+        # everything and crop; on Wayland we let the user pick in the GNOME UI.
+        region = None
+        if mode in (ScreenshotMode.WINDOW, ScreenshotMode.SCREEN) and is_x11_session():
+            region = "window" if mode == ScreenshotMode.WINDOW else "screen"
+            flags = Xdp.ScreenshotFlags.NONE
+        elif mode == ScreenshotMode.FULL:
+            flags = Xdp.ScreenshotFlags.NONE
+        else:
+            flags = Xdp.ScreenshotFlags.INTERACTIVE
 
         window = window or self._get_editor_window()
         close_on_cancel = window is None
@@ -182,6 +190,7 @@ class GradiaApp(Adw.Application):
             flags,
             delay_seconds=delay_seconds,
             close_on_cancel=close_on_cancel,
+            region=region,
         )
 
     def do_open(self, files: Sequence[Gio.File], hint: str):

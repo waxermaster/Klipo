@@ -26,6 +26,7 @@ from gradia.clipboard import save_texture_to_file
 from gradia.ui.image_creation.source_image_generator import SourceImageGeneratorWindow
 from gradia.utils.timestamp_filename import TimestampedFilenameGenerator
 from gradia.constants import app_id  # pyright: ignore
+from gradia.backend.x11_capture import active_window_rect, crop_to_region, pointer_position
 from gradia.backend.logger import Logger
 from gradia.graphics.loaded_image import LoadedImage, ImageOrigin
 from typing import Optional, Callable
@@ -246,6 +247,8 @@ class ScreenshotImageLoader(BaseImageLoader):
         self._screenshot_uris: list[str] = []
         self._close_on_cancel = False
         self._flags = Xdp.ScreenshotFlags.INTERACTIVE
+        self._region_mode = None
+        self._region = None
         self.window = window
 
     def _update_delete_action_state(self) -> None:
@@ -260,8 +263,12 @@ class ScreenshotImageLoader(BaseImageLoader):
         on_success: Optional[Callable[[], None]] = None,
         delay_seconds: int = 0,
         close_on_cancel: bool = False,
+        region: Optional[str] = None,
     ) -> None:
+        """region: None, "window" (active window) or "screen" (monitor under the pointer), X11 only."""
         try:
+            self._region_mode = region
+            self._region = None
             self._error_callback = on_error_or_cancel
             self._success_callback = on_success
             self._close_on_cancel = close_on_cancel
@@ -276,6 +283,11 @@ class ScreenshotImageLoader(BaseImageLoader):
 
     def _do_take_screenshot(self, flags: Xdp.ScreenshotFlags) -> bool:
         self._flags = flags
+        # Read the region now: our window is hidden and the delay has elapsed
+        if self._region_mode == "window":
+            self._region = active_window_rect()
+        elif self._region_mode == "screen":
+            self._region = self._monitor_under_pointer()
         try:
             self.portal.take_screenshot(
                 None,
@@ -318,6 +330,22 @@ class ScreenshotImageLoader(BaseImageLoader):
             self._show_or_close(failed)
             self._error_callback = None
 
+    def _monitor_under_pointer(self):
+        position = pointer_position()
+        display = Gdk.Display.get_default()
+        if position is None or display is None:
+            return None
+        px, py = position
+        monitors = display.get_monitors()
+        for i in range(monitors.get_n_items()):
+            monitor = monitors.get_item(i)
+            geometry, scale = monitor.get_geometry(), monitor.get_scale_factor()
+            x, y = geometry.x * scale, geometry.y * scale
+            width, height = geometry.width * scale, geometry.height * scale
+            if x <= px < x + width and y <= py < y + height:
+                return x, y, width, height
+        return None
+
     def _show_or_close(self, failed: bool) -> None:
         # A window opened only to host a capture closes when that capture is cancelled
         if failed and self._close_on_cancel:
@@ -339,6 +367,10 @@ class ScreenshotImageLoader(BaseImageLoader):
 
             with open(temp_path, 'wb') as f:
                 f.write(contents)
+
+            region = getattr(self, "_region", None)
+            if region is not None and not crop_to_region(temp_path, region, temp_path):
+                logger.info(f"Could not crop screenshot to {region}, keeping the full capture")
 
             self._set_image_and_update_ui(temp_path, ImageOrigin.Screenshot, screenshot_path=original_path, copy_after_processing=True)
             self.window._show_notification(_("Screenshot captured!"))
@@ -467,8 +499,9 @@ class ImportManager:
         on_success: Optional[Callable[[], None]] = None,
         delay_seconds: int = 0,
         close_on_cancel: bool = False,
+        region: Optional[str] = None,
     ) -> None:
-        self.screenshot_loader.take_screenshot(flags, on_error_or_cancel, on_success, delay_seconds, close_on_cancel)
+        self.screenshot_loader.take_screenshot(flags, on_error_or_cancel, on_success, delay_seconds, close_on_cancel, region)
 
     def load_as_screenshot(self, file_path: str):
         self.screenshot_loader.load_path_as_screenshot(file_path)
