@@ -19,6 +19,7 @@ import os
 import mimetypes
 import shutil
 import threading
+import time
 from urllib.parse import urlparse, unquote
 import urllib.request
 from gi.repository import Gtk, Gio, Gdk, GLib, Xdp
@@ -238,6 +239,26 @@ class ClipboardImageLoader(BaseImageLoader):
             print(f"Error reading URIs: {e}")
 
 
+def _newest_gnome_screenshot(since: float) -> Optional[str]:
+    """A PNG GNOME saved in a folder of Pictures (Screenshots) after `since`."""
+    pictures = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES) or os.path.expanduser("~/Pictures")
+    newest, newest_time = None, since
+    try:
+        folders = [os.path.join(pictures, name) for name in os.listdir(pictures)]
+    except OSError:
+        return None
+    for folder in folders:
+        if not os.path.isdir(folder) or os.path.basename(folder) == "Klipo":
+            continue
+        try:
+            for entry in os.scandir(folder):
+                if entry.name.endswith(".png") and entry.stat().st_mtime > newest_time:
+                    newest, newest_time = entry.path, entry.stat().st_mtime
+        except OSError:
+            continue
+    return newest
+
+
 class ScreenshotImageLoader(BaseImageLoader):
     def __init__(self, window: Gtk.ApplicationWindow, temp_dir: str, app: Gtk.Application) -> None:
         super().__init__(window, temp_dir)
@@ -249,6 +270,7 @@ class ScreenshotImageLoader(BaseImageLoader):
         self._flags = Xdp.ScreenshotFlags.INTERACTIVE
         self._region_mode = None
         self._region = None
+        self._requested_at = 0.0
         self.window = window
 
     def _update_delete_action_state(self) -> None:
@@ -283,6 +305,7 @@ class ScreenshotImageLoader(BaseImageLoader):
 
     def _do_take_screenshot(self, flags: Xdp.ScreenshotFlags) -> bool:
         self._flags = flags
+        self._requested_at = time.time()
         # Read the region now: our window is hidden and the delay has elapsed
         if self._region_mode == "window":
             self._region = active_window_rect()
@@ -306,14 +329,41 @@ class ScreenshotImageLoader(BaseImageLoader):
         return False
 
     def _on_screenshot_taken(self, portal_object, result, user_data) -> None:
-        failed = False
         try:
             uri = self.portal.take_screenshot_finish(result)
+        except GLib.Error as e:
+            if self._flags & Xdp.ScreenshotFlags.INTERACTIVE:
+                # GNOME 46.0 closes its capture interface before a large capture
+                # is written, then reports a failure although the screenshot was
+                # saved: look for it before giving up.
+                self._wait_for_gnome_screenshot(e, time.time() + 3)
+            else:
+                self._screenshot_failed(e)
+            return
+        self._screenshot_succeeded(uri)
+
+    def _screenshot_succeeded(self, uri: str) -> None:
+        try:
             self._screenshot_uris.append(uri)
             self._handle_screenshot_uri(uri)
             self._update_delete_action_state()
-        except GLib.Error as e:
-            failed = True
+        finally:
+            self._show_or_close(False)
+            self._error_callback = None
+
+    def _wait_for_gnome_screenshot(self, error: GLib.Error, deadline: float) -> None:
+        path = _newest_gnome_screenshot(self._requested_at)
+        if path is not None:
+            logger.info(f"The portal reported a failure, using the screenshot GNOME saved: {path}")
+            # Give GNOME a moment to finish writing the file
+            GLib.timeout_add(150, lambda: self._screenshot_succeeded(Gio.File.new_for_path(path).get_uri()) and False)
+        elif time.time() < deadline:
+            GLib.timeout_add(200, lambda: self._wait_for_gnome_screenshot(error, deadline) and False)
+        else:
+            self._screenshot_failed(error)
+
+    def _screenshot_failed(self, e: GLib.Error) -> None:
+        try:
             logger.error(f"Screenshot error: {e}")
             if self._flags & Xdp.ScreenshotFlags.INTERACTIVE:
                 self.window._show_notification(_("Screenshot cancelled"))
@@ -327,7 +377,7 @@ class ScreenshotImageLoader(BaseImageLoader):
             if self._error_callback:
                 self._error_callback(str(e))
         finally:
-            self._show_or_close(failed)
+            self._show_or_close(True)
             self._error_callback = None
 
     def _monitor_under_pointer(self):
