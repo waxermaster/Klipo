@@ -222,10 +222,14 @@ class VideoEditorWindow(Adw.ApplicationWindow):
         bottom.append(transport)
         bottom.append(timeline_scroller)
 
-        self.toast_overlay = Adw.ToastOverlay(child=middle)
+        # The timeline is part of the content, not a bottom bar: libadwaita
+        # bars move the window when dragged, which would steal timeline drags
+        body = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        body.append(middle)
+        body.append(bottom)
+        self.toast_overlay = Adw.ToastOverlay(child=body)
         toolbar_view = Adw.ToolbarView(content=self.toast_overlay)
         toolbar_view.add_top_bar(header)
-        toolbar_view.add_bottom_bar(bottom)
         self.set_content(toolbar_view)
         self._update_time_label(0.0)
 
