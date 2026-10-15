@@ -20,7 +20,10 @@
 GNOME 46 has no tray, so this window and a notification are the ways to
 see and stop a recording. Apps cannot position their windows or keep them
 above others on Wayland; on X11 the window manager is asked to keep it
-above, and it is moved out of the recorded area so it is not filmed.
+above, and it is moved out of the recorded area so it is not filmed. When
+there is no room left (all screens recorded), it is hidden once the countdown
+ends: the shortcut, the notification and GNOME's top bar indicator stop the
+recording.
 """
 
 from typing import Optional
@@ -86,6 +89,12 @@ class RecordingIndicator(Adw.ApplicationWindow):
         handle = Gtk.WindowHandle(child=box)
         self.set_content(handle)
 
+        # True when every place for this window would be filmed: it is then
+        # only shown during the countdown (before anything is recorded)
+        self._no_room = False
+        if recorder.state != RecorderState.COUNTDOWN:
+            self.set_opacity(0)  # until it is placed
+
         self._state_handler = recorder.connect("state-changed", lambda *_: self._update())
         self._tick_id = GLib.timeout_add(250, self._on_tick)
         self.connect("map", lambda *_: GLib.timeout_add(100, self._keep_above))
@@ -94,13 +103,21 @@ class RecordingIndicator(Adw.ApplicationWindow):
         self._on_tick()
 
     def _on_tick(self) -> bool:
+        self._hide_if_filmed()
         if self.recorder.state == RecorderState.COUNTDOWN:
             self.time_label.set_label(str(self.recorder.countdown_left))
         else:
             self.time_label.set_label(format_duration(self.recorder.elapsed_seconds()))
         return True
 
+    def _hide_if_filmed(self) -> None:
+        state = self.recorder.state
+        about_to_record = state == RecorderState.COUNTDOWN and self.recorder.countdown_left <= 1
+        if self._no_room and self.get_visible() and (about_to_record or state != RecorderState.COUNTDOWN):
+            self.set_visible(False)
+
     def _update(self) -> None:
+        self._hide_if_filmed()
         state = self.recorder.state
         paused = state == RecorderState.PAUSED
         self.pause_button.set_icon_name("media-playback-start-symbolic" if paused else "media-playback-pause-symbolic")
@@ -130,6 +147,9 @@ class RecordingIndicator(Adw.ApplicationWindow):
             self._move_out_of_recording()
         except Exception as e:
             logger.warning(f"Cannot place the recording indicator: {e}")
+        if not self._no_room:
+            self.set_opacity(1)
+        self._hide_if_filmed()
         return False
 
     def _move_out_of_recording(self) -> None:
@@ -141,7 +161,10 @@ class RecordingIndicator(Adw.ApplicationWindow):
         if recorded is None or size is None:
             return
         position = place_outside(recorded, size, _monitor_rects(self.get_display()))
-        if position is not None:
+        if position is None:
+            logger.info("No room outside the recorded area: the recording indicator is hidden")
+            self._no_room = True
+        else:
             move_window(self, *position)
 
     def _on_close_request(self, *_args) -> bool:

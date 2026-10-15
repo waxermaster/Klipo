@@ -122,7 +122,9 @@ class RecordingController:
         notification = Gio.Notification.new(_("Recording Paused") if paused else _("Klipo Is Recording"))
         notification.set_body(f"{self.recorder.format_label} · {self.recorder.encoder_name}")
         notification.set_icon(Gio.ThemedIcon(name="media-record-symbolic"))
-        notification.set_priority(Gio.NotificationPriority.HIGH)
+        # Low priority: kept in the notification list without a banner, which
+        # would be filmed
+        notification.set_priority(Gio.NotificationPriority.LOW)
         notification.add_button(_("Resume") if paused else _("Pause"), "app.pause-recording")
         notification.add_button(_("Stop"), "app.stop-recording")
         self.app.send_notification(NOTIFICATION_RECORDING, notification)
