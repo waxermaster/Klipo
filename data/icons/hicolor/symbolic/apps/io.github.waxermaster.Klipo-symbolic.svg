@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#3d3846" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <g fill="#f66151">
-            <path d="m 3 1 c -1.105469 0 -2 0.894531 -2 2"/>
-            <path d="m 163 173 c -1.105469 0 -2 0.894531 -2 2" transform="matrix(-1 0 0 1 176 -172)"/>
-            <path d="m 163 173 c -1.105469 0 -2 0.894531 -2 2" transform="matrix(1 0 0 -1 -160 188)"/>
-            <path d="m 163 173 c -1.105469 0 -2 0.894531 -2 2" transform="matrix(-1 0 -0 -1 176 188)"/>
-        </g>
-        <path d="m 3 5 v 6 h 10 v -6 z m 0 0" fill="none"/>
-        <path d="m 3 7 h 10" fill="none"/>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#2e3436" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M 1.75 5 V 1.75 H 5"/>
+    <path d="M 11 1.75 H 14.25 V 5"/>
+    <path d="M 1.75 11 V 14.25 H 5"/>
+    <path d="M 11 14.25 H 14.25 V 11"/>
+  </g>
+  <g fill="#2e3436">
+    <rect x="5" y="4" width="2" height="8"/>
+    <path d="M 6.6 8.2 L 9.6 4 H 12 L 8.2 8.9 Z"/>
+    <path d="M 7.6 7.6 L 12 12 H 9.6 L 6.6 9 Z"/>
+  </g>
 </svg>
