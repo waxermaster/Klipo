@@ -115,6 +115,25 @@ class Recorder(GObject.Object):
         end = self._paused_at if self.state == RecorderState.PAUSED else time.monotonic()
         return max(0.0, end - self._started_at - self._paused_total)
 
+    def recorded_rect(self) -> Optional[tuple[int, int, int, int]]:
+        """Part of the desktop being recorded (x, y, width, height), when known.
+
+        Unknown for a window, whose position the portal does not give.
+        """
+        result = self._portal_result
+        if result is None or not result.streams or self._source == SOURCE_WINDOW_MODE:
+            return None
+        stream = result.streams[0]
+        (sx, sy), (sw, sh) = stream.position, stream.size
+        if sw <= 0 or sh <= 0:
+            return None
+        if self._crop is None:
+            return sx, sy, sw, sh
+        frame_w, frame_h = self._frame_size or (sw, sh)
+        scale_x, scale_y = sw / max(1, frame_w), sh / max(1, frame_h)
+        x, y, w, h = self._crop
+        return (int(sx + x * scale_x), int(sy + y * scale_y), int(w * scale_x), int(h * scale_y))
+
     def start(self, source: str = SOURCE_SCREEN) -> None:
         if self.is_active:
             return

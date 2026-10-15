@@ -251,3 +251,53 @@ def keep_window_above(gtk_window) -> bool:
         return True
     finally:
         x11.close()
+
+
+def _xid(gtk_window) -> Optional[int]:
+    import gi
+    gi.require_version("GdkX11", "4.0")
+    from gi.repository import GdkX11
+
+    surface = gtk_window.get_surface()
+    if not isinstance(surface, GdkX11.X11Surface):
+        return None
+    return surface.get_xid()
+
+
+def window_size(gtk_window) -> Optional[tuple[int, int]]:
+    """Size of a GTK window in X pixels, client side shadows included."""
+    if not is_x11_session() or (xid := _xid(gtk_window)) is None:
+        return None
+    x11 = _X11()
+    try:
+        rect = x11.window_rect(xid)
+        return (rect[2], rect[3]) if rect else None
+    finally:
+        x11.close()
+
+
+def move_window(gtk_window, x: int, y: int) -> bool:
+    """Ask the X11 window manager to move a GTK window to (x, y) in root coordinates."""
+    if not is_x11_session() or (xid := _xid(gtk_window)) is None:
+        return False
+    x11 = _X11()
+    try:
+        lib = x11.lib
+        lib.XSendEvent.argtypes = [ctypes.c_void_p, ctypes.c_ulong, ctypes.c_int, ctypes.c_long, ctypes.POINTER(_XEvent)]
+        lib.XFlush.argtypes = [ctypes.c_void_p]
+        event = _XEvent()
+        event.xclient.type = 33  # ClientMessage
+        event.xclient.send_event = 1
+        event.xclient.window = xid
+        event.xclient.message_type = lib.XInternAtom(x11.display, b"_NET_MOVERESIZE_WINDOW", False)
+        event.xclient.format = 32
+        # Static gravity, x and y given, source: pager (always honoured)
+        event.xclient.data[0] = 10 | (1 << 8) | (1 << 9) | (2 << 12)
+        event.xclient.data[1] = x
+        event.xclient.data[2] = y
+        substructure_redirect_and_notify = (1 << 20) | (1 << 19)
+        lib.XSendEvent(x11.display, x11.root, False, substructure_redirect_and_notify, ctypes.byref(event))
+        lib.XFlush(x11.display)
+        return True
+    finally:
+        x11.close()

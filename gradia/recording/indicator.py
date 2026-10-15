@@ -20,12 +20,18 @@
 GNOME 46 has no tray, so this window and a notification are the ways to
 see and stop a recording. Apps cannot position their windows or keep them
 above others on Wayland; on X11 the window manager is asked to keep it
-above.
+above, and it is moved out of the recorded area so it is not filmed.
 """
 
-from gi.repository import Adw, GLib, Gtk
+from typing import Optional
+
+from gi.repository import Adw, Gdk, GLib, Gtk
+
+from gradia.backend.logger import Logger
 
 from gradia.recording.recorder import Recorder, RecorderState
+
+logger = Logger()
 
 
 def format_duration(seconds: float) -> str:
@@ -117,13 +123,26 @@ class RecordingIndicator(Adw.ApplicationWindow):
         self.caption_label.set_label(caption)
 
     def _keep_above(self) -> bool:
-        # X11 only: ask the window manager to keep this window above others
+        # X11 only: keep this window above others, and out of the recording
         try:
             from gradia.backend.x11_capture import keep_window_above
             keep_window_above(self)
-        except Exception:
-            pass
+            self._move_out_of_recording()
+        except Exception as e:
+            logger.warning(f"Cannot place the recording indicator: {e}")
         return False
+
+    def _move_out_of_recording(self) -> None:
+        """Put the window where it is not recorded: beside the area, or on another screen."""
+        from gradia.backend.x11_capture import move_window, window_size
+
+        recorded = self.recorder.recorded_rect()
+        size = window_size(self)
+        if recorded is None or size is None:
+            return
+        position = place_outside(recorded, size, _monitor_rects(self.get_display()))
+        if position is not None:
+            move_window(self, *position)
 
     def _on_close_request(self, *_args) -> bool:
         # Closing the indicator stops the recording rather than hiding it
@@ -135,3 +154,42 @@ class RecordingIndicator(Adw.ApplicationWindow):
         GLib.source_remove(self._tick_id)
         self.recorder.disconnect(self._state_handler)
         self.destroy()
+
+
+Rect = tuple[int, int, int, int]
+
+
+def _monitor_rects(display: Gdk.Display) -> list[Rect]:
+    rects = []
+    monitors = display.get_monitors()
+    for i in range(monitors.get_n_items()):
+        monitor = monitors.get_item(i)
+        g, scale = monitor.get_geometry(), monitor.get_scale_factor()
+        rects.append((g.x * scale, g.y * scale, g.width * scale, g.height * scale))
+    return rects
+
+
+def _overlaps(a: Rect, b: Rect) -> bool:
+    return a[0] < b[0] + b[2] and b[0] < a[0] + a[2] and a[1] < b[1] + b[3] and b[1] < a[1] + a[3]
+
+
+def place_outside(recorded: Rect, size: tuple[int, int], monitors: list[Rect],
+                  margin: int = 48) -> Optional[tuple[int, int]]:
+    """Top left corner for a window of `size` that does not cover `recorded`.
+
+    Screens with the recorded area come first, then the others; on each one,
+    the bottom center is tried first, then the top and the corners.
+    """
+    w, h = size
+    cx, cy = recorded[0] + recorded[2] / 2, recorded[1] + recorded[3] / 2
+    ordered = sorted(monitors, key=lambda m: not (m[0] <= cx < m[0] + m[2] and m[1] <= cy < m[1] + m[3]))
+    for mx, my, mw, mh in ordered:
+        if w + 2 * margin > mw or h + 2 * margin > mh:
+            continue
+        left, right = mx + margin, mx + mw - margin - w
+        top, bottom = my + margin, my + mh - margin - h
+        center = mx + (mw - w) // 2
+        for x, y in ((center, bottom), (center, top), (right, bottom), (left, bottom), (right, top), (left, top)):
+            if not _overlaps((x, y, w, h), recorded):
+                return x, y
+    return None
