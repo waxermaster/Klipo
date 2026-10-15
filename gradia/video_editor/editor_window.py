@@ -104,8 +104,11 @@ class VideoEditorWindow(Adw.ApplicationWindow):
     __gtype_name__ = "KlipoVideoEditorWindow"
 
     def __init__(self, path: str, **kwargs) -> None:
+        # Read the video before creating the window: a window that fails
+        # half way would stay registered and keep Klipo running invisibly
+        info = VideoInfo.probe(path)
         super().__init__(default_width=1280, default_height=860, **kwargs)
-        self.info = VideoInfo.probe(path)
+        self.info = info
         self.project = VideoProject(self.info)
         self.history = History(self.project)
         self.player = Player(path)
