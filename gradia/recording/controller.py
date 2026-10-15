@@ -90,7 +90,7 @@ class RecordingController:
 
     def _on_area_needed(self, recorder: Recorder, result) -> None:
         AreaSelector(result, on_selected=recorder.select_area, on_cancelled=recorder.stop,
-                     application=self.app).present()
+                     application=self.app).present_when_ready()
 
     def _on_finished(self, _recorder: Recorder, path: str) -> None:
         self._last_path = path

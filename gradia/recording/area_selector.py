@@ -26,7 +26,7 @@ import math
 import os
 from typing import Callable, Optional
 
-from gi.repository import Adw, GLib, Gdk, Gtk, Gst
+from gi.repository import Adw, GLib, Gdk, Gtk, Gst, GstVideo
 
 from gradia.backend.logger import Logger
 from gradia.recording.portal import ScreenCastResult
@@ -57,15 +57,19 @@ class AreaSelector(Adw.ApplicationWindow):
         self._drag_start_rect: Optional[Rect] = None
         self._drag_origin = (0.0, 0.0)
 
-        # Live preview of the portal stream
+        # A still frame of the portal stream. A live preview would film this
+        # window too and show it inside itself, so one frame is taken before
+        # the window appears, then the stream is closed.
         stream = result.streams[0]
         self._pipeline = Gst.parse_launch(
             f"pipewiresrc fd={os.dup(result.fd)} path={stream.node_id} do-timestamp=true "
-            "keepalive-time=1000 resend-last=true ! videoconvert ! gtk4paintablesink name=sink"
+            "keepalive-time=1000 resend-last=true ! videoconvert ! video/x-raw,format=BGRA "
+            "! appsink name=sink emit-signals=true max-buffers=1 drop=true sync=false"
         )
-        self.paintable = self._pipeline.get_by_name("sink").get_property("paintable")
-        self.paintable.connect("invalidate-size", lambda *_: self._restore_last_selection())
-        self.picture = Gtk.Picture(paintable=self.paintable, content_fit=Gtk.ContentFit.CONTAIN,
+        self._pipeline.get_by_name("sink").connect("new-sample", self._on_new_sample)
+        self.paintable: Optional[Gdk.Texture] = None
+        self._present_requested = False
+        self.picture = Gtk.Picture(content_fit=Gtk.ContentFit.CONTAIN,
                                    can_shrink=True, hexpand=True, vexpand=True)
 
         self.area = Gtk.DrawingArea(hexpand=True, vexpand=True, can_focus=True, focusable=True)
@@ -116,12 +120,60 @@ class AreaSelector(Adw.ApplicationWindow):
         self.connect("close-request", self._on_close_request)
 
         self._pipeline.set_state(Gst.State.PLAYING)
+        # Show the window anyway if the stream sends nothing
+        self._frame_timeout = GLib.timeout_add_seconds(5, self._on_frame_timeout)
+
+    # Still frame
+
+    def present_when_ready(self) -> None:
+        """Present the window once the still frame is there."""
+        self._present_requested = True
+        if self.paintable is not None:
+            self._show()
+
+    def _show(self) -> None:
+        self.present()
         self.area.grab_focus()
+
+    def _on_new_sample(self, sink) -> Gst.FlowReturn:
+        # Streaming thread: copy the frame, then hand it to the main loop
+        sample = sink.emit("pull-sample")
+        if sample is None:
+            return Gst.FlowReturn.OK
+        info = GstVideo.VideoInfo.new_from_caps(sample.get_caps())
+        buffer = sample.get_buffer()
+        data = buffer.extract_dup(0, buffer.get_size())
+        GLib.idle_add(self._set_frame, info.width, info.height, info.stride[0], data)
+        return Gst.FlowReturn.EOS
+
+    def _set_frame(self, width: int, height: int, stride: int, data: bytes) -> bool:
+        if self.paintable is not None or self._answered:
+            return False
+        self.paintable = Gdk.MemoryTexture.new(width, height, Gdk.MemoryFormat.B8G8R8A8_PREMULTIPLIED,
+                                               GLib.Bytes.new(data), stride)
+        self.picture.set_paintable(self.paintable)
+        self._stop_preview()
+        if self._frame_timeout:
+            GLib.source_remove(self._frame_timeout)
+            self._frame_timeout = 0
+        self._restore_last_selection()
+        if self._present_requested:
+            self._show()
+        return False
+
+    def _on_frame_timeout(self) -> bool:
+        self._frame_timeout = 0
+        if self.paintable is None and self._present_requested and not self._answered:
+            logger.warning("No frame received from the screen cast stream")
+            self._show()
+        return False
 
     # Geometry
 
     def frame_size(self) -> tuple[int, int]:
-        return self.paintable.get_intrinsic_width(), self.paintable.get_intrinsic_height()
+        if self.paintable is None:
+            return 0, 0
+        return self.paintable.get_width(), self.paintable.get_height()
 
     def _paintable_rect(self) -> Optional[tuple[float, float, float]]:
         """Where the frame is drawn in the widget: (x, y, scale)."""
@@ -286,6 +338,9 @@ class AreaSelector(Adw.ApplicationWindow):
 
     def _on_close_request(self, *_args) -> bool:
         self._stop_preview()
+        if self._frame_timeout:
+            GLib.source_remove(self._frame_timeout)
+            self._frame_timeout = 0
         if not self._answered:
             self._answered = True
             self._on_cancelled()
