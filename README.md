@@ -12,6 +12,8 @@ Klipo is a screenshot and screen recording tool for GNOME, built for one flow:
 No file has to be saved, closing the editor never asks "Do you want to save?",
 and what you copied can still be pasted after Klipo is closed.
 
+![The Klipo editor with annotations](data/screenshots/editor.png)
+
 ## Features
 
 ### Screenshots
@@ -40,6 +42,8 @@ and what you copied can still be pasted after Klipo is closed.
 
 ### Screen recording
 
+![Recording options](data/screenshots/recording-options.png)
+
 - Record a screen, a window or an area selected on a live preview
 - MP4 (H.264), WebM (VP8) or GIF, 30 or 60 frames per second
 - Hardware encoding (NVIDIA NVENC, VA-API) when available, x264 otherwise; Klipo
@@ -50,6 +54,8 @@ and what you copied can still be pasted after Klipo is closed.
   browser), open its folder or move it to the trash
 
 ### Video editor
+
+![The video editor, with annotations shown at chosen times](data/screenshots/video-editor.png)
 
 Open it with **Edit** after a recording, from the menu (Edit a Video…) or with
 `klipo --edit-video=FILE`:
@@ -63,6 +69,10 @@ Open it with **Edit** after a recording, from the menu (Edit a Video…) or with
 - Export to MP4, WebM or GIF, at the original size, 1080p, 720p, 480p or half size,
   at 0.5× to 3× speed, with or without sound. A new "(edited)" file is written; the
   original is never changed
+
+### Preferences
+
+![Preferences](data/screenshots/preferences.png)
 
 ## Installation
 

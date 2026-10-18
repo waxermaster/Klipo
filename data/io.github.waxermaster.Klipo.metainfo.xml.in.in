@@ -27,14 +27,32 @@
 	<developer id="io.github.waxermaster">
 		<name>Wilfred</name>
 	</developer>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://raw.githubusercontent.com/waxermaster/Klipo/main/data/screenshots/editor.png</image>
+			<caption>Annotating a screenshot</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/waxermaster/Klipo/main/data/screenshots/recording-options.png</image>
+			<caption>Screen recording options</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/waxermaster/Klipo/main/data/screenshots/video-editor.png</image>
+			<caption>Editing a recording</caption>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/waxermaster/Klipo/main/data/screenshots/preferences.png</image>
+			<caption>Preferences</caption>
+		</screenshot>
+	</screenshots>
 	<url type="homepage">@PROJECT_URL@</url>
 	<url type="vcs-browser">@VCS_URL@</url>
 	<url type="bugtracker">@BUGTRACKER_URL@</url>
 	<translation type="gettext">klipo</translation>
 	<content_rating type="oars-1.1"/>
 	<branding>
-		<color type="primary" scheme_preference="light">#8ff0a4</color>
-		<color type="primary" scheme_preference="dark">#119458</color>
+		<color type="primary" scheme_preference="light">#ffb3a3</color>
+		<color type="primary" scheme_preference="dark">#c41f3a</color>
 	</branding>
 	<releases>
 		<release version="0.1.0" date="2026-10-13">
