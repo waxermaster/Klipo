@@ -42,9 +42,13 @@ if __name__ == '__main__':
     gi.require_version('Adw', '1')
     gi.require_version('Xdp', '1.0')
     gi.require_version('Gst', '1.0')
+    gi.require_version('GstVideo', '1.0')
     from gi.repository import Gio, GLib
+    from gradia.constants import app_id
 
-    GLib.set_prgname("klipo")
+    # On X11 the program name becomes the window class, which GNOME matches
+    # with the desktop file to show the app's icon in the dock
+    GLib.set_prgname(app_id)
     resource = Gio.Resource.load(
         os.path.join(pkgdatadir, 'klipo.gresource'))
     resource._register()
