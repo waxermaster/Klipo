@@ -367,8 +367,13 @@ class DrawingToolsGroup(Gtk.Box):
         return self.tool_manager.get_tool(self.current_tool_config.mode)
 
     def set_current_tool(self, mode: DrawingMode):
+        # A tool shortcut ends the editing of the selected annotation
         if self.is_temp_editing:
-            return
+            overlay = self._get_overlay()
+            if overlay is not None:
+                overlay.selected_action = None
+                overlay.queue_draw()
+            self._exit_temp_editing_mode()
 
         self.drawing_tools_grid.set_current_tool(mode)
         self.current_tool_config = next(
